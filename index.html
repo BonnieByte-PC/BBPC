@@ -5,15 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bonnie Byte PC | Crafted with Scottish Pride</title>
     <link rel="stylesheet" href="Site/static/style.css">
-    <!-- MailerLite Script -->
-    <script>
-        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-        .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-        n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-        ml('account', 'YOUR_MAILERLITE_ID_HERE'); // You'll get this later
-    </script>
-    <!-- End MailerLite Script -->
 </head>
 <body>
     <div class="container">
@@ -50,9 +41,18 @@
         <section id="notify" class="signup">
             <h2>Be the First to Know</h2>
             <p>Sign up below to get an exclusive launch-day discount and updates on our journey.</p>
-            <!-- MailerLite Form -->
-            <div class="ml-embedded" data-form="YOUR_FORM_ID_HERE"></div>
-            <!-- End MailerLite Form -->
+            
+        <script>
+            (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+            .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+            n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+            (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+            ml('account', '123456'); <!-- This has your REAL Account ID -->
+        </script>
+        
+        <div class="ml-embedded" data-form="a1b2c3d4"> <!-- This has your REAL Form ID -->
+        </div>
+            
         </section>
 
         <!-- Footer -->
@@ -62,5 +62,4 @@
         </footer>
     </div>
 </body>
-
 </html>
