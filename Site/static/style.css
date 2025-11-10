@@ -180,6 +180,8 @@ footer a {
 .header-logo {
     flex-shrink: 0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .header-logo-img {
@@ -253,6 +255,7 @@ footer a {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .theme-toggle:hover {
@@ -269,6 +272,8 @@ footer a {
     cursor: pointer;
     padding: 5px;
     z-index: 1001;
+    align-items: center;
+    justify-content: center;
 }
 
 .mobile-menu-toggle span {
@@ -277,6 +282,7 @@ footer a {
     background: #333;
     margin: 3px 0;
     transition: 0.3s;
+    border-radius: 2px;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
@@ -532,6 +538,10 @@ body {
     }
 
     /* Mobile Navigation Fixes */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
     .header-nav {
         position: fixed;
         top: 0;
@@ -548,6 +558,7 @@ body {
         transition: right 0.3s ease;
         z-index: 998;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        gap: 0;
     }
 
     .header-nav.active {
@@ -555,7 +566,7 @@ body {
     }
 
     .header-nav a {
-        padding: 0.75rem 0;
+        padding: 1rem 0;
         font-size: 1.1rem;
         width: 100%;
         border-bottom: 1px solid var(--border-color, #eee);
@@ -566,24 +577,21 @@ body {
         display: none;
     }
 
-    /* Move theme toggle inside mobile menu */
-    .theme-toggle {
-        position: static !important;
+    /* Theme toggle inside mobile menu */
+    .theme-toggle.mobile-menu-version {
+        position: static;
         margin-top: 2rem;
         margin-left: 0;
-        order: 2;
+        align-self: center;
     }
 
-    /* Update mobile menu toggle styling */
+    /* Mobile menu toggle styling */
     .mobile-menu-toggle {
         display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        padding: 0.5rem;
-        z-index: 999;
-        position: relative;
-        background: none;
-        border: none;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
     }
 
     .mobile-menu-toggle span {
@@ -612,12 +620,31 @@ body {
     .header-actions {
         gap: 10px;
     }
+
+    /* Hide desktop theme toggle on mobile */
+    .header-actions .theme-toggle {
+        display: none;
+    }
 }
 
-/* Desktop theme toggle positioning */
+/* Desktop Styles */
 @media (min-width: 769px) {
+    /* Ensure logo and theme toggle are vertically aligned */
+    .header-logo,
+    .header-nav,
+    .header-actions {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
     .theme-toggle {
-        margin-left: 2rem;
+        margin-left: 1rem;
+    }
+
+    /* Hide mobile theme toggle on desktop */
+    .theme-toggle.mobile-menu-version {
+        display: none !important;
     }
 }
 
