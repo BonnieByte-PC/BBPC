@@ -177,7 +177,7 @@ footer a {
 }
 
 .header-logo-img {
-    height: 35px; /* Reduced from auto/too large */
+    height: 70px; /* Reduced from auto/too large */
     width: auto;
     max-width: 200px; /* Prevents it from getting too wide */
     transition: transform 0.3s ease;
@@ -401,6 +401,7 @@ body {
     }
 
 }
+
 
 
 
