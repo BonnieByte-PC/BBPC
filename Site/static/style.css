@@ -895,3 +895,221 @@ input:focus {
         transition: none;
     }
 }
+/* ===== iubenda Cookie Banner Styling - COMPREHENSIVE ===== */
+
+/* Target ALL possible iubenda banner containers */
+.iubenda-consent-ui, 
+.iucs-consent-ui,
+.iubenda-cs-container,
+.iubenda-cs-bottom,
+.iubenda-cs-rationale,
+[class*="iubenda"],
+[class*="iucs"] {
+    background: rgba(26, 26, 26, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid #444 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3) !important;
+    color: #ffffff !important;
+    font-family: 'Arial', sans-serif !important;
+    margin: 0 auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    max-width: 90% !important;
+    width: 600px !important;
+    bottom: 20px !important;
+    padding: 20px !important;
+}
+
+/* Target ALL possible banner content */
+.iubenda-consent-content,
+.iucs-consent-content,
+[class*="iubenda-consent-content"],
+[class*="iucs-consent-content"] {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+    margin-bottom: 15px !important;
+}
+
+/* Target ALL possible buttons */
+.iubenda-consent-btn,
+.iucs-consent-btn,
+.iubenda-cs-btn,
+[class*="iubenda-consent-btn"],
+[class*="iucs-consent-btn"] {
+    background: #6633FF !important;
+    border: 2px solid #6633FF !important;
+    border-radius: 25px !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    padding: 12px 24px !important;
+    transition: all 0.3s ease !important;
+    font-size: 16px !important;
+    margin: 5px !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+/* Hover states for ALL buttons */
+.iubenda-consent-btn:hover,
+.iucs-consent-btn:hover,
+.iubenda-cs-btn:hover,
+[class*="iubenda-consent-btn"]:hover,
+[class*="iucs-consent-btn"]:hover {
+    background: #5522DD !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(102, 51, 255, 0.3) !important;
+}
+
+/* Target ALL secondary buttons */
+.iubenda-consent-btn-secondary,
+.iucs-consent-btn-secondary,
+[class*="iubenda-consent-btn-secondary"],
+[class*="iucs-consent-btn-secondary"] {
+    background: transparent !important;
+    border: 2px solid #8C6EFF !important;
+    color: #8C6EFF !important;
+}
+
+/* Hover states for secondary buttons */
+.iubenda-consent-btn-secondary:hover,
+.iucs-consent-btn-secondary:hover,
+[class*="iubenda-consent-btn-secondary"]:hover,
+[class*="iucs-consent-btn-secondary"]:hover {
+    background: #8C6EFF !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(140, 110, 255, 0.3) !important;
+}
+
+/* Button containers */
+.iubenda-consent-btns,
+.iucs-consent-btns,
+[class*="iubenda-consent-btns"],
+[class*="iucs-consent-btns"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-top: 20px !important;
+}
+
+/* Links */
+.iubenda-consent-ui a,
+.iucs-consent-ui a,
+.iubenda-cs-container a,
+[class*="iubenda"] a,
+[class*="iucs"] a {
+    color: #8C6EFF !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+}
+
+.iubenda-consent-ui a:hover,
+.iucs-consent-ui a:hover,
+.iubenda-cs-container a:hover,
+[class*="iubenda"] a:hover,
+[class*="iucs"] a:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+/* Close buttons */
+.iubenda-consent-close,
+.iucs-consent-close,
+[class*="iubenda-consent-close"],
+[class*="iucs-consent-close"] {
+    color: #ffffff !important;
+    opacity: 0.8 !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 18px !important;
+    cursor: pointer !important;
+}
+
+.iubenda-consent-close:hover,
+.iucs-consent-close:hover,
+[class*="iubenda-consent-close"]:hover,
+[class*="iucs-consent-close"]:hover {
+    opacity: 1 !important;
+    color: #8C6EFF !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .iubenda-consent-ui, 
+    .iucs-consent-ui,
+    .iubenda-cs-container,
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale,
+    [class*="iubenda"],
+    [class*="iucs"] {
+        width: 95% !important;
+        bottom: 10px !important;
+        padding: 15px !important;
+    }
+    
+    .iubenda-consent-btn,
+    .iucs-consent-btn,
+    .iubenda-cs-btn,
+    [class*="iubenda-consent-btn"],
+    [class*="iucs-consent-btn"] {
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+        min-width: 120px !important;
+    }
+    
+    .iubenda-consent-btns,
+    .iucs-consent-btns,
+    [class*="iubenda-consent-btns"],
+    [class*="iucs-consent-btns"] {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    .iubenda-consent-content,
+    .iucs-consent-content,
+    [class*="iubenda-consent-content"],
+    [class*="iucs-consent-content"] {
+        font-size: 13px !important;
+        padding: 0 5px !important;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .iubenda-consent-ui, 
+    .iucs-consent-ui,
+    .iubenda-cs-container,
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale,
+    [class*="iubenda"],
+    [class*="iucs"] {
+        width: 98% !important;
+        bottom: 5px !important;
+        padding: 12px !important;
+    }
+    
+    .iubenda-consent-btn,
+    .iucs-consent-btn,
+    .iubenda-cs-btn,
+    [class*="iubenda-consent-btn"],
+    [class*="iucs-consent-btn"] {
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* Dark mode support */
+[data-theme="dark"] .iubenda-consent-ui,
+[data-theme="dark"] .iucs-consent-ui,
+[data-theme="dark"] .iubenda-cs-container,
+[data-theme="dark"] [class*="iubenda"],
+[data-theme="dark"] [class*="iucs"] {
+    background: rgba(26, 26, 26, 0.98) !important;
+    border-color: #444 !important;
+}
