@@ -1111,4 +1111,68 @@ input:focus {
         transition: none;
     }
 }
+/* iubenda Cookie Banner Styling - Aggressive Approach */
+body .iubenda-consent-ui, 
+body .iucs-consent-ui,
+body .iubenda-cs-container,
+div[class*="iubenda"],
+div[id*="iubenda"] {
+    background: rgba(26, 26, 26, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid #444 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3) !important;
+    color: #ffffff !important;
+    font-family: 'Arial', sans-serif !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    right: auto !important;
+    text-align: center !important;
+}
+
+/* Target all possible iubenda banner classes */
+.iubenda-cs-bottom,
+.iubenda-cs-rationale,
+.iubenda-cs-container,
+.iubenda-consent-ui,
+.iucs-consent-ui,
+[class*="iubenda-cs"],
+[class*="iubenda-consent"] {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    right: auto !important;
+    max-width: 600px !important;
+    width: auto !important;
+    bottom: 20px !important;
+}
+
+/* Force button styling */
+.iubenda-consent-btn,
+.iucs-consent-btn,
+.iubenda-cs-btn,
+[class*="iubenda-btn"],
+button[class*="iubenda"] {
+    background: #6633FF !important;
+    border: 2px solid #6633FF !important;
+    border-radius: 5px !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    padding: 10px 20px !important;
+    margin: 5px !important;
+}
+
+/* Mobile fixes */
+@media (max-width: 768px) {
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale,
+    .iubenda-cs-container,
+    [class*="iubenda-cs"] {
+        max-width: 95% !important;
+        width: 95% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+    }
+}
 
