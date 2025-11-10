@@ -257,6 +257,7 @@ footer a {
     justify-content: center;
     flex-shrink: 0;
     color: #ffffff; /* Fixed missing semicolon */
+    padding: 5px;
 }
 
 .theme-toggle:hover {
@@ -676,3 +677,4 @@ input:focus {
         transition: none;
     }
 }
+
