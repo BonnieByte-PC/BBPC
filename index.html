@@ -48,15 +48,35 @@
     
 </head>
 <body>
+    <!-- Fixed Header -->
     <header class="site-header">
         <div class="container">
             <div class="header-content">
-                <div class="logo-placeholder"></div> <!-- Spacer for balance -->
+                <!-- Logo in header -->
+                <div class="header-logo">
+                    <img src="Site/images/LogoFullNoTag.png" alt="Bonnie Byte PC" class="header-logo-img">
+                </div>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                     <span class="theme-icon">🌙</span>
                 </button>
             </div>
         </div>
+
+        <script>
+            // Make header logo clickable to scroll to top
+            document.addEventListener('DOMContentLoaded', function() {
+                const headerLogo = document.querySelector('.header-logo');
+                if (headerLogo) {
+                    headerLogo.style.cursor = 'pointer';
+                    headerLogo.addEventListener('click', function() {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    });
+                }
+            });
+        </script>
     </header>
     <div class="container">
         <!-- Hero Section -->
