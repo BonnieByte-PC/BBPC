@@ -622,9 +622,9 @@ body {
     }
 
     /* Show desktop theme toggle on mobile since we don't have mobile version */
-    /*.header-actions .theme-toggle {
-        display: flex; /* Changed from 'none' to 'flex' 
-    } */
+    .header-actions .theme-toggle {
+        display: flex !important; /* Changed from 'none' to 'flex' 
+    } 
     
 }
 
@@ -684,6 +684,7 @@ input:focus {
         transition: none;
     }
 }
+
 
 
 
