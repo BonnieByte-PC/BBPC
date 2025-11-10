@@ -157,7 +157,7 @@ footer a {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 12px 0; /* Reduced padding */
+    padding: 5px 0; /* Reduced padding */
     border-bottom: 1px solid #eee;
     transition: all 0.3s ease;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -401,6 +401,7 @@ body {
     }
 
 }
+
 
 
 
