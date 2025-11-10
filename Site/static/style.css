@@ -161,7 +161,6 @@ footer a {
     border-bottom: 1px solid #eee;
     transition: all 0.3s ease;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: 10px p;
 }
 
 .site-header.shrink {
@@ -262,26 +261,7 @@ footer a {
 }
 
 /* Mobile Theme Toggle (inside menu) */
-.mobile-theme-toggle {
-    display: none;
-    background: none;
-    border: 2px solid #6633FF;
-    border-radius: 25px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-    width: 100%;
-    justify-content: center;
-}
 
-.mobile-theme-toggle:hover {
-    background: #6633FF;
-    color: white;
-}
 
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
@@ -560,11 +540,9 @@ body {
     }
 
     .theme-toggle {
-        display: flex !important; /* Keep it visible but move it */
-        position: absolute;
-        right: 60px; /* Position next to hamburger */
-        top: 50%;
-        transform: translateY(-50%);
+        display: flex !important;
+        position: static; /* Remove absolute positioning */
+        transform: none; /* Remove transform */
     }
 
     .mobile-theme-toggle {
@@ -653,5 +631,6 @@ input:focus {
         transition: none;
     }
 }
+
 
 
