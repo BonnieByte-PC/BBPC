@@ -189,7 +189,7 @@ footer a {
     width: auto;
     max-width: 220px;
     transition: transform 0.3s ease;
-    filter: brightness(1.1) contrast(1.2) invert(1);
+    filter: brightness(1.1) contrast(1.2);
 }
 
 .site-header.shrink .header-logo-img {
@@ -668,5 +668,6 @@ input:focus {
         transition: none;
     }
 }
+
 
 
