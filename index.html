@@ -317,6 +317,58 @@
                 }
             });
         });
+        // Force iubenda banner centering
+function fixIubendaBanner() {
+    const banners = [
+        '.iubenda-cs-bottom',
+        '.iubenda-cs-rationale', 
+        '.iubenda-consent-ui',
+        '.iucs-consent-ui',
+        '.iubenda-cs-container'
+    ];
+    
+    banners.forEach(selector => {
+        const banner = document.querySelector(selector);
+        if (banner) {
+            // Force center positioning
+            banner.style.left = '50% !important';
+            banner.style.right = 'auto !important';
+            banner.style.transform = 'translateX(-50%) !important';
+            banner.style.margin = '0 auto !important';
+            banner.style.textAlign = 'center !important';
+        }
+    });
+    
+    // Also fix any button containers
+    const buttonContainers = document.querySelectorAll('.iubenda-consent-btns, .iucs-consent-btns');
+    buttonContainers.forEach(container => {
+        container.style.justifyContent = 'center !important';
+        container.style.display = 'flex !important';
+    });
+}
+
+// Run on page load and whenever DOM changes
+document.addEventListener('DOMContentLoaded', fixIubendaBanner);
+
+// Also run when iubenda loads its banner (they might load async)
+const observer = new MutationObserver(fixIubendaBanner);
+observer.observe(document.body, { childList: true, subtree: true });
+
+// Additional fix for mobile viewport
+function adjustBannerForMobile() {
+    const banners = document.querySelectorAll('.iubenda-cs-bottom, .iubenda-cs-rationale');
+    banners.forEach(banner => {
+        if (window.innerWidth <= 768) {
+            banner.style.maxWidth = '95% !important';
+            banner.style.width = '95% !important';
+            banner.style.left = '50% !important';
+            banner.style.transform = 'translateX(-50%) !important';
+        }
+    });
+}
+
+window.addEventListener('resize', adjustBannerForMobile);
+window.addEventListener('load', adjustBannerForMobile);
     </script>
 </body>
 </html>
