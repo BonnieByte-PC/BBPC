@@ -44,6 +44,9 @@
     
 </head>
 <body>
+    <!-- Skip to main content for screen readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Fixed Header -->
     <header class="site-header">
         <div class="scroll-progress"></div>
@@ -55,18 +58,24 @@
                 </div>
                 
                 <!-- Navigation Menu -->
-                <nav class="header-nav">
+                <nav class="header-nav" aria-label="Main navigation">
                     <a href="#home">Home</a>
                     <a href="#story">Our Story</a>
                     <a href="#products">Products</a>
                     <a href="#notify">Updates</a>
+                    <!-- Mobile-only theme toggle -->
+                    <button id="mobile-theme-toggle" class="mobile-theme-toggle" aria-label="Toggle dark mode">
+                        <span class="mobile-theme-icon">🌙</span>
+                        <span class="mobile-theme-text">Toggle Theme</span>
+                    </button>
                 </nav>
 
                 <div class="header-actions">
+                    <!-- Desktop theme toggle -->
                     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                         <span class="theme-icon">🌙</span>
                     </button>
-                    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -76,7 +85,7 @@
         </div>
     </header>
 
-    <div class="container">
+    <div class="container" id="main-content">
         <!-- Hero Section -->
         <section class="hero" id="home">
             <img src="Site/images/LogoFullNoTag.png" alt="Bonnie Byte PC" class="logo" style="max-width: 300px; height: auto;">
@@ -100,8 +109,8 @@
                 <h3>5-Pack 120mm ARGB Fan Bundle</h3>
                 <p>Complete your build with a full set of high-performance, addressable RGB fans. Includes a control hub for easy setup and stunning lighting effects.</p>
                 <div class="button-group">
-                    <a href="https://amazon.co.uk" class="button secondary" target="_blank">Buy on Amazon UK</a>
-                    <a href="https://ebay.co.uk" class="button secondary" target="_blank">Buy on eBay</a>
+                    <a href="https://amazon.co.uk" class="button secondary" target="_blank" rel="noopener noreferrer">Buy on Amazon UK</a>
+                    <a href="https://ebay.co.uk" class="button secondary" target="_blank" rel="noopener noreferrer">Buy on eBay</a>
                 </div>
             </div>
         </section>
@@ -145,52 +154,91 @@
 
     <script>
         // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('.theme-icon');
-        
-        // Check for saved theme or prefer-color-scheme
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const savedTheme = localStorage.getItem('theme');
-        
-        // Set initial theme
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.textContent = '☀️';
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeIcon.textContent = '🌙';
-        }
-        
-        // Toggle theme
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
+        function setupThemeToggle(themeToggle, themeIcon) {
+            // Check for saved theme or prefer-color-scheme
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const savedTheme = localStorage.getItem('theme');
             
-            if (currentTheme === 'light') {
+            // Set initial theme
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 themeIcon.textContent = '☀️';
-                localStorage.setItem('theme', 'dark');
             } else {
                 document.documentElement.setAttribute('data-theme', 'light');
                 themeIcon.textContent = '🌙';
-                localStorage.setItem('theme', 'light');
             }
-        });
+            
+            // Toggle theme
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                
+                if (currentTheme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    themeIcon.textContent = '☀️';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    themeIcon.textContent = '🌙';
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                // Update all theme icons
+                updateAllThemeIcons();
+            });
+        }
+
+        // Update all theme icons
+        function updateAllThemeIcons() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const themeIcons = document.querySelectorAll('.theme-icon, .mobile-theme-icon');
+            const themeTexts = document.querySelectorAll('.mobile-theme-text');
+            
+            themeIcons.forEach(icon => {
+                icon.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+            });
+            
+            themeTexts.forEach(text => {
+                text.textContent = currentTheme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+            });
+        }
+
+        // Initialize theme toggles
+        const desktopThemeToggle = document.getElementById('theme-toggle');
+        const desktopThemeIcon = desktopThemeToggle.querySelector('.theme-icon');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const mobileThemeIcon = mobileThemeToggle.querySelector('.mobile-theme-icon');
+        const mobileThemeText = mobileThemeToggle.querySelector('.mobile-theme-text');
+
+        setupThemeToggle(desktopThemeToggle, desktopThemeIcon);
+        setupThemeToggle(mobileThemeToggle, mobileThemeIcon);
 
         // Mobile menu functionality
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const headerNav = document.querySelector('.header-nav');
         
         mobileMenuToggle.addEventListener('click', () => {
+            const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
             mobileMenuToggle.classList.toggle('active');
             headerNav.classList.toggle('active');
+            mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
         });
 
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.header-nav a').forEach(link => {
-            link.addEventListener('click', () => {
+        // Close mobile menu when clicking on a link or outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.header-nav') && !e.target.closest('.mobile-menu-toggle') && headerNav.classList.contains('active')) {
                 mobileMenuToggle.classList.remove('active');
                 headerNav.classList.remove('active');
-            });
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close mobile menu when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && headerNav.classList.contains('active')) {
+                mobileMenuToggle.classList.remove('active');
+                headerNav.classList.remove('active');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
         });
 
         // Scroll progress
@@ -260,9 +308,19 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    
+                    // Close mobile menu after clicking a link
+                    if (window.innerWidth <= 768) {
+                        mobileMenuToggle.classList.remove('active');
+                        headerNav.classList.remove('active');
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    }
                 }
             });
         });
+
+        // Initialize theme icons on load
+        updateAllThemeIcons();
     </script>
 </body>
 </html>
