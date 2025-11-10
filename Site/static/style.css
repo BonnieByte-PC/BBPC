@@ -1175,4 +1175,57 @@ button[class*="iubenda"] {
         transform: translateX(-50%) !important;
     }
 }
+/* Force iubenda banner centering - Nuclear CSS Approach */
+.iubenda-cs-bottom,
+.iubenda-cs-rationale,
+.iubenda-consent-ui,
+.iucs-consent-ui,
+div[class*="iubenda-cs"]:not([class*="iubenda-cs-center"]),
+div[class*="iubenda-consent"] {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin: 0 auto !important;
+    position: fixed !important;
+    max-width: 600px !important;
+    width: 90% !important;
+}
+
+/* Desktop specific centering */
+@media (min-width: 769px) {
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 600px !important;
+    }
+}
+
+/* Mobile specific centering */
+@media (max-width: 768px) {
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        right: auto !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 95% !important;
+        max-width: 95% !important;
+    }
+}
+
+/* Override any inline styles iubenda might be adding */
+div[style*="left:"], 
+div[style*="right:"], 
+div[style*="margin:"], 
+div[style*="transform:"] {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin: 0 auto !important;
+}
 
