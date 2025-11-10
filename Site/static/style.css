@@ -10,7 +10,6 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #f4f4f4;
-    padding-top: 70px; /* Moved from bottom to fix header spacing */
 }
 
 .container {
@@ -23,7 +22,7 @@ body {
 .hero {
     text-align: center;
     padding: 100px 20px;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.1&auto=format&fit=crop&w=1200&q=80');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.1&auto=format&fit=crop&w=1200&q=80'); /* Placeholder PC image */
     background-size: cover;
     background-position: center;
     color: white;
@@ -38,7 +37,7 @@ body {
     font-size: 1.5rem;
     font-style: italic;
     margin-bottom: 20px;
-    color: #6633FF;
+    color: #6633FF; /* Your accent color */
 }
 
 .hero p {
@@ -51,14 +50,12 @@ body {
 .button {
     display: inline-block;
     padding: 12px 30px;
-    background-color: #6633FF;
+    background-color: #6633FF; /* Your accent color */
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
 }
 
 .button:hover {
@@ -125,6 +122,7 @@ section p {
     background-color: #ddd;
     margin-bottom: 20px;
     border-radius: 5px;
+    /* You can replace this with an actual image later using: background: url('your-image.jpg') center/cover; */
 }
 
 /* Signup Section */
@@ -187,7 +185,7 @@ footer a {
 }
 
 .header-logo-img {
-    height: 60px; /* Reduced from 100px for better mobile display */
+    height: 100px;
     width: auto;
     max-width: 220px;
     transition: transform 0.3s ease;
@@ -195,7 +193,7 @@ footer a {
 }
 
 .site-header.shrink .header-logo-img {
-    height: 50px; /* Reduced from 80px */
+    height: 80px;
 }
 
 .header-logo-img:hover {
@@ -229,7 +227,7 @@ footer a {
     left: 0;
     width: 0;
     height: 2px;
-    background: #8C6EFF;
+    background: #8C6EFF; /* Fixed typo - was #8C6EFFF */
     transition: width 0.3s ease;
 }
 
@@ -258,7 +256,7 @@ footer a {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    color: #ffffff;
+    color: #ffffff; /* Fixed missing semicolon */
     padding: 5px;
 }
 
@@ -267,7 +265,7 @@ footer a {
     transform: scale(1.1);
 }
 
-/* Mobile Menu Toggle - FIXED */
+/* Mobile Menu Toggle - FIXED: Always visible white lines */
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -285,7 +283,7 @@ footer a {
 .mobile-menu-toggle span {
     width: 25px;
     height: 3px;
-    background: #ffffff;
+    background: #ffffff; /* Always white on dark header */
     margin: 3px 0;
     transition: 0.3s;
     border-radius: 2px;
@@ -337,18 +335,12 @@ footer a {
     outline-offset: -2px;
 }
 
-/* CSS Variables for Theme Switching */
-:root {
-    --bg-color: #f4f4f4;
-    --text-color: #333;
-    --card-bg: white;
-    --accent-color: #6633FF;
-    --header-bg: rgba(26, 26, 26, 0.98);
-    --border-color: #444;
-    --button-text: #ffffff;
+/* Push content down to account for fixed header */
+body {
+    padding-top: 70px;
 }
 
-/* Dark Mode */
+/* Complete Dark Mode Fixes */
 [data-theme="dark"] {
     --bg-color: #1a1a1a;
     --text-color: #ffffff;
@@ -396,18 +388,18 @@ footer a {
 /* Fixed Button Colors for Dark Mode */
 [data-theme="dark"] .button {
     background-color: var(--accent-color);
-    color: var(--button-text);
+    color: var(--button-text) !important;
 }
 
 [data-theme="dark"] .button.secondary {
     border-color: var(--accent-color);
-    color: var(--accent-color);
+    color: var(--accent-color) !important;
     background-color: transparent;
 }
 
 [data-theme="dark"] .button.secondary:hover {
     background-color: var(--accent-color);
-    color: var(--button-text);
+    color: var(--button-text) !important;
 }
 
 [data-theme="dark"] a {
@@ -431,6 +423,17 @@ footer a {
 
 [data-theme="dark"] .tagline {
     color: var(--accent-color);
+}
+
+[data-theme="dark"] .ml-form-embedContainer .ml-form-embedBody .ml-form-fieldRow input {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+[data-theme="dark"] .ml-form-embedContainer .ml-form-embedBody .ml-form-embedSubmit button {
+    background: var(--accent-color) !important;
+    color: var(--button-text) !important;
 }
 
 /* MailerLite Form Styling */
@@ -471,6 +474,17 @@ footer a {
     background: #5522DD !important;
 }
 
+.ml-form-recaptcha {
+    margin: 15px 0;
+    transform: scale(0.9);
+    transform-origin: 0 0;
+}
+
+.g-recaptcha {
+    transform: scale(0.9);
+    transform-origin: 0 0;
+}
+
 /* Policy Page Styling */
 .policy-container {
     max-width: 1100px;
@@ -506,12 +520,208 @@ footer a {
     color: var(--text-color);
 }
 
-/* Mobile Responsive Design */
+/* iubenda Cookie Banner Styling - UPDATED */
+.iubenda-consent-ui, 
+.iucs-consent-ui,
+.iubenda-cs-container {
+    background: rgba(26, 26, 26, 0.98) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid #444 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3) !important;
+    color: #ffffff !important;
+    font-family: 'Arial', sans-serif !important;
+    margin: 0 auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+/* Banner text */
+.iubenda-consent-ui .iubenda-consent-content,
+.iucs-consent-ui .iucs-consent-content {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+}
+
+/* Buttons - UPDATED to match your theme */
+.iubenda-consent-ui .iubenda-consent-btn,
+.iucs-consent-ui .iucs-consent-btn,
+.iubenda-cs-btn {
+    background: #6633FF !important;
+    border: 2px solid #6633FF !important;
+    border-radius: 25px !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    padding: 12px 24px !important;
+    transition: all 0.3s ease !important;
+    font-size: 16px !important;
+    margin: 5px !important;
+    cursor: pointer !important;
+}
+
+.iubenda-consent-ui .iubenda-consent-btn:hover,
+.iucs-consent-ui .iucs-consent-btn:hover,
+.iubenda-cs-btn:hover {
+    background: #5522DD !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(102, 51, 255, 0.3) !important;
+}
+
+/* Secondary buttons - UPDATED to match your secondary button style */
+.iubenda-consent-ui .iubenda-consent-btn.iubenda-consent-btn-secondary,
+.iucs-consent-ui .iucs-consent-btn.iucs-consent-btn-secondary {
+    background: transparent !important;
+    border: 2px solid #8C6EFF !important;
+    color: #8C6EFF !important;
+}
+
+.iubenda-consent-ui .iubenda-consent-btn.iubenda-consent-btn-secondary:hover,
+.iucs-consent-ui .iucs-consent-btn.iucs-consent-btn-secondary:hover {
+    background: #8C6EFF !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(140, 110, 255, 0.3) !important;
+}
+
+/* Button container - Center buttons */
+.iubenda-consent-ui .iubenda-consent-btns,
+.iucs-consent-ui .iucs-consent-btns {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-top: 20px !important;
+}
+
+/* Links */
+.iubenda-consent-ui a,
+.iucs-consent-ui a,
+.iubenda-cs-container a {
+    color: #8C6EFF !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+}
+
+.iubenda-consent-ui a:hover,
+.iucs-consent-ui a:hover,
+.iubenda-cs-container a:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+/* Close button */
+.iubenda-consent-ui .iubenda-consent-close,
+.iucs-consent-ui .iucs-consent-close {
+    color: #ffffff !important;
+    opacity: 0.8 !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 18px !important;
+}
+
+.iubenda-consent-ui .iubenda-consent-close:hover,
+.iucs-consent-ui .iucs-consent-close:hover {
+    opacity: 1 !important;
+    color: #8C6EFF !important;
+}
+
+/* Banner positioning - FIXED for mobile */
+.iubenda-cs-bottom,
+.iubenda-cs-rationale {
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    max-width: 90% !important;
+    width: 600px !important;
+    margin: 0 auto !important;
+}
+
+/* Mobile responsive - FIXED alignment */
 @media (max-width: 768px) {
-    body {
-        padding-top: 60px; /* Adjusted for smaller mobile header */
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale {
+        width: 95% !important;
+        bottom: 10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
     }
     
+    .iubenda-consent-ui .iubenda-consent-btn,
+    .iucs-consent-ui .iucs-consent-btn {
+        padding: 10px 20px !important;
+        font-size: 14px !important;
+        min-width: 120px !important;
+    }
+    
+    .iubenda-consent-ui .iubenda-consent-btns,
+    .iucs-consent-ui .iucs-consent-btns {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    /* Ensure text is centered on mobile */
+    .iubenda-consent-ui .iubenda-consent-content,
+    .iucs-consent-ui .iucs-consent-content {
+        text-align: center !important;
+        padding: 0 10px !important;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale {
+        width: 98% !important;
+        bottom: 5px !important;
+    }
+    
+    .iubenda-consent-ui .iubenda-consent-btn,
+    .iucs-consent-ui .iucs-consent-btn {
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* Dark mode support */
+[data-theme="dark"] .iubenda-consent-ui,
+[data-theme="dark"] .iucs-consent-ui {
+    background: rgba(26, 26, 26, 0.98) !important;
+    border-color: #444 !important;
+}
+
+[data-theme="dark"] .iubenda-consent-ui .iubenda-consent-btn.iubenda-consent-btn-secondary,
+[data-theme="dark"] .iucs-consent-ui .iucs-consent-btn.iucs-consent-btn-secondary {
+    border-color: #8C6EFF !important;
+    color: #8C6EFF !important;
+}
+
+[data-theme="dark"] .iubenda-consent-ui .iubenda-consent-btn.iubenda-consent-btn-secondary:hover,
+[data-theme="dark"] .iucs-consent-ui .iucs-consent-btn.iucs-consent-btn-secondary:hover {
+    background: #8C6EFF !important;
+    color: #ffffff !important;
+}
+
+/* Make the form responsive */
+@media (max-width: 768px) {
+    .ml-form-embedContainer {
+        max-width: 100%;
+        padding: 0 20px;
+    }
+}
+
+/* For mobile */
+@media (max-width: 768px) {
+    .logo {
+        max-width: 200px;
+    }
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -538,9 +748,9 @@ footer a {
         text-align: center;
     }
 
-    /* Mobile Navigation */
+    /* Mobile Navigation Fixes - FIXED hamburger visibility */
     .mobile-menu-toggle {
-        display: flex !important;
+        display: flex !important; /* Force show on mobile */
     }
 
     .header-nav {
@@ -579,37 +789,54 @@ footer a {
         display: none;
     }
 
-    .header-actions .theme-toggle {
-        display: none; /* Hide desktop theme toggle on mobile */
+    .header-nav .theme-toggle {
+        margin-top: 2rem;
+        align-self: center;
+        order: 5; /* Ensure it comes after nav links */
     }
-
+    
     .header-logo-img {
-        height: 50px;
+        height: 80px;
     }
     
     .site-header.shrink .header-logo-img {
-        height: 40px;
+        height: 60px;
     }
 
-    /* Mobile menu overlay */
-    .mobile-menu-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 997;
+    .mobile-menu-toggle {
+        display: flex !important;
+        width: 44px;
+        height: 44px;
+        align-items: center;
+        justify-content: center;
     }
-    
-    .mobile-menu-overlay.active {
-        display: block;
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Adjust header for mobile */
+    .header-actions {
+        gap: 10px;
+    }
+
+    /* Show desktop theme toggle on mobile since we don't have mobile version */
+    .header-actions .theme-toggle {
+        display: flex !important;
     }
 }
 
 /* Desktop Styles */
 @media (min-width: 769px) {
+    /* Ensure logo and theme toggle are vertically aligned */
     .header-logo,
     .header-nav,
     .header-actions {
@@ -618,17 +845,23 @@ footer a {
         height: 100%;
     }
 
+    /* Position the navigation to take available space and push theme toggle right */
     .header-nav {
-        flex: 1;
-        justify-content: flex-end;
-        margin-right: 2rem;
+        flex: 1; /* Take available space */
+        justify-content: flex-end; /* Push nav items to the right */
+        margin-right: 2rem; /* Add some space between nav and theme toggle */
     }
 
-    .mobile-menu-toggle {
+    .theme-toggle {
+        margin-left: 0; /* Remove left margin since it's on the right now */
+    }
+
+    /* Hide mobile theme toggle on desktop */
+    .theme-toggle.mobile-menu-version {
         display: none !important;
     }
 }
-
+        
 /* Focus styles for accessibility */
 button:focus,
 a:focus,
