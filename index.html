@@ -66,7 +66,7 @@
                 </nav>
 
                 <div class="header-actions">
-                    <!-- Desktop theme toggle (hidden on mobile) -->
+                    <!-- Theme toggle -->
                     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
                         <span class="theme-icon">🌙</span>
                     </button>
@@ -153,47 +153,36 @@
 
     <script>
         // Theme toggle functionality
-        function setupThemeToggle(themeToggle, themeIcon, themeText = null) {
-            // Check for saved theme or prefer-color-scheme
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            const savedTheme = localStorage.getItem('theme');
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+
+        // Check for saved theme or prefer-color-scheme
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+
+        // Set initial theme
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.textContent = '☀️';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.textContent = '🌙';
+        }
+
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
             
-            // Set initial theme
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            if (currentTheme === 'light') {
                 document.documentElement.setAttribute('data-theme', 'dark');
                 themeIcon.textContent = '☀️';
-                if (themeText) themeText.textContent = 'Switch to Light Mode';
+                localStorage.setItem('theme', 'dark');
             } else {
                 document.documentElement.setAttribute('data-theme', 'light');
                 themeIcon.textContent = '🌙';
-                if (themeText) themeText.textContent = 'Switch to Dark Mode';
+                localStorage.setItem('theme', 'light');
             }
-            
-            // Toggle theme
-            themeToggle.addEventListener('click', () => {
-                const currentTheme = document.documentElement.getAttribute('data-theme');
-                
-                if (currentTheme === 'light') {
-                    document.documentElement.setAttribute('data-theme', 'dark');
-                    themeIcon.textContent = '☀️';
-                    if (themeText) themeText.textContent = 'Switch to Light Mode';
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                    themeIcon.textContent = '🌙';
-                    if (themeText) themeText.textContent = 'Switch to Dark Mode';
-                    localStorage.setItem('theme', 'light');
-                }
-            });
-        }
-
-        // Initialize theme toggles
-        const desktopThemeToggle = document.getElementById('theme-toggle');
-        const desktopThemeIcon = desktopThemeToggle.querySelector('.theme-icon');
-        
-
-        setupThemeToggle(desktopThemeToggle, desktopThemeIcon);
-
+        });
 
         // Mobile menu functionality
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
