@@ -157,10 +157,15 @@ footer a {
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 5px 0; /* Reduced padding */
+    padding: 15px 0;
     border-bottom: 1px solid #eee;
     transition: all 0.3s ease;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.site-header.shrink {
+    padding: 8px 0;
+    background: rgba(255, 255, 255, 0.98);
 }
 
 .header-content {
@@ -173,18 +178,87 @@ footer a {
 }
 
 .header-logo {
-    flex-shrink: 0; /* Prevents the logo from shrinking */
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
 .header-logo-img {
-    height: 70px; /* Reduced from auto/too large */
+    height: 40px;
     width: auto;
-    max-width: 200px; /* Prevents it from getting too wide */
+    max-width: 200px;
     transition: transform 0.3s ease;
+}
+
+.site-header.shrink .header-logo-img {
+    height: 35px;
 }
 
 .header-logo-img:hover {
     transform: scale(1.05);
+}
+
+/* Navigation Menu */
+.header-nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.header-nav a:hover {
+    color: #6633FF;
+}
+
+.header-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #6633FF;
+    transition: width 0.3s ease;
+}
+
+.header-nav a:hover::after {
+    width: 100%;
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 .theme-toggle {
@@ -206,9 +280,20 @@ footer a {
     transform: scale(1.1);
 }
 
+/* Scroll Progress */
+.scroll-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #6633FF, #8c6eff);
+    transition: width 0.3s ease;
+}
+
 /* Push content down to account for fixed header */
 body {
-    padding-top: 65px;
+    padding-top: 80px;
 }
 
 /* Complete Dark Mode Fixes */
@@ -231,6 +316,18 @@ body {
     background: var(--header-bg);
     border-bottom: 1px solid var(--border-color);
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .site-header.shrink {
+    background: var(--header-bg);
+}
+
+[data-theme="dark"] .header-nav a {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .mobile-menu-toggle span {
+    background: #fff;
 }
 
 [data-theme="dark"] .story {
@@ -373,15 +470,17 @@ body {
     }
 }
 
-/* Responsive Design */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
     }
+    
     .button-group {
         flex-direction: column;
         align-items: center;
     }
+    
     .button {
         display: block;
         width: 100%;
@@ -395,22 +494,54 @@ body {
         max-width: 250px;
     }
     
-    /* If you have a container around the button, also center that */
     .hero {
         text-align: center;
     }
 
+    /* Mobile Navigation */
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
+    .header-nav {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 30px 20px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        gap: 25px;
+    }
+
+    .header-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .header-nav a {
+        font-size: 18px;
+        padding: 10px 0;
+    }
+
+    [data-theme="dark"] .header-nav {
+        background: var(--card-bg);
+    }
+
+    /* Adjust header for mobile */
+    body {
+        padding-top: 70px;
+    }
+
+    .site-header {
+        padding: 12px 0;
+    }
+
+    .site-header.shrink {
+        padding: 8px 0;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
