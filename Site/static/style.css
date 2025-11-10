@@ -584,10 +584,6 @@ body {
         justify-content: center;
     }
 
-    .hamburger {
-        display: none !important;
-    }
-
     .mobile-menu-toggle span {
         width: 25px;
         height: 3px;
@@ -675,6 +671,7 @@ input:focus {
         transition: none;
     }
 }
+
 
 
 
