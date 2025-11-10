@@ -1228,4 +1228,70 @@ div[style*="transform:"] {
     transform: translateX(-50%) !important;
     margin: 0 auto !important;
 }
+/* Reset any previous transforms first */
+.iubenda-cs-bottom,
+.iubenda-cs-rationale,
+.iubenda-consent-ui,
+.iucs-consent-ui,
+div[class*="iubenda-cs"],
+div[class*="iubenda-consent"] {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin: 0 auto !important;
+    position: fixed !important;
+}
+
+/* Specific fix for the left-edge hanging issue */
+.iubenda-cs-bottom,
+.iubenda-cs-rationale {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    position: fixed !important;
+    bottom: 20px !important;
+}
+
+/* Desktop - fixed width centered */
+@media (min-width: 769px) {
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 600px !important;
+        max-width: 600px !important;
+        margin: 0 !important;
+    }
+}
+
+/* Mobile - responsive width centered */
+@media (max-width: 768px) {
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 95% !important;
+        max-width: 95% !important;
+        margin: 0 !important;
+    }
+}
+
+/* Nuclear option - override ALL positioning */
+div[style*="left:"] {
+    left: 50% !important;
+}
+
+div[style*="right:"] {
+    right: auto !important;
+}
+
+div[style*="margin-left:"] {
+    margin-left: 0 !important;
+}
+
+div[style*="margin-right:"] {
+    margin-right: 0 !important;
+}
 
