@@ -639,18 +639,23 @@ body {
         height: 100%;
     }
 
-    .theme-toggle {
-        margin-left: 1rem;
+    /* Position the navigation to take available space and push theme toggle right */
+    .header-nav {
+        flex: 1; /* Take available space */
+        justify-content: flex-end; /* Push nav items to the right */
+        margin-right: 2rem; /* Add some space between nav and theme toggle */
     }
 
-    /* Hide mobile theme toggle on desktop - not needed since we don't have one */
-    /*
+    .theme-toggle {
+        margin-left: 0; /* Remove left margin since it's on the right now */
+    }
+
+    /* Hide mobile theme toggle on desktop */
     .theme-toggle.mobile-menu-version {
         display: none !important;
     }
-    */
 }
-
+        
 /* Focus styles for accessibility */
 button:focus,
 a:focus,
@@ -684,6 +689,7 @@ input:focus {
         transition: none;
     }
 }
+
 
 
 
