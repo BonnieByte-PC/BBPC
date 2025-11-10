@@ -541,7 +541,154 @@ body {
     padding-bottom: 15px;
 }
 
+/* iubenda Cookie Banner Styling */
+.iubenda-consent-ui, 
+.iucs-consent-ui,
+.iubenda-cs-container {
+    background: rgba(26, 26, 26, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid #444 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3) !important;
+    color: #ffffff !important;
+    font-family: 'Arial', sans-serif !important;
+}
 
+/* Banner text */
+.iubenda-consent-ui .iubenda-consent-content,
+.iucs-consent-ui .iucs-consent-content {
+    color: #ffffff !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+/* Buttons */
+.iubenda-consent-ui .iubenda-consent-btn,
+.iucs-consent-ui .iucs-consent-btn,
+.iubenda-cs-btn {
+    background: #6633FF !important;
+    border: 2px solid #6633FF !important;
+    border-radius: 5px !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    padding: 10px 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+.iubenda-consent-ui .iubenda-consent-btn:hover,
+.iucs-consent-ui .iucs-consent-btn:hover,
+.iubenda-cs-btn:hover {
+    background: #5522DD !important;
+    transform: scale(1.05) !important;
+}
+
+/* Secondary buttons */
+.iubenda-consent-ui .iubenda-consent-btn.iubenda-consent-btn-secondary,
+.iucs-consent-ui .iucs-consent-btn.iucs-consent-btn-secondary {
+    background: transparent !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+.iubenda-consent-ui .iubenda-consent-btn.iubenda-consent-btn-secondary:hover,
+.iucs-consent-ui .iucs-consent-btn.iucs-consent-btn-secondary:hover {
+    background: #ffffff !important;
+    color: #333333 !important;
+}
+
+/* Links */
+.iubenda-consent-ui a,
+.iucs-consent-ui a,
+.iubenda-cs-container a {
+    color: #8C6EFF !important;
+    text-decoration: none !important;
+}
+
+.iubenda-consent-ui a:hover,
+.iucs-consent-ui a:hover,
+.iubenda-cs-container a:hover {
+    color: #ffffff !important;
+    text-decoration: underline !important;
+}
+
+/* Close button */
+.iubenda-consent-ui .iubenda-consent-close,
+.iucs-consent-ui .iucs-consent-close {
+    color: #ffffff !important;
+    opacity: 0.8 !important;
+}
+
+.iubenda-consent-ui .iubenda-consent-close:hover,
+.iucs-consent-ui .iucs-consent-close:hover {
+    opacity: 1 !important;
+}
+
+/* Banner positioning */
+.iubenda-cs-bottom,
+.iubenda-cs-rationale {
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    max-width: 90% !important;
+    width: 600px !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .iubenda-cs-bottom,
+    .iubenda-cs-rationale {
+        width: 95% !important;
+        bottom: 10px !important;
+    }
+    
+    .iubenda-consent-ui .iubenda-consent-btn,
+    .iucs-consent-ui .iucs-consent-btn {
+        padding: 8px 16px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* Dark mode support */
+[data-theme="dark"] .iubenda-consent-ui,
+[data-theme="dark"] .iucs-consent-ui {
+    background: rgba(26, 26, 26, 0.98) !important;
+    border-color: #444 !important;
+}
+
+/* Policy Page Styling */
+.policy-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.policy-container h1 {
+    color: #6633FF;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 2px solid #6633FF;
+    padding-bottom: 15px;
+}
+
+[data-theme="dark"] .policy-container h1 {
+    color: #8C6EFF;
+    border-bottom-color: #8C6EFF;
+}
+
+/* iubenda Embed Styling */
+.iubenda-embed {
+    background: white;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    line-height: 1.6;
+}
+
+[data-theme="dark"] .iubenda-embed {
+    background: var(--card-bg);
+    color: var(--text-color);
+}
 /* Make the form responsive */
 @media (max-width: 768px) {
     .ml-form-embedContainer {
@@ -752,6 +899,7 @@ input:focus {
         transition: none;
     }
 }
+
 
 
 
