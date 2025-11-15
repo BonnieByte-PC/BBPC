@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="Site/static/dark-theme.css">
     <link rel="stylesheet" href="Site/static/embeds.css">
     <link rel="stylesheet" href="Site/static/warranty.css">
+
+    <script src="Site/static/scripts/main.js" defer></script>
+    <script src="Site/static/scripts/warranty.js" defer></script>
     
     <!-- Favicon (same as main page) -->
     <link rel="icon" type="image/x-icon" href="Site/images/favicon_io/favicon.ico">
@@ -183,96 +186,5 @@
             <p>&copy; 2025 Bonnie Byte PC. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Your existing JavaScript (same as main page)
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('.theme-icon');
-        
-        // Check for saved theme or prefer-color-scheme
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const savedTheme = localStorage.getItem('theme');
-        
-        // Set initial theme
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            const icon = theme === 'dark' ? '☀️' : '🌙';
-            themeIcon.textContent = icon;
-            localStorage.setItem('theme', theme);
-        }
-        
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            setTheme('dark');
-        } else {
-            setTheme('light');
-        }
-        
-        // Toggle theme function
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            if (currentTheme === 'light') {
-                setTheme('dark');
-            } else {
-                setTheme('light');
-            }
-        }
-        
-        // Add event listener to theme toggle
-        themeToggle.addEventListener('click', toggleTheme);
-        
-        // Mobile menu functionality
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const headerNav = document.querySelector('.header-nav');
-        
-        if (mobileMenuToggle && headerNav) {
-            mobileMenuToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const isActive = mobileMenuToggle.classList.toggle('active');
-                headerNav.classList.toggle('active');
-                mobileMenuToggle.setAttribute('aria-expanded', isActive);
-            });
-        
-            // Close mobile menu when clicking on a link
-            document.querySelectorAll('.header-nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenuToggle.classList.remove('active');
-                    headerNav.classList.remove('active');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                });
-            });
-        
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('.header-nav') && !e.target.closest('.mobile-menu-toggle') && headerNav.classList.contains('active')) {
-                    mobileMenuToggle.classList.remove('active');
-                    headerNav.classList.remove('active');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        
-            // Close mobile menu when pressing Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && headerNav.classList.contains('active')) {
-                    mobileMenuToggle.classList.remove('active');
-                    headerNav.classList.remove('active');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
-        
-        // Make header logo clickable to scroll to top
-        document.addEventListener('DOMContentLoaded', function() {
-            const headerLogo = document.querySelector('.header-logo');
-            if (headerLogo) {
-                headerLogo.addEventListener('click', function() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                });
-            }
-        });
-    </script>
 </body>
 </html>
