@@ -217,8 +217,8 @@ section {
     cursor: pointer;
     padding: 8px;
     z-index: 1001;
-    align-items: center;
-    justify-content: center;
+    align-items: right;
+    justify-content: right;
     width: 44px;
     height: 44px;
 }
@@ -398,4 +398,5 @@ input:focus {
         width: 100%;
         max-width: 250px;
     }
+
 }
