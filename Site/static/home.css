@@ -16,6 +16,7 @@
     background-size: cover;
     background-position: center;
     border-bottom: 2px solid var(--bb-blue);
+    color: #ffffff;
 }
 
 .hero-logo {
@@ -328,3 +329,4 @@
 .social-links a:hover {
     color: #8ec4ff;
 }
+
