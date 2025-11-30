@@ -43,43 +43,6 @@ function initializeTableOfContents() {
         
         policyContainer.insertBefore(toc, policyContainer.firstChild);
         
-        // Add styles for table of contents
-        const style = document.createElement('style');
-        style.textContent = `
-            .table-of-contents {
-                background: #f8f9fa;
-                padding: 20px;
-                border-radius: 8px;
-                margin-bottom: 30px;
-                border-left: 4px solid #6633FF;
-            }
-            .table-of-contents h3 {
-                margin-top: 0;
-                color: #6633FF;
-            }
-            .table-of-contents ul {
-                list-style: none;
-                padding-left: 0;
-            }
-            .table-of-contents li {
-                margin-bottom: 8px;
-            }
-            .table-of-contents a {
-                color: #333;
-                text-decoration: none;
-                transition: color 0.3s ease;
-            }
-            .table-of-contents a:hover {
-                color: #6633FF;
-            }
-            [data-theme="dark"] .table-of-contents {
-                background: #2d2d2d;
-            }
-            [data-theme="dark"] .table-of-contents a {
-                color: #ffffff;
-            }
-        `;
-        document.head.appendChild(style);
     }
 }
 
@@ -161,4 +124,5 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeContactEnhancements,
         initializeWarrantySmoothScroll
     };
+
 }
