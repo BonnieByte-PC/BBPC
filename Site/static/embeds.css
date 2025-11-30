@@ -221,6 +221,20 @@
     border-color: #88bbff !important;
 }
 
+/* Remove Iubenda embeds from print output */
+@media print {
+    .iubenda-embed,
+    .iubenda-cs-container,
+    .iubenda-consent-ui,
+    .iubenda-embed-banner,
+    [class*="iubenda"] {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+}
+
 /* ============================================================
    RESPONSIVENESS
    ============================================================ */
@@ -242,5 +256,6 @@
         padding: 8px 14px !important;
     }
 }
+
 
 
