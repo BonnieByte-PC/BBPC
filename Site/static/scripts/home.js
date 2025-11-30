@@ -1,47 +1,77 @@
 // Homepage specific functionality
 function initializeHomepage() {
-    // MailerLite initialization (if needed)
-    initializeMailerLite();
-    
-    // Product image lazy loading
+    initializeMailerLiteEnhanced();   // REPLACED
     initializeLazyLoading();
-    
-    // Animation triggers for homepage elements
     initializeHomepageAnimations();
 }
 
-// MailerLite form enhancements
-function initializeMailerLite() {
-    // Add any custom MailerLite form enhancements here
-    const mailerLiteForm = document.querySelector('.ml-form-embedContainer');
-    if (mailerLiteForm) {
-        console.log('MailerLite form detected - adding custom enhancements');
-        
-        // Example: Add form submission tracking
-        mailerLiteForm.addEventListener('submit', function(e) {
-            // Track form submission if needed
-            console.log('Newsletter form submitted');
+/* ============================================================
+   MAILERLITE – Enhanced Form Handling (Success UI + Loader)
+   ============================================================ */
+function initializeMailerLiteEnhanced() {
+    const form = document.querySelector(".bb-form"); 
+    if (!form) {
+        console.log("No bb-form detected, skipping MailerLite enhancements.");
+        return;
+    }
+
+    const submitBtn = form.querySelector(".bb-submit-btn");
+    const btnText = form.querySelector(".bb-btn-text");
+    const btnLoader = form.querySelector(".bb-btn-loader");
+    const successMsg = form.querySelector(".bb-success-message");
+    const errorMsg = form.querySelector(".bb-error-message");
+
+    // Hide messages upon typing
+    const emailField = form.querySelector("input[name='fields[email]']");
+    if (emailField) {
+        emailField.addEventListener("input", () => {
+            successMsg.style.display = "none";
+            errorMsg.style.display = "none";
         });
     }
+
+    // On submit → show loading
+    form.addEventListener("submit", function () {
+        successMsg.style.display = "none";
+        errorMsg.style.display = "none";
+
+        btnText.style.display = "none";
+        btnLoader.style.display = "inline-block";
+    });
+
+    // MailerLite JSONP global event → handle result
+    document.addEventListener("mlWebformSubmission", function (event) {
+        // Stop loader
+        btnLoader.style.display = "none";
+        btnText.style.display = "inline";
+
+        if (event.detail.success) {
+            successMsg.style.display = "block";
+            errorMsg.style.display = "none";
+            form.reset();
+        } else {
+            errorMsg.style.display = "block";
+            successMsg.style.display = "none";
+        }
+    });
 }
 
 // Lazy loading for product images
 function initializeLazyLoading() {
     const productImage = document.querySelector('.product-image');
     if (productImage && !productImage.style.backgroundImage) {
-        // Set placeholder or actual image
-        productImage.style.background = '#ddd url("https://via.placeholder.com/500x300/6633FF/ffffff?text=BonnieByte+Fans") center/cover';
+        productImage.style.background =
+            '#ddd url("https://via.placeholder.com/500x300/6633FF/ffffff?text=BonnieByte+Fans") center/cover';
     }
 }
 
-// Homepage specific animations
+// Homepage animations
 function initializeHomepageAnimations() {
-    // Intersection Observer for fade-in animations
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -50,8 +80,7 @@ function initializeHomepageAnimations() {
             }
         });
     }, observerOptions);
-    
-    // Observe sections for animation
+
     document.querySelectorAll('section').forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(20px)';
@@ -66,11 +95,11 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('BonnieByte PC - Homepage scripts loaded');
 });
 
-// Export for potential use
+// CommonJS export (for bundlers)
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         initializeHomepage,
-        initializeMailerLite,
+        initializeMailerLiteEnhanced,
         initializeLazyLoading,
         initializeHomepageAnimations
     };
