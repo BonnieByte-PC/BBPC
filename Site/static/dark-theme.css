@@ -104,7 +104,7 @@ html[data-theme="light"] .section-community {
 /* Hero tweaks (light theme) */
 html[data-theme="light"] .hero {
     background-color: #ffffff;
-    color: var(--bb-text);
+    color: #e5e5e5;
 }
 
 /* Buttons in light theme still use brand blue */
@@ -159,4 +159,5 @@ html[data-theme="dark"] .iucs-consent-ui {
     border-color: #444 !important;
     color: #ffffff !important;
 }
+
 
