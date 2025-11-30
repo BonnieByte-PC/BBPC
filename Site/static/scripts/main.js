@@ -4,6 +4,9 @@ function initializeTheme() {
     const themeIcon = themeToggle?.querySelector('.theme-icon');
     
     if (!themeToggle || !themeIcon) return;
+
+    // Support for mobile theme toggle inside menu
+    const mobileToggle = document.getElementById('theme-toggle-mobile');
     
     // Check for saved theme or prefer-color-scheme
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -35,6 +38,12 @@ function initializeTheme() {
     
     // Add event listener to theme toggle
     themeToggle.addEventListener('click', toggleTheme);
+    
+    // Add event listener to mobile theme toggle (if exists)
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', toggleTheme);
+    }
+
 }
 
 // Mobile menu functionality
@@ -162,4 +171,5 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeHeaderLogo,
         initializeSmoothScrolling
     };
+
 }
