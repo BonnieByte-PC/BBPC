@@ -351,6 +351,35 @@ section {
     }
 }
 
+/* Hide mobile theme toggle on desktop */
+.mobile-theme-container {
+    display: none;
+}
+
+/* Only show the mobile toggle when inside the slide-out menu */
+@media (max-width: 900px) {
+    .mobile-theme-container {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-top: 20px;
+        margin-top: 20px;
+        border-top: 1px solid var(--border-dark);
+    }
+
+    /* Hide desktop toggle on mobile */
+    .header-actions #theme-toggle {
+        display: none !important;
+    }
+}
+
+/* Desktop fixes */
+@media (min-width: 901px) {
+    .mobile-theme-container {
+        display: none;
+    }
+}
+
 /* ============================================================
    SCROLL PROGRESS BAR
    ============================================================ */
@@ -431,5 +460,6 @@ footer a {
         transition-duration: 0.01ms !important;
     }
 }
+
 
 
