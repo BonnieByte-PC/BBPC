@@ -64,13 +64,14 @@
         <div class="scroll-progress"></div>
         <div class="container">
             <div class="header-content">
+    
                 <!-- Logo -->
                 <div class="header-logo">
                     <a href="#home" aria-label="Bonnie Byte PC - Home">
                         <img src="Site/images/Logo1.png" alt="Bonnie Byte PC" class="header-logo-img">
                     </a>
                 </div>
-
+    
                 <!-- Navigation -->
                 <nav class="header-nav" aria-label="Main navigation">
                     <a href="#home">Home</a>
@@ -79,16 +80,21 @@
                     <a href="#story">Our Story</a>
                     <a href="#warranty">Warranty</a>
                     <a href="#notify">Updates</a>
-                
-                    <!-- Theme toggle (mobile + desktop inside menu) -->
+    
+                    <!-- MOBILE ONLY theme toggle -->
                     <div class="mobile-theme-container">
-                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle dark mode">
                             <span class="theme-icon">🌙</span>
                         </button>
                     </div>
                 </nav>
-
+    
                 <div class="header-actions">
+                    <!-- DESKTOP theme toggle -->
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+    
                     <!-- Mobile menu toggle -->
                     <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
                         <span></span>
@@ -96,10 +102,11 @@
                         <span></span>
                     </button>
                 </div>
-
+    
             </div>
         </div>
     </header>
+
 
     <main id="main-content">
         <!-- Hero / Landing -->
