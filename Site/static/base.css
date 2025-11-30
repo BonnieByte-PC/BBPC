@@ -226,6 +226,40 @@ section {
     width: 100%;
 }
 
+/* Theme toggle inside mobile nav */
+.mobile-theme-container {
+    display: none;
+    width: 100%;
+    padding-top: 20px;
+    border-top: 1px solid var(--bb-border);
+    text-align: center;
+}
+
+/* Hide duplicate/old theme toggle outside the menu on mobile */
+@media (max-width: 900px) {
+
+    /* Show theme toggle inside menu */
+    .mobile-theme-container {
+        display: block;
+    }
+
+    /* Hide any theme toggle outside the menu */
+    .header-actions .theme-toggle {
+        display: none !important;
+    }
+}
+
+/* Desktop behavior: theme toggle should still show normally */
+@media (min-width: 901px) {
+    .mobile-theme-container {
+        margin-left: auto;
+        padding-left: 20px;
+        border-top: none;
+        display: flex;
+        align-items: center;
+    }
+}
+
 /* ============================================================
    THEME TOGGLE
    ============================================================ */
@@ -397,4 +431,5 @@ footer a {
         transition-duration: 0.01ms !important;
     }
 }
+
 
