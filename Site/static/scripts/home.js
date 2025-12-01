@@ -19,6 +19,14 @@ function initializeMailerLiteEnhanced() {
     const errorMsg = form.querySelector(".bb-error-message");
     const emailField = form.querySelector("input[name='fields[email]']");
 
+    // REVEAL CAPTCHA only after typing
+    if (emailField) {
+        emailField.addEventListener("input", () => {
+            document.querySelector(".ml-form-recaptcha").style.display = "block";
+        });
+    }
+
+
     // Hide messages when typing
     emailField.addEventListener("input", () => {
         successMsg.style.display = "none";
@@ -120,4 +128,5 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeHomepageAnimations
     };
 }
+
 
