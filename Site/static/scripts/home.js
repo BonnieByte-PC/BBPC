@@ -1,6 +1,6 @@
 // Homepage specific functionality
 function initializeHomepage() {
-    initializeMailerLiteEnhanced();   // REPLACED
+    initializeMailerLiteEnhanced();
     initializeLazyLoading();
     initializeHomepageAnimations();
 }
@@ -12,115 +12,119 @@ function initializeMailerLiteEnhanced() {
     const form = document.querySelector(".bb-form");
     if (!form) return;
 
-    const submitBtn = form.querySelector(".bb-submit-btn");
-    const btnText = form.querySelector(".bb-btn-text");
-    const btnLoader = form.querySelector(".bb-btn-loader");
-    const successMsg = form.querySelector(".bb-success-message");
-    const errorMsg = form.querySelector(".bb-error-message");
-    const emailField = form.querySelector("input[name='fields[email]']");
+    const submitBtn    = form.querySelector(".bb-submit-btn");
+    const btnText      = form.querySelector(".bb-btn-text");
+    const btnLoader    = form.querySelector(".bb-btn-loader");
+    const successMsg   = form.querySelector(".bb-success-message");
+    const errorMsg     = form.querySelector(".bb-error-message");
+    const emailField   = form.querySelector('input[name="fields[email]"]');
+    const recaptchaRow = form.querySelector(".ml-form-recaptcha");
+    const iframe       = document.querySelector('iframe[name="ml_iframe"]');
 
-    // REVEAL CAPTCHA only after typing
+    // Hide messages by default
+    if (successMsg) successMsg.style.display = "none";
+    if (errorMsg)   errorMsg.style.display   = "none";
+
+    // Show reCAPTCHA only after user starts typing
     if (emailField) {
         emailField.addEventListener("input", () => {
-            document.querySelector(".ml-form-recaptcha").style.display = "block";
+            if (recaptchaRow) recaptchaRow.style.display = "block";
+            if (successMsg) successMsg.style.display = "none";
+            if (errorMsg)   errorMsg.style.display   = "none";
         });
     }
 
+    // On submit → show loader, let normal POST happen into hidden iframe
+    form.addEventListener("submit", function () {
+        if (successMsg) successMsg.style.display = "none";
+        if (errorMsg)   errorMsg.style.display   = "none";
 
-    // Hide messages when typing
-    emailField.addEventListener("input", () => {
-        successMsg.style.display = "none";
-        errorMsg.style.display = "none";
+        if (btnText && btnLoader) {
+            btnText.style.display   = "none";
+            btnLoader.style.display = "inline-block";
+        }
+        // IMPORTANT: do NOT preventDefault.
+        // The form posts to MailerLite and the response lands in the hidden iframe.
     });
 
-    // STOP normal submission
-    form.addEventListener("submit", async function (e) {
-        e.preventDefault(); // ⛔ block MailerLite redirect
+    // When the hidden iframe loads, treat it as a successful submission
+    if (iframe) {
+        iframe.addEventListener("load", function () {
+            // Stop loader
+            if (btnText && btnLoader) {
+                btnLoader.style.display = "none";
+                btnText.style.display   = "inline";
+            }
 
-        // Show loader
-        btnText.style.display = "none";
-        btnLoader.style.display = "inline-block";
+            // Show success UI
+            if (successMsg) successMsg.style.display = "block";
+            if (errorMsg)   errorMsg.style.display   = "none";
 
-        const email = emailField.value.trim();
-        if (!email) return;
-
-        // Build MailerLite JSON API URL
-        const url =
-            "https://assets.mailerlite.com/jsonp/1908727/forms/170605338066682928/subscribe";
-
-        const formData = new FormData();
-        formData.append("fields[email]", email);
-        formData.append("ml-submit", "1");
-        formData.append("anticsrf", "true");
-
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                body: formData,
-                mode: "no-cors"
-            });
-
-            // MailerLite JSONP can't return JSON in no-cors mode.
-            // So we assume success unless an exception occurred.
-
-            successMsg.style.display = "block";
-            errorMsg.style.display = "none";
+            // Reset form inputs
             form.reset();
 
-        } catch (err) {
-            console.error("MailerLite error:", err);
-            errorMsg.style.display = "block";
-            successMsg.style.display = "none";
-        }
+            // Reset reCAPTCHA if available
+            if (typeof grecaptcha !== "undefined") {
+                try {
+                    grecaptcha.reset();
+                } catch (e) {
+                    console.warn("reCAPTCHA reset error:", e);
+                }
+            }
 
-        // Reset loader
-        btnLoader.style.display = "none";
-        btnText.style.display = "inline";
-    });
+            // Hide captcha again until user starts typing
+            if (recaptchaRow) {
+                recaptchaRow.style.display = "none";
+            }
+        });
+    }
 }
 
-
-// Lazy loading for product images
+/* ============================================================
+   Lazy loading for product images (placeholder)
+   ============================================================ */
 function initializeLazyLoading() {
-    const productImage = document.querySelector('.product-image');
+    const productImage = document.querySelector(".product-image");
     if (productImage && !productImage.style.backgroundImage) {
         productImage.style.background =
             '#ddd url("https://via.placeholder.com/500x300/6633FF/ffffff?text=BonnieByte+Fans") center/cover';
     }
 }
 
-// Homepage animations
+/* ============================================================
+   Homepage animations
+   ============================================================ */
 function initializeHomepageAnimations() {
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: "0px 0px -50px 0px"
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.style.opacity   = "1";
+                entry.target.style.transform = "translateY(0)";
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    document.querySelectorAll("section").forEach(section => {
+        section.style.opacity    = "0";
+        section.style.transform  = "translateY(20px)";
+        section.style.transition = "opacity 0.6s ease, transform 0.6s ease";
         observer.observe(section);
     });
 }
 
 // Initialize homepage when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
     initializeHomepage();
-    console.log('BonnieByte PC - Homepage scripts loaded');
+    console.log("BonnieByte PC - Homepage scripts loaded");
 });
 
 // CommonJS export (for bundlers)
-if (typeof module !== 'undefined' && module.exports) {
+if (typeof module !== "undefined" && module.exports) {
     module.exports = {
         initializeHomepage,
         initializeMailerLiteEnhanced,
@@ -128,5 +132,3 @@ if (typeof module !== 'undefined' && module.exports) {
         initializeHomepageAnimations
     };
 }
-
-
