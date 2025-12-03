@@ -1,0 +1,65 @@
+document.addEventListener("DOMContentLoaded", function () {
+
+    const STORAGE_KEY = "bbpc_cookie_choice";
+
+    if (localStorage.getItem(STORAGE_KEY)) {
+        return; // Already chosen, no banner
+    }
+
+    const banner = document.createElement("div");
+    banner.id = "bbpc-cookie-banner";
+    banner.style.position = "fixed";
+    banner.style.bottom = "0";
+    banner.style.left = "0";
+    banner.style.right = "0";
+    banner.style.padding = "18px 22px";
+    banner.style.zIndex = "9999";
+    banner.style.background = "var(--bb-panel)";
+    banner.style.borderTop = "2px solid var(--bb-blue)";
+    banner.style.color = "var(--bb-text)";
+    banner.style.display = "flex";
+    banner.style.flexWrap = "wrap";
+    banner.style.alignItems = "center";
+    banner.style.justifyContent = "space-between";
+    banner.style.gap = "12px";
+    banner.style.boxShadow = "0 -4px 20px rgba(0,0,0,0.4)";
+
+    const message = document.createElement("div");
+    message.innerHTML = `
+        <strong>We use essential cookies to make our site work.</strong>
+        We’ll ask before using analytics or anything optional.
+    `;
+
+    const btnWrap = document.createElement("div");
+    btnWrap.style.display = "flex";
+    btnWrap.style.gap = "10px";
+
+    const acceptBtn = document.createElement("button");
+    acceptBtn.textContent = "Accept";
+    acceptBtn.className = "button";
+
+    const rejectBtn = document.createElement("button");
+    rejectBtn.textContent = "Reject Non-Essential";
+    rejectBtn.className = "button-secondary";
+
+   
+    const viewLink = document.createElement("a");
+    viewLink.href = "/cookies";
+    viewLink.textContent = "View Cookie Policy";
+    viewLink.className = "button-secondary";
+
+    acceptBtn.onclick = () => {
+        localStorage.setItem(STORAGE_KEY, "accepted");
+        banner.remove();
+    };
+
+    rejectBtn.onclick = () => {
+        localStorage.setItem(STORAGE_KEY, "rejected");
+        banner.remove();
+    };
+
+    btnWrap.append(acceptBtn, rejectBtn, viewLink);
+    banner.append(message, btnWrap);
+    document.body.append(banner);
+
+});
