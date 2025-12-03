@@ -1,22 +1,26 @@
-/* ============================================================
-   BONNIEBYTE PC - BRAND CORE STYLES
-   (Base.css, rewritten from scratch)
-   Unified colour system, typography, layout, buttons, header.
-   ============================================================ */
+/* ========================================================================
+   BONNIEBYTE PC - BASE STYLESHEET
+   Unified styling, variables, layout, header, typography, buttons, footer
+   CLEAN + ORGANIZED VERSION (No visual changes)
+   ======================================================================== */
 
-/* RESET */
+
+/* ========================================================================
+   1. RESET
+   ======================================================================== */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ============================================================
-   BRAND VARIABLES
-   ============================================================ */
+
+/* ========================================================================
+   2. ROOT VARIABLES (Dark theme defaults)
+   ======================================================================== */
 
 :root {
-    /* Brand colours */
     --bb-bg: #0d0d0d;
     --bb-surface: #111;
     --bb-panel: #151515;
@@ -30,19 +34,18 @@
 
     --bb-mobile-nav-bg: #0d0d0d;
 
-    /* Shadows */
     --bb-shadow: 0 4px 18px rgba(0,0,0,0.4);
 
-    /* Spacing scale */
     --space-xs: 6px;
     --space-sm: 12px;
     --space-md: 20px;
     --space-lg: 40px;
 }
 
-/* ============================================================
-   GLOBAL DEFAULTS
-   ============================================================ */
+
+/* ========================================================================
+   3. GLOBAL ELEMENTS
+   ======================================================================== */
 
 html {
     scroll-behavior: smooth;
@@ -53,19 +56,19 @@ body {
     background-color: var(--bb-bg);
     color: var(--bb-text);
     line-height: 1.6;
-    padding-top: 80px; /* fixed header offset */
+    padding-top: 80px; /* header offset */
 }
 
-/* Layout container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--space-md);
 }
 
-/* ============================================================
-   TYPOGRAPHY
-   ============================================================ */
+
+/* ========================================================================
+   4. TYPOGRAPHY
+   ======================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--bb-text);
@@ -73,9 +76,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-h1 {
-    font-size: 2.4rem;
-}
+h1 { font-size: 2.4rem; }
 
 h2 {
     font-size: 2rem;
@@ -92,10 +93,6 @@ p {
     color: var(--bb-text-soft);
 }
 
-/* ============================================================
-   LINKS
-   ============================================================ */
-
 a {
     color: var(--bb-blue);
     text-decoration: none;
@@ -106,9 +103,10 @@ a:hover {
     color: #8ec4ff;
 }
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
+
+/* ========================================================================
+   5. BUTTONS
+   ======================================================================== */
 
 .button {
     display: inline-block;
@@ -138,7 +136,6 @@ a:hover {
     color: #fff;
 }
 
-/* Buttons grouped */
 .button-group {
     display: flex;
     flex-wrap: wrap;
@@ -146,9 +143,10 @@ a:hover {
     justify-content: center;
 }
 
-/* ============================================================
-   SECTIONS
-   ============================================================ */
+
+/* ========================================================================
+   6. SECTIONS / LAYOUT WRAPPERS
+   ======================================================================== */
 
 section {
     padding: var(--space-lg) 0;
@@ -162,9 +160,10 @@ section {
     margin-bottom: var(--space-lg);
 }
 
-/* ============================================================
-   HEADER (brand-matching)
-   ============================================================ */
+
+/* ========================================================================
+   7. HEADER (fixed)
+   ======================================================================== */
 
 .site-header {
     position: fixed;
@@ -179,9 +178,7 @@ section {
     padding: 12px 0;
 }
 
-.site-header.shrink {
-    padding: 6px 0;
-}
+.site-header.shrink { padding: 6px 0; }
 
 .header-content {
     display: flex;
@@ -197,6 +194,11 @@ section {
 .site-header.shrink .header-logo img {
     height: 60px;
 }
+
+
+/* ========================================================================
+   8. NAVIGATION (desktop & mobile)
+   ======================================================================== */
 
 .header-nav {
     display: flex;
@@ -228,43 +230,10 @@ section {
     width: 100%;
 }
 
-/* Theme toggle inside mobile nav */
-.mobile-theme-container {
-    display: none;
-    width: 100%;
-    padding-top: 20px;
-    border-top: 1px solid var(--bb-border);
-    text-align: center;
-}
 
-/* Hide duplicate/old theme toggle outside the menu on mobile */
-@media (max-width: 900px) {
-
-    /* Show theme toggle inside menu */
-    .mobile-theme-container {
-        display: block;
-    }
-
-    /* Hide any theme toggle outside the menu */
-    .header-actions .theme-toggle {
-        display: none !important;
-    }
-}
-
-/* Desktop behavior: theme toggle should still show normally */
-@media (min-width: 901px) {
-    .mobile-theme-container {
-        margin-left: auto;
-        padding-left: 20px;
-        border-top: none;
-        display: flex;
-        align-items: center;
-    }
-}
-
-/* ============================================================
-   THEME TOGGLE
-   ============================================================ */
+/* ========================================================================
+   9. THEME TOGGLE
+   ======================================================================== */
 
 .theme-toggle {
     background: transparent;
@@ -286,9 +255,10 @@ section {
     color: #fff;
 }
 
-/* ============================================================
-   MOBILE MENU
-   ============================================================ */
+
+/* ========================================================================
+   10. MOBILE MENU
+   ======================================================================== */
 
 .mobile-menu-toggle {
     display: none;
@@ -307,7 +277,6 @@ section {
     transition: 0.25s ease;
 }
 
-/* OPEN STATE */
 .mobile-menu-toggle.active span:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
@@ -320,7 +289,6 @@ section {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-/* MOBILE NAV */
 @media (max-width: 900px) {
 
     .mobile-menu-toggle {
@@ -341,9 +309,7 @@ section {
         transition: 0.3s ease;
     }
 
-    .header-nav.active {
-        right: 0;
-    }
+    .header-nav.active { right: 0; }
 
     .header-nav a {
         padding: 14px 0;
@@ -353,12 +319,11 @@ section {
     }
 }
 
-/* Hide mobile theme toggle on desktop */
+/* Mobile theme toggle duplication cleanup */
 .mobile-theme-container {
     display: none;
 }
 
-/* Only show the mobile toggle when inside the slide-out menu */
 @media (max-width: 900px) {
     .mobile-theme-container {
         display: block;
@@ -366,25 +331,21 @@ section {
         text-align: center;
         padding-top: 20px;
         margin-top: 20px;
-        border-top: 1px solid var(--border-dark);
+        border-top: 1px solid var(--bb-border);
     }
-
-    /* Hide desktop toggle on mobile */
     .header-actions #theme-toggle {
         display: none !important;
     }
 }
 
-/* Desktop fixes */
 @media (min-width: 901px) {
-    .mobile-theme-container {
-        display: none;
-    }
+    .mobile-theme-container { display: none; }
 }
 
-/* ============================================================
-   SCROLL PROGRESS BAR
-   ============================================================ */
+
+/* ========================================================================
+   11. SCROLL PROGRESS BAR
+   ======================================================================== */
 
 .scroll-progress {
     position: absolute;
@@ -396,53 +357,25 @@ section {
     transition: width 0.2s;
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
 
-footer {
+/* ========================================================================
+   12. NEW 4-COLUMN FOOTER (DEFAULT)
+   ======================================================================== */
+
+footer.site-footer {
     background: var(--bb-panel);
     color: var(--bb-text-soft);
     padding: var(--space-lg) 0;
-    text-align: center;
     border-top: 2px solid var(--bb-blue);
 }
 
-footer a {
-    color: var(--bb-blue);
-}
-
-.footer-legal {
-    margin-top: 15px;
-    text-align: center;
+footer.site-footer a {
     color: var(--bb-text-muted);
-    font-size: 0.9rem;
 }
-
-.footer-legal a {
-    color: var(--bb-text-muted);
-    margin: 0 6px;
-    text-decoration: none;
-    transition: 0.25s ease;
-}
-
-.footer-legal a:hover {
-    color: var(--bb-blue);
-    text-decoration: underline;
-}
-
-.footer-legal .divider {
-    color: var(--bb-text-muted);
-    margin: 0 4px;
-}
-
-/* ============================================================
-   FOOTER GRID UPGRADE
-   ============================================================ */
 
 .footer-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
     gap: 40px;
     padding-bottom: 20px;
 }
@@ -460,25 +393,22 @@ footer a {
 
 .footer-links {
     list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 .footer-links li {
     margin-bottom: 8px;
 }
 
-.footer-links a {
-    color: var(--bb-text-muted);
-    text-decoration: none;
-    transition: 0.25s ease;
-}
-
 .footer-links a:hover {
     color: var(--bb-blue);
 }
 
-/* Bottom section */
+.footer-social {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
 .footer-bottom {
     border-top: 2px solid var(--bb-blue);
     padding: 12px 0;
@@ -488,21 +418,26 @@ footer a {
 
 .footer-bottom p {
     color: var(--bb-text-muted);
-    font-size: 0.9rem;
 }
 
-/* Light theme adjustments */
-html[data-theme="light"] .footer-links a {
-    color: var(--bb-text-muted);
+
+/* ========================================================================
+   13. LIGHT THEME OVERRIDES
+   ======================================================================== */
+
+html[data-theme="light"] body {
+    background-color: var(--bb-bg);
+    color: var(--bb-text);
 }
 
 html[data-theme="light"] .footer-bottom {
     border-top-color: var(--bb-blue);
 }
 
-/* ============================================================
-   ACCESSIBILITY
-   ============================================================ */
+
+/* ========================================================================
+   14. ACCESSIBILITY
+   ======================================================================== */
 
 .skip-link {
     position: absolute;
@@ -520,15 +455,11 @@ html[data-theme="light"] .footer-bottom {
     top: 10px;
 }
 
-/* Reduced motion */
+
+/* ========================================================================
+   15. REDUCED MOTION SUPPORT
+   ======================================================================== */
+
 @media (prefers-reduced-motion: reduce) {
-    * {
-        transition-duration: 0.01ms !important;
-    }
+    * { transition-duration: 0.01ms !important; }
 }
-
-
-
-
-
-
