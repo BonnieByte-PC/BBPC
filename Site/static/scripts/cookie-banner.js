@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
    
     const viewLink = document.createElement("a");
-    viewLink.href = "/cookies";
+    viewLink.href = "/legal/cookie-policy";
     viewLink.textContent = "View Cookie Policy";
     viewLink.className = "bbpc-btn bbpc-btn-secondary";
 
