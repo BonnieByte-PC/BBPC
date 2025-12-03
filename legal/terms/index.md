@@ -7,7 +7,7 @@ title: Terms of Service | BonnieByte PC
         <h1>Terms of Service</h1>
         <p><strong>Last Updated:</strong> 3 December 2025</p>
         <p><strong>Owner:</strong> BonnieByte PC</p>
-        <p><strong>Website:</strong> https://www.bonniebytepc.com</p>
+        <p><strong>Website:</strong> <a href="/">https://www.bonniebytepc.com</a></p>
         <!-- TOC will be injected here by warranty.js -->
         <h2>1. Introduction</h2>
         <p>
