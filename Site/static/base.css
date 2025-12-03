@@ -437,6 +437,70 @@ footer a {
 }
 
 /* ============================================================
+   FOOTER GRID UPGRADE
+   ============================================================ */
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    padding-bottom: 20px;
+}
+
+.footer-col h4 {
+    color: var(--bb-blue);
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.footer-col p {
+    color: var(--bb-text-soft);
+    margin-bottom: 8px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: var(--bb-text-muted);
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.footer-links a:hover {
+    color: var(--bb-blue);
+}
+
+/* Bottom section */
+.footer-bottom {
+    border-top: 2px solid var(--bb-blue);
+    padding: 12px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    color: var(--bb-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Light theme adjustments */
+html[data-theme="light"] .footer-links a {
+    color: var(--bb-text-muted);
+}
+
+html[data-theme="light"] .footer-bottom {
+    border-top-color: var(--bb-blue);
+}
+
+/* ============================================================
    ACCESSIBILITY
    ============================================================ */
 
@@ -462,6 +526,7 @@ footer a {
         transition-duration: 0.01ms !important;
     }
 }
+
 
 
 
