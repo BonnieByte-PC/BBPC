@@ -38,7 +38,7 @@ title: Products | BonnieByte PC
                     <a href="https://amazon.co.uk" class="button button-secondary" target="_blank" rel="noopener noreferrer">
                         Buy on Amazon UK
                     </a>
-                    <a href="#docs" class="button button-secondary">
+                    <a href="/docs" class="button button-secondary">
                         View Manual (Soon)
                     </a>
                 </div>
