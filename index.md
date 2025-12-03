@@ -32,7 +32,7 @@ title: Home | BonnieByte PC
                     <li>Addressable lighting support</li>
                     <li>Quiet performance-focused design</li>
                 </ul>
-                <a href="/products" class="text-link">Learn more ↓</a>
+                <a href="#products" class="text-link">Learn more ↓</a>
             </div>
         </div>
     </div>
