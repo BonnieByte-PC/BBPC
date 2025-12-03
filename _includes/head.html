@@ -46,6 +46,7 @@
 <link rel="stylesheet" href="/Site/static/embeds.css">
 <link rel="stylesheet" href="/Site/static/home.css">
 <link rel="stylesheet" href="/Site/static/warranty.css">
+<link rel="stylesheet" href="/Site/static/airflow.css">
 
 <!-- Favicon & Icons -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -122,4 +123,8 @@
 
 {% if page.url contains "/legal/" or page.url == "/docs/" %}
   <script src="/Site/static/scripts/warranty.js" defer></script>
+{% endif %}
+
+{% if page.url contains "/tools/airflow" %}
+  <script src="/Site/static/scripts/airflow.js" defer></script>
 {% endif %}
