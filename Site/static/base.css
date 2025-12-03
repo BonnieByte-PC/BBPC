@@ -389,6 +389,7 @@ footer.site-footer a {
 .footer-col p {
     color: var(--bb-text-soft);
     margin-bottom: 8px;
+    text-align: center;
 }
 
 .footer-links {
@@ -406,7 +407,7 @@ footer.site-footer a {
 .footer-social {
     display: flex;
     gap: 12px;
-    align-items: center;
+    align-items: left;
 }
 
 .footer-bottom {
@@ -476,4 +477,5 @@ html[data-theme="light"] .footer-bottom {
 @media (prefers-reduced-motion: reduce) {
     * { transition-duration: 0.01ms !important; }
 }
+
 
