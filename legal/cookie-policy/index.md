@@ -49,6 +49,6 @@ title: Cookie Policy | BonnieByte PC
             If we add new cookies or analytics, this page will be updated.
         </p>
         <h2>6. Contact</h2>
-        <p>Questions? Email <strong>help@bonniebytepc.com</strong></p>
+        <p>Questions? Email <strong><a href="mailto:help@bonniebytepc.com">help@bonniebytepc.com</a></strong></p>
     </div>
 </div>
