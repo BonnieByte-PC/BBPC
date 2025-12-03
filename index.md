@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Documentation | BonnieByte PC
+title: Home | BonnieByte PC
 ---
 <section class="hero hero--primary" id="home">
     <div class="container hero-inner">
