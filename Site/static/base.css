@@ -389,7 +389,6 @@ footer.site-footer a {
 .footer-col p {
     color: var(--bb-text-soft);
     margin-bottom: 8px;
-    text-align: center;
 }
 
 .footer-links {
@@ -477,5 +476,6 @@ html[data-theme="light"] .footer-bottom {
 @media (prefers-reduced-motion: reduce) {
     * { transition-duration: 0.01ms !important; }
 }
+
 
 
