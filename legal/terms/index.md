@@ -141,3 +141,16 @@ title: Terms of Service | BonnieByte PC
             Kingdom, your local mandatory consumer protection laws will still apply.
         </p>
         <p>
+            Any disputes relating to these Terms will normally be handled by the Scottish courts,
+            unless your local law requires a different approach.
+        </p>
+        <h2>11. Changes to These Terms</h2>
+        <p>
+            We may update these Terms from time to time. When we do, we will update the “Last Updated”
+            date at the top of this page. By continuing to use the website, you accept the revised Terms.
+        </p>
+        <h2>12. Contact Us</h2>
+        <p>If you have any questions about these Terms, you can contact us at:</p>
+        <p><strong>Email:</strong> hello@bonniebytepc.com</p>
+    </div>
+</div>
