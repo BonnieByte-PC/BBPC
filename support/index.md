@@ -3,7 +3,6 @@
     title: Support | BonnieByte PC
     ---
     
-    <main id="main-content">
         <div class="container">
             <div class="policy-container">
                 <h1>Support</h1>
@@ -63,4 +62,4 @@
             </p>
         </div>
     </div>
-</main>
+
