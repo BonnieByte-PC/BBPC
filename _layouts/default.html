@@ -40,7 +40,7 @@
     <script src="/Site/static/scripts/home.js" defer></script>
   {% endif %}
 
-  {% if page.url contains "/legal/" %}
+  {% if page.url contains "/legal/" or page.url == "/docs/" %}
     <script src="/Site/static/scripts/warranty.js" defer></script>
   {% endif %}
 </head>
