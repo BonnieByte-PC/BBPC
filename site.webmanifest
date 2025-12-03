@@ -1,6 +1,8 @@
 {
   "name": "BonnieByte PC",
-  "short_name": "BonnieBytePC",
+  "short_name": "BonnieByte",
+  "description": "Beautiful, high-performance PC cooling components crafted with Scottish pride.",
+  
   "icons": [
     {
       "src": "/favicon_io/android-chrome-192x192.png",
@@ -13,7 +15,12 @@
       "type": "image/png"
     }
   ],
+
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+
   "theme_color": "#0d0d0d",
-  "background_color": "#0d0d0d",
-  "display": "standalone"
+  "background_color": "#0d0d0d"
 }
