@@ -24,6 +24,40 @@ document.addEventListener("DOMContentLoaded", function () {
     banner.style.gap = "12px";
     banner.style.boxShadow = "0 -4px 20px rgba(0,0,0,0.4)";
 
+    // Localised button styling for cookie banner only
+    const bannerStyle = document.createElement("style");
+    bannerStyle.textContent = `
+        #bbpc-cookie-banner .bbpc-btn {
+            padding: 8px 14px;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            border: 1px solid var(--bb-blue);
+            transition: 0.2s ease;
+            white-space: nowrap;
+        }
+    
+        #bbpc-cookie-banner .bbpc-btn-primary {
+            background: var(--bb-blue);
+            color: #fff;
+        }
+    
+        #bbpc-cookie-banner .bbpc-btn-primary:hover {
+            background: #88bbff;
+        }
+    
+        #bbpc-cookie-banner .bbpc-btn-secondary {
+            background: transparent;
+            color: var(--bb-blue);
+        }
+    
+        #bbpc-cookie-banner .bbpc-btn-secondary:hover {
+            background: rgba(102,170,255,0.15);
+        }
+    `;
+    document.head.appendChild(bannerStyle);
+
     const message = document.createElement("div");
     message.innerHTML = `
         <strong>We use essential cookies to make our site work.</strong>
@@ -36,17 +70,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const acceptBtn = document.createElement("button");
     acceptBtn.textContent = "Accept";
-    acceptBtn.className = "button";
+    acceptBtn.className = "bbpc-btn bbpc-btn-primary";
 
     const rejectBtn = document.createElement("button");
     rejectBtn.textContent = "Reject Non-Essential";
-    rejectBtn.className = "button-secondary";
+    rejectBtn.className = "bbpc-btn bbpc-btn-secondary";
 
    
     const viewLink = document.createElement("a");
     viewLink.href = "/cookies";
     viewLink.textContent = "View Cookie Policy";
-    viewLink.className = "button-secondary";
+    viewLink.className = "bbpc-btn bbpc-btn-secondary";
 
     acceptBtn.onclick = () => {
         localStorage.setItem(STORAGE_KEY, "accepted");
