@@ -836,14 +836,13 @@ svg {
 
 /* Mobile-specific Safari-safe override */
 @media (max-width: 900px) {
-    .nav-icon {
-        max-width: 18px !important;
-        max-height: 18px !important;
-    }
+    .nav-icon,
     .footer-icon,
     .footer-header-icon {
-        max-width: 18px !important;
-        max-height: 18px !important;
+        width: 1px !important;      /* Safari ignores these intentionally */
+        height: 1px !important;     /* We set them tiny and scale them */
+        transform: scale(0.9) !important;  /* 22px → ~20px */
+        transform-origin: center center !important;
     }
 }
 
@@ -851,6 +850,7 @@ svg {
      position: relative;
    z-index: 2;
 }
+
 
 
 
