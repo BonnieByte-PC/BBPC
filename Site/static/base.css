@@ -603,19 +603,6 @@ footer.site-footer::before {
     text-shadow: 0 0 6px rgba(102,170,255,0.6);
 }
 
-/* Social icons */
-.footer-social-icon img {
-    width: 20px;
-    height: 20px;
-    margin-right: 6px;
-    opacity: 0.85;
-    transition: opacity 0.25s ease;
-}
-
-.footer-links a:hover img {
-    opacity: 1;
-}
-
 /* ===========================
    Footer bottom
    =========================== */
@@ -883,6 +870,7 @@ button:hover .bb-icon {
         filter: drop-shadow(0 0 0px rgba(102,170,255,0.0));
     }
 }
+
 
 
 
