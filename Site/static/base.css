@@ -496,10 +496,25 @@ footer.site-footer::before {
     transform: rotate(180deg);
 }
 
-/* Icons next to headers */
+/* FOOTER SECTION HEADER ICONS */
 .footer-header-icon {
-    opacity: 0.8;
+    width: 18px;
+    height: 18px;
+    stroke: var(--bb-blue);
+    opacity: 0.85;
+    margin-right: 6px;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
+
+/* Hover effect matches the text glow */
+.footer-col-header:hover .footer-header-icon {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
 
 /* FOOTER ICON SIZING */
 .footer-icon {
@@ -833,6 +848,7 @@ button:hover .bb-icon {
         filter: drop-shadow(0 0 0px rgba(102,170,255,0.0));
     }
 }
+
 
 
 
