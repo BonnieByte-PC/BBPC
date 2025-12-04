@@ -501,11 +501,24 @@ footer.site-footer::before {
     opacity: 0.8;
 }
 
+/* FOOTER ICON SIZING */
 .footer-icon {
-    width: 18px;
-    height: 18px;
-    opacity: 0.75;
+    width: 16px;
+    height: 16px;
+    stroke: var(--bb-blue);
+    opacity: 0.85;
+    margin-right: 6px;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
+
+.footer-links a:hover .footer-icon {
+    opacity: 1;
+    transform: translateX(2px);
+}
+
 /* ===========================
    Accordion content sections
    =========================== */
@@ -819,6 +832,7 @@ button:hover .bb-icon {
         filter: drop-shadow(0 0 0px rgba(102,170,255,0.0));
     }
 }
+
 
 
 
