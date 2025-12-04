@@ -617,17 +617,6 @@ html[data-theme="light"] footer.site-footer { background: #f7f7f7; }
     top: 1px; /* optional fine-tuning */
 }
 
-/* Smaller on mobile */
-@media (max-width: 900px) {
-    .nav-icon,
-    .footer-icon,
-    .footer-header-icon {
-        width: 18px !important;
-        height: 18px !important;
-        position: relative;
-        top: -3px;   /* push downward */
-    }
-}
 
 /* Desktop icon alignment */
 @media (min-width: 901px) {
@@ -639,14 +628,6 @@ html[data-theme="light"] footer.site-footer { background: #f7f7f7; }
     }
 }
 
-/* iOS Safari icon alignment fix */
-@supports (-webkit-touch-callout: none) {
-    .nav-icon,
-    .footer-icon,
-    .footer-header-icon {
-        position: relative;
-        top: -3px;   /* push downward */
-    }
-}
+
 
 
