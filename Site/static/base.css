@@ -726,7 +726,15 @@ html[data-theme="light"] footer.site-footer {
 .nav-icon {
     opacity: 0.8;
     transition: opacity 0.25s ease, transform 0.25s ease;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
 }
+
+.nav-link svg {
+    display: inline-block;
+}
+
 
 /* Hover Glow */
 .nav-link:hover {
@@ -870,6 +878,7 @@ button:hover .bb-icon {
         filter: drop-shadow(0 0 0px rgba(102,170,255,0.0));
     }
 }
+
 
 
 
