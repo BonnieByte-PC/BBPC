@@ -681,7 +681,95 @@ html[data-theme="light"] footer.site-footer { background: #f7f7f7; }
 }
 
 
+/* ============================================================
+   ICON ALIGNMENT — PER-GROUP + PER-DEVICE PRECISION FIX
+   ============================================================ */
 
+/* DEFAULT BASELINE (used by Android + most desktops) */
+.nav-icon,
+.footer-icon,
+.footer-header-icon {
+    position: relative;
+    top: 0; /* starting point */
+    vertical-align: middle;
+    display: inline-block;
+}
+
+
+/* ============================================================
+   1) DESKTOP LARGE (≥ 1100px)
+   Slight lift to perfectly center line-height
+============================================================ */
+@media (min-width: 1100px) {
+    .nav-icon { top: -1px; }
+    .footer-header-icon { top: -1px; }
+    .footer-icon { top: -1px; }
+}
+
+
+/* ============================================================
+   2) DESKTOP RESIZED (900px–1099px)
+   Icons appear too low → lift more
+============================================================ */
+@media (min-width: 900px) and (max-width: 1099px) {
+    .nav-icon { top: -2px; }
+    .footer-header-icon { top: -2px; }
+    .footer-icon { top: -2px; }
+}
+
+
+/* ============================================================
+   3) VERY SMALL DESKTOP (600px–899px)
+   Icons shift again due to line-height tightening
+============================================================ */
+@media (min-width: 600px) and (max-width: 899px) {
+    .nav-icon { top: -1px; }
+    .footer-header-icon { top: -1px; }
+    .footer-icon { top: -1px; }
+}
+
+
+/* ============================================================
+   4) iOS SAFARI FIX (iPhone / iPad)
+   Safari draws SVGs higher → push down per-category
+============================================================ */
+@supports (-webkit-touch-callout: none) {
+
+    /* footer icons already perfect → do NOT move */
+    .footer-icon { top: 0 !important; }
+
+    /* footer headings slightly too high on iOS */
+    .footer-header-icon { top: 2px !important; }
+
+    /* nav icons far too high → push them down more */
+    .nav-icon { top: 4px !important; }
+
+    /* social icons match .footer-icon unless pushed — set explicitly */
+    .footer-social-vertical .footer-icon { top: 3px !important; }
+}
+
+.footer-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+}
+
+@media (max-width: 800px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .enhanced-header.hide {
+        transform: translateY(0) !important;
+    }
+}
 
 
 
