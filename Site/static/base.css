@@ -647,6 +647,7 @@ footer.site-footer::before {
     gap: 6px;
     pointer-events: auto;
     touch-action: manipulation;
+    -webkit-user-select: none;
 }
 
 /* Animated underline */
@@ -817,14 +818,6 @@ svg {
     display: inline-block;
 }
 
-/* Remove hard overrides */
-svg.nav-icon,
-svg.footer-icon,
-svg.footer-header-icon {
-    width: auto !important;
-    height: auto !important;
-}
-
 /* Proper class sizing */
 .nav-icon {
     width: 22px;
@@ -853,6 +846,7 @@ svg.footer-header-icon {
         height: 18px !important;
     }
 }
+
 
 
 
