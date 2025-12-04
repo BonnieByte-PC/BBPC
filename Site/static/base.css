@@ -624,6 +624,8 @@ html[data-theme="light"] footer.site-footer { background: #f7f7f7; }
     .footer-header-icon {
         width: 18px !important;
         height: 18px !important;
+        position: relative;
+        top: -3px;   /* push downward */
     }
 }
 
@@ -646,4 +648,5 @@ html[data-theme="light"] footer.site-footer { background: #f7f7f7; }
         top: -3px;   /* push downward */
     }
 }
+
 
