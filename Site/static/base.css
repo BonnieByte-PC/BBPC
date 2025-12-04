@@ -729,25 +729,37 @@ html[data-theme="light"] footer.site-footer { background: #f7f7f7; }
 }
 
 
+
+/* ============================================================
+   TRUE iOS SAFARI FIX – Works on ALL iPhones (old + new)
+============================================================ */
+@media screen and (hover: none) and (pointer: coarse) and (max-width: 900px) {
+
+    /* Footer icons already perfect — keep as-is */
+    .footer-icon {
+        top: 0 !important;
+    }
+
+    /* Footer header icons slightly too high — push down a bit */
+    .footer-header-icon {
+        top: 3px !important;
+    }
+
+    /* Nav icons too high on iPhone — push them down more */
+    .nav-icon {
+        top: 5px !important;
+    }
+
+    /* Social icons slightly too high — push down moderately */
+    .footer-social-vertical .footer-icon {
+        top: 4px !important;
+    }
+}
+
 /* ============================================================
    4) iOS SAFARI FIX (iPhone / iPad)
    Safari draws SVGs higher → push down per-category
 ============================================================ */
-@supports (-webkit-touch-callout: none) {
-
-    /* footer icons already perfect → do NOT move */
-    .footer-icon { top: 0 !important; }
-
-    /* footer headings slightly too high on iOS */
-    .footer-header-icon { top: 2px !important; }
-
-    /* nav icons far too high → push them down more */
-    .nav-icon { top: 4px !important; }
-
-    /* social icons match .footer-icon unless pushed — set explicitly */
-    .footer-social-vertical .footer-icon { top: 3px !important; }
-}
-
 .footer-grid {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }
@@ -770,6 +782,7 @@ html[data-theme="light"] footer.site-footer { background: #f7f7f7; }
         transform: translateY(0) !important;
     }
 }
+
 
 
 
