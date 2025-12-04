@@ -154,4 +154,28 @@
     <p>&copy; <span id="footer-year"></span> BonnieByte PC. All rights reserved.</p>
   </div>
 
+  <script>
+    document.querySelectorAll(".footer-col-header").forEach(header => {
+    
+        // Safari needs an explicit button role + type to allow clicking inside grid layouts
+        header.setAttribute("type", "button");
+    
+        header.addEventListener("click", (ev) => {
+            ev.preventDefault();
+            ev.stopPropagation();  // Safari requires this to avoid grid click-cancelling
+    
+            const expanded = header.getAttribute("aria-expanded") === "true";
+            const content = header.nextElementSibling;
+    
+            header.setAttribute("aria-expanded", !expanded);
+    
+            if (!expanded) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = "0px";
+            }
+        });
+    });
+  </script>
+
 </footer>
