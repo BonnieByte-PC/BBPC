@@ -857,8 +857,9 @@ svg {
 .nav-icon {
     vertical-align: middle;
     position: relative;
-    top: 1px; /* Adjust between 1–2px depending on appearance */
+    top: 4px; /* Adjust between 1–2px depending on appearance */
 }
+
 
 
 
