@@ -512,6 +512,7 @@ footer.site-footer::before {
     display: inline-block;
     vertical-align: middle;
     transition: opacity 0.25s ease, transform 0.25s ease;
+    color: var(--bb-blue);
 }
 
 .footer-links a:hover .footer-icon {
@@ -832,6 +833,7 @@ button:hover .bb-icon {
         filter: drop-shadow(0 0 0px rgba(102,170,255,0.0));
     }
 }
+
 
 
 
