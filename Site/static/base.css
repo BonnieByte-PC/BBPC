@@ -1,7 +1,7 @@
 /* ========================================================================
    BONNIEBYTE PC - BASE STYLESHEET
    Unified styling, variables, layout, header, typography, buttons, footer
-   CLEAN + ORGANIZED VERSION (No visual changes)
+   CLEAN + CONSOLIDATED VERSION
    ======================================================================== */
 
 
@@ -76,7 +76,9 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-h1 { font-size: 2.4rem; }
+h1 {
+    font-size: 2.4rem;
+}
 
 h2 {
     font-size: 2rem;
@@ -162,9 +164,10 @@ section {
 
 
 /* ========================================================================
-   7. HEADER (fixed)
+   7. HEADER BASE (fixed)
    ======================================================================== */
 
+/* Base header behaviour used by <header class="site-header enhanced-header"> */
 .site-header {
     position: fixed;
     top: 0;
@@ -178,7 +181,9 @@ section {
     padding: 12px 0;
 }
 
-.site-header.shrink { padding: 6px 0; }
+.site-header.shrink {
+    padding: 6px 0;
+}
 
 .header-content {
     display: flex;
@@ -197,7 +202,7 @@ section {
 
 
 /* ========================================================================
-   9. THEME TOGGLE
+   8. THEME TOGGLE
    ======================================================================== */
 
 .theme-toggle {
@@ -222,7 +227,7 @@ section {
 
 
 /* ========================================================================
-   10. MOBILE MENU
+   9. MOBILE MENU TOGGLE
    ======================================================================== */
 
 .mobile-menu-toggle {
@@ -261,6 +266,10 @@ section {
 }
 
 @media (max-width: 900px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
     .mobile-theme-container {
         display: block;
         width: 100%;
@@ -269,18 +278,21 @@ section {
         margin-top: 20px;
         border-top: 1px solid var(--bb-border);
     }
+
     .header-actions #theme-toggle {
         display: none !important;
     }
 }
 
 @media (min-width: 901px) {
-    .mobile-theme-container { display: none; }
+    .mobile-theme-container {
+        display: none;
+    }
 }
 
 
 /* ========================================================================
-   11. SCROLL PROGRESS BAR
+   10. SCROLL PROGRESS BAR
    ======================================================================== */
 
 .scroll-progress {
@@ -295,127 +307,299 @@ section {
 
 
 /* ========================================================================
-   12. NEW 4-COLUMN FOOTER (DEFAULT)
+   11. ICON SYSTEM (Header + Footer)
    ======================================================================== */
 
-footer.site-footer {
-    background: var(--bb-panel);
-    color: var(--bb-text-soft);
-    padding: var(--space-lg) 0;
-    border-top: 2px solid var(--bb-blue);
+/* Core BB icon style (can be re-used anywhere) */
+.bb-icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vertical-align: middle;
+    transition: filter 0.3s ease, transform 0.3s ease, stroke 0.3s ease, opacity 0.25s ease;
 }
 
-footer.site-footer a {
-    color: var(--bb-text-muted);
+/* Hover glow for icons when wrapped in link/button */
+a:hover .bb-icon,
+button:hover .bb-icon {
+    filter: drop-shadow(0 0 6px rgba(102,170,255,0.8));
+    transform: translateY(-1px);
 }
 
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-    gap: 40px;
-    padding-bottom: 20px;
+/* Optional ARGB pulsing glow class */
+.bb-icon-glow {
+    animation: bb-argb-pulse 2.4s ease-in-out infinite;
 }
 
-.footer-col h4 {
-    color: var(--bb-blue);
-    font-size: 1.2rem;
-    margin-bottom: 12px;
+@keyframes bb-argb-pulse {
+    0%   { filter: drop-shadow(0 0 0px rgba(102,170,255,0.0)); }
+    50%  { filter: drop-shadow(0 0 10px rgba(102,170,255,0.9)); }
+    100% { filter: drop-shadow(0 0 0px rgba(102,170,255,0.0)); }
 }
 
-.footer-col p {
-    color: var(--bb-text-soft);
-    margin-bottom: 8px;
+/* Header nav icons (inline SVGs with class="nav-icon") */
+.nav-icon {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor; /* overrides any bad inline stroke like "#currentColor" */
+    fill: none;
+    opacity: 0.8;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.footer-links {
-    list-style: none;
+/* Slightly smaller icons on mobile so they don't feel huge */
+@media (max-width: 900px) {
+    .nav-icon {
+        width: 20px;
+        height: 20px;
+    }
 }
 
-.footer-links li {
-    margin-bottom: 8px;
+/* Footer section header icons (class="footer-header-icon") */
+.footer-header-icon {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    opacity: 0.85;
+    margin-right: 6px;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.footer-links a:hover {
-    color: var(--bb-blue);
+/* Footer social/link icons (class="footer-icon") */
+.footer-icon {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+    opacity: 0.85;
+    margin-right: 6px;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.footer-social {
-    display: flex;
-    gap: 12px;
-    align-items: left;
-}
-
-.footer-bottom {
-    border-top: 2px solid var(--bb-blue);
-    padding: 12px 0;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.footer-bottom p {
-    color: var(--bb-text-muted);
-}
-
-/* Footer Social (Vertical Layout) */
-.footer-social-vertical li {
-    margin-bottom: 10px;
-}
-
-.footer-social-vertical img {
-    opacity: 0.9;
-    transition: opacity 0.2s ease;
-}
-
-.footer-social-vertical img:hover {
+/* Hover behaviours */
+.footer-links a:hover .footer-icon {
     opacity: 1;
+    transform: translateX(2px);
 }
 
-/* ========================================================================
-   13. LIGHT THEME OVERRIDES
-   ======================================================================== */
-
-html[data-theme="light"] body {
-    background-color: var(--bb-bg);
-    color: var(--bb-text);
-}
-
-html[data-theme="light"] .footer-bottom {
-    border-top-color: var(--bb-blue);
+.footer-col-header:hover .footer-header-icon {
+    opacity: 1;
+    transform: scale(1.15);
 }
 
 
 /* ========================================================================
-   14. ACCESSIBILITY
+   12. ENHANCED HEADER — glowing, animated, auto-hide, ARGB-like
    ======================================================================== */
 
-.skip-link {
+/* Applied together with .site-header */
+.enhanced-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(12,12,12,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--bb-blue);
+    z-index: 1000;
+    padding: 14px 0;
+    transition:
+        padding 0.25s ease,
+        background 0.35s ease,
+        transform 0.35s ease,
+        border-color 0.35s ease;
+}
+
+/* Glossy top line */
+.enhanced-header::before {
+    content: "";
     position: absolute;
-    top: -40px;
-    left: 10px;
-    background: var(--bb-blue);
-    color: #fff;
-    padding: 10px 14px;
-    border-radius: 4px;
-    z-index: 10000;
-    transition: 0.25s;
+    top: 0;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--bb-blue), transparent);
+    opacity: 0.55;
 }
 
-.skip-link:focus {
-    top: 10px;
+/* Glow on scroll */
+.enhanced-header.glow {
+    box-shadow: 0 0 20px rgba(102,170,255,0.45);
+}
+
+/* Auto-hide on scroll */
+.enhanced-header.hide {
+    transform: translateY(-100%);
+}
+
+/* Shrink on scroll */
+.enhanced-header.shrink {
+    padding: 6px 0;
+    background: rgba(5,5,5,0.92);
+}
+
+/* Logo in enhanced header */
+.header-logo-img {
+    height: 80px;
+    filter: drop-shadow(0 0 6px rgba(102,170,255,0.3));
+    transition: 0.3s ease;
+}
+
+.enhanced-header.shrink .header-logo-img {
+    height: 60px;
+    filter: drop-shadow(0 0 4px rgba(102,170,255,0.2));
 }
 
 
 /* ========================================================================
-   15. REDUCED MOTION SUPPORT
+   13. NAVIGATION (desktop & mobile)
    ======================================================================== */
 
-@media (prefers-reduced-motion: reduce) {
-    * { transition-duration: 0.01ms !important; }
+.header-nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
 }
 
-/* ============================================================
-   PREMIUM FOOTER — with icons, glow, animation, accordion
-   ============================================================ */
+.nav-link {
+    color: var(--bb-text);
+    font-weight: 500;
+    position: relative;
+    padding: 2px 0;
+    transition: color 0.25s ease, text-shadow 0.25s ease, padding 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Ensure inline SVGs behave nicely */
+.nav-link svg {
+    display: inline-block;
+}
+
+/* Hover Glow */
+.nav-link:hover {
+    color: var(--bb-blue);
+    text-shadow: 0 0 8px rgba(102,170,255,0.5);
+}
+
+.nav-link:hover .nav-icon {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+/* Animated underline */
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--bb-blue),
+        transparent
+    );
+    transition: width 0.35s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Separator Dots (desktop) */
+.nav-link:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--bb-border);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+
+/* ===============================
+   NAVIGATION — MOBILE LAYOUT
+   =============================== */
+
+@media (max-width: 900px) {
+
+    .header-nav {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 280px;
+        height: 100vh;
+        padding: 120px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        background: linear-gradient(
+            180deg,
+            rgba(10,10,10,0.95),
+            rgba(10,10,10,0.90),
+            rgba(20,20,40,0.85)
+        );
+        border-left: 2px solid var(--bb-blue);
+        transition: right 0.4s ease;
+    }
+
+    .header-nav.active {
+        right: 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 14px 0;
+        width: 100%;
+    }
+
+    .nav-link:hover {
+        padding-left: 8px;
+    }
+
+    .nav-link::before {
+        display: none; /* hide separator dots in mobile drawer */
+    }
+}
+
+
+/* ========================================================================
+   14. ANIMATIONS (header fade-in)
+   ======================================================================== */
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInHeader 0.8s ease forwards;
+}
+
+@keyframes fadeInHeader {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ========================================================================
+   15. PREMIUM FOOTER — icons, glow, accordion
+   ======================================================================== */
 
 footer.site-footer {
     background: var(--bb-panel);
@@ -436,6 +620,7 @@ footer.site-footer::before {
     opacity: 0.5;
 }
 
+/* Grid layout */
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -444,10 +629,7 @@ footer.site-footer::before {
     border-bottom: 1px solid var(--bb-border);
 }
 
-/* ===========================
-   Column headers with animation
-   =========================== */
-
+/* Column header button (for accordion on mobile) */
 .footer-col-header {
     width: 100%;
     background: none;
@@ -496,54 +678,14 @@ footer.site-footer::before {
     transform: rotate(180deg);
 }
 
-/* FOOTER SECTION HEADER ICONS */
-.footer-header-icon {
-    width: 24px;
-    height: 24px;
-    stroke: var(--bb-blue);
-    opacity: 0.85;
-    margin-right: 6px;
-    flex-shrink: 0;
-    display: inline-block;
-    vertical-align: middle;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-/* Hover effect matches the text glow */
-.footer-col-header:hover .footer-header-icon {
-    opacity: 1;
-    transform: scale(1.15);
-}
-
-
-/* FOOTER ICON SIZING */
-.footer-icon {
-    width: 22px;
-    height: 22px;
-    opacity: 0.85;
-    margin-right: 6px;
-    flex-shrink: 0;
-    display: inline-block;
-    vertical-align: middle;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.footer-links a:hover .footer-icon {
-    opacity: 1;
-    transform: translateX(2px);
-}
-
-/* ===========================
-   Accordion content sections
-   =========================== */
-
+/* Accordion content sections (collapsed by default) */
 .footer-col-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease;
 }
 
-/* Desktop override: always open */
+/* Desktop override: always open on larger screens */
 @media (min-width: 900px) {
     .footer-col-content {
         max-height: none !important;
@@ -554,9 +696,14 @@ footer.site-footer::before {
     }
 }
 
-/* ===========================
-   Links
-   =========================== */
+/* Links */
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
 
 .footer-links a {
     color: var(--bb-text-muted);
@@ -571,10 +718,12 @@ footer.site-footer::before {
     text-shadow: 0 0 6px rgba(102,170,255,0.6);
 }
 
-/* ===========================
-   Footer bottom
-   =========================== */
+/* Social vertical layout */
+.footer-social-vertical li {
+    margin-bottom: 10px;
+}
 
+/* Footer bottom */
 .footer-bottom {
     text-align: center;
     margin-top: 30px;
@@ -600,266 +749,53 @@ footer.site-footer::before {
     opacity: 0.75;
 }
 
-/* Light mode */
+
+/* ========================================================================
+   16. LIGHT THEME OVERRIDES
+   ======================================================================== */
+
+html[data-theme="light"] body {
+    background-color: var(--bb-bg);
+    color: var(--bb-text);
+}
+
 html[data-theme="light"] footer.site-footer {
     background: #f7f7f7;
 }
 
-
-/* ============================================================
-   PREMIUM HEADER — glowing, animated, auto-hide, ARGB-like
-   ============================================================ */
-
-.enhanced-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(12,12,12,0.85);
-    backdrop-filter: blur(14px);
-    border-bottom: 2px solid var(--bb-blue);
-    z-index: 1000;
-    padding: 14px 0;
-    transition:
-        padding 0.25s ease,
-        background 0.35s ease,
-        transform 0.35s ease,
-        border-color 0.35s ease;
+html[data-theme="light"] .footer-bottom {
+    border-top-color: var(--bb-blue);
 }
 
-/* Glossy top line */
-.enhanced-header::before {
-    content: "";
+
+/* ========================================================================
+   17. ACCESSIBILITY
+   ======================================================================== */
+
+.skip-link {
     position: absolute;
-    top: 0;
-    left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--bb-blue), transparent);
-    opacity: 0.55;
+    top: -40px;
+    left: 10px;
+    background: var(--bb-blue);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 4px;
+    z-index: 10000;
+    transition: 0.25s;
 }
 
-/* Glow on scroll */
-.enhanced-header.glow {
-    box-shadow: 0 0 20px rgba(102,170,255,0.45);
-}
-
-/* Auto-hide on scroll */
-.enhanced-header.hide {
-    transform: translateY(-100%);
-}
-
-/* Shrink on scroll */
-.enhanced-header.shrink {
-    padding: 6px 0;
-    background: rgba(5,5,5,0.92);
-}
-
-/* ===============================
-     LOGO
-   =============================== */
-
-.header-logo-img {
-    height: 80px;
-    filter: drop-shadow(0 0 6px rgba(102,170,255,0.3));
-    transition: 0.3s ease;
-}
-
-.enhanced-header.shrink .header-logo-img {
-    height: 60px;
-    filter: drop-shadow(0 0 4px rgba(102,170,255,0.2));
-}
-
-/* ===============================
-     NAV LINKS
-   =============================== */
-
-.header-nav {
-    display: flex;
-    gap: 32px;
-    align-items: center;
-}
-
-.nav-link {
-    color: var(--bb-text);
-    font-weight: 500;
-    position: relative;
-    padding: 2px 0;
-    transition: color 0.25s ease, text-shadow 0.25s ease, padding 0.25s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* Link Icons */
-.nav-icon {
-    opacity: 0.8;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    width: 22px;
-    height: 22px;
-    flex-shrink: 0;
-}
-
-.nav-link svg {
-    display: inline-block;
+.skip-link:focus {
+    top: 10px;
 }
 
 
-/* Hover Glow */
-.nav-link:hover {
-    color: var(--bb-blue);
-    text-shadow: 0 0 8px rgba(102,170,255,0.5);
-}
-.nav-link:hover .nav-icon {
-    opacity: 1;
-    transform: scale(1.15);
-}
+/* ========================================================================
+   18. REDUCED MOTION SUPPORT
+   ======================================================================== */
 
-/* Animated underline */
-.nav-link::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--bb-blue),
-        transparent
-    );
-    transition: width 0.35s ease;
-}
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* Separator Dots */
-.nav-link:not(:last-child)::before {
-    content: "";
-    position: absolute;
-    right: -18px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
-    background: var(--bb-border);
-    border-radius: 50%;
-    opacity: 0.7;
-}
-
-
-/* ===============================
-     MOBILE MENU
-   =============================== */
-
-@media (max-width: 900px) {
-
-    .header-nav {
-        position: fixed;
-        right: -100%;
-        top: 0;
-        width: 280px;
-        height: 100vh;
-        padding: 120px 24px;
-        flex-direction: column;
-        align-items: flex-start;
-        background: linear-gradient(
-            180deg,
-            rgba(10,10,10,0.95),
-            rgba(10,10,10,0.90),
-            rgba(20,20,40,0.85)
-        );
-        border-left: 2px solid var(--bb-blue);
-        transition: right 0.4s ease;
-    }
-
-    .header-nav.active {
-        right: 0;
-    }
-
-    .nav-link {
-        font-size: 1.3rem;
-        padding: 14px 0;
-        width: 100%;
-    }
-
-    .nav-link:hover {
-        padding-left: 8px;
-    }
-
-    .nav-link::before {
-        display: none;
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
     }
 }
-
-/* ===============================
-     FADE-IN ANIMATION
-   =============================== */
-
-.fade-in {
-    opacity: 0;
-    animation: fadeInHeader 0.8s ease forwards;
-}
-
-@keyframes fadeInHeader {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ============================================================
-   BONNIEBYTE ICON SYSTEM (24x24, line, sharp, ARGB glow)
-   ============================================================ */
-
-.bb-icon {
-    width: 24px;
-    height: 24px;
-    stroke: var(--bb-blue);
-    stroke-width: 2;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    vertical-align: middle;
-    transition: filter 0.3s ease, transform 0.3s ease, stroke 0.3s ease;
-}
-
-/* Glow on hover (wrap the SVG in a link or button) */
-a:hover .bb-icon,
-button:hover .bb-icon {
-    filter: drop-shadow(0 0 6px rgba(102,170,255,0.8));
-    transform: translateY(-1px);
-}
-
-/* Optional ARGB pulsing glow class */
-.bb-icon-glow {
-    animation: bb-argb-pulse 2.4s ease-in-out infinite;
-}
-
-@keyframes bb-argb-pulse {
-    0% {
-        filter: drop-shadow(0 0 0px rgba(102,170,255,0.0));
-    }
-    50% {
-        filter: drop-shadow(0 0 10px rgba(102,170,255,0.9));
-    }
-    100% {
-        filter: drop-shadow(0 0 0px rgba(102,170,255,0.0));
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
