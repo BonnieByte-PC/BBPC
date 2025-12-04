@@ -642,7 +642,7 @@ footer.site-footer::before {
     padding: 0;
     cursor: pointer;
     position: relative;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     pointer-events: auto;
@@ -820,33 +820,37 @@ svg {
 
 /* Proper class sizing */
 .nav-icon {
-    width: 22px;
-    height: 22px;
+    max-width: 22px;
+    max-height: 22px;
 }
 
 .footer-icon {
-    width: 20px;
-    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
 }
 
 .footer-header-icon {
-    width: 20px;
-    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
 }
 
 /* Mobile-specific Safari-safe override */
 @media (max-width: 900px) {
     .nav-icon {
-        width: 18px !important;
-        height: 18px !important;
+        max-width: 18px !important;
+        max-height: 18px !important;
     }
     .footer-icon,
     .footer-header-icon {
-        width: 18px !important;
-        height: 18px !important;
+        max-width: 18px !important;
+        max-height: 18px !important;
     }
 }
 
+.footer-col {
+     position: relative;
+   z-index: 2;
+}
 
 
 
