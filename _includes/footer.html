@@ -98,17 +98,26 @@
 
         <li>
           <a href="https://twitter.com/bonniebytepc" target="_blank">
-            <!-- BB X Icon -->
-            <svg class="footer-icon" viewBox="0 0 24 24">
-              <path d="M5 20 L19 4" stroke="currentColor"
-                    mask="url(#bbx-mask)" />
-              <path d="M4 4 L9 4 L20 20 L15 20 Z"
+            <svg class="footer-icon" width="22" height="22" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" fill="none">
+              <defs>
+                <clipPath id="bbx-hide">
+                  <rect x="0" y="0" width="24" height="24"/>
+                </clipPath>
+                <mask id="bbx-main-stroke">
+                  <rect width="24" height="24" fill="white"/>
+                  <path d="M3 3 L11 3 L21 21 L13 21 Z" fill="black"/>
+                </mask>
+              </defs>
+              <path d="M3 21 L21 3"
                     stroke="currentColor"
-                    fill="none" />
-              <mask id="bbx-mask">
-                <rect width="24" height="24" fill="white"/>
-                <path d="M4 4 L9 4 L20 20 L15 20 Z" fill="black"/>
-              </mask>
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    mask="url(#bbx-main-stroke)" />
+              <path d="M3 3 L11 3 L21 21 L13 21 Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round" />
             </svg>
             Twitter / X
           </a>
