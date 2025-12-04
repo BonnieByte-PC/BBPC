@@ -197,41 +197,6 @@ section {
 
 
 /* ========================================================================
-   8. NAVIGATION (desktop & mobile)
-   ======================================================================== */
-
-.header-nav {
-    display: flex;
-    gap: var(--space-md);
-}
-
-.header-nav a {
-    color: var(--bb-text);
-    font-weight: 500;
-    position: relative;
-}
-
-.header-nav a:hover {
-    color: var(--bb-blue);
-}
-
-.header-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--bb-blue);
-    transition: width 0.25s ease;
-}
-
-.header-nav a:hover::after {
-    width: 100%;
-}
-
-
-/* ========================================================================
    9. THEME TOGGLE
    ======================================================================== */
 
@@ -289,35 +254,6 @@ section {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-@media (max-width: 900px) {
-
-    .mobile-menu-toggle {
-        display: flex;
-    }
-
-    .header-nav {
-        position: fixed;
-        right: -100%;
-        top: 0;
-        width: 280px;
-        height: 100vh;
-        flex-direction: column;
-        align-items: flex-start;
-        background: var(--bb-mobile-nav-bg);
-        padding: 80px var(--space-md);
-        border-left: 2px solid var(--bb-blue);
-        transition: 0.3s ease;
-    }
-
-    .header-nav.active { right: 0; }
-
-    .header-nav a {
-        padding: 14px 0;
-        width: 100%;
-        font-size: 1.1rem;
-        border-bottom: 1px solid var(--bb-border);
-    }
-}
 
 /* Mobile theme toggle duplication cleanup */
 .mobile-theme-container {
@@ -878,6 +814,7 @@ button:hover .bb-icon {
         filter: drop-shadow(0 0 0px rgba(102,170,255,0.0));
     }
 }
+
 
 
 
