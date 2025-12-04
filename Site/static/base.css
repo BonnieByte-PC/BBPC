@@ -613,8 +613,6 @@ html[data-theme="light"] footer.site-footer { background: #f7f7f7; }
     stroke-width: 2;
     display: inline-block;
     vertical-align: middle;
-    position: relative;
-    top: 1px; /* optional fine-tuning */
 }
 
 
@@ -627,6 +625,7 @@ html[data-theme="light"] footer.site-footer { background: #f7f7f7; }
         top: -1px;   /* move up slightly */
     }
 }
+
 
 
 
