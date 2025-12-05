@@ -300,13 +300,12 @@ section {
     }
 }
 
-/* Desktop selector styled like theme toggle */
+/* DESKTOP LANGUAGE SWITCHER - MATCH THEME TOGGLE */
 .lang-select select {
     background: transparent;
     border: 2px solid var(--bb-blue);
-    height: 42px;
-    padding: 0 14px;
-    border-radius: 6px;
+    padding: 6px 14px;
+    border-radius: 50px;
     color: var(--bb-blue);
     font-weight: bold;
     cursor: pointer;
@@ -317,6 +316,8 @@ section {
     background: var(--bb-blue);
     color: #fff;
 }
+
+
 
 /* ========================================================================
    9. MOBILE MENU TOGGLE
@@ -807,6 +808,7 @@ html[data-theme="light"] footer.site-footer {
         animation-duration: 0.01ms !important;
     }
 }
+
 
 
 
