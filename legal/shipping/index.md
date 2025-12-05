@@ -117,6 +117,6 @@ title: Shipping Policy | BonnieByte PC
         </p>
         <h2>12. Contact Us</h2>
         <p>If you have questions about shipping, you can contact:</p>
-        <p><strong>Email:</strong> orders@bonniebytepc.com</p>
+        <p><strong>Email:</strong> <a href="mailto:orders@bonniebytepc.com">orders@bonniebytepc.com</a></p>
     </div>
 </div>
