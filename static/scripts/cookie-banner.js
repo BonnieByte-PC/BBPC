@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const message = document.createElement("div");
     message.innerHTML = `
-        <strong>We use essential cookies to make our site work.</strong>
-        We’ll ask before using analytics or anything optional.
+        <strong>We use essential cookies to keep BonnieBytePC.com running smoothly.</strong>
+        Analytics and optional cookies are off unless you choose to enable them.
     `;
 
     const btnWrap = document.createElement("div");
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
     acceptBtn.className = "bbpc-btn bbpc-btn-primary";
 
     const rejectBtn = document.createElement("button");
-    rejectBtn.textContent = "Reject Non-Essential";
+    rejectBtn.textContent = "Reject";
     rejectBtn.className = "bbpc-btn bbpc-btn-secondary";
 
    
