@@ -306,16 +306,48 @@ section {
 }
 
 .lang-btn:hover {
-    background: var(--bb-blue);
-    color: #fff;
+    background: rgba(102, 170, 255, 0.15);
+    box-shadow: 0 0 12px rgba(102, 170, 255, 0.65);
+    transform: scale(1.08);
 }
 
 .lang-btn:hover img {
-    filter: brightness(0.7);
+    filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.7));
 }
 
-/* Hide text if you want: */
-/* .lang-btn span { display: none; } */
+/* Active Selected Language */
+.lang-btn.active {
+    border-color: var(--bb-blue);
+    background: rgba(102, 170, 255, 0.15);
+    box-shadow:
+        0 0 10px rgba(102, 170, 255, 0.6),
+        inset 0 0 6px rgba(102, 170, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* Pulsing ring animation for active language */
+.lang-btn.active {
+    animation: bb-lang-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes bb-lang-pulse {
+    0% {
+        box-shadow:
+            0 0 10px rgba(102, 170, 255, 0.6),
+            inset 0 0 6px rgba(102, 170, 255, 0.4);
+    }
+    50% {
+        box-shadow:
+            0 0 16px rgba(102, 170, 255, 0.85),
+            inset 0 0 10px rgba(102, 170, 255, 0.55);
+    }
+    100% {
+        box-shadow:
+            0 0 10px rgba(102, 170, 255, 0.6),
+            inset 0 0 6px rgba(102, 170, 255, 0.4);
+    }
+}
+
 
 
 /* ========================================================================
@@ -805,4 +837,5 @@ html[data-theme="light"] footer.site-footer {
         animation-duration: 0.01ms !important;
     }
 }
+
 
