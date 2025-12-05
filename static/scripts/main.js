@@ -1,10 +1,12 @@
+// ===============================
+// THEME TOGGLE
+// ===============================
 function initializeTheme() {
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = themeToggle?.querySelector('.theme-icon');
     if (!themeToggle || !themeIcon) return;
 
-    // single shared toggle for desktop + mobile now
-    const mobileToggle = null;
+    const mobileToggle = null; // single shared toggle now
 
     function persistTheme(theme) {
         try {
@@ -57,72 +59,95 @@ function initializeTheme() {
 }
 
 
-// Mobile menu functionality
+// ===============================
+// MOBILE MENU
+// ===============================
 function initializeMobileMenu() {
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const headerNav = document.querySelector('.header-nav');
-    
+    const root = document.documentElement;
+
     if (!mobileMenuToggle || !headerNav) return;
-    
+
+    function closeMenu() {
+        mobileMenuToggle.classList.remove('active');
+        headerNav.classList.remove('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        root.classList.remove('bb-menu-open');
+
+        // also force-close language dropdown if it was open
+        const dropdown = document.querySelector('.bb-lang-dropdown');
+        const activeBtn = document.getElementById('bb-active-lang');
+        if (dropdown) dropdown.classList.remove('open');
+        if (activeBtn) activeBtn.setAttribute('aria-expanded', 'false');
+    }
+
     mobileMenuToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         const isActive = mobileMenuToggle.classList.toggle('active');
         headerNav.classList.toggle('active');
         mobileMenuToggle.setAttribute('aria-expanded', isActive);
+
+        if (isActive) {
+            root.classList.add('bb-menu-open');
+
+            // close language dropdown if it happens to be open
+            const dropdown = document.querySelector('.bb-lang-dropdown');
+            const activeBtn = document.getElementById('bb-active-lang');
+            if (dropdown) dropdown.classList.remove('open');
+            if (activeBtn) activeBtn.setAttribute('aria-expanded', 'false');
+        } else {
+            root.classList.remove('bb-menu-open');
+        }
     });
-    
+
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.header-nav a').forEach(link => {
         link.addEventListener('click', () => {
-            mobileMenuToggle.classList.remove('active');
-            headerNav.classList.remove('active');
-            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            closeMenu();
         });
     });
-    
+
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.header-nav') && !e.target.closest('.mobile-menu-toggle') && headerNav.classList.contains('active')) {
-            mobileMenuToggle.classList.remove('active');
-            headerNav.classList.remove('active');
-            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            closeMenu();
         }
     });
-    
+
     // Close mobile menu when pressing Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && headerNav.classList.contains('active')) {
-            mobileMenuToggle.classList.remove('active');
-            headerNav.classList.remove('active');
-            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            closeMenu();
         }
     });
 }
 
 
-// Scroll progress functionality
+// ===============================
+// SCROLL PROGRESS
+// ===============================
 function initializeScrollProgress() {
     const scrollProgress = document.querySelector('.scroll-progress');
-    
     if (!scrollProgress) return;
-    
+
     window.addEventListener('scroll', () => {
         const windowHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-        
         scrollProgress.style.width = scrollPercent + '%';
     });
 }
 
 
-// Header scroll behavior
+// ===============================
+// SIMPLE HEADER SHRINK
+// ===============================
 function initializeHeaderScroll() {
     const siteHeader = document.querySelector('.site-header');
-    
     if (!siteHeader) return;
-    
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             siteHeader.classList.add('shrink');
@@ -133,10 +158,11 @@ function initializeHeaderScroll() {
 }
 
 
-// Make header logo clickable to scroll to top
+// ===============================
+// HEADER LOGO SCROLL TO TOP
+// ===============================
 function initializeHeaderLogo() {
     const headerLogo = document.querySelector('.header-logo');
-    
     if (headerLogo) {
         headerLogo.addEventListener('click', function() {
             window.scrollTo({
@@ -148,7 +174,9 @@ function initializeHeaderLogo() {
 }
 
 
-// Smooth scrolling for anchor links
+// ===============================
+// SMOOTH ANCHOR SCROLL
+// ===============================
 function initializeSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -167,7 +195,9 @@ function initializeSmoothScrolling() {
 }
 
 
-// Initialize all general functionality when DOM is loaded
+// ===============================
+// DOM READY
+// ===============================
 document.addEventListener('DOMContentLoaded', function() {
     initializeTheme();
     initializeMobileMenu();
@@ -175,11 +205,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeHeaderScroll();
     initializeHeaderLogo();
     initializeSmoothScrolling();
-    
+
     console.log('BonnieByte PC - General scripts loaded');
 });
 
-// Export functions for potential use in other files
+// ===============================
+// CommonJS export (Node testing/etc.)
+// ===============================
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         initializeTheme,
@@ -192,10 +224,9 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 
-/* ============================================================
-   HEADER INTERACTIONS (extra shrink/hide behavior)
-   ============================================================ */
-
+// ===============================
+// EXTRA HEADER INTERACTIONS
+// ===============================
 const bbHeader = document.getElementById("bb-header");
 let lastScroll = 0;
 
@@ -229,10 +260,9 @@ window.addEventListener("scroll", () => {
 });
 
 
-/* ============================================================
-   LANGUAGE DROPDOWN LOGIC (shared desktop + mobile)
-   ============================================================ */
-
+// ===============================
+// LANGUAGE DROPDOWN LOGIC
+// ===============================
 document.addEventListener("DOMContentLoaded", function () {
     const dropdown   = document.querySelector(".bb-lang-dropdown");
     const activeBtn  = document.getElementById("bb-active-lang");
@@ -261,6 +291,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Toggle dropdown
     activeBtn.addEventListener("click", (e) => {
         e.stopPropagation();
+
+        // if mobile menu is open, ignore clicks
+        if (document.documentElement.classList.contains('bb-menu-open')) {
+            return;
+        }
+
         const isOpen = dropdown.classList.toggle("open");
         activeBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
@@ -274,15 +310,16 @@ document.addEventListener("DOMContentLoaded", function () {
             dropdown.classList.remove("open");
             activeBtn.setAttribute("aria-expanded", "false");
 
-            // Trigger translation via hidden Google widget
+            // Trigger translation
             if (typeof doGTranslate === "function") {
-                doGTranslate(lang); // "en", "gd", "fr", "de", "es"
+                doGTranslate(lang); // our footer helper wraps "en|lang"
+            } else if (window.gtranslateSettings && typeof window.gtranslateSettings.switchLanguage === "function") {
+                window.gtranslateSettings.switchLanguage(lang);
             }
         });
     });
 
-
-    // Close on outside click
+    // Close dropdown on outside click
     document.addEventListener("click", (e) => {
         if (!e.target.closest(".bb-lang-dropdown")) {
             dropdown.classList.remove("open");
@@ -290,20 +327,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Initialise from Google Translate cookie if present
-    const match = document.cookie.match(/googtrans=\/([^;]+)/);
-    let initialLang = "en";
-
-    if (match && match[1]) {
-        // cookie looks like "/en/fr" or "/en/de"
-        const parts = match[1].split("/");
-        initialLang = parts[parts.length - 1] || "en";
-    }
-
+    // Initialise from GTranslate cookie if present
+    const match = document.cookie.match(/googtrans=\/auto\/([a-z]+)/);
+    const initialLang = match ? match[1] : (window.gtranslateSettings && window.gtranslateSettings.default_language) || "en";
     setActiveLangUI(initialLang);
 });
-
-
-
-
-
