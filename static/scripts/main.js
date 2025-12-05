@@ -276,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Trigger translation
             if (typeof doGTranslate === "function") {
-                doGTranslate("en|" + lang);
+                doGTranslate(lang);
             } else if (window.gtranslateSettings && typeof window.gtranslateSettings.switchLanguage === "function") {
                 window.gtranslateSettings.switchLanguage(lang);
             }
@@ -296,4 +296,5 @@ document.addEventListener("DOMContentLoaded", function () {
     const initialLang = match ? match[1] : (window.gtranslateSettings && window.gtranslateSettings.default_language) || "en";
     setActiveLangUI(initialLang);
 });
+
 
