@@ -4,7 +4,7 @@ title: Privacy Policy | BonnieByte PC
 date: 2025-12-05
 changelog:
   - date: 5 December 2025
-    note: "Updated cookie categories and reset preference instructions."
+    note: "Updated cookie categories and reset preference instructions. Updated GDPR compliance."
   - date: 21 November 2025
     note: "Added MailerLite and reCAPTCHA explanations."
 ---
@@ -39,6 +39,18 @@ changelog:
 <p>
     Essential functional cookies are used for theme preferences, site security, session handling,
     and cookie consent. These do not contain personal information and cannot identify you.
+</p>
+<p>
+    Our website uses only essential cookies required for core functionality, such as:
+</p>
+<ul>
+    <li>Security & authentication cookies</li>
+    <li>Session cookies</li>
+    <li>Theme or preference cookies</li>
+    <li>Cookie-consent state</li>
+</ul>
+<p>
+    These cookies do not track you and do not require consent.
 </p>
 <h3>3.3 Newsletter signups</h3>
 <p>
@@ -82,6 +94,18 @@ changelog:
     <li>Newsletter data: until you unsubscribe</li>
 </ul>
 <h2>8. Your Rights</h2>
+<h3>Right to Withdraw Consent</h3>
+<p>
+     If we process your personal data based on your consent (for example, email marketing), you have the right to withdraw that consent at any time. Withdrawing consent does not affect the lawfulness of processing before withdrawal.
+</p>
+<h3>Right to Complain</h3>
+<p>
+     We take data security seriously. We use appropriate technical and organisational measures to protect your personal data, including encrypted connections (HTTPS), secure storage systems, access controls, and data-minimisation practices. Only authorised personnel have access to your data.
+</p>
+<ul>
+  <li>Website: <a href="https://ico.org.uk">https://ico.org.uk</a></li>
+  <li>Telephone: <a href="tel:0303 123 1113">0303 123 1113</a></li>
+</ul>
 <p>
     You can request access, correction, deletion, objection, or data portability at any time.
     Simply email us at <a href="mailto:help@bonniebytepc.com">help@bonniebytepc.com</a>.
@@ -106,6 +130,14 @@ changelog:
     BonnieByte PC does not use automated decision-making or profiling. All customer support,
     warranty decisions, and account-related actions are handled by a human. No automated systems
     analyse your behaviour or make decisions that could affect your rights.
+</p>
+<h2>13. International Data Transfers</h2>
+<p>
+    Some of our service providers may process personal data outside the UK or European Economic Area (EEA). When this occurs, we ensure appropriate safeguards are in place, such as Standard Contractual Clauses (SCCs) approved by the UK ICO or the UK Addendum to the EU SCCs. These safeguards ensure your data remains protected to UK GDPR standards.
+</p>
+<h2>14. How We Protect Your Data</h2>
+<p>
+  We take data security seriously. We use appropriate technical and organisational measures to protect your personal data, including encrypted connections (HTTPS), secure storage systems, access controls, and data-minimisation practices. Only authorised personnel have access to your data.
 </p>
 <h2>13. Changes to This Policy</h2>
 <p>
