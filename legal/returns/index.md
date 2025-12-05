@@ -92,7 +92,7 @@ title: Returns & Refund Policy | BonnieByte PC
         <p>
             For orders placed directly on our website (when available), please email:
         </p>
-        <p><strong>Email:</strong> orders@bonniebytepc.com</p>
+        <p><strong>Email:</strong> <a href="mailto:orders@bonniebytepc.com">orders@bonniebytepc.com</a></p>
         <p>Include:</p>
         <ul>
             <li>Your name</li>
@@ -145,6 +145,6 @@ title: Returns & Refund Policy | BonnieByte PC
           </p>
           <h2>12. Contact Us</h2>
           <p>If you have questions about returns or refunds, please contact:</p>
-          <p><strong>Email:</strong> orders@bonniebytepc.com or returns@bonniebytepc.com</p>
+          <p><strong>Email:</strong> <a href="mailto:orders@bonniebytepc.com">orders@bonniebytepc.com</a> or <a href="mailto:returns@bonniebytepc.com">returns@bonniebytepc.com</a></p>
      </div>
 </div>
