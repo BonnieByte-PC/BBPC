@@ -102,11 +102,17 @@ title: Privacy Policy | BonnieByte PC
             Our website is hosted on GitHub Pages. GitHub Pages does <strong>not</strong> set any cookies
             for visitors and does not process personal data on our behalf.
         </p>
-        <h2>12. Changes to This Policy</h2>
+        <h2>12. Automated Decision-Making</h2>
+        <p>
+            BonnieByte PC does not use automated decision-making or profiling. All customer support,
+            warranty decisions, and account-related actions are handled by a human. No automated systems
+            analyse your behaviour or make decisions that could affect your rights.
+        </p>
+        <h2>13. Changes to This Policy</h2>
         <p>
             Updates will appear here with a new “Last Updated” date.
         </p>
-        <h2>13. Contact Us</h2>
+        <h2>14. Contact Us</h2>
         <p><strong>Email:</strong> help@bonniebytepc.com</p>
         <p><strong>Address:</strong> 14 Greenbank Place, Dundee, DD2 2DE, UK</p>
     </div>
