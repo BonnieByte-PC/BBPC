@@ -80,14 +80,34 @@
           </button>
         </div>
 
+        <div class="mobile-lang-select">
+          <select onchange="window.gtranslateSettings.switchLanguage(this.value)">
+            <option value="en">EN</option>
+            <option value="gd">GD</option>
+            <option value="fr">FR</option>
+            <option value="de">DE</option>
+            <option value="es">ES</option>
+          </select>
+        </div>
+        
       </nav>
-
+      
       <!-- HEADER ACTIONS -->
       <div class="header-actions">
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
           <span class="theme-icon">🌙</span>
         </button>
-
+        
+        <div class="lang-select">
+          <select onchange="window.gtranslateSettings.switchLanguage(this.value)">
+            <option value="en">EN</option>
+            <option value="gd">GD</option>
+            <option value="fr">FR</option>
+            <option value="de">DE</option>
+            <option value="es">ES</option>
+          </select>
+        </div>
+        
         <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span>
           <span></span>
