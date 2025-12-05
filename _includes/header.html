@@ -17,42 +17,6 @@
       <!-- NAVIGATION -->
       <nav class="header-nav" aria-label="Main navigation">
 
-        <!-- MOBILE THEME TOGGLE -->
-        <div class="mobile-theme-container">
-            <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle dark mode">
-                <span class="theme-icon">🌙</span>
-            </button>
-        
-            <button class="lang-btn" data-lang="en" onclick="doGTranslate('en');">
-                <img src="/static/flags/en.svg" alt="EN">
-                <span>EN</span>
-            </button>
-        
-            <button class="lang-btn" data-lang="gd" onclick="doGTranslate('gd');">
-                <img src="/static/flags/gd.svg" alt="GD">
-                <span>GD</span>
-            </button>
-        
-            <button class="lang-btn" data-lang="fr" onclick="doGTranslate('fr');">
-                <img src="/static/flags/fr.svg" alt="FR">
-                <span>FR</span>
-            </button>
-        
-            <button class="lang-btn" data-lang="de" onclick="doGTranslate('de');">
-                <img src="/static/flags/de.svg" alt="DE">
-                <span>DE</span>
-            </button>
-        
-            <button class="lang-btn" data-lang="es" onclick="doGTranslate('es');">
-                <img src="/static/flags/es.svg" alt="ES">
-                <span>ES</span>
-            </button>
-        </div>
-
-
-
-
-        
         <!-- HOME -->
         <a class="nav-link" href="/">
           <svg class="nav-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" preserveAspectRatio="xMidYMid meet" width="22" height="22">
@@ -108,44 +72,50 @@
           </svg>
           Legal
         </a>
-        
+
       </nav>
       
       <!-- HEADER ACTIONS -->
       <div class="header-actions">
+        <!-- Theme toggle (shared desktop + mobile) -->
         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
           <span class="theme-icon">🌙</span>
         </button>
-        
-      <div class="lang-select">
-          <button class="lang-btn" data-lang="en" onclick="doGTranslate('en');">
+
+        <!-- Language dropdown (shared desktop + mobile) -->
+        <div class="bb-lang-dropdown">
+          <!-- Active button -->
+          <button class="lang-btn bb-lang-toggle" id="bb-active-lang" aria-haspopup="true" aria-expanded="false">
+            <img src="/static/flags/en.svg" id="bb-active-flag" alt="EN">
+            <span id="bb-active-code">EN</span>
+          </button>
+
+          <!-- Dropdown menu -->
+          <div class="bb-lang-menu" id="bb-lang-menu" aria-label="Language selection">
+            <button class="lang-btn bb-lang-option" data-lang="en">
               <img src="/static/flags/en.svg" alt="EN">
               <span>EN</span>
-          </button>
-      
-          <button class="lang-btn" data-lang="gd" onclick="doGTranslate('gd');">
+            </button>
+            <button class="lang-btn bb-lang-option" data-lang="gd">
               <img src="/static/flags/gd.svg" alt="GD">
               <span>GD</span>
-          </button>
-      
-          <button class="lang-btn" data-lang="fr" onclick="doGTranslate('fr');">
+            </button>
+            <button class="lang-btn bb-lang-option" data-lang="fr">
               <img src="/static/flags/fr.svg" alt="FR">
               <span>FR</span>
-          </button>
-      
-          <button class="lang-btn" data-lang="de" onclick="doGTranslate('de');">
+            </button>
+            <button class="lang-btn bb-lang-option" data-lang="de">
               <img src="/static/flags/de.svg" alt="DE">
               <span>DE</span>
-          </button>
-      
-          <button class="lang-btn" data-lang="es" onclick="doGTranslate('es');">
+            </button>
+            <button class="lang-btn bb-lang-option" data-lang="es">
               <img src="/static/flags/es.svg" alt="ES">
               <span>ES</span>
-          </button>
-      </div>
+            </button>
+          </div>
+        </div>
 
-
-        
+        <!-- Mobile menu toggle -->
         <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span>
           <span></span>
