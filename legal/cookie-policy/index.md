@@ -6,104 +6,113 @@ changelog:
 ---
 <h2>1. What Are Cookies?</h2>
 <p>
-    Cookies are small text files stored on your device to help websites function and remember preferences.
-    Some cookies are <strong>essential</strong> for a website to operate, while others (such as analytics or
-    advertising cookies) require your consent under UK GDPR and PECR.
+    Cookies are small text files stored on your device to help websites function and remember your
+    preferences. Under UK GDPR and the Privacy and Electronic Communications Regulations (PECR),
+    <strong>essential cookies</strong> may be used without consent, while analytics, advertising, or tracking
+    cookies require your explicit permission.
 </p>
 <h2>2. Cookies We Use</h2>
 <p>
-    BonnieByte PC currently uses <strong>only essential cookies</strong>. These are required for security,
-    core functionality, accessibility, and your saved preferences.
+    BonnieByte PC currently uses <strong>only essential cookies</strong>. These are required for security, basic
+    functionality, accessibility features, and remembering your preferences.
 </p>
 <h3>2.1 Essential Cookies (No Consent Required)</h3>
 <p>The following cookies are required for our website to operate correctly:</p>
 <ul>
-    <li><strong>bb_cookie_consent</strong> – Remembers whether you accepted or rejected optional cookies.</li>
-    <li><strong>bb_theme</strong> – Stores your light/dark theme preference for accessibility.</li>
-    <li><strong>bb_session_id</strong> – Creates an anonymous session identifier for site functions.</li>
-    <li><strong>bb_csrf</strong> – Security token used to protect future forms from abuse.</li>
-    <li><strong>bb_lang</strong> – Saves language/region preference for future localisation.</li>
+    <li><strong>bb_cookie_consent</strong> – Remembers whether you accepted or rejected optional cookies. <em>Duration:</em> 6–12 months.</li>
+    <li><strong>bb_theme</strong> – Stores your light/dark theme preference. <em>Duration:</em> 6–12 months.</li>
+    <li><strong>bb_session_id</strong> – Creates an anonymous session identifier for site functions. <em>Duration:</em> Session only.</li>
+    <li><strong>bb_csrf</strong> – Security token used to protect forms from abuse. <em>Duration:</em> Session only.</li>
+    <li><strong>bb_lang</strong> – Saves language/region preferences for future localisation. <em>Duration:</em> 6–12 months.</li>
 </ul>
 <p>
-    These cookies do <strong>not</strong> track you, contain personal information, or share data with third
-    parties. They exist strictly to provide a smooth and secure experience.
+    These cookies do <strong>not</strong> identify you, track you, or share data with any third parties.
+    They exist exclusively to provide a smooth, secure browsing experience.
 </p>
 <h3>2.2 Functional Cookies</h3>
 <p>
-    Functional cookies help the website remember user choices (such as theme or region). All current
-    functional cookies used by BonnieByte PC are listed above as essential.
+    Functional cookies help the website remember your settings (such as theme or language). 
+    All functional cookies currently used by BonnieByte PC are also classified as essential, as they provide 
+    accessibility support and core usability.
 </p>
 <h3>2.3 Analytics Cookies</h3>
 <p>
-    We currently do <strong>not</strong> use analytics tools such as Google Analytics. If we introduce
-    optional analytics in the future (for example, when our store launches), we will request your consent
-    before enabling them.
+    We do <strong>not</strong> use analytics tools such as Google Analytics, Matomo, or tracking pixels.
 </p>
-<h3>2.4 Advertising Cookies</h3>
 <p>
-    BonnieByte PC does <strong>not</strong> use advertising, retargeting, or tracking cookies.
+    If we introduce optional analytics in the future—for example, when our online store launches—you will be asked to provide explicit consent before they are enabled.
+</p>
+<h3>2.4 Advertising or Tracking Cookies</h3>
+<p>
+    BonnieByte PC does <strong>not</strong> use advertising cookies, behavioural tracking technologies, 
+    social media pixels, or retargeting tools.
 </p>
 <h2>3. Managing Cookies</h2>
-<p>You can manage cookies on our website in the following ways:</p>
+<p>You can manage cookies on our website in several ways:</p>
 <ul>
-    <li><strong>Browser settings:</strong> You can block or delete cookies using your browser’s privacy options. This may affect functionality on some websites, but will not affect essential cookies on ours.</li>
-    <li><strong>The cookie banner:</strong> When you first visit our site, you can choose to accept or reject optional cookies. At this time, we only use essential cookies, so rejecting optional cookies will not affect your experience.</li>
-    <li><strong>Reset cookie preferences:</strong> You can reset your decision at any time using the “Reset Cookie Preferences” button below. 
+    <li><strong>Browser settings:</strong> Most browsers allow you to block or delete cookies. This will not impact essential cookies on our site but may limit functionality on other websites.</li>
+
+    <li><strong>Cookie banner:</strong> On your first visit, you may choose to accept or reject optional cookies. Since we currently use only essential cookies, rejecting optional cookies has no negative effect.</li>
+
+    <li><strong>Reset cookie preferences:</strong> You can reset your decision using the button below.  
         <br>
-        <button id="bbpc-scroll-to-reset" class="button button-secondary">
-            ↓
-        </button> 
+        <button id="bbpc-scroll-to-reset" class="button button-secondary">↓</button>
         <br>
-This will remove your previous choice and show the cookie banner again on your next visit.</li>
-    <li><strong>Reset cookie preferences (footer link):</strong> You can also access the reset option from any page on our website using the “Change Cookie Settings” link found in the footer.</li>
+        This removes your existing preference and re-shows the cookie banner on your next visit.
+    </li>
+    <li><strong>Footer link:</strong> You can also reset cookie preferences at any time via the “Change Cookie Settings” link in the site footer.</li>
 </ul>
 <p>
-    This allows you to withdraw consent or change your preference easily if we introduce optional 
-    analytics or other non-essential cookies in the future.
+    If we introduce analytics or non-essential cookies in the future, these tools give you full control to
+    withdraw consent at any time.
 </p>
 <p>
-    Rejecting optional cookies will not affect your ability to use our website, as we currently load only
-    essential cookies.
+    Rejecting optional cookies will never prevent you from using our website.
 </p>
 <h2>4. Third-Party Services</h2>
 <h3>4.1 MailerLite Newsletter Forms</h3>
 <p>
-    Our newsletter signup form is powered by MailerLite. This may store functional data needed to submit
-    your email securely, but no marketing or tracking cookies are loaded unless you explicitly consent in
-    the future.
+    Our newsletter signup form uses MailerLite. MailerLite may process the data you enter (e.g., your email)
+    to deliver the signup form securely, but it does <strong>not</strong> load marketing or tracking cookies on
+    our site unless you explicitly consent to optional analytics in the future.
 </p>
 <h3>4.2 Google reCAPTCHA</h3>
 <p>
-    Some forms may use Google reCAPTCHA for security. reCAPTCHA may set <em>strictly necessary</em>
-    anti-abuse cookies such as <code>rc::a</code> and <code>rc::b</code>. These do not track you for marketing.
+    Some forms may use Google reCAPTCHA to protect against spam and automated abuse. reCAPTCHA may set 
+    <em>strictly necessary</em> cookies such as <code>rc::a</code> and <code>rc::b</code>. These are 
+    used solely for security and not for marketing or advertising.
 </p>
 <h3>4.3 Hosting Platform</h3>
 <p>
-    Our website is hosted on GitHub Pages, which does <strong>not</strong> set any cookies for normal visitors.
+    Our site is hosted on GitHub Pages, which sets <strong>no cookies</strong> for normal visitors and does not 
+    process personal data on our behalf.
 </p>
 <h2>5. Changes to This Policy</h2>
 <p>
-    Changes to this policy will appear here with the date of change included.
-    {% if page.changelog %}
-    <h3>Change History</h3>
-    <ul>
-      {% for entry in page.changelog %}
-        <li><strong>{{ entry.date }}</strong> — {{ entry.note }}</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+    Any updates to this policy will appear here with the date included.
 </p>
+{% if page.changelog %}
+<h3>Change History</h3>
+<ul>
+  {% for entry in page.changelog %}
+    <li><strong>{{ entry.date }}</strong> — {{ entry.note }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
 <h2 id="bbpc-reset-section">6. Change or Withdraw Your Cookie Decision</h2>
 <p>
-    You can change your cookie decision at any time. Clicking the button below will reset your
-    cookie preferences and show the cookie banner again on your next page load.
+    You may change or withdraw your cookie preference at any time. Clicking the button below resets your
+    cookie decision and will show the cookie banner again on your next visit.
 </p>
 <button id="bbpc-reset-cookie-consent" class="button">
     Reset Cookie Preferences
 </button>
 <p>
-    This allows you to switch between accepting or rejecting optional cookies if we introduce
-    analytics or other non-essential features in the future.
+    This ensures you can easily modify your consent if we introduce optional analytics or non-essential
+    features in the future.
 </p>
 <h2>7. Contact</h2>
-<p>Questions? Email <strong><a href="mailto:help@bonniebytepc.com">help@bonniebytepc.com</a></strong></p>
+<p>
+    Questions about this Cookie Policy? Contact us at 
+    <strong><a href="mailto:help@bonniebytepc.com">help@bonniebytepc.com</a></strong>
+</p>
