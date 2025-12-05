@@ -88,7 +88,6 @@ This will remove your previous choice and show the cookie banner again on your n
         </p>
         <h2 id="bbpc-reset-section">6. Change or Withdraw Your Cookie Decision</h2>
         <p>
-        </p>
             You can change your cookie decision at any time. Clicking the button below will reset your
             cookie preferences and show the cookie banner again on your next page load.
         </p>
