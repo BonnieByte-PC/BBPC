@@ -3,10 +3,6 @@ layout: legal
 title: Privacy Policy | BonnieByte PC
 date: 2025-12-05
 changelog:
-  - date: 5 December 2025
-    note: "Updated cookie categories and reset preference instructions. Updated GDPR compliance."
-  - date: 21 November 2025
-    note: "Added MailerLite and reCAPTCHA explanations."
 ---
 <h2>1. Who We Are</h2>
 <p>
