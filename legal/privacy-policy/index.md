@@ -135,8 +135,9 @@ changelog:
 <p>
   We take data security seriously. We use appropriate technical and organisational measures to protect your personal data, including encrypted connections (HTTPS), secure storage systems, access controls, and data-minimisation practices. Only authorised personnel have access to your data.
 </p>
-<h2>13. Changes to This Policy</h2>
+<h2>15. Changes to This Policy</h2>
 <p>
+    Changes to this policy will appear here with the date of change included.
     {% if page.changelog %}
     <h3>Change History</h3>
     <ul>
@@ -146,5 +147,5 @@ changelog:
     </ul>
     {% endif %}
 </p>
-<h2>14. Contact Us</h2>
+<h2>16. Contact Us</h2>
 <p><strong>Email:</strong> <a href="mailto:help@bonniebytepc.com">help@bonniebytepc.com</a></p>
