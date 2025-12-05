@@ -22,8 +22,8 @@ title: Terms of Service | BonnieByte PC
         <ul>
             <li><strong>Business Name:</strong> BonnieByte PC</li>
             <li><strong>Owner:</strong> Michael Shields</li>
-            <li><strong>Address:</strong> 14 Greenbank Place, Dundee, DD2 2DE, United Kingdom</li>
-            <li><strong>Contact Email:</strong> hello@bonniebytepc.com</li>
+            <li><strong>Address:</strong>------------</li>
+            <li><strong>Contact Email:</strong> <a href="mailto:hello@bonniebytepc.com">hello@bonniebytepc.com</a></li>
         </ul>
         <h2>3. Use of Our Website</h2>
         <p>
@@ -161,6 +161,6 @@ title: Terms of Service | BonnieByte PC
         </p>
         <h2>13. Contact Us</h2>
         <p>If you have any questions about these Terms, you can contact us at:</p>
-        <p><strong>Email:</strong> hello@bonniebytepc.com</p>
+        <p><strong>Email:</strong> <a href="mailto:hello@bonniebytepc.com">hello@bonniebytepc.com</a></p>
     </div>
 </div>
