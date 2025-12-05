@@ -120,3 +120,21 @@ document.addEventListener("DOMContentLoaded", function () {
         // location.reload();
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Scroll-to-reset interaction
+    const scrollBtn = document.getElementById("bbpc-scroll-to-reset");
+    const resetSection = document.getElementById("bbpc-reset-section");
+
+    if (scrollBtn && resetSection) {
+        scrollBtn.addEventListener("click", () => {
+            resetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    }
+
+});
+
