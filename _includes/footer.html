@@ -152,8 +152,6 @@
     <p>&copy; <span id="footer-year"></span> BonnieByte PC. All rights reserved.</p>
   </div>
 
-  <!-- Hidden wrapper for GTranslate widget (kept off-screen) -->
-  <div class="bb-lang-selector" aria-hidden="true"></div>
 
   <script>
     document.querySelectorAll(".footer-col-header").forEach(header => {
@@ -176,5 +174,39 @@
         });
     });
   </script>
-  <div class="gtranslate" style="display:none;"></div>  
+
+    <!-- Hidden Google Translate widget (driven by custom language dropdown) -->
+  <div id="google_translate_element" style="position:absolute; left:-9999px; top:-9999px;"></div>
+
+  <script>
+    // Called by Google when the translate script loads
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,gd,fr,de,es',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    // Used by our custom language buttons
+    function doGTranslate(lang) {
+      if (!lang) return;
+
+      function attempt() {
+        // Google injects this <select>
+        const sel = document.querySelector('select.goog-te-combo');
+        if (!sel) {
+          // Try again shortly if widget not ready yet
+          return setTimeout(attempt, 100);
+        }
+
+        sel.value = lang;
+        sel.dispatchEvent(new Event('change'));
+      }
+
+      attempt();
+    }
+  </script>
+
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </footer>
