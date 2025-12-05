@@ -204,11 +204,6 @@ section {
     height: 60px;
 }
 
-/* Hide language dropdown when mobile menu is open */
-.header-nav.active ~ .header-actions .bb-lang-dropdown {
-    display: none !important;
-}
-
 .header-actions {
     position: relative;
 }
@@ -240,25 +235,11 @@ section {
 /* ========================================================================
    8.1 LANGUAGE DROPDOWN (shared desktop + mobile)
    ======================================================================== */
-/* Correct language dropdown container */
+
 .bb-lang-dropdown {
     position: relative;
     margin-left: 12px;
 }
-
-/* Menu positioning (under the active button) */
-.bb-lang-dropdown .bb-lang-menu {
-    position: absolute;
-    top: 48px;      /* dropdown appears BELOW active button */
-    right: 0;       /* aligned to the right side */
-    display: none;
-}
-
-/* When open */
-.bb-lang-dropdown.open .bb-lang-menu {
-    display: flex;
-}
-
 
 /* Base button style – circular, matches theme toggle */
 .lang-btn {
@@ -313,14 +294,40 @@ section {
         inset 0 0 6px rgba(102, 170, 255, 0.4);
 }
 
-/* Active button (visible one) can also pulse slightly if you want */
-.bb-lang-toggle {
-    position: relative;
+/* Dropdown menu */
+.bb-lang-menu {
+    display: none;
+    position: absolute;
+    top: 52px;            /* below the visible button */
+    right: 0;
+    padding: 10px;
+    background: var(--bb-panel);
+    border: 2px solid var(--bb-blue);
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(102, 170, 255, 0.4);
+    z-index: 2000;
+
+    display: none;
+    flex-direction: column;  /* mobile: vertical stack */
+    gap: 8px;
 }
 
 /* Show when open */
 .bb-lang-dropdown.open .bb-lang-menu {
     display: flex;
+}
+
+/* Desktop: put the language options in a horizontal row under the header */
+@media (min-width: 901px) {
+    .bb-lang-menu {
+        flex-direction: row;  /* <– horizontal */
+        top: 56px;            /* visually under the header line */
+    }
+
+    .bb-lang-menu .lang-btn {
+        width: 46px;
+        height: 46px;
+    }
 }
 
 /* Mobile tweaks */
@@ -334,11 +341,11 @@ section {
         height: 40px;
     }
 
-    .bb-lang-dropdown .bb-lang-menu {
-        top: 48px;
+    .bb-lang-menu {
+        top: 48px;        /* just below the EN circle */
+        right: 0;
     }
 }
-
 
 /* ========================================================================
    9. MOBILE MENU TOGGLE
@@ -376,6 +383,11 @@ section {
 @media (max-width: 900px) {
     .mobile-menu-toggle {
         display: flex;
+    }
+
+    html.bb-menu-open .theme-toggle,
+    html.bb-menu-open .bb-lang-dropdown {
+        display: none !important;
     }
 }
 
@@ -797,6 +809,25 @@ html[data-theme="light"] footer.site-footer {
     top: 10px;
 }
 
+/* ========================================================================
+   GTRANSLATE TOP BANNER OVERRIDES
+   ======================================================================== */
+
+/* Hide the Google Translate banner injected by the widget */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame {
+    display: none !important;
+}
+
+/* Prevent layout shift caused by the banner */
+body {
+    top: 0 !important;
+}
+
+/* Sometimes Google wraps content in a helper span */
+body .goog-te-banner-frame + .skiptranslate {
+    display: none !important;
+}
 
 /* ========================================================================
    17. REDUCED MOTION
@@ -808,4 +839,5 @@ html[data-theme="light"] footer.site-footer {
         animation-duration: 0.01ms !important;
     }
 }
+
 
