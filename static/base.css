@@ -297,6 +297,17 @@ section {
     }
 }
 
+/* Hide desktop language selector on mobile */
+@media (max-width: 900px) {
+    .lang-select {
+        display: none !important;
+    }
+   
+    .header-nav {
+     overflow-y: auto;
+     overflow-x: hidden; /* ensures nothing bleeds outside */
+    }
+}
 
 /* ========================================================================
    9. MOBILE MENU TOGGLE
@@ -787,6 +798,7 @@ html[data-theme="light"] footer.site-footer {
         animation-duration: 0.01ms !important;
     }
 }
+
 
 
 
