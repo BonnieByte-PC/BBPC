@@ -248,54 +248,45 @@ section {
     border-color: var(--bb-blue);
 }
 
-/* MOBILE LANGUAGE SELECTOR — HIDDEN ON DESKTOP */
-.mobile-lang-select {
-    display: none; /* Invisible on desktop */
+/* Mobile theme + language row */
+.mobile-theme-container {
+    display: none;
 }
 
-/* MOBILE VISIBLE AREA */
+/* Visible only on mobile */
 @media (max-width: 900px) {
 
-    /* Show only inside mobile navigation drawer */
-    .mobile-lang-select {
-        display: block;
+    .mobile-theme-container {
+        display: flex;              /* INLINE layout */
+        align-items: center;
+        gap: 12px;                  /* spacing between theme toggle + select */
         width: 100%;
         margin-top: 20px;
         padding-top: 20px;
         border-top: 1px solid var(--bb-border);
     }
 
-    /* MOBILE DROPDOWN — THEME-MATCHED STYLE (like theme toggle) */
-    .mobile-lang-select select {
-        width: 100%;
-        padding: 10px;
-        font-size: 1.1rem;
+    /* Mobile language select styled like theme toggle */
+    .mobile-theme-container select {
         background: transparent;
         border: 2px solid var(--bb-blue);
+        height: 42px;
+        padding: 0 14px;
         border-radius: 6px;
-        color: var(--bb-text);
+        color: var(--bb-blue);
+        font-weight: bold;
+        font-size: 1rem;
         cursor: pointer;
-        font-family: inherit;
         transition: 0.25s ease;
     }
 
-    .mobile-lang-select select:hover,
-    .mobile-lang-select select:focus {
+    .mobile-theme-container select:hover,
+    .mobile-theme-container select:focus {
         background: var(--bb-blue);
         color: #fff;
     }
-
-    /* MOBILE DROPDOWN OPTIONS */
-    .mobile-lang-select select option {
-        background: #fff;
-        color: #000;
-    }
-
-    html[data-theme="dark"] .mobile-lang-select select option {
-        background: #222;
-        color: #fff;
-    }
 }
+
 
 /* Hide desktop language selector on mobile */
 @media (max-width: 900px) {
@@ -307,6 +298,24 @@ section {
      overflow-y: auto;
      overflow-x: hidden; /* ensures nothing bleeds outside */
     }
+}
+
+/* Desktop selector styled like theme toggle */
+.lang-select select {
+    background: transparent;
+    border: 2px solid var(--bb-blue);
+    height: 42px;
+    padding: 0 14px;
+    border-radius: 6px;
+    color: var(--bb-blue);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.lang-select select:hover {
+    background: var(--bb-blue);
+    color: #fff;
 }
 
 /* ========================================================================
@@ -798,6 +807,7 @@ html[data-theme="light"] footer.site-footer {
         animation-duration: 0.01ms !important;
     }
 }
+
 
 
 
