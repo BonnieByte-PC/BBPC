@@ -19,18 +19,38 @@
 
         <!-- MOBILE THEME TOGGLE -->
         <div class="mobile-theme-container">
-          <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle dark mode">
-            <span class="theme-icon">🌙</span>
-          </button>
-
-          <select class="bb-lang-selector" onchange="doGTranslate(this.value)">
-            <option value="en">EN</option>
-            <option value="gd">GD</option>
-            <option value="fr">FR</option>
-            <option value="de">DE</option>
-            <option value="es">ES</option>
-          </select>
+            <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        
+            <button class="lang-btn" data-lang="en" onclick="doGTranslate('en');">
+                <img src="/static/flags/en.svg" alt="EN">
+                <span>EN</span>
+            </button>
+        
+            <button class="lang-btn" data-lang="gd" onclick="doGTranslate('gd');">
+                <img src="/static/flags/gd.svg" alt="GD">
+                <span>GD</span>
+            </button>
+        
+            <button class="lang-btn" data-lang="fr" onclick="doGTranslate('fr');">
+                <img src="/static/flags/fr.svg" alt="FR">
+                <span>FR</span>
+            </button>
+        
+            <button class="lang-btn" data-lang="de" onclick="doGTranslate('de');">
+                <img src="/static/flags/de.svg" alt="DE">
+                <span>DE</span>
+            </button>
+        
+            <button class="lang-btn" data-lang="es" onclick="doGTranslate('es');">
+                <img src="/static/flags/es.svg" alt="ES">
+                <span>ES</span>
+            </button>
         </div>
+
+
+
 
         
         <!-- HOME -->
@@ -97,15 +117,34 @@
           <span class="theme-icon">🌙</span>
         </button>
         
-        <div class="bb-lang-selector">
-          <select onchange="doGTranslate(this.value)">
-            <option value="en">EN</option>
-            <option value="gd">GD</option>
-            <option value="fr">FR</option>
-            <option value="de">DE</option>
-            <option value="es">ES</option>
-          </select>
-        </div>
+      <div class="lang-select">
+          <button class="lang-btn" data-lang="en" onclick="doGTranslate('en');">
+              <img src="/static/flags/en.svg" alt="EN">
+              <span>EN</span>
+          </button>
+      
+          <button class="lang-btn" data-lang="gd" onclick="doGTranslate('gd');">
+              <img src="/static/flags/gd.svg" alt="GD">
+              <span>GD</span>
+          </button>
+      
+          <button class="lang-btn" data-lang="fr" onclick="doGTranslate('fr');">
+              <img src="/static/flags/fr.svg" alt="FR">
+              <span>FR</span>
+          </button>
+      
+          <button class="lang-btn" data-lang="de" onclick="doGTranslate('de');">
+              <img src="/static/flags/de.svg" alt="DE">
+              <span>DE</span>
+          </button>
+      
+          <button class="lang-btn" data-lang="es" onclick="doGTranslate('es');">
+              <img src="/static/flags/es.svg" alt="ES">
+              <span>ES</span>
+          </button>
+      </div>
+
+
         
         <button class="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
           <span></span>
