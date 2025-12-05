@@ -1,6 +1,7 @@
 ---
 layout: legal
 title: 2-Year Warranty | BonnieByte PC
+date: 2025-12-05
 ---
 <p><strong>Effective Date:</strong> 15/11/2025</p>
 <p><strong>Support Email:</strong> <a href="mailto:warranty@bonniebytepc.com">warranty@bonniebytepc.com</a></p>
