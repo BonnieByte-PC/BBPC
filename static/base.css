@@ -204,9 +204,14 @@ section {
     height: 60px;
 }
 
+/* Header actions container */
 .header-actions {
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* space between theme + language + burger */
 }
+
 
 /* ========================================================================
    8. THEME TOGGLE
@@ -294,28 +299,28 @@ section {
         inset 0 0 6px rgba(102, 170, 255, 0.4);
 }
 
-/* Dropdown menu */
-.bb-lang-menu {
-    display: none;
+/* Menu positioning - horizontal bar under the header */
+.bb-lang-dropdown .bb-lang-menu {
     position: absolute;
-    top: 52px;            /* below the visible button */
-    right: 0;
-    padding: 10px;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 8px); /* small gap below header bottom */
+    display: none;
+    flex-direction: row;
+    padding: 8px 10px;
     background: var(--bb-panel);
     border: 2px solid var(--bb-blue);
-    border-radius: 12px;
+    border-radius: 999px; /* pill-shaped bar */
     box-shadow: 0 0 12px rgba(102, 170, 255, 0.4);
     z-index: 2000;
-
-    display: none;
-    flex-direction: column;  /* mobile: vertical stack */
     gap: 8px;
 }
 
-/* Show when open */
+/* When open */
 .bb-lang-dropdown.open .bb-lang-menu {
     display: flex;
 }
+
 
 /* Desktop: put the language options in a horizontal row under the header */
 @media (min-width: 901px) {
@@ -839,5 +844,6 @@ body .goog-te-banner-frame + .skiptranslate {
         animation-duration: 0.01ms !important;
     }
 }
+
 
 
