@@ -76,7 +76,19 @@ title: Cookie Policy | BonnieByte PC
             If we introduce new cookies or analytics tools, this policy will be updated and you will be notified via
             the cookie banner.
         </p>
-        <h2>6. Contact</h2>
+        <h2>6. Change or Withdraw Your Cookie Decision</h2>
+        <p>
+            You can change your cookie decision at any time. Clicking the button below will reset your
+            cookie preferences and show the cookie banner again on your next page load.
+        </p>
+        <button id="bbpc-reset-cookie-consent" class="bbpc-btn bbpc-btn-secondary">
+            Reset Cookie Preferences
+        </button>
+        <p>
+            This allows you to switch between accepting or rejecting optional cookies if we introduce
+            analytics or other non-essential features in the future.
+        </p>
+        <h2>7. Contact</h2>
         <p>Questions? Email <strong><a href="mailto:help@bonniebytepc.com">help@bonniebytepc.com</a></strong></p>
     </div>
 </div>
