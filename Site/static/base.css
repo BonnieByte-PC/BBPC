@@ -675,6 +675,9 @@ footer.site-footer::before {
     opacity: 0.75;
 }
 
+#bbpc-reset-cookie-consent {
+    scroll-margin-top: 100px;
+}
 
 /* ========================================================================
    15. LIGHT THEME OVERRIDES
@@ -716,4 +719,5 @@ html[data-theme="light"] footer.site-footer {
         animation-duration: 0.01ms !important;
     }
 }
+
 
