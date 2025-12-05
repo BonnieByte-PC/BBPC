@@ -178,23 +178,22 @@
   </script>
 
   <script>
-      function doGTranslate(lang) {
-          if (!lang) return;
-      
-          // Ensure format: "en|fr"
-          let full = "en|" + lang;
-      
+      function doGTranslate(langPair) {
+          if (!langPair) return;
+  
           function attempt() {
               const sel = document.querySelector('.gtranslate select');
               if (!sel) return setTimeout(attempt, 50);
-      
-              sel.value = full;
+  
+              // langPair should already look like "en|fr"
+              sel.value = langPair;
               sel.dispatchEvent(new Event('change'));
           }
-      
+  
           attempt();
       }
   </script>
+
 
   <div class="gtranslate" style="display:none;"></div>  
 </footer>
