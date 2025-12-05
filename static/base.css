@@ -232,35 +232,6 @@ section {
 /* ========================================================================
    8.1 LANGUAGE SELECT 
    ======================================================================== */
-
-/* DESKTOP LANGUAGE SELECT - circular, matches theme toggle */
-.lang-select select {
-    background: transparent;
-    color: var(--bb-blue);
-    border: 2px solid var(--bb-blue);
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    font-family: inherit;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.25s ease;
-    text-align: center;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-/* Center the text inside the circle */
-.lang-select select option {
-    text-align: center;
-}
-
-.lang-select select:hover {
-    background: var(--bb-blue);
-    color: #fff;
-}
-
 /* Base: hidden on desktop for mobile container, shown in media query */
 .mobile-theme-container {
     display: none;
@@ -280,35 +251,6 @@ section {
         border-top: 1px solid var(--bb-border);
     }
 
-    /* Mobile language select - circular like theme toggle */
-    .mobile-theme-container select {
-        background: transparent;
-        color: var(--bb-blue);
-        border: 2px solid var(--bb-blue);
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        font-family: inherit;
-        font-weight: bold;
-        font-size: 0.9rem;
-        cursor: pointer;
-        transition: 0.25s ease;
-        text-align: center;
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-    }
-
-    .mobile-theme-container select option {
-        text-align: center;
-    }
-
-    .mobile-theme-container select:hover,
-    .mobile-theme-container select:focus {
-        background: var(--bb-blue);
-        color: #fff;
-    }
-
     /* Hide desktop language selector on mobile */
     .lang-select {
         display: none !important;
@@ -326,6 +268,70 @@ section {
     }
 }
 
+/* ========================================================================
+   LANGUAGE BUTTONS — Circular, matches theme toggle
+   ======================================================================== */
+
+.lang-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--bb-blue);
+    background: transparent;
+    color: var(--bb-blue);
+    font-weight: bold;
+    font-size: 0.7rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: 0.25s ease;
+    overflow: hidden;
+}
+
+.lang-btn img {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.lang-btn span {
+    font-size: 0.6rem;
+    margin-top: 2px;
+    pointer-events: none;
+}
+
+.lang-btn:hover {
+    background: var(--bb-blue);
+    color: #fff;
+}
+
+.lang-btn:hover img {
+    filter: brightness(0.7);
+}
+
+/* Hide text if you want: */
+/* .lang-btn span { display: none; } */
+
+
+/* ========================================================================
+   MOBILE LANGUAGE BUTTONS — same style
+   ======================================================================== */
+@media (max-width: 900px) {
+
+    .mobile-theme-container .lang-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .lang-select {
+        display: none !important;
+    }
+}
 
 /* ========================================================================
    9. MOBILE MENU TOGGLE
@@ -799,3 +805,4 @@ html[data-theme="light"] footer.site-footer {
         animation-duration: 0.01ms !important;
     }
 }
+
