@@ -2,6 +2,11 @@
 layout: legal
 title: Cookie Policy | BonnieByte PC
 date: 2025-12-05
+changelog:
+  - date: 5 December 2025
+    note: "Added reset preferences button and updated cookie management section."
+  - date: 3 December 2025
+    note: "Initial version of Cookie Policy for BonnieByte PC website."
 ---
 <h2>1. What Are Cookies?</h2>
 <p>
@@ -82,8 +87,14 @@ This will remove your previous choice and show the cookie banner again on your n
 </p>
 <h2>5. Changes to This Policy</h2>
 <p>
-    If we introduce new cookies or analytics tools, this policy will be updated and you will be notified via
-    the cookie banner.
+    {% if page.changelog %}
+    <h3>Change History</h3>
+    <ul>
+      {% for entry in page.changelog %}
+        <li><strong>{{ entry.date }}</strong> — {{ entry.note }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 </p>
 <h2 id="bbpc-reset-section">6. Change or Withdraw Your Cookie Decision</h2>
 <p>
