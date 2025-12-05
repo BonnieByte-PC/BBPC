@@ -7,8 +7,8 @@ title: 2-Year Warranty | BonnieByte PC
         <h1>BonnieByte PC – 2-Year Limited Warranty</h1>
         <p><strong>Effective Date:</strong> 15/11/2025</p>
         <p><strong>Brand:</strong> BonnieByte PC</p>
-        <p><strong>Website:</strong> https://www.bonniebytepc.com</p>
-        <p><strong>Support Email:</strong> warranty@bonniebytepc.com</p>
+        <p><strong>Website:</strong> <a href="/">https://www.bonniebytepc.com</a></p>
+        <p><strong>Support Email:</strong> <a href="mailto:warranty@bonniebytepc.com">warranty@bonniebytepc.com</a></p>
         <h2>1. Summary</h2>
         <p>Your Northern Wind 120mm ARGB fan bundle is covered by a <strong>2-year limited warranty</strong> from the date of purchase. If anything goes wrong due to a manufacturing defect, we will repair it, replace the faulty component, or replace the full bundle when appropriate. Clear, fair, and no hassle.</p>
         <h2>2. Who Is Covered?</h2>
