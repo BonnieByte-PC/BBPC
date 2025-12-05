@@ -8,16 +8,13 @@ title: Terms of Service | BonnieByte PC
         <p><strong>Last Updated:</strong> 3 December 2025</p>
         <p><strong>Owner:</strong> BonnieByte PC</p>
         <p><strong>Website:</strong> <a href="/">https://www.bonniebytepc.com</a></p>
-        <!-- TOC will be injected here by warranty.js -->
         <h2>1. Introduction</h2>
         <p>
             These Terms of Service (“Terms”) explain how you may use the BonnieByte PC website
             and any related services we provide. By accessing or using this website, you agree to
             be bound by these Terms.
         </p>
-        <p>
-            If you do not agree with these Terms, please do not use the website.
-        </p>
+        <p>If you do not agree with these Terms, please do not use the website.</p>
         <h2>2. Who We Are</h2>
         <p>
             BonnieByte PC is a PC components brand based in Scotland, United Kingdom.
@@ -86,7 +83,7 @@ title: Terms of Service | BonnieByte PC
         <ul>
             <li>Logos, branding, and graphics</li>
             <li>Text, product descriptions, and documentation</li>
-            <li>Images, diagrams, and page layouts</li>
+            <li>Images, diagrams, and layouts</li>
             <li>User manuals and guides</li>
         </ul>
         <p>
@@ -106,14 +103,14 @@ title: Terms of Service | BonnieByte PC
         </ul>
         <h2>7. Links to Other Websites</h2>
         <p>
-            Our website may contain links to third-party websites (such as Amazon or social media).
-            These websites are not under our control, and we are not responsible for their content
-            or policies. We recommend reading their terms and privacy policies.
+            Our website may contain links to third-party websites (such as Amazon, MailerLite, or social media).
+            These websites are not under our control, and we are not responsible for their content or
+            privacy practices. We recommend reading their terms and privacy policies.
         </p>
         <h2>8. Limitation of Liability</h2>
         <p>
-            Nothing in these Terms excludes or limits our liability where it would be unlawful to
-            do so, including for death or personal injury caused by our negligence or for fraud.
+            Nothing in these Terms excludes or limits our liability where it would be unlawful to do so,
+            including for death or personal injury caused by our negligence or for fraud.
         </p>
         <p>
             To the fullest extent permitted by law, we will not be liable for:
@@ -131,10 +128,6 @@ title: Terms of Service | BonnieByte PC
         <p>
             These Terms do not affect your statutory consumer rights.
         </p>
-        <p>
-            If you live in Scotland, England, Wales, or Northern Ireland, you are protected by
-            UK consumer law, which may give you additional rights beyond what we set out here.
-        </p>
         <h2>10. Governing Law and Jurisdiction</h2>
         <p>
             These Terms are governed by the laws of Scotland. If you live elsewhere in the United
@@ -144,12 +137,22 @@ title: Terms of Service | BonnieByte PC
             Any disputes relating to these Terms will normally be handled by the Scottish courts,
             unless your local law requires a different approach.
         </p>
-        <h2>11. Changes to These Terms</h2>
+        <h2>11. Cookies and Privacy</h2>
+        <p>
+            By using this website, you acknowledge that we use <strong>essential cookies only</strong> to operate 
+            the site, secure forms (via reCAPTCHA), save preferences (such as theme), and remember cookie
+            consent decisions. We do not use analytics or advertising cookies.
+        </p>
+        <p>
+            For full details, please see our <a href="/legal/cookie-policy">Cookie Policy</a> and 
+            <a href="/legal/privacy-policy">Privacy Policy</a>.
+        </p>
+        <h2>12. Changes to These Terms</h2>
         <p>
             We may update these Terms from time to time. When we do, we will update the “Last Updated”
             date at the top of this page. By continuing to use the website, you accept the revised Terms.
         </p>
-        <h2>12. Contact Us</h2>
+        <h2>13. Contact Us</h2>
         <p>If you have any questions about these Terms, you can contact us at:</p>
         <p><strong>Email:</strong> hello@bonniebytepc.com</p>
     </div>
