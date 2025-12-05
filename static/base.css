@@ -230,48 +230,15 @@ section {
 
 
 /* ========================================================================
-   8.1 LANGUAGE SELECT 
-   ======================================================================== */
-/* Base: hidden on desktop for mobile container, shown in media query */
-.mobile-theme-container {
-    display: none;
-}
-
-/* MOBILE-ONLY HEADER CONTROLS (theme + language inline) */
-@media (max-width: 900px) {
-
-    /* Inline row inside mobile nav drawer */
-    .mobile-theme-container {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        width: 100%;
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid var(--bb-border);
-    }
-
-    /* Hide desktop language selector on mobile */
-    .lang-select {
-        display: none !important;
-    }
-
-    /* Hide desktop theme toggle on mobile (use mobile one instead) */
-    .header-actions #theme-toggle {
-        display: none !important;
-    }
-
-    /* Ensure nav drawer content doesn't bleed outside */
-    .header-nav {
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-}
-
-/* ========================================================================
-   LANGUAGE BUTTONS — Circular, matches theme toggle
+   8.1 LANGUAGE DROPDOWN (shared desktop + mobile)
    ======================================================================== */
 
+.bb-lang-dropdown {
+    position: relative;
+    margin-left: 10px;
+}
+
+/* Base button style – circular, matches theme toggle */
 .lang-btn {
     width: 42px;
     height: 42px;
@@ -315,55 +282,57 @@ section {
     filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.7));
 }
 
-/* Active Selected Language */
-.lang-btn.active {
+/* Active language highlight */
+.bb-lang-option.active {
     border-color: var(--bb-blue);
     background: rgba(102, 170, 255, 0.15);
     box-shadow:
         0 0 10px rgba(102, 170, 255, 0.6),
         inset 0 0 6px rgba(102, 170, 255, 0.4);
-    transform: scale(1.1);
 }
 
-/* Pulsing ring animation for active language */
-.lang-btn.active {
-    animation: bb-lang-pulse 1.6s ease-in-out infinite;
+/* Active button (visible one) can also pulse slightly if you want */
+.bb-lang-toggle {
+    position: relative;
 }
 
-@keyframes bb-lang-pulse {
-    0% {
-        box-shadow:
-            0 0 10px rgba(102, 170, 255, 0.6),
-            inset 0 0 6px rgba(102, 170, 255, 0.4);
-    }
-    50% {
-        box-shadow:
-            0 0 16px rgba(102, 170, 255, 0.85),
-            inset 0 0 10px rgba(102, 170, 255, 0.55);
-    }
-    100% {
-        box-shadow:
-            0 0 10px rgba(102, 170, 255, 0.6),
-            inset 0 0 6px rgba(102, 170, 255, 0.4);
-    }
+/* Dropdown menu */
+.bb-lang-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 52px;
+    right: 0;
+    padding: 10px;
+    background: var(--bb-panel);
+    border: 2px solid var(--bb-blue);
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(102, 170, 255, 0.4);
+    z-index: 2000;
+    gap: 8px;
 }
 
+/* Show when open */
+.bb-lang-dropdown.open .bb-lang-menu {
+    display: flex;
+}
 
-
-/* ========================================================================
-   MOBILE LANGUAGE BUTTONS — same style
-   ======================================================================== */
+/* Mobile tweaks */
 @media (max-width: 900px) {
-
-    .mobile-theme-container .lang-btn {
-        width: 42px;
-        height: 42px;
+    .bb-lang-dropdown {
+        margin-left: 8px;
     }
 
-    .lang-select {
-        display: none !important;
+    .lang-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .bb-lang-menu {
+        top: 48px;
     }
 }
+
 
 /* ========================================================================
    9. MOBILE MENU TOGGLE
@@ -638,10 +607,6 @@ svg {
     html[data-theme="light"] .nav-link:hover {
         color: var(--bb-blue);
     }
-
-    html[data-theme="light"] .mobile-theme-container {
-        border-top-color: rgba(0, 0, 0, 0.08);
-    }
 }
 
 
@@ -837,5 +802,3 @@ html[data-theme="light"] footer.site-footer {
         animation-duration: 0.01ms !important;
     }
 }
-
-
