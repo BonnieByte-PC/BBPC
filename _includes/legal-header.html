@@ -16,18 +16,6 @@
   <a href="mailto:help@bonniebytepc.com">help@bonniebytepc.com</a>
 </p>
 
-<!-- Changelog Section -->
-{% if page.changelog %}
-  <h3>Change History</h3>
-  <ul>
-    {% for entry in page.changelog %}
-      <li>
-        <strong>{{ entry.date }}</strong> — {{ entry.note }}
-      </li>
-    {% endfor %}
-  </ul>
-{% endif %}
-
 <!-- GitHub Commit-Based Auto Last Updated -->
 <script>
 document.addEventListener("DOMContentLoaded", async () => {
@@ -80,5 +68,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 }
 </script>
 {%- endcomment -%}
+
 
 
