@@ -209,7 +209,7 @@ section {
 }
 
 .header-logo img {
-    height: 80px;
+    height: 100px;
     transition: 0.25s ease;
 }
 
@@ -958,6 +958,7 @@ body .goog-te-banner-frame + .skiptranslate {
         animation-duration: 0.01ms !important;
     }
 }
+
 
 
 
