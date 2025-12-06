@@ -73,6 +73,11 @@ body {
     font-family: 'Orbitron', sans-serif;
 }
 
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
 /* ========================================================================
    4. TYPOGRAPHY
    ======================================================================== */
@@ -963,6 +968,7 @@ body .goog-te-banner-frame + .skiptranslate {
         animation-duration: 0.01ms !important;
     }
 }
+
 
 
 
