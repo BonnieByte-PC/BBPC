@@ -976,8 +976,32 @@ body .goog-te-banner-frame + .skiptranslate {
 }
 
 
+/* ========================================================================
+   17. GTRANSLATE FIX
+   ======================================================================== */
 
 
+/* FIX: GTranslate blocking mobile interactions */
+body .skiptranslate > span {
+    display: none !important;
+}
+
+body .goog-te-gadget {
+    font-size: 0 !important; /* Hide injected text */
+}
+
+.goog-te-menu-frame.skiptranslate {
+    z-index: 999999 !important;
+}
+
+.goog-te-gadget span,
+.goog-te-gadget img {
+    display: none !important;
+}
+
+.notranslate {
+    unicode-bidi: plaintext !important;
+}
 
 
 
