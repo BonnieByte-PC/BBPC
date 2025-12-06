@@ -50,13 +50,10 @@
 <link rel="stylesheet" href="/static/base.css">
 <link rel="stylesheet" href="/static/dark-theme.css">
 <link rel="stylesheet" href="/static/embeds.css">
+<link rel="stylesheet" href="/static/legal.css">
 
 {% if page.url == "/" or page.url == "/index.html" %}
 <link rel="stylesheet" href="/static/home.css">
-{% endif %}
-
-{% if page.url contains "/legal/" or page.url == "/docs/" %}
-<link rel="stylesheet" href="/static/legal.css">
 {% endif %}
 
 {% if page.url contains "/airflow/" %}
