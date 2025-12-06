@@ -188,7 +188,7 @@ section {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(13, 13, 13, 0.95);
+    background: var(--bb-panel);
     backdrop-filter: blur(12px);
     border-bottom: 2px solid var(--bb-blue);
     padding: 12px 0;
@@ -956,6 +956,7 @@ body .goog-te-banner-frame + .skiptranslate {
         animation-duration: 0.01ms !important;
     }
 }
+
 
 
 
