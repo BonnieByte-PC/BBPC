@@ -3,67 +3,36 @@ layout: default
 title: Support | BonnieByte PC
 ---
 <div class="container">
-    <div class="support-panel">
+    <div class="policy-container">
         <h1>Support</h1>
         <p>Need help with your BonnieByte PC product? You’re in the right place.</p>
-       <div class="support-panel">
         <h2>Contact Emails</h2>
-        <p>You can reach us using any of the following addresses:</p>
         <ul>
-            <li><strong>hello@bonniebytepc.com</strong> – General enquiries &amp; business</li>
-            <li><strong>help@bonniebytepc.com</strong> – General support &amp; questions</li>
-            <li><strong>orders@bonniebytepc.com</strong> – Order questions &amp; updates</li>
-            <li><strong>returns@bonniebytepc.com</strong> – Returns &amp; refunds</li>
+            <li><strong>hello@bonniebytepc.com</strong> – General enquiries & business</li>
+            <li><strong>help@bonniebytepc.com</strong> – General support & questions</li>
+            <li><strong>orders@bonniebytepc.com</strong> – Order questions & updates</li>
+            <li><strong>returns@bonniebytepc.com</strong> – Returns & refunds</li>
             <li><strong>support@bonniebytepc.com</strong> – Technical support</li>
-            <li><strong>warranty@bonniebytepc.com</strong> – Warranty claims &amp; replacements</li>
+            <li><strong>warranty@bonniebytepc.com</strong> – Warranty claims & replacements</li>
         </ul>
-        <p>
-            We aim to respond to most emails within 2–3 business days. During busy periods or
-            launches, it may take slightly longer, but we’ll always do our best to help.
-        </p>
-       </div>
-       <div class="support-panel">
-        <h2>Warranty &amp; Returns</h2>
-        <p>
-            For detailed information on returns, shipping, and warranty, please see:
-        </p>
+        <h2>Warranty & Returns</h2>
+        <p>For detailed information, see:</p>
         <ul>
             <li><a href="/legal/warranty"><span class="orbitron">2-Year Limited Warranty</span></a></li>
-            <li><a href="/legal/returns"><span class="orbitron">Returns &amp; Refund Policy</span></a></li>
+            <li><a href="/legal/returns"><span class="orbitron">Returns & Refund Policy</span></a></li>
             <li><a href="/legal/shipping"><span class="orbitron">Shipping Policy</span></a></li>
         </ul>
-       </div>
-       <div class="support-panel">
         <h2>Amazon Orders</h2>
-        <p>
-            If you purchased your product through Amazon, the fastest route for returns and refunds
-            is usually via your Amazon account:
-        </p>
+        <p>The fastest way to return items purchased on Amazon is through your account:</p>
         <ul>
-            <li>Go to <strong>Your Orders</strong> on Amazon</li>
+            <li>Go to <strong>Your Orders</strong></li>
             <li>Select your BonnieByte PC product</li>
-            <li>Choose “Return or Replace Items” as appropriate</li>
+            <li>Choose “Return or Replace Items”</li>
         </ul>
-        <p>
-            You are always welcome to email us for help with setup, troubleshooting, and warranty
-            questions even if you bought through Amazon.
-        </p>
-       </div>
-       <div class="support-panel">
-        <h2>Troubleshooting &amp; Documentation</h2>    
-        <p>
-            For manuals, setup guides, and troubleshooting help, please visit our
-            <a href="/docs">Documentation</a> page. We are gradually expanding our guides as
-            more products launch and more feedback comes in.
-        </p>
-       </div>
-       <div class="support-panel">
+        <h2>Troubleshooting & Documentation</h2>
+        <p>For manuals and setup help, visit our <a href="/docs">Documentation</a> page.</p>
         <h2>Contact Form (Coming Soon)</h2>
-        <p>
-            We’re working on a simple contact form to make it even easier to reach us without leaving
-            the site. In the meantime, emailing one of the addresses above is the best way to get in touch.
-        </p>
-       </div>
+        <p>A built-in support form is on the way.</p>
     </div>
 </div>
 
