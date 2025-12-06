@@ -8,12 +8,12 @@ title: Support | BonnieByte PC
         <p>Need help with your BonnieByte PC product? You’re in the right place.</p>
         <h2>Contact Emails</h2>
         <ul>
-            <li><strong>hello@bonniebytepc.com</strong> – General enquiries & business</li>
-            <li><strong>help@bonniebytepc.com</strong> – General support & questions</li>
-            <li><strong>orders@bonniebytepc.com</strong> – Order questions & updates</li>
-            <li><strong>returns@bonniebytepc.com</strong> – Returns & refunds</li>
-            <li><strong>support@bonniebytepc.com</strong> – Technical support</li>
-            <li><strong>warranty@bonniebytepc.com</strong> – Warranty claims & replacements</li>
+            <li><strong><a href="mailto:hello@bonniebytepc.com">hello@bonniebytepc.com</a></strong> – General enquiries & business</li>
+            <li><strong><a href="mailto:help@bonniebytepc.com">help@bonniebytepc.com</a></strong> – General support & questions</li>
+            <li><strong><a href="mailto:orders@bonniebytepc.com">orders@bonniebytepc.com</a></strong> – Order questions & updates</li>
+            <li><strong><a href="mailto:returns@bonniebytepc.com">returns@bonniebytepc.com</a></strong> – Returns & refunds</li>
+            <li><strong><a href="mailto:support@bonniebytepc.com">support@bonniebytepc.com</a></strong> – Technical support</li>
+            <li><strong><a href="mailto:warranty@bonniebytepc.com">warranty@bonniebytepc.com</a></strong> – Warranty claims & replacements</li>
         </ul>
         <h2>Warranty & Returns</h2>
         <p>For detailed information, see:</p>
