@@ -354,4 +354,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setActiveLangUI(initialLang);
 });
 
+document.querySelectorAll('.lang-btn span').forEach(el => {
+    el.classList.add('notranslate');
+});
 
