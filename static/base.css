@@ -214,7 +214,7 @@ section {
 }
 
 .site-header.shrink .header-logo img {
-    height: 60px;
+    height: 80px;
 }
 
 /* Header actions container */
@@ -958,6 +958,7 @@ body .goog-te-banner-frame + .skiptranslate {
         animation-duration: 0.01ms !important;
     }
 }
+
 
 
 
