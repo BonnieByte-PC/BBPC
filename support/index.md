@@ -28,9 +28,9 @@ title: Support | BonnieByte PC
             For detailed information on returns, shipping, and warranty, please see:
         </p>
         <ul>
-            <li><a href="/legal/warranty">2-Year Limited Warranty</a></li>
-            <li><a href="/legal/returns">Returns &amp; Refund Policy</a></li>
-            <li><a href="/legal/shipping">Shipping Policy</a></li>
+            <li><a href="/legal/warranty"><span class="orbitron">2-Year Limited Warranty</span></a></li>
+            <li><a href="/legal/returns"><span class="orbitron">Returns &amp; Refund Policy</span></a></li>
+            <li><a href="/legal/shipping"><span class="orbitron">Shipping Policy</span></a></li>
         </ul>
        </div>
        <div class="support-panel">
