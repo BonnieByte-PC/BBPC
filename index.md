@@ -7,7 +7,7 @@ title: Home | BonnieByte PC
         <div class="hero-main">
             <picture>
                 <source srcset="/images/LogoDetail.webp" type="image/webp">
-                <img src="/images/LogoDetail.png" alt="Bonnie Byte PC" class="hero-logo">
+                <img src="/images/LogoDetail.png" alt="BonnieByte PC" class="hero-logo">
             </picture>
             <p class="hero-tagline"><span class="orbitron">Certified Performance, Crafted with Scottish Pride.</span></p>
             <p class="hero-subtitle">
@@ -106,7 +106,7 @@ title: Home | BonnieByte PC
 <section class="section section-why" id="why">
     <div class="container">
         <header class="section-header">
-            <h2>Why BonnieByte PC?</h2>
+            <h2>Why <span class="orbitron">BonnieByte PC</span>?</h2>
             <p>Because you shouldn’t have to choose between sketchy no-name parts and overpriced big brands.</p>
         </header>
         <div class="why-grid">
@@ -137,7 +137,7 @@ title: Home | BonnieByte PC
         </header>
         <div class="story-body">
             <p>
-                Bonnie Byte PC was founded by a PC enthusiast in Scotland who was tired of the same choice:
+                <span class="orbitron">BonnieByte PC</span> was founded by a PC enthusiast in Scotland who was tired of the same choice:
                 pay over the odds for a big logo, or gamble on low-quality generics.
             </p>
             <p>
@@ -162,7 +162,7 @@ title: Home | BonnieByte PC
             <div class="warranty-card">
                 <h3>2-Year Warranty</h3>
                 <p>
-                    All BonnieByte PC products are backed by a 2-year warranty against manufacturing defects,
+                    All <span class="orbitron">BonnieByte PC</span> products are backed by a 2-year warranty against manufacturing defects,
                     so you can build with confidence.
                 </p>
             </div>
