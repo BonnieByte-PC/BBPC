@@ -5,7 +5,7 @@ title: Products | BonnieByte PC
 <section class="section section-products" id="products">
     <div class="container">
         <header class="section-header">
-            <h1>Products</h1>
+            <div class="policy-container"><h1>Products</h1></div>
             <p>High-quality PC cooling and components, built for real-world rigs.</p>
         </header>
         <div class="product-grid">
