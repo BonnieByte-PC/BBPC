@@ -9,7 +9,7 @@ title: Home | BonnieByte PC
                 <source srcset="/images/LogoDetail.webp" type="image/webp">
                 <img src="/images/LogoDetail.png" alt="Bonnie Byte PC" class="hero-logo">
             </picture>
-            <p class="hero-tagline">Certified Performance, Crafted with Scottish Pride.</p>
+            <p class="hero-tagline"><span class="orbitron">Certified Performance, Crafted with Scottish Pride.</span></p>
             <p class="hero-subtitle">
                 Beautiful, high-performance PC cooling without the premium price tag. 
                 UKCA-ready, value-focused, and built for real-world rigs.
