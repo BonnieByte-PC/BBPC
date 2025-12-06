@@ -2,12 +2,13 @@
 layout: default
 title: Products | BonnieByte PC
 ---
-<section class="section" aria-label="Products overview">
-    <div class="container">
+<div class="container">
+    <div class="policy-container">
         <header class="section-header">
             <h1>Products</h1>
             <p>High-quality PC cooling and components, built for real-world rigs.</p>
         </header>
+    </div>
     <div class="product-grid">
         <!-- Main Product: Northern Wind -->
         <article class="product-card">
@@ -90,4 +91,3 @@ title: Products | BonnieByte PC
         </article>
     </div>
 </div>
-</section>
