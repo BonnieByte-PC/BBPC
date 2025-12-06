@@ -3,12 +3,11 @@ layout: default
 title: Products | BonnieByte PC
 ---
 <div class="container">
-    <div class="policy-container">
+    <section class="section">
         <header class="section-header">
             <h1>Products</h1>
             <p>High-quality PC cooling and components, built for real-world rigs.</p>
         </header>
-    </div>
     <div class="product-grid">
         <!-- Main Product: Northern Wind -->
         <article class="product-card">
