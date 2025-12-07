@@ -17,6 +17,7 @@ title: Warranty Information | BonnieByte PC
                     </a>
                     – {{ p.full_name }}
                 </li>
+                {{ site.data.products.northern_wind_120.warranty_enabled | inspect }}
             {% endif %}
         {% endfor %}
         </ul>
