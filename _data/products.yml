@@ -1,7 +1,8 @@
 northern_wind_120:
   sku: "BB-NW120-ARGB-001"
   full_name: "Northern Wind 120mm ARGB Fan Bundle"
-  short_name: "Northern Wind"
+  short_name: "Northern Wind 120"
+  html_name: "<span class='orbitron notranslate'>NORTHERN WIND 120</span>"
   warranty_enabled: true
   manual_enabled: true
   product_type: "fan_kit"
