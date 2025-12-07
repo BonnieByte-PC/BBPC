@@ -25,9 +25,9 @@ title: Home | BonnieByte PC
         <div class="hero-highlight">
             <div class="hero-highlight-card">
                 <h2>Launching Soon</h2>
-                <p>Our debut ARGB fan bundle is almost ready. Be first in line for launch-day pricing and early stock.</p>
+                <p>Our debut <span class="notranslate">NORTHERN WIND</span> ARGB fan bundle is almost ready. Be first in line for launch-day pricing and early stock.</p>
                 <ul class="hero-list">
-                    <li>5× 120mm ARGB fans</li>
+                    <li><span class="notranslate">NORTHERN WIND</span>5× 120mm ARGB fans</li>
                     <li>Included control hub</li>
                     <li>Addressable lighting support</li>
                     <li>Quiet performance-focused design</li>
@@ -73,13 +73,13 @@ title: Home | BonnieByte PC
                     </div>
                 </div>
                 <div class="product-body">
-                    <h3>120mm ARGB Fan Bundle (5-Pack)</h3>
+                    <h3><span class="notranslate">NORTHERN WIND</span> 120 ARGB Fan Bundle (5-Pack)</h3>
                     <p>
                         A complete cooling and lighting upgrade in one kit. Quiet 120mm fans, vivid ARGB lighting,
                         and an included control hub for simple, clean builds.
                     </p>
                     <ul class="product-features">
-                        <li>5× 120mm PWM ARGB fans</li>
+                        <li><span class="notranslate">NORTHERN WIND</span>5× 120mm PWM ARGB fans</li>
                         <li>Addressable RGB hub included</li>
                         <li>Optimised for static pressure & airflow</li>
                         <li>Sleeved black cables for a clean look</li>
