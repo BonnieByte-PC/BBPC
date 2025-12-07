@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Warranty Information | BonnieByte PC
+title: "Warranty Information | BonnieByte PC"
 ---
 <div class="container">
     <div class="policy-container">
