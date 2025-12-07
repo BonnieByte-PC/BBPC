@@ -207,19 +207,39 @@
 
     // Used by our custom language buttons
     function doGTranslate(lang) {
-      if (!lang) return;
+        if (!lang) return;
 
-      function attempt() {
-        // Google injects this <select>
-        const sel = document.querySelector('select.goog-te-combo');
-        if (!sel) {
-          // Try again shortly if widget not ready yet
-          return setTimeout(attempt, 100);
+        function attempt(count = 0) {
+             if (count > 50) return; // give up after ~5 seconds
+
+             let combo = null;
+
+             // 1. Try inline select
+             combo = document.querySelector(".goog-te-combo");
+             if (combo) {
+                 combo.value = lang;
+                 combo.dispatchEvent(new Event("change"));
+                 return;
+             }
+
+             // 2. Try iframe mode
+             const iframe = document.querySelector("iframe.goog-te-menu-frame");
+             if (iframe) {
+                 try {
+                     const innerCombo = iframe.contentDocument.querySelector(".goog-te-combo");
+                     if (innerCombo) {
+                         innerCombo.value = lang;
+                         innerCombo.dispatchEvent(new Event("change"));
+                         return;
+                     }
+                 } catch(e) {
+                     // Safari iframe sandbox timing
+                 }
+          }
+
+          // 3. Retry until the select actually exists
+          setTimeout(() => attempt(count + 1), 100);
         }
-
-        sel.value = lang;
-        sel.dispatchEvent(new Event('change'));
-      }
 
       attempt();
     }
