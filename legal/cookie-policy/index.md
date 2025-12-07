@@ -24,6 +24,9 @@ changelog:
     <li><strong>bb_session_id</strong> – Creates an anonymous session identifier for site functions. <em>Duration:</em> Session only.</li>
     <li><strong>bb_csrf</strong> – Security token used to protect forms from abuse. <em>Duration:</em> Session only.</li>
     <li><strong>bb_lang</strong> – Saves language/region preferences for future localisation. <em>Duration:</em> 6–12 months.</li>
+    <li><strong>bb_banner_*</strong> – Remembers when you dismiss operational notices (e.g., maintenance or shipping alerts) so that they are not repeatedly shown. <em>Duration:</em> 1–30 days.</li>
+    <li><strong>bb_support_origin</strong> – Remembers the page you were on before opening the Support page, helping us provide smoother navigation. <em>Duration:</em> 1 day.</li>
+
 </ul>
 <p>
     These cookies do <strong>not</strong> identify you, track you, or share data with any third parties.
