@@ -42,7 +42,8 @@ Each time you push changes to the `main` branch, GitHub Pages rebuilds and publi
 
 ## 📦 Product Registry
 
-All product data is located in: _data/products.yml
+All product data is located in: 
+- _data/products.yml
 
 Each product entry controls:
 - Warranty page generation  
@@ -78,9 +79,9 @@ Use `/layouts` and `/includes`.
 # 🧑‍💻 Local Development (Optional)
 
 To run the site locally:
-gem install bundler jekyll
-bundle install
-bundle exec jekyll serve
+- gem install bundler jekyll
+- bundle install
+- bundle exec jekyll serve
 
 Then visit:  
 `http://localhost:4000`
