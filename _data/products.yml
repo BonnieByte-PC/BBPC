@@ -29,6 +29,7 @@ northern_wind_120:
     - "Static-pressure airflow design"
   amazon_url: "https://amazon.co.uk"
   warranty_length: "2-Year Warranty"
+  featured: true
 
 template_product:
   sku: "SKU-HERE"
