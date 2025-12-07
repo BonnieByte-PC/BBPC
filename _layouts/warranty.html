@@ -1,23 +1,53 @@
 ---
-layout: legal
+layout: default
 ---
-{% assign product = site.data.products[page.product_id] %}
-{% if product == nil %}
-<p>Error: Product not found in registry.</p>
-{% endif %}
-<p><strong>Effective Date:</strong> {{ page.effective_date }}</p>
-<p><strong>Support Email:</strong> <a href="mailto:warranty@bonniebytepc.com">warranty@bonniebytepc.com</a></p>
-<h2>1. Summary</h2>
-<p>Your {{ product.html_name }} ({{ product.full_name }}, SKU: {{ product.sku }}) is covered by a <strong>2-year limited warranty</strong> from the date of purchase. If a failure occurs due to a manufacturing defect, we will repair or replace the faulty component, or where appropriate, replace the full {{ product.short_name }} bundle.</p>
-{% include warranty_sections/covered.html product=product %}
-{% include warranty_sections/not_covered.html product=product %}
-{% include warranty_sections/promise.html product=product %}
-{% include warranty_sections/checks.html product=product %}
-{% include warranty_sections/resolution.html product=product %}
-{% include warranty_sections/discounted.html product=product %}
-{% include warranty_sections/process.html product=product %}
-{% include warranty_sections/requirements.html product=product %}
-{% include warranty_sections/liability.html product=product %}
-{% include warranty_sections/law.html product=product %}
-{% include warranty_sections/lifetime.html product=product %}
-{% include warranty_sections/contact.html %}
+{% assign p = site.data.products[page.product_id] %}
+<div class="container">
+  <div class="policy-container">
+    <!-- PRODUCT TITLE -->
+    <header class="page-header">
+      <h1>
+        <span class="orbitron notranslate">{{ p.short_name | upcase }}</span>
+        Warranty
+      </h1>
+      <p class="product-full-name">{{ p.full_name }}</p>
+    </header>
+    <!-- INTRO -->
+    <p>
+      This page outlines the full warranty coverage for your
+      <span class="orbitron notranslate">{{ p.html_name }}</span> product,
+      including what’s covered, what isn’t, how to request support,
+      and your rights as a customer.
+    </p>
+    <!-- COVERED -->
+    {% include warranty_sections/covered.html %}
+    <!-- NOT COVERED -->
+    {% include warranty_sections/not_covered.html %}
+    <!-- OUR PROMISE -->
+    {% include warranty_sections/promise.html %}
+    <!-- CHECKS BEFORE SUBMITTING -->
+    {% include warranty_sections/checks.html %}
+    <!-- HOW WE RESOLVE ISSUES -->
+    {% include warranty_sections/resolution.html %}
+    <!-- DISCOUNTED REPLACEMENTS -->
+    {% include warranty_sections/discounted.html %}
+    <!-- HOW TO SUBMIT A CLAIM -->
+    {% include warranty_sections/process.html %}
+    <!-- REQUIRED INFORMATION -->
+    {% include warranty_sections/requirements.html %}
+    <!-- LIABILITY -->
+    {% include warranty_sections/liability.html %}
+    <!-- GOVERNING LAW -->
+    {% include warranty_sections/law.html %}
+    <!-- LIFETIME SUPPORT -->
+    {% include warranty_sections/lifetime.html %}
+    <!-- CONTACT -->
+    {% include warranty_sections/contact.html %}
+    <!-- BACK LINK -->
+    <p style="margin-top: 30px;">
+      <a href="/warranty/" class="button button-secondary">
+        ← Back to Warranty Directory
+      </a>
+    </p>
+  </div>
+</div>
