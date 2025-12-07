@@ -18,7 +18,7 @@ title: Support | BonnieByte PC
         <h2>Warranty & Returns</h2>
         <p>For detailed information, see:</p>
         <ul>
-            <li><a href="/legal/warranty"><span class="orbitron">2-Year Limited Warranty</span></a></li>
+            <li><a href="/warranty/"><span class="orbitron">Warranty Pages</span></a></li>
             <li><a href="/legal/returns"><span class="orbitron">Returns & Refund Policy</span></a></li>
             <li><a href="/legal/shipping"><span class="orbitron">Shipping Policy</span></a></li>
         </ul>
