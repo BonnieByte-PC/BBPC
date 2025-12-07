@@ -326,17 +326,27 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.addEventListener("click", (e) => {
             e.stopPropagation();
             const lang = btn.dataset.lang;
+        
+            // Update active UI
             setActiveLangUI(lang);
+        
+            // Close dropdown
             dropdown.classList.remove("open");
             activeBtn.setAttribute("aria-expanded", "false");
-
+        
+            // Save user preference
+            if (typeof BBCookies !== "undefined") {
+                BBCookies.set("bb_lang", lang, 365);
+            }
+        
             // Trigger translation
             if (typeof doGTranslate === "function") {
                 doGTranslate(lang);
-            } else if (window.gtranslateSettings && typeof window.gtranslateSettings.switchLanguage === "function") {
+            } else if (window.gtranslateSettings?.switchLanguage) {
                 window.gtranslateSettings.switchLanguage(lang);
             }
         });
+
     });
 
     // Close dropdown on outside click
@@ -348,13 +358,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Initialise from GTranslate cookie if present
-    const match = document.cookie.match(/googtrans=\/auto\/([a-z]+)/);
-    const initialLang = match ? match[1] :
-        (window.gtranslateSettings && window.gtranslateSettings.default_language) || "en";
+    // Match both /auto/xx and /en/xx and support 2-part codes
+    const match = document.cookie.match(/googtrans=\/[a-zA-Z-]+\/([a-zA-Z-]+)/);
+    
+    // Base detected language
+    let initialLang = match ? match[1].toLowerCase() :
+        ((window.gtranslateSettings && window.gtranslateSettings.default_language) || "en");
+    
+    // Apply UI update for the detected language
     setActiveLangUI(initialLang);
+    
+    // If bb_lang exists, override googtrans cookie
+    const bbLang = typeof BBCookies !== "undefined" ? BBCookies.get("bb_lang") : null;
+    
+    if (bbLang && bbLang !== initialLang) {
+        setActiveLangUI(bbLang);
+        if (typeof doGTranslate === "function") {
+            doGTranslate(bbLang);
+        }
+    }
+
 });
 
 document.querySelectorAll('.lang-btn span').forEach(el => {
     el.classList.add('notranslate');
 });
+
 
