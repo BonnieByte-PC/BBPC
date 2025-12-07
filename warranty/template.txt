@@ -1,0 +1,6 @@
+---
+layout: warranty
+title: "Warranty | {{ site.data.products[page.product_id].short_name | upcase }}"
+product_id: "highland_flow_rgb"
+effective_date: "2026-02-10"
+---
