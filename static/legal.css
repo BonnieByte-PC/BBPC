@@ -285,6 +285,87 @@ html[data-theme="light"] .warning {
     }
 }
 
+    /* ============================================================
+       WARRANTY STYLING
+       ============================================================ */
 
+/* Warranty Directory Grid */
+.warranty-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* Warranty card */
+.warranty-card {
+  display: block;
+  background: var(--bb-surface);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  text-decoration: none;
+  padding: 15px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: inherit;
+}
+
+.warranty-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+/* Thumbnail */
+.warranty-card .thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warranty-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* NEW badge */
+.badge.new {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #00cc66;
+  color: #000;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* Info section */
+.warranty-info {
+  margin-top: 10px;
+}
+
+.warranty-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.meta {
+  display: flex;
+  gap: 10px;
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+.full-name {
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
 
 
