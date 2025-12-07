@@ -73,7 +73,6 @@ title: Home | BonnieByte PC
                 <article class="product-card">
                   <a href="/products/{{ id }}/" class="product-media">
                     <img src="{{ p.thumbnail }}" alt="{{ p.full_name }}" class="product-image">
-                    <img src="{{ p.thumbnail | default: '/images/products/default.png' }}" …>
                   </a>
                   <div class="product-body">
                     <h3>
