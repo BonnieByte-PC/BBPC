@@ -1,20 +1,15 @@
 /* ============================================================
-   BONNIEBYTE PC - WARRANTY PAGE STYLES
-   (warranty.css)
-   Updated for 2025 brand styling + unified TOC design
-   ============================================================ */
-
-/* ============================================================
-   PAGE WRAPPER
+   BONNIEBYTE PC — LEGAL PAGE STYLES (Cleaned + Polished)
+   Matches global spacing rhythm • Warranty-aligned • Readability improved
    ============================================================ */
 
 .policy-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: var(--space-lg) var(--space-md);
     background: var(--bb-surface);
     border: 1px solid var(--bb-border);
-    border-radius: 10px;
+    border-radius: var(--bb-radius);
     box-shadow: var(--bb-shadow);
 }
 
@@ -26,346 +21,117 @@
     font-size: 2.4rem;
     color: var(--bb-blue);
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: var(--space-md);
     padding-bottom: 10px;
     border-bottom: 2px solid var(--bb-blue);
 }
 
 .policy-container h2 {
-    margin-top: 40px;
-    margin-bottom: 18px;
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
     padding-bottom: 8px;
-    color: var(--bb-blue);
     border-bottom: 1px solid var(--bb-border);
-    font-size: 1.5rem;
+    color: var(--bb-blue);
 }
 
 .policy-container h3 {
-    margin-top: 25px;
-    margin-bottom: 10px;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
     color: var(--bb-text);
-    font-size: 1.2rem;
 }
 
 /* ============================================================
-   PARAGRAPH & LISTS
+   PARAGRAPHS & TEXT
    ============================================================ */
 
 .policy-container p {
-    margin-bottom: 18px;
+    margin-bottom: var(--space-sm);
     color: var(--bb-text-soft);
-    line-height: 1.65;
+    line-height: 1.7;
+    max-width: 90%;
 }
 
-.policy-container ul {
+.policy-container strong {
+    color: var(--bb-text);
+}
+
+.policy-container a {
+    color: var(--bb-blue);
+    text-decoration: none;
+}
+.policy-container a:hover {
+    color: #8ec4ff;
+}
+
+/* ============================================================
+   LISTS
+   ============================================================ */
+
+.policy-container ul,
+.policy-container ol {
+    margin: var(--space-sm) 0 var(--space-md) 0;
     padding-left: 24px;
-    margin: 10px 0 20px;
+    color: var(--bb-text-soft);
 }
 
 .policy-container li {
-    margin-bottom: 8px;
-    color: var(--bb-text-soft);
+    margin-bottom: 6px;
+    line-height: 1.6;
 }
 
 /* ============================================================
-   UPDATED TABLE OF CONTENTS (NEW BRANDING)
+   CODE BLOCKS / INLINE CALLOUTS (if used)
    ============================================================ */
 
-.table-of-contents {
+.policy-container code {
     background: var(--bb-panel);
-    border: 1px solid var(--bb-border);
-    border-left: 4px solid var(--bb-blue);
-    padding: 22px 24px;
-    border-radius: 10px;
-    margin-bottom: 40px;
-    box-shadow: var(--bb-shadow);
+    padding: 2px 6px;
+    border-radius: var(--bb-radius);
+    color: var(--bb-blue);
+    font-size: 0.9rem;
 }
 
-.table-of-contents h3 {
+/* ============================================================
+   TABLES (rare but future-proofed)
+   ============================================================ */
+
+.policy-container table {
+    width: 100%;
+    margin: var(--space-md) 0;
+    border-collapse: collapse;
+}
+
+.policy-container td,
+.policy-container th {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--bb-border);
+    color: var(--bb-text-soft);
+}
+
+.policy-container th {
     color: var(--bb-blue);
-    margin-bottom: 12px;
-    font-size: 1.15rem;
     font-weight: 700;
 }
 
-.table-of-contents ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.table-of-contents li {
-    margin-bottom: 10px;
-}
-
-.table-of-contents a {
-    color: var(--bb-text-soft);
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: 0.2s ease;
-}
-
-.table-of-contents a:hover {
-    color: var(--bb-blue);
-    padding-left: 3px;
-}
-
-/* Light theme TOC */
-html[data-theme="light"] .table-of-contents {
-    background: #f9f9f9;
-    border-color: var(--bb-border);
-}
-
 /* ============================================================
-   HIGHLIGHT BOXES
+   MOBILE
    ============================================================ */
 
-.highlight-box {
-    background: var(--bb-panel);
-    border-left: 4px solid var(--bb-blue);
-    padding: 16px 20px;
-    border-radius: 6px;
-    margin: 25px 0;
-}
-
-html[data-theme="light"] .highlight-box {
-    background: #f5f8ff;
-}
-
-/* ============================================================
-   CONTACT BOX
-   ============================================================ */
-
-.contact-box {
-    text-align: center;
-    background: var(--bb-panel);
-    border: 1px solid var(--bb-border);
-    border-radius: 10px;
-    padding: 25px;
-    margin: 30px 0;
-    box-shadow: var(--bb-shadow);
-}
-
-.contact-box h3 {
-    color: var(--bb-blue);
-    margin-bottom: 15px;
-}
-
-.email-link {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 12px 20px;
-    font-weight: 600;
-    background: var(--bb-blue);
-    color: #fff !important;
-    border-radius: 6px;
-    transition: 0.25s ease;
-}
-
-.email-link:hover {
-    background: #88bbff;
-}
-
-/* Light theme contact box */
-html[data-theme="light"] .contact-box {
-    background: #ffffff;
-}
-
-/* ============================================================
-   WARNING BOX
-   ============================================================ */
-
-.warning {
-    background: #3a3200;
-    border: 1px solid #665c00;
-    color: #f5e6a0;
-    padding: 15px;
-    border-radius: 6px;
-    margin: 25px 0;
-}
-
-html[data-theme="light"] .warning {
-    background: #fff3cd;
-    border-color: #ffeaa7;
-    color: #665c00;
-}
-
-/* ============================================================
-   PRINT BUTTON
-   ============================================================ */
-
-.policy-container .button {
-    margin-bottom: 20px;
-}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .policy-container {
-        padding: 40px 15px;
+        padding: var(--space-md);
     }
 
+    .policy-container p {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
     .policy-container h1 {
         font-size: 2rem;
     }
-
     .policy-container h2 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 }
-
-/* ============================================================
-   PRINT MODE
-   ============================================================ */
-@media print {
-
-    /* Core print cleanup */
-    .policy-container {
-        box-shadow: none !important;
-        background: #fff !important;
-        color: #000 !important;
-    }
-
-    .policy-container h1,
-    .policy-container h2,
-    .policy-container h3 {
-        color: #000 !important;
-        border-color: #000 !important;
-    }
-
-    /* ============================================================
-       FORCE REMOVE SITE HEADER + LOGO + FOOTER
-       ============================================================ */
-
-    header,
-    header *,
-    .site-header,
-    .site-header *,
-    .header-logo,
-    .header-logo *,
-    picture,
-    picture img {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        height: 0 !important;
-        width: 0 !important;
-        overflow: hidden !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border: none !important;
-    }
-
-    footer,
-    footer *,
-    .site-footer,
-    .site-footer * {
-        display: none !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        overflow: hidden !important;
-    }
-
-    /* Remove scroll progress */
-    .scroll-progress {
-        display: none !important;
-    }
-
-    /* Remove page padding from fixed header space */
-    body {
-        padding-top: 0 !important;
-        margin: 0 !important;
-    }
-
-    .policy-container {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-    }
-}
-
-    /* ============================================================
-       WARRANTY STYLING
-       ============================================================ */
-
-/* Warranty Directory Grid */
-.warranty-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
-}
-
-/* Warranty card */
-.warranty-card {
-  display: block;
-  background: var(--bb-surface);
-  border: 1px solid var(--bb-border);
-  border-radius: 12px;
-  text-decoration: none;
-  padding: 15px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  color: inherit;
-}
-
-.warranty-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-}
-
-/* Thumbnail */
-.warranty-card .thumb {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1/1;
-  border-radius: 10px;
-  overflow: hidden;
-  background: #111;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.warranty-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* NEW badge */
-.badge.new {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: #00cc66;
-  color: #000;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-size: 0.7rem;
-  font-weight: bold;
-}
-
-/* Info section */
-.warranty-info {
-  margin-top: 10px;
-}
-
-.warranty-info h3 {
-  font-size: 1.1rem;
-  margin-bottom: 4px;
-}
-
-.meta {
-  display: flex;
-  gap: 10px;
-  opacity: 0.7;
-  font-size: 0.85rem;
-}
-
-.full-name {
-  font-size: 0.9rem;
-  margin-top: 6px;
-}
-
-
