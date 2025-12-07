@@ -43,6 +43,9 @@
 /* ========================================================================
    3. GLOBAL ELEMENTS
    ======================================================================== */
+html, body {
+    overflow-x: hidden;
+}
 
 html {
     scroll-behavior: smooth;
@@ -1062,6 +1065,7 @@ body .goog-te-gadget {
     opacity: 0.7;
     transform: translateY(-2px);
 }
+
 
 
 
