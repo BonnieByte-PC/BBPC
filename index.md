@@ -53,8 +53,8 @@ title: Home | BonnieByte PC
             <p>Clean aesthetics, addressable RGB, and thoughtful packaging — without the “RGB tax”.</p>
         </div>
         <div class="pillar">
-            <h3>2-Year Warranty</h3>
-            <p>We stand behind our products with a straightforward 2-year warranty and responsive support.</p>
+            <h3>2-Year </h3>
+            <p>We stand behind our products with a straightforward 2-year  and responsive support.</p>
         </div>
     </div>
 </section>
@@ -86,7 +86,7 @@ title: Home | BonnieByte PC
                     </ul>
                     <div class="product-badges">
                         <span>UKCA Ready</span>
-                        <span>2-Year Warranty</span>
+                        <span>2-Year </span>
                         <span>Launch Pricing Soon</span>
                     </div>
                     <div class="button-group">
@@ -151,7 +151,7 @@ title: Home | BonnieByte PC
         </div>
     </div>
 </section>
-<!-- Warranty / Support Summary -->
+<!--  / Support Summary -->
 <section class="section section-warranty" id="warranty">
     <div class="container">
         <header class="section-header">
@@ -182,7 +182,7 @@ title: Home | BonnieByte PC
             </div>
         </div>
         <p class="warranty-link">
-            For full warranty details, please see our dedicated <a href="/legal/warranty">Warranty Information</a> page.
+            For full warranty details, please see our dedicated <a href="/warranty">Warranty Information</a> page.
         </p>
     </div>
 </section>
