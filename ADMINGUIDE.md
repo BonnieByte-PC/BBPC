@@ -54,6 +54,7 @@ A product warranty page only contains:
   - layout: warranty
   - product_id: "<id>"
   - effective_date: "YYYY-MM-DD"
+
 All content comes from:
   - /_includes/warranty_sections/
 
