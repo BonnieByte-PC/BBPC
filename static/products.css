@@ -1,3 +1,7 @@
+.section.product-detail {
+  padding-top: 40px;
+}
+
 .product-detail-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
