@@ -19,11 +19,22 @@ northern_wind_120:
     rpm: "800-1600 RPM"
   thumbnail: "/images/products/northern_wind_120.png"
   warranty_length: "2 years"
+  ukca: true
+  status: "Launch Pricing Soon"
+  product_visible: true
+  description: "A complete cooling and lighting upgrade in one kit. Quiet 120mm PWM ARGB fans, an included hub, and honest performance."
+  features:
+    - "5x 120mm NORTHERN WIND PWM ARGB fans"
+    - "Included ARGB hub"
+    - "Static-pressure airflow design"
+  amazon_url: "https://amazon.co.uk"
+  warranty_length: "2-Year Warranty"
 
 template_product:
   sku: "SKU-HERE"
   full_name: "Template Product"
   short_name: "Template"
+  html_name: "<span class='orbitron notranslate'>PRODUCT</span>"
   warranty_enabled: false
   manual_enabled: false
   product_type: "fan_kit"
@@ -38,3 +49,15 @@ template_product:
     bearing: ""
     leds: ""
     rpm: ""
+  thumbnail: "/images/products/product.png"
+  warranty_length: "2 years"
+  ukca: true
+  status: "Launch Pricing Soon"
+  product_visible: true
+  description: ""
+  features:
+    - ""
+    - ""
+    - ""
+  amazon_url: "https://amazon.co.uk"
+  warranty_length: "2-Year Warranty"
