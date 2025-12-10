@@ -400,34 +400,58 @@
     animation: cartFadeIn 0.15s ease;
 }
 
-@keyframes cartFadeIn {
-    from { opacity: 0; transform: translateY(4px); }
+
+/* ============================================================
+   13.    HOVER PREVIEW ENHANCEMENTS
+   ============================================================ */
+
+/* Anchor for absolute-positioned popup */
+.bb-cart-toggle-wrapper {
+    position: relative;
+}
+
+/* Popup floats above header */
+.bb-cart-preview {
+    position: absolute;
+    top: 46px;
+    right: 0;
+    z-index: 99999 !important;
+    background: var(--bb-panel);
+    border: 1px solid var(--bb-blue);
+    border-radius: 10px;
+    padding: 14px;
+    width: 280px;
+    box-shadow: 0 0 14px rgba(102,170,255,0.3);
+    opacity: 0;
+    transform: translateY(6px);
+    pointer-events: auto;
+    display: none;
+}
+
+/* Fade + slide animation */
+@keyframes cartPreviewFade {
+    from { opacity: 0; transform: translateY(6px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-.bb-cart-preview-item {
-    display: flex;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--bb-border);
+/* Show preview when wrapper hovered */
+.bb-cart-toggle-wrapper:hover .bb-cart-preview {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: cartPreviewFade 0.18s ease-out;
 }
 
-.bb-cart-preview-item:last-child {
-    border-bottom: none;
+/* Ensure auto-hide when mouse leaves */
+.bb-cart-toggle-wrapper:not(:hover) .bb-cart-preview {
+    display: none !important;
 }
 
-.bb-cart-preview-name {
-    font-size: 0.9rem;
-    color: var(--bb-text);
-    margin-bottom: 4px;
+/* Disable hover preview on mobile/touch devices */
+@media (hover: none), (pointer: coarse) {
+    .bb-cart-preview {
+        display: none !important;
+        visibility: hidden !important;
+    }
 }
 
-.bb-cart-preview-qty-price {
-    font-size: 0.85rem;
-    color: var(--bb-text-muted);
-}
-
-.bb-cart-preview-subtotal {
-    margin-top: 12px;
-    font-family: 'Orbitron';
-}
