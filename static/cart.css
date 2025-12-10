@@ -352,6 +352,27 @@
 }
 
 
+/* Preview items layout */
+.bb-cart-preview-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+/* Thumbnail inside hover preview */
+.bb-cart-preview-thumb img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Text next to preview thumbnail */
+.bb-cart-preview-info {
+    flex: 1;
+    font-size: 0.85rem;
+}
 
 /* ------------------------------------------------------------
    10. CART PAGE ( /cart/ )
