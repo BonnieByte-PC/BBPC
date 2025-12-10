@@ -231,3 +231,37 @@
 .bb-cart-preview[aria-hidden="false"] {
     display: block;
 }
+
+/* Quantity layout fix */
+.bb-cart-item-qty,
+.bb-cart-page-qty {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bb-cart-qty-btn {
+    order: 1; /* make sure + comes after input */
+}
+
+.bb-cart-qty-btn[data-cart-qty-dec] {
+    order: 0; /* put - before input */
+}
+
+.bb-cart-qty-input {
+    order: 2;
+}
+
+.bb-cart-page-table td,
+.bb-cart-page-table th {
+    vertical-align: middle;
+}
+
+.bb-cart-page-product-inner {
+    align-items: center;
+}
+
+.cart-page h1 {
+    margin-top: 70px !important;
+    scroll-margin-top: 130px;
+}
