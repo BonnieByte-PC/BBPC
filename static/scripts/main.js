@@ -270,7 +270,7 @@ window.addEventListener("scroll", () => {
     }
 
     // Auto-hide
-    if (current > lastScroll && current > 150) {
+    if (current > lastScroll && current > 60) {
         bbHeader.classList.add("hide");
     } else {
         bbHeader.classList.remove("hide");
@@ -436,6 +436,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 
 
 
