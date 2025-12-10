@@ -48,17 +48,15 @@
 
 <script>
 (function() {
-    const savedTheme = localStorage.getItem("bb-theme");
-    if (savedTheme === "light") {
-        document.documentElement.setAttribute("data-theme", "light");
-    } else if (savedTheme === "dark") {
-        document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-        // Default fallback (choose your preferred default)
-        document.documentElement.setAttribute("data-theme", "dark");
-    }
+    let saved = localStorage.getItem("bb-theme");
+
+    // Default to dark if nothing saved
+    if (!saved) saved = "dark";
+
+    document.documentElement.setAttribute("data-theme", saved);
 })();
 </script>
+
 
 <style>
 html:not([data-theme]) * {
