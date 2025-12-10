@@ -1,9 +1,15 @@
 /* ============================================================
-   1. CART ICON — MATCH THEME TOGGLE + LANG BUTTONS
+   BONNIEBYTE PC — FINAL CART.CSS
+   Cleaned, unified, animation-ready, conflict-free
    ============================================================ */
 
+
+/* ------------------------------------------------------------
+   1. CART ICON BUTTON — MATCH THEME TOGGLE / LANGUAGE BUTTON
+------------------------------------------------------------- */
+
 .bb-header-cart-area {
-    margin-right: 16px; /* fixes spacing between cart + theme toggle */
+    margin-right: 16px;
 }
 
 .bb-cart-toggle {
@@ -48,11 +54,40 @@
     box-shadow: 0 0 10px rgba(102,170,255,0.6);
 }
 
+/* Badge pop animation */
+@keyframes cartBadgePop {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.35); }
+    70% { transform: scale(0.85); }
+    100% { transform: scale(1); }
+}
+
+.bb-cart-count-badge.pop {
+    animation: cartBadgePop 0.35s ease-out;
+}
 
 
-/* ============================================================
-   2. DRAWER — OPEN/CLOSE + LAYOUT
-   ============================================================ */
+
+/* ------------------------------------------------------------
+   2. FLY-TO-CART IMAGE ANIMATION
+------------------------------------------------------------- */
+
+.bb-fly-image {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 999999;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.4s ease;
+}
+
+
+
+/* ------------------------------------------------------------
+   3. CART DRAWER (SIDEBAR)
+------------------------------------------------------------- */
 
 .bb-cart-drawer {
     position: fixed;
@@ -63,15 +98,22 @@
     background: var(--bb-panel);
     border-left: 2px solid var(--bb-blue);
     z-index: 9999;
-    transition: right .35s ease;
+    opacity: 0;
+    transform: translateX(20px);
+    transition:
+        transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.35s ease-out;
     overflow-y: auto;
     padding-bottom: 30px;
 }
 
 .bb-cart-drawer[aria-hidden="false"] {
     right: 0;
+    transform: translateX(0);
+    opacity: 1;
 }
 
+/* Drawer backdrop */
 .bb-cart-backdrop {
     position: fixed;
     inset: 0;
@@ -79,7 +121,7 @@
     z-index: 9998;
     opacity: 0;
     pointer-events: none;
-    transition: opacity .25s ease;
+    transition: opacity 0.25s ease;
 }
 
 .bb-cart-backdrop[aria-hidden="false"] {
@@ -89,9 +131,9 @@
 
 
 
-/* ============================================================
-   3. DRAWER HEADER
-   ============================================================ */
+/* ------------------------------------------------------------
+   4. CART DRAWER HEADER
+------------------------------------------------------------- */
 
 .bb-cart-drawer-header {
     padding: 22px 24px;
@@ -104,11 +146,10 @@
 .bb-cart-drawer-header h2 {
     margin: 0;
     font-size: 1.35rem;
-    padding-top: 2px;
     font-family: 'Orbitron';
 }
 
-/* Close button matches theme-toggle style */
+/* Drawer close */
 .bb-cart-close {
     width: 36px;
     height: 36px;
@@ -130,31 +171,49 @@
 
 
 
-/* ============================================================
-   4. ITEM IMAGES — CONSISTENT SIZING
-   ============================================================ */
+/* ------------------------------------------------------------
+   5. CART ITEMS (DRAWER)
+------------------------------------------------------------- */
 
-.bb-cart-item-image img,
-.bb-cart-preview-thumb img,
-.bb-cart-page-thumb img {
+.bb-cart-item {
+    display: flex;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-cart-item-image img {
     width: 60px;
     height: 60px;
     object-fit: contain;
-    display: block;
 }
 
-@media (max-width: 600px) {
-    .bb-cart-page-thumb img {
-        width: 100px;
-        height: 100px;
-    }
+.bb-cart-item-info {
+    flex-grow: 1;
+    margin-left: 14px;
+}
+
+.bb-cart-item-name {
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.bb-cart-item-meta {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-bottom: 6px;
 }
 
 
 
-/* ============================================================
-   5. QUANTITY BUTTONS — CLEAN LAYOUT
-   ============================================================ */
+/* ------------------------------------------------------------
+   6. QUANTITY CONTROLS
+------------------------------------------------------------- */
+
+.bb-cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
 .bb-cart-item-qty,
 .bb-cart-page-qty {
@@ -163,7 +222,7 @@
     gap: 10px;
 }
 
-/* Order: [ - ] [ 1 ] [ + ] */
+/* Order: [-] [qty] [+] */
 .bb-cart-qty-btn[data-cart-qty-dec] { order: 0; }
 .bb-cart-qty-input { order: 1; }
 .bb-cart-qty-btn[data-cart-qty-inc] { order: 2; }
@@ -172,13 +231,13 @@
     width: 32px;
     height: 32px;
     border: 2px solid var(--bb-blue);
-    border-radius: 6px;
     background: transparent;
     color: var(--bb-blue);
+    border-radius: 6px;
     font-size: 20px;
-    line-height: 0;
     cursor: pointer;
-    transition: .25s ease;
+    line-height: 0;
+    transition: 0.25s ease;
 }
 
 .bb-cart-qty-btn:hover {
@@ -187,7 +246,7 @@
 }
 
 .bb-cart-qty-input {
-    width: 38px;
+    width: 40px;
     height: 32px;
     text-align: center;
     background: var(--bb-surface);
@@ -198,30 +257,9 @@
 
 
 
-/* ============================================================
-   6. BUTTONS — MATCH YOUR BASE.STYLESHEET
-   ============================================================ */
-
-.add-to-cart,
-[data-cart-checkout] {
-    font-family: 'Orbitron';
-    padding: 12px 24px;
-    border-radius: 6px;
-    background: var(--bb-blue);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.25s ease;
-    display: inline-block;
-    width: 100%;
-    text-align: center;
-}
-
-.add-to-cart:hover,
-[data-cart-checkout]:hover {
-    background: #88bbff;
-}
+/* ------------------------------------------------------------
+   7. REMOVE BUTTON
+------------------------------------------------------------- */
 
 .bb-cart-remove {
     background: none;
@@ -237,12 +275,90 @@
 
 
 
-/* ============================================================
-   7. CART PAGE STYLING
-   ============================================================ */
+/* ------------------------------------------------------------
+   8. BUTTON STYLING (MATCH SITE)
+------------------------------------------------------------- */
+
+.add-to-cart,
+[data-cart-checkout] {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 24px;
+    font-family: 'Orbitron';
+    border-radius: 6px;
+    background: var(--bb-blue);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+    transition: 0.25s ease;
+}
+
+.add-to-cart:hover,
+[data-cart-checkout]:hover {
+    background: #88bbff;
+}
+
+
+
+/* ------------------------------------------------------------
+   9. HOVER PREVIEW DROPDOWN
+------------------------------------------------------------- */
+
+.bb-cart-toggle-wrapper {
+    position: relative;
+}
+
+.bb-cart-preview {
+    position: absolute;
+    top: 46px;
+    right: 0;
+    width: 280px;
+    background: var(--bb-panel);
+    border: 1px solid var(--bb-blue);
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 0 14px rgba(102,170,255,0.3);
+    z-index: 99999;
+    display: none;
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+/* Animation */
+@keyframes cartPreviewFade {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.bb-cart-preview[aria-hidden="false"] {
+    display: block;
+    opacity: 1;
+    animation: cartPreviewFade 0.18s ease-out;
+}
+
+/* Auto-hide */
+.bb-cart-toggle-wrapper:not(:hover) .bb-cart-preview {
+    display: none !important;
+}
+
+/* Disable preview on touch devices */
+@media (hover: none), (pointer: coarse) {
+    .bb-cart-preview {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+
+
+/* ------------------------------------------------------------
+   10. CART PAGE ( /cart/ )
+------------------------------------------------------------- */
 
 .section.cart-page {
-    padding-top: 90px !important; /* was too large before */
+    padding-top: 90px !important;
 }
 
 .cart-page h1 {
@@ -254,10 +370,10 @@
     border-collapse: collapse;
 }
 
-.bb-cart-page-table th,
-.bb-cart-page-table td {
-    vertical-align: middle;
+.bb-cart-page-table td,
+.bb-cart-page-table th {
     padding: 20px 14px;
+    vertical-align: middle;
     border-bottom: 1px solid var(--bb-border);
 }
 
@@ -267,11 +383,23 @@
     gap: 18px;
 }
 
+.bb-cart-page-thumb img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+/* Improved mobile layout */
 @media (max-width: 600px) {
     .bb-cart-page-product-inner {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 6px;
+    }
+
+    .bb-cart-page-thumb img {
+        width: 100px;
+        height: 100px;
     }
 
     .bb-cart-page-table td {
@@ -281,98 +409,14 @@
 
 
 
-/* ============================================================
-   8. HOVER PREVIEW
-   ============================================================ */
-
-.bb-cart-preview {
-    background: var(--bb-panel);
-    border: 1px solid var(--bb-border);
-    padding: 12px;
-    border-radius: 8px;
-    display: none;
-    width: 260px;
-    position: absolute;
-    right: 0;
-    z-index: 99999 !important;
-    pointer-events: auto;
-}
-
-.bb-cart-preview[aria-hidden="false"] {
-    display: block;
-}
-
-.bb-cart-toggle-wrapper {
-    position: relative;
-}
-
-/* ============================================================
-   9.  EMPTY CART STATE 
-   ============================================================ */
-
-.bb-cart-empty-state {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.bb-cart-empty-state h2 {
-    font-family: 'Orbitron';
-    font-size: 1.6rem;
-    color: var(--bb-blue);
-    margin-bottom: 14px;
-}
-
-.bb-cart-empty-state p {
-    color: var(--bb-text-soft);
-    margin-bottom: 22px;
-}
-
-.bb-cart-empty-state .button {
-    display: inline-block;
-    padding: 12px 24px;
-    font-family: 'Orbitron';
-    background: var(--bb-blue);
-    color: #fff;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.25s ease;
-}
-
-.bb-cart-empty-state .button:hover {
-    background: #88bbff;
-}
-
-/* ============================================================
-   10.  SMOOTH CART DRAWER ANIMATION
-   ============================================================ */
-
-.bb-cart-drawer {
-    transform: translateX(20px);
-    opacity: 0;
-}
-
-.bb-cart-drawer[aria-hidden="false"] {
-    transform: translateX(0);
-    opacity: 1;
-    transition:
-        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.25s ease;
-}
-
-.bb-cart-backdrop {
-    transition: opacity 0.25s ease;
-}
-
-/* ============================================================
-   11.   DESKTOP STICKY SUMMARY BOX 
-   ============================================================ */
+/* ------------------------------------------------------------
+   11. CART PAGE SUMMARY (STICKY BOX)
+------------------------------------------------------------- */
 
 @media (min-width: 900px) {
     .bb-cart-page-summary {
         position: sticky;
-        top: 110px; /* sits below your fixed header */
+        top: 110px;
         background: var(--bb-panel);
         padding: 20px;
         border: 1px solid var(--bb-border);
@@ -386,109 +430,44 @@
     }
 }
 
-/* ============================================================
-   12.    HOVER PREVIEW POLISH 
-   ============================================================ */
 
-.bb-cart-preview {
-    background: var(--bb-panel);
-    border: 1px solid var(--bb-blue);
-    border-radius: 10px;
-    padding: 14px;
-    width: 280px;
-    box-shadow: 0 0 14px rgba(102,170,255,0.3);
-    animation: cartFadeIn 0.15s ease;
+
+/* ------------------------------------------------------------
+   12. EMPTY CART STATE
+------------------------------------------------------------- */
+
+.bb-cart-empty-state,
+.bb-cart-empty {
+    text-align: center;
+    padding: 40px 20px;
 }
 
-
-/* ============================================================
-   13.    HOVER PREVIEW ENHANCEMENTS
-   ============================================================ */
-
-/* Anchor for absolute-positioned popup */
-.bb-cart-toggle-wrapper {
-    position: relative;
+.bb-cart-empty-state h2,
+.bb-cart-empty h2 {
+    font-family: 'Orbitron';
+    font-size: 1.6rem;
+    color: var(--bb-blue);
+    margin-bottom: 14px;
 }
 
-/* Popup floats above header */
-.bb-cart-preview {
-    position: absolute;
-    top: 46px;
-    right: 0;
-    z-index: 99999 !important;
-    background: var(--bb-panel);
-    border: 1px solid var(--bb-blue);
-    border-radius: 10px;
-    padding: 14px;
-    width: 280px;
-    box-shadow: 0 0 14px rgba(102,170,255,0.3);
-    opacity: 0;
-    transform: translateY(6px);
-    pointer-events: auto;
-    display: none;
+.bb-cart-empty-state p,
+.bb-cart-empty p {
+    color: var(--bb-text-soft);
+    margin-bottom: 22px;
 }
 
-/* Fade + slide animation */
-@keyframes cartPreviewFade {
-    from { opacity: 0; transform: translateY(6px); }
-    to   { opacity: 1; transform: translateY(0); }
+.bb-cart-empty-state .button,
+.bb-cart-empty .button {
+    padding: 12px 24px;
+    background: var(--bb-blue);
+    color: #fff;
+    border-radius: 6px;
+    font-family: 'Orbitron';
+    font-weight: bold;
+    transition: 0.25s ease;
 }
 
-/* Show preview when wrapper hovered */
-.bb-cart-toggle-wrapper:hover .bb-cart-preview {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-    animation: cartPreviewFade 0.18s ease-out;
+.bb-cart-empty-state .button:hover,
+.bb-cart-empty .button:hover {
+    background: #88bbff;
 }
-
-/* Ensure auto-hide when mouse leaves */
-.bb-cart-toggle-wrapper:not(:hover) .bb-cart-preview {
-    display: none !important;
-}
-
-/* Disable hover preview on mobile/touch devices */
-@media (hover: none), (pointer: coarse) {
-    .bb-cart-preview {
-        display: none !important;
-        visibility: hidden !important;
-    }
-}
-
-/* ============================================================
-   14.    FLOATING ANIMATION ELEMENT
-   ============================================================ */
-
-.bb-fly-image {
-    position: fixed;
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    pointer-events: none;
-    z-index: 999999;
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.4s ease;
-}
-
-@keyframes cartBadgePop {
-    0% { transform: scale(1); }
-    30% { transform: scale(1.3); }
-    70% { transform: scale(0.9); }
-    100% { transform: scale(1); }
-}
-
-.bb-cart-count-badge.pop {
-    animation: cartBadgePop 0.35s ease-out;
-}
-
-@keyframes cartBadgePop {
-    0% { transform: scale(1); }
-    30% { transform: scale(1.3); }
-    70% { transform: scale(0.9); }
-    100% { transform: scale(1); }
-}
-
-.bb-cart-count-badge.pop {
-    animation: cartBadgePop 0.35s ease-out;
-}
-
