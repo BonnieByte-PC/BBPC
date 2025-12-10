@@ -54,7 +54,7 @@ function initializeTheme() {
     } else {
         // Fallback if no theme set (very rare)
         const initialTheme = readInitialTheme();
-        applyTheme(initialTheme);
+        document.documentElement.setAttribute("data-theme", initialTheme);
     }
 
 
@@ -440,6 +440,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 
 
 
