@@ -251,6 +251,31 @@
   // --- Cart operations ---
 
   function addToCart({ sku, name, price, image, variant }) {
+    // MINI FLY-TO-CART ANIMATION
+    const rect = btn.getBoundingClientRect();
+    const cartRect = document.querySelector('.bb-cart-toggle').getBoundingClientRect();
+    
+    // Create flying image
+    const flyImg = document.createElement('img');
+    flyImg.src = image || btn.getAttribute('data-product-image');
+    flyImg.className = 'bb-fly-image';
+    document.body.appendChild(flyImg);
+    
+    flyImg.style.left = rect.left + "px";
+    flyImg.style.top = rect.top + "px";
+    
+    // Force reflow (browser hack)
+    flyImg.getBoundingClientRect();
+    
+    // Animate to cart icon
+    flyImg.style.transform = `translate(${cartRect.left - rect.left}px, ${cartRect.top - rect.top}px) scale(0.2)`;
+    flyImg.style.opacity = "0";
+    
+    // Remove after animation
+    setTimeout(() => {
+        flyImg.remove();
+    }, 700);
+
     const key = buildItemKey(sku, variant);
     const index = findItemIndex(currentCart, key);
 
