@@ -153,7 +153,7 @@
     <p>&copy; <span id="footer-year"></span> <span class="orbitron">BonnieByte PC</span>. All rights reserved.</p>
   </div>
 
-
+  <!-- FOOTER SCRIPTS (unchanged) -->
   <script>
     document.querySelectorAll(".footer-col-header").forEach(header => {
         header.setAttribute("type", "button");
@@ -192,167 +192,183 @@
       });
   </script>
 
-    <!-- Hidden Google Translate widget (driven by custom language dropdown) -->
-  <div id="google_translate_element" style="position:absolute; left:-9999px; top:-9999px;"></div>
+<!-- ============================================================
+     BONNIEBYTE PC — STABILITY-PATCHED SAFARI TRANSLATION ENGINE
+=============================================================== -->
 
-  <script>
-    // Called by Google when the translate script loads
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,gd,fr,de,es',
-        autoDisplay: false
-      }, 'google_translate_element');
-    }
+<!-- Google translate container -->
+<div id="google_translate_element" style="position:absolute; left:-9999px; top:-9999px;"></div>
 
-    /* ============================================================
-       BONNIEBYTE PC — SAFARI-STABLE GTRANSLATE PATCH + RETRY BUTTON
-       ============================================================ */
-    function doGTranslate(lang) {
-        if (!lang) return;
+<script>
+/* ---------- 1. Initialize widget ---------- */
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,gd,fr,de,es',
+      autoDisplay: false
+  }, 'google_translate_element');
+}
 
-        let attempts = 0;
-        const maxAttempts = 60;
-        let translationApplied = false;
+/* ---------- 2. Hard iframe reset ---------- */
+function resetTranslateIframe() {
+    document.querySelectorAll("iframe.goog-te-menu-frame, iframe.goog-te-gadget")
+      .forEach(f => f.remove());
+}
 
-        function tryApply() {
-            attempts++;
+/* ---------- 3. Reload Google script ---------- */
+function reloadTranslateScript() {
+    const old = document.querySelector('script[src*="translate.google.com"]');
+    if (old) old.remove();
 
-            // Inline select mode
-            let combo = document.querySelector(".goog-te-combo");
-            if (combo) {
-                combo.value = lang;
-                combo.dispatchEvent(new Event("change"));
-                translationApplied = true;
-            }
+    const s = document.createElement("script");
+    s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    s.async = true;
+    document.head.appendChild(s);
+}
 
-            // iFrame mode
-            const iframe = document.querySelector("iframe.goog-te-menu-frame");
-            if (iframe) {
-                try {
-                    const innerCombo = iframe.contentDocument?.querySelector(".goog-te-combo");
-                    if (innerCombo) {
-                        innerCombo.value = lang;
-                        innerCombo.dispatchEvent(new Event("change"));
-                        translationApplied = true;
-                    }
-                } catch(e) {}
-            }
+/* ---------- 4. Safe translate wrapper ---------- */
+function safeTranslate(lang) {
+    if (!lang) return;
 
-            if (translationApplied) {
-                setTimeout(() => verifyTranslationSuccess(lang), 300);
-                return;
-            }
+    let attempts = 0;
+    const max = 50;
+    let applied = false;
 
-            if (attempts < maxAttempts) {
-                return setTimeout(tryApply, 100);
-            }
+    function attempt() {
+        attempts++;
 
+        // Inline combo
+        const combo = document.querySelector(".goog-te-combo");
+        if (combo) {
+            combo.value = lang;
+            combo.dispatchEvent(new Event("change"));
+            applied = true;
+        }
+
+        // Iframe combo
+        const iframe = document.querySelector("iframe.goog-te-menu-frame");
+        if (iframe) {
+            try {
+                const inner = iframe.contentDocument?.querySelector(".goog-te-combo");
+                if (inner) {
+                    inner.value = lang;
+                    inner.dispatchEvent(new Event("change"));
+                    applied = true;
+                }
+            } catch(e) {}
+        }
+
+        if (applied) {
+            verifyTranslation(lang);
+            return;
+        }
+
+        if (attempts < max) {
+            return setTimeout(attempt, 100);
+        }
+
+        resetTranslateIframe();
+        reloadTranslateScript();
+        setTimeout(() => attempt(), 300);
+
+        if (attempts > max * 2) {
             showTranslationError(lang);
         }
-
-        tryApply();
     }
 
-    function verifyTranslationSuccess(lang) {
-        // Skip failure detection entirely for English
-        if (lang === "en") return;
-            
-        const sample = document.body.innerText.slice(0, 600).toLowerCase();
-        const markers = [" warranty ", " support ", " product ", " bonniebyte "];
-        const translatedLikely = !markers.some(m => sample.includes(m));
+    attempt();
+}
 
-        if (!translatedLikely) {
-            setTimeout(() => {
-                // Skip checks for English on the second pass too
-                if (lang === "en") return;
+/* Use safeTranslate instead of old doGTranslate */
+function doGTranslate(lang) {
+    safeTranslate(lang);
+}
 
-                const s2 = document.body.innerText.slice(0, 600).toLowerCase();
-                const ok = !markers.some(m => s2.includes(m));
+/* ---------- 5. Verify translation (content check) ---------- */
+function verifyTranslation(lang) {
+    if (lang === "en") return;
 
-                if (!ok) showTranslationError(lang);
-            }, 800);
-        }
-    }
+    const sample = document.body.innerText.slice(0, 600).toLowerCase();
+    const markers = [" warranty ", " support ", " product ", " bonniebyte "];
 
-    function showTranslationError(lang) {
-        if (document.getElementById("translation-error-banner")) return;
+    const translated = !markers.some(m => sample.includes(m));
 
-        const banner = document.createElement("div");
-        banner.id = "translation-error-banner";
-        banner.style.position = "fixed";
-        banner.style.bottom = "20px";
-        banner.style.left = "50%";
-        banner.style.transform = "translateX(-50%)";
-        banner.style.background = "rgba(0,0,0,0.85)";
-        banner.style.border = "2px solid #66aaff";
-        banner.style.padding = "12px 18px";
-        banner.style.borderRadius = "8px";
-        banner.style.color = "#fff";
-        banner.style.zIndex = "999999";
-        banner.style.fontSize = "0.9rem";
-        banner.style.boxShadow = "0 0 12px rgba(102,170,255,0.5)";
-        banner.style.fontFamily = "Inter, sans-serif";
-        banner.style.display = "flex";
-        banner.style.gap = "12px";
-        banner.style.alignItems = "center";
-
-        const msg = document.createElement("span");
-        msg.textContent = "Automatic translation is temporarily unavailable.";
-
-        const retry = document.createElement("button");
-        retry.textContent = "Retry";
-        retry.style.background = "#66aaff";
-        retry.style.color = "#000";
-        retry.style.border = "none";
-        retry.style.padding = "6px 12px";
-        retry.style.borderRadius = "6px";
-        retry.style.cursor = "pointer";
-        retry.style.fontSize = "0.85rem";
-        retry.style.fontWeight = "600";
-
-        retry.onclick = () => {
-            banner.remove();
-            let lastLang = "en";
-
-            try {
-                lastLang = BBCookies.get("bb_lang") || lang || "en";
-            } catch(e) {
-                lastLang = lang || "en";
-            }
-
-            doGTranslate(lastLang);
-        };
-
-        banner.appendChild(msg);
-        banner.appendChild(retry);
-        document.body.appendChild(banner);
-
+    if (!translated) {
         setTimeout(() => {
-            if (banner) {
-                banner.style.opacity = "0";
-                banner.style.transition = "opacity 0.4s ease";
-                setTimeout(() => banner.remove(), 600);
-            }
-        }, 12000);
+            const check = document.body.innerText.slice(0, 600).toLowerCase();
+            const ok = !markers.some(m => check.includes(m));
+            if (!ok) showTranslationError(lang);
+        }, 800);
     }
-  </script>
+}
 
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  <script>
-    function hideGoogleBar() {
-        const frame = document.querySelector("iframe.goog-te-banner-frame");
-        if (frame) frame.style.display = "none";
+/* ---------- 6. Error banner ---------- */
+function showTranslationError(lang) {
+    if (document.getElementById("translation-error-banner")) return;
 
-        const skip = document.querySelector(".skiptranslate");
-        if (skip) skip.style.display = "none";
+    const banner = document.createElement("div");
+    banner.id = "translation-error-banner";
+    banner.style.position = "fixed";
+    banner.style.bottom = "20px";
+    banner.style.left = "50%";
+    banner.style.transform = "translateX(-50%)";
+    banner.style.background = "rgba(0,0,0,0.85)";
+    banner.style.border = "2px solid #66aaff";
+    banner.style.padding = "12px 18px";
+    banner.style.borderRadius = "8px";
+    banner.style.color = "#fff";
+    banner.style.zIndex = "999999";
+    banner.style.fontSize = "0.9rem";
+    banner.style.boxShadow = "0 0 12px rgba(102,170,255,0.5)";
+    banner.style.fontFamily = "Inter, sans-serif";
+    banner.style.display = "flex";
+    banner.style.gap = "12px";
+    banner.style.alignItems = "center";
 
-        document.documentElement.style.top = "0px";
-    }
+    banner.innerHTML = `
+        <span>Automatic translation is temporarily unavailable.</span>
+        <button id="retry-translate" style="
+            background:#66aaff; color:#000; border:none;
+            padding:6px 12px; border-radius:6px; cursor:pointer;
+            font-size:0.85rem; font-weight:600;">
+            Retry
+        </button>
+    `;
 
-    // Run repeatedly because Google re-inserts frames
-    setInterval(hideGoogleBar, 200);
-    window.addEventListener("load", hideGoogleBar);
+    document.body.appendChild(banner);
+
+    document.getElementById("retry-translate").onclick = () => {
+        banner.remove();
+        let last = lang;
+        try { last = BBCookies.get("bb_lang") || lang; } catch(e){}
+        safeTranslate(last);
+    };
+
+    setTimeout(() => {
+        if (banner) {
+            banner.style.opacity = "0";
+            banner.style.transition = "opacity 0.4s";
+            setTimeout(() => banner.remove(), 400);
+        }
+    }, 12000);
+}
+</script>
+
+<!-- Google Script Loader -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+/* KEEP THIS — hides Google banner */
+function hideGoogleBar() {
+    const frame = document.querySelector("iframe.goog-te-banner-frame");
+    if (frame) frame.style.display = "none";
+    const skip = document.querySelector(".skiptranslate");
+    if (skip) skip.style.display = "none";
+    document.documentElement.style.top = "0px";
+}
+
+setInterval(hideGoogleBar, 200);
+window.addEventListener("load", hideGoogleBar);
 </script>
 
 </footer>
