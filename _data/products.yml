@@ -54,7 +54,7 @@ template_product:
   warranty_length: "2 years"
   ukca: true
   status: "Launch Pricing Soon"
-  product_visible: true
+  product_visible: false
   description: ""
   features:
     - ""
