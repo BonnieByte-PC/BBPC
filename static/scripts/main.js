@@ -175,50 +175,6 @@ function initializeHeaderScroll() {
         siteHeader.classList.add("shrink");
         return; // stop header scroll logic entirely on mobile
     }
-
-
-    window.addEventListener("scroll", () => {
-    if (!bbHeader) return;
-
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    const current = window.scrollY;
-
-    // Always shrunk on mobile, but allow hide/unhide
-    if (isMobile) {
-        bbHeader.classList.add("shrink");
-
-        // Hide on scroll down
-        if (current > lastScroll && current > 90) {
-            bbHeader.classList.add("hide");
-        } else {
-            bbHeader.classList.remove("hide");
-        }
-
-        lastScroll = current;
-        return;
-    }
-
-    // DESKTOP BEHAVIOUR -------------------------
-
-    // Shrink header when scrolling a bit
-    if (current > 40) bbHeader.classList.add("shrink");
-    else bbHeader.classList.remove("shrink");
-
-    // Glow effect (optional visual)
-    if (current > 120) bbHeader.classList.add("glow");
-    else bbHeader.classList.remove("glow");
-
-    // Hide when scrolling down fast enough
-    if (current > lastScroll && current > 150) {
-        bbHeader.classList.add("hide");
-    } else {
-        bbHeader.classList.remove("hide");
-    }
-
-    lastScroll = current;
-});
-
-
 }
 
 
@@ -480,6 +436,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 
 
 
