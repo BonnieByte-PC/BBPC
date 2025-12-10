@@ -292,7 +292,7 @@ html[data-theme="light"] .warning {
 /* Warranty Directory Grid */
 .warranty-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 25px;
   margin-top: 30px;
 }
@@ -328,8 +328,8 @@ html[data-theme="light"] .warning {
 }
 
 .warranty-card img {
-  width: 35%;
-  height: 35%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -367,6 +367,7 @@ html[data-theme="light"] .warning {
   font-size: 0.9rem;
   margin-top: 6px;
 }
+
 
 
 
