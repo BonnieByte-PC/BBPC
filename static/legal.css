@@ -292,7 +292,7 @@ html[data-theme="light"] .warning {
 /* Warranty Directory Grid */
 .warranty-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 25px;
   margin-top: 30px;
 }
@@ -367,6 +367,7 @@ html[data-theme="light"] .warning {
   font-size: 0.9rem;
   margin-top: 6px;
 }
+
 
 
 
