@@ -81,6 +81,7 @@ title: Home | BonnieByte PC
                         {{ p.full_name | replace: p.short_name, '' }}
                       </a>
                     </h3>
+                    <p class="product-price-large">£{{ p.price_gbp }}</p>
                     <p>{{ p.description }}</p>
                     <ul class="product-features">
                       {% for f in p.features %}
