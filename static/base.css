@@ -1096,4 +1096,11 @@ body .goog-te-gadget {
     }
 }
 
+@media (max-width: 768px) {
+    .site-header {
+        height: 64px !important; /* shrunk height */
+        transition: none !important;
+    }
+}
+
 
