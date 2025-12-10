@@ -42,3 +42,89 @@
 .bb-cart-preview[aria-hidden="false"] {
   display: block;
 }
+
+.bb-cart-toggle {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--bb-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-cart-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.bb-cart-count-badge {
+  background: #ff3b3b;
+  color: white;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  font-size: 12px;
+  border-radius: 999px;
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.bb-cart-item-image img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.bb-cart-preview-thumb img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.bb-cart-page-thumb img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.bb-cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bb-cart-qty-btn {
+  background: var(--bb-surface);
+  color: var(--bb-text);
+  border: 1px solid var(--bb-border);
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.bb-cart-qty-input {
+  width: 32px;
+  height: 26px;
+  text-align: center;
+  background: var(--bb-panel);
+  color: var(--bb-text);
+  border: 1px solid var(--bb-border);
+}
+
+.bb-cart-remove {
+  background: none;
+  border: none;
+  color: #ff4343;
+  cursor: pointer;
+  font-size: 14px;
+}
