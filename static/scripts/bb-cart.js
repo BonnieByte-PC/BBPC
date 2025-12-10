@@ -360,7 +360,38 @@
       }
 
       addToCart({ sku, name, price, image, variant });
-      const badge = document.querySelector(".bb-cart-count-badge"); badge.classList.add("pop"); setTimeout(() => badge.classList.remove("pop"), 350);
+      // -------------------------------
+      // FLY TO CART ANIMATION
+      // -------------------------------
+      if (image) {
+          const rect = btn.getBoundingClientRect();
+          const cartRect = document.querySelector('.bb-cart-toggle').getBoundingClientRect();
+      
+          const flyImg = document.createElement('img');
+          flyImg.src = image;
+          flyImg.className = 'bb-fly-image';
+          document.body.appendChild(flyImg);
+      
+          flyImg.style.left = rect.left + "px";
+          flyImg.style.top = rect.top + "px";
+      
+          flyImg.getBoundingClientRect(); // force reflow
+      
+          flyImg.style.transform = `translate(${cartRect.left - rect.left}px, ${cartRect.top - rect.top}px) scale(0.2)`;
+          flyImg.style.opacity = "0";
+      
+          setTimeout(() => flyImg.remove(), 700);
+      }
+      
+      // -------------------------------
+      // CART BADGE POP
+      // -------------------------------
+      const badge = document.querySelector(".bb-cart-count-badge");
+      if (badge) {
+          badge.classList.add("pop");
+          setTimeout(() => badge.classList.remove("pop"), 350);
+      }
+
       openDrawer();
       return;
     }
