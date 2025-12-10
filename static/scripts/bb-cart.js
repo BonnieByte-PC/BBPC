@@ -360,6 +360,7 @@
       }
 
       addToCart({ sku, name, price, image, variant });
+      const badge = document.querySelector(".bb-cart-count-badge"); badge.classList.add("pop"); setTimeout(() => badge.classList.remove("pop"), 350);
       openDrawer();
       return;
     }
