@@ -147,6 +147,13 @@ function initializeScrollProgress() {
 function initializeHeaderScroll() {
     const siteHeader = document.querySelector('.site-header');
     if (!siteHeader) return;
+    
+    // Disable header shrink behaviour on mobile
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector("header.site-header").classList.add("header--scrolled");
+    } else {
+        // run your normal shrinking logic here
+    }
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -416,6 +423,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
 
 
 
