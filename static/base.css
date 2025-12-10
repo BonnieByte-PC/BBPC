@@ -925,6 +925,22 @@ footer.site-footer::before {
     display: block;
 }
 
+.product-price {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: var(--bb-blue);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.product-price-large {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--bb-blue);
+    margin: 10px 0 20px;
+}
+
 /* ========================================================================
    14.1. SUPPORT PAGE
    ======================================================================== */
@@ -1102,5 +1118,6 @@ body .goog-te-gadget {
         transition: none !important;
     }
 }
+
 
 
