@@ -229,14 +229,12 @@ section {
     height: 80px;
 }
 
-/* Header actions container */
 .header-actions {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 12px; /* space between theme + language + burger */
+    gap: 12px;
 }
-
 
 /* ========================================================================
    8. THEME TOGGLE
@@ -261,12 +259,10 @@ section {
     color: #fff;
 }
 
-
 /* ========================================================================
-   8.1 LANGUAGE DROPDOWN (shared desktop + mobile)
+   8.1 LANGUAGE DROPDOWN
    ======================================================================== */
 
-/* Wrapper in the header (next to theme toggle) */
 .bb-lang-dropdown {
     position: relative;
     margin-left: 16px;
@@ -274,24 +270,20 @@ section {
     align-items: center;
 }
 
-/* Floating bar that appears just under the header */
 .bb-lang-menu {
     position: fixed;
     left: 50%;
-    top: 72px; /* JS will override with the exact header bottom when opened */
+    top: 72px;
     transform: translateX(-50%);
-    display: none;      /* shown when .bb-lang-dropdown.open is set */
+    display: none;
     padding: 8px 10px;
     border-radius: 999px;
-    background: rgba(10, 10, 10, 0.98);
+    background: rgba(10,10,10,0.98);
     border: 2px solid var(--bb-blue);
-    box-shadow: 0 0 18px rgba(102, 170, 255, 0.6);
+    box-shadow: 0 0 18px rgba(102,170,255,0.6);
     gap: 8px;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    max-width: min(420px, 100vw - 24px);
-    box-sizing: border-box;
     z-index: 1200;
 }
 
@@ -299,7 +291,6 @@ section {
     display: flex;
 }
 
-/* Base button style – circular, matches theme toggle */
 .lang-btn {
     width: 42px;
     height: 42px;
@@ -307,71 +298,22 @@ section {
     border: 2px solid var(--bb-blue);
     background: transparent;
     color: var(--bb-blue);
-    font-weight: bold;
-    font-size: 0.7rem;
-
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-
+    align-items: center;
+    flex-direction: column;
     cursor: pointer;
     transition: 0.25s ease;
-    overflow: hidden;
 }
 
 .lang-btn img {
     width: 18px;
     height: 18px;
-    border-radius: 50%;
-    pointer-events: none;
 }
 
 .lang-btn span {
     font-size: 0.6rem;
     margin-top: 2px;
-    pointer-events: none;
-}
-
-.lang-btn:hover {
-    background: rgba(102, 170, 255, 0.15);
-    box-shadow: 0 0 12px rgba(102, 170, 255, 0.65);
-    transform: scale(1.08);
-}
-
-.lang-btn:hover img {
-    filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.7));
-}
-
-/* Active language highlight */
-.bb-lang-option.active {
-    border-color: var(--bb-blue);
-    background: rgba(102, 170, 255, 0.15);
-    box-shadow:
-        0 0 10px rgba(102, 170, 255, 0.6),
-        inset 0 0 6px rgba(102, 170, 255, 0.4);
-}
-
-/* Active button (visible one) */
-.bb-lang-toggle {
-    position: relative;
-}
-
-/* Mobile tweaks */
-@media (max-width: 900px) {
-    .bb-lang-dropdown {
-        margin-left: 10px;
-    }
-
-    .lang-btn {
-        width: 40px;
-        height: 40px;
-    }
-
-    .bb-lang-menu {
-        max-width: calc(100vw - 24px);
-        padding: 8px;
-    }
 }
 
 /* ========================================================================
@@ -398,61 +340,85 @@ section {
 .mobile-menu-toggle.active span:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 6px);
 }
-
 .mobile-menu-toggle.active span:nth-child(2) {
     opacity: 0;
 }
-
 .mobile-menu-toggle.active span:nth-child(3) {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-
-@media (max-width: 900px) {
-    .mobile-menu-toggle {
-        display: flex;
-    }
-
-    html.bb-menu-open .theme-toggle,
-    html.bb-menu-open .bb-lang-dropdown {
-        display: none !important;
-    }
-}
-
 /* ========================================================================
-   HAMBURGER TABLET FIX — Make menu icon appear earlier (same as language/theme hiding)
+   10. UNIFIED MOBILE MODE — Activate at 1100px
    ======================================================================== */
 
 @media (max-width: 1100px) {
+
+    /* Desktop-only controls hidden */
+    .theme-toggle,
+    .bb-lang-dropdown {
+        display: none !important;
+    }
+
+    /* Hamburger always visible */
     .mobile-menu-toggle {
         display: flex !important;
     }
-}
 
-/* ========================================================================
-   9.1 HEADER TABLET FIX — Prevent overflow between 900px–1100px
-   ======================================================================== */
-
-@media (max-width: 1100px) {
-    /* Hide language + theme earlier to avoid overflow */
-    .bb-lang-dropdown,
-    .theme-toggle {
-        display: none !important;
+    /* Desktop nav removed */
+    .header-nav {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: -100%;
+        top: 0;
+        width: 280px;
+        height: 100vh;
+        padding: 120px 24px;
+        background: linear-gradient(
+            180deg,
+            rgba(10,10,10,0.95),
+            rgba(10,10,10,0.90),
+            rgba(20,20,40,0.85)
+        );
+        border-left: 2px solid var(--bb-blue);
+        transition: right 0.4s ease;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 18px;
+        z-index: 1500;
     }
 
-    /* Show the versions inside the mobile drawer instead */
+    .header-nav.active {
+        right: 0;
+    }
+
+    .nav-link {
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 14px 0;
+    }
+
+    /* Utilities inside drawer (language, theme, etc.) */
     .mobile-nav-utilities {
         display: flex !important;
-    }
-
-    /* Slightly reduce nav spacing to tighten layout */
-    .header-nav {
-        gap: 20px;
+        gap: 14px;
+        margin-top: 16px;
     }
 }
 
 /* ========================================================================
-   10. SCROLL PROGRESS
+   11. ORIGINAL MOBILE FALLBACK (<900px)
+   ======================================================================== */
+
+@media (max-width: 900px) {
+    .header-nav.active {
+        right: 0;
+    }
+}
+
+
+/* ========================================================================
+   11. SCROLL PROGRESS
    ======================================================================== */
 
 .scroll-progress {
@@ -469,7 +435,7 @@ section {
 
 
 /* ========================================================================
-   11. ICON SYSTEM (Header + Footer)
+   12. ICON SYSTEM (Header + Footer)
    ======================================================================== */
 
 svg {
@@ -521,7 +487,7 @@ svg {
 
 
 /* ========================================================================
-   12. ENHANCED HEADER BEHAVIOUR
+   13. ENHANCED HEADER BEHAVIOUR
    ======================================================================== */
 
 .enhanced-header {
@@ -576,7 +542,7 @@ svg {
 
 
 /* ========================================================================
-   13. NAVIGATION
+   14. NAVIGATION
    ======================================================================== */
 
 .header-nav {
@@ -726,7 +692,7 @@ svg {
 }
 
 /* ========================================================================
-   14. FOOTER — ACCORDION + ICONS
+   15. FOOTER — ACCORDION + ICONS
    ======================================================================== */
 
 footer.site-footer {
@@ -988,7 +954,7 @@ footer.site-footer::before {
     display: block;
 }
 /* ========================================================================
-   14.1. SUPPORT PAGE
+   15.1. SUPPORT PAGE
    ======================================================================== */
 
 /* Support page panel style (Restored) */
@@ -1006,7 +972,7 @@ footer.site-footer::before {
 }
 
 /* ========================================================================
-   15. LIGHT THEME OVERRIDES
+   16. LIGHT THEME OVERRIDES
    ======================================================================== */
 
 html[data-theme="light"] footer.site-footer {
@@ -1015,7 +981,7 @@ html[data-theme="light"] footer.site-footer {
 
 
 /* ========================================================================
-   16. ACCESSIBILITY
+   17. ACCESSIBILITY
    ======================================================================== */
 
 .skip-link {
@@ -1055,7 +1021,7 @@ body .goog-te-banner-frame + .skiptranslate {
 }
 
 /* ========================================================================
-   17. REDUCED MOTION
+   18. REDUCED MOTION
    ======================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1067,7 +1033,7 @@ body .goog-te-banner-frame + .skiptranslate {
 
 
 /* ========================================================================
-   17. GTRANSLATE FIX
+   19. GTRANSLATE FIX
    ======================================================================== */
 
 
@@ -1110,7 +1076,7 @@ body .goog-te-gadget {
     visibility: visible !important; /* ensures Safari sees a visible select to bind to */
 }
 /* ========================================================================
-   17. SOCIAL ICONS
+   20. SOCIAL ICONS
    ======================================================================== */
 
 .social-links {
@@ -1139,6 +1105,7 @@ body .goog-te-gadget {
     opacity: 0.7;
     transform: translateY(-2px);
 }
+
 
 
 
