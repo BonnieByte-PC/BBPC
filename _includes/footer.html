@@ -326,7 +326,10 @@ function showTranslationError(lang) {
     banner.style.alignItems = "center";
 
     banner.innerHTML = `
-        <span>Automatic translation is temporarily unavailable.</span>
+        <div style="display:flex; flex-direction:column; line-height:1.25;">
+            <span>Automatic translation is temporarily unavailable.</span>
+            <span style="opacity:0.8; font-size:0.8rem;">iOS Safari may block translation occasionally.</span>
+        </div>
         <button id="retry-translate" style="
             background:#66aaff; color:#000; border:none;
             padding:6px 12px; border-radius:6px; cursor:pointer;
