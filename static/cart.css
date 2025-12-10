@@ -292,10 +292,18 @@
     border-radius: 8px;
     display: none;
     width: 260px;
+    position: absolute;
+    right: 0;
+    z-index: 99999 !important;
+    pointer-events: auto;
 }
 
 .bb-cart-preview[aria-hidden="false"] {
     display: block;
+}
+
+.bb-cart-toggle-wrapper {
+    position: relative;
 }
 
 /* ============================================================
