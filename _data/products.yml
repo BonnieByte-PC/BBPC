@@ -31,8 +31,6 @@ northern_wind_120:
   amazon_url: "https://amazon.co.uk"
   warranty_length: "2-Year Warranty"
   featured: true
-  # --- CART / E-COMMERCE FIELDS ---
-  price_preview_gbp: 39.99
   # Future Shopify wiring (leave blank for now)
   shopify_product_id: 
   shopify_default_variant_id: 
@@ -70,8 +68,6 @@ template_product:
   amazon_url: "https://amazon.co.uk"
   warranty_length: "2-Year Warranty"
   featured: false
-  # --- CART / E-COMMERCE FIELDS ---
-  price_preview_gbp: 39.99
   # Future Shopify wiring (leave blank for now)
   shopify_product_id: 
   shopify_default_variant_id: 
