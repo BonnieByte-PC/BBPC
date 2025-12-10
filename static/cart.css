@@ -297,3 +297,129 @@
 .bb-cart-preview[aria-hidden="false"] {
     display: block;
 }
+
+/* ============================================================
+   9.  EMPTY CART STATE 
+   ============================================================ */
+
+.bb-cart-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.bb-cart-empty-state h2 {
+    font-family: 'Orbitron';
+    font-size: 1.6rem;
+    color: var(--bb-blue);
+    margin-bottom: 14px;
+}
+
+.bb-cart-empty-state p {
+    color: var(--bb-text-soft);
+    margin-bottom: 22px;
+}
+
+.bb-cart-empty-state .button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-family: 'Orbitron';
+    background: var(--bb-blue);
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.25s ease;
+}
+
+.bb-cart-empty-state .button:hover {
+    background: #88bbff;
+}
+
+/* ============================================================
+   10.  SMOOTH CART DRAWER ANIMATION
+   ============================================================ */
+
+.bb-cart-drawer {
+    transform: translateX(20px);
+    opacity: 0;
+}
+
+.bb-cart-drawer[aria-hidden="false"] {
+    transform: translateX(0);
+    opacity: 1;
+    transition:
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 0.25s ease;
+}
+
+.bb-cart-backdrop {
+    transition: opacity 0.25s ease;
+}
+
+/* ============================================================
+   11.   DESKTOP STICKY SUMMARY BOX 
+   ============================================================ */
+
+@media (min-width: 900px) {
+    .bb-cart-page-summary {
+        position: sticky;
+        top: 110px; /* sits below your fixed header */
+        background: var(--bb-panel);
+        padding: 20px;
+        border: 1px solid var(--bb-border);
+        border-radius: 10px;
+        box-shadow: var(--bb-shadow);
+    }
+
+    .bb-cart-page-summary .button {
+        width: 100%;
+        margin-top: 18px;
+    }
+}
+
+/* ============================================================
+   12.    HOVER PREVIEW POLISH 
+   ============================================================ */
+
+.bb-cart-preview {
+    background: var(--bb-panel);
+    border: 1px solid var(--bb-blue);
+    border-radius: 10px;
+    padding: 14px;
+    width: 280px;
+    box-shadow: 0 0 14px rgba(102,170,255,0.3);
+    animation: cartFadeIn 0.15s ease;
+}
+
+@keyframes cartFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.bb-cart-preview-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--bb-border);
+}
+
+.bb-cart-preview-item:last-child {
+    border-bottom: none;
+}
+
+.bb-cart-preview-name {
+    font-size: 0.9rem;
+    color: var(--bb-text);
+    margin-bottom: 4px;
+}
+
+.bb-cart-preview-qty-price {
+    font-size: 0.85rem;
+    color: var(--bb-text-muted);
+}
+
+.bb-cart-preview-subtotal {
+    margin-top: 12px;
+    font-family: 'Orbitron';
+}
