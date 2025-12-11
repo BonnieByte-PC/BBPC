@@ -108,8 +108,6 @@ function initializeMobileMenu() {
         e.stopPropagation();
         const isActive = mobileMenuToggle.classList.toggle('active');
         headerNav.classList.toggle('active');
-
-        mobileMenuToggle.style.display = "flex";
         mobileMenuToggle.setAttribute('aria-expanded', isActive);
 
         if (isActive) {
@@ -437,8 +435,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-
 
 
 
