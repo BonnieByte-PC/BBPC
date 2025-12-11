@@ -541,14 +541,24 @@ html[data-theme="light"] .lang-btn {
     }
 }
 
-/* keep toggle always above nav drawer */
-#mobile-menu-toggle {
-    position: relative !important;
-    z-index: 300000 !important;
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+/* MOBILE MENU TOGGLE SHOULD APPEAR ONLY AT <=1250px */
+@media (max-width: 1250px) {
+    #mobile-menu-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 300000 !important;
+    }
 }
+
+/* Desktop >=1251px: hide burger */
+@media (min-width: 1251px) {
+    #mobile-menu-toggle {
+        display: none !important;
+    }
+}
+
 
 
 /* ========================================================================
@@ -1217,3 +1227,59 @@ body .goog-te-gadget {
         animation-duration: 0.01ms !important;
     }
 }
+
+/* ============================================================
+   CART PAGE MOBILE FIX (<=600px)
+   ============================================================ */
+@media (max-width: 600px) {
+
+    /* Stack cart items vertically */
+    .cart-page table.cart-items,
+    .cart-page table.cart-items tbody,
+    .cart-page table.cart-items tr {
+        display: block;
+        width: 100%;
+    }
+
+    .cart-page table.cart-items tr {
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--bb-border);
+    }
+
+    /* Image resized and centered */
+    .cart-item-image img {
+        width: 90px !important;
+        height: auto;
+        margin: 0 auto 10px auto;
+        display: block;
+    }
+
+    /* Title & details centered */
+    .cart-item-details {
+        text-align: center;
+    }
+
+    /* Quantity buttons centered */
+    .cart-qty-controls {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin: 10px 0;
+    }
+
+    /* Price centered */
+    .cart-item-price {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 1.1rem;
+        color: var(--bb-blue);
+    }
+
+    /* Remove column layout entirely */
+    .cart-page table.cart-items td {
+        display: block;
+        width: 100%;
+    }
+}
+
