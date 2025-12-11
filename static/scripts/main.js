@@ -108,6 +108,8 @@ function initializeMobileMenu() {
         e.stopPropagation();
         const isActive = mobileMenuToggle.classList.toggle('active');
         headerNav.classList.toggle('active');
+
+        mobileMenuToggle.style.display = "flex";
         mobileMenuToggle.setAttribute('aria-expanded', isActive);
 
         if (isActive) {
@@ -173,7 +175,6 @@ function initializeHeaderScroll() {
     // Disable header shrinking on mobile — permanently shrunk
     if (window.matchMedia("(max-width: 768px)").matches) {
         siteHeader.classList.add("shrink");
-        return; // stop header scroll logic entirely on mobile
     }
 }
 
