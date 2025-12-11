@@ -166,6 +166,36 @@ function initializeScrollProgress() {
 
 
 // ===============================
+// SIMPLE HEADER SHRINK
+// ===============================
+function initializeHeaderScroll() {
+    const siteHeader = document.querySelector('.site-header');
+    if (!siteHeader) return;
+    
+    // Disable header shrinking on mobile — permanently shrunk
+    if (window.matchMedia("(max-width: 768px)").matches) {
+        siteHeader.classList.add("shrink");
+    }
+}
+
+
+// ===============================
+// HEADER LOGO SCROLL TO TOP
+// ===============================
+function initializeHeaderLogo() {
+    const headerLogo = document.querySelector('.header-logo');
+    if (headerLogo) {
+        headerLogo.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
+
+
+// ===============================
 // SMOOTH ANCHOR SCROLL
 // ===============================
 function initializeSmoothScrolling() {
@@ -407,8 +437,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-
 
 
 
