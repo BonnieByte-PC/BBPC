@@ -21,13 +21,13 @@
 
 :root {
     --bb-bg: #0d0d0d;
-    --bb-surface: #111;
+    --bb-surface: #111111;
     --bb-panel: #151515;
-    --bb-border: #222;
+    --bb-border: #222222;
 
     --bb-text: #e5e5e5;
     --bb-text-soft: #bfbfbf;
-    --bb-text-muted: #999;
+    --bb-text-muted: #999999;
 
     --bb-blue: #66aaff;
 
@@ -41,8 +41,9 @@
 
 
 /* ========================================================================
-   3. GLOBAL ELEMENTS
+   3. GLOBAL
    ======================================================================== */
+
 html, body {
     overflow-x: hidden;
 }
@@ -56,7 +57,7 @@ body {
     background-color: var(--bb-bg);
     color: var(--bb-text);
     line-height: 1.6;
-    padding-top: 80px;
+    padding-top: 90px; /* offset for fixed header + mobile bar */
 }
 
 .container {
@@ -81,9 +82,11 @@ body {
     margin: 40px 0;
 }
 
+
 /* ========================================================================
    4. TYPOGRAPHY
    ======================================================================== */
+
 h1,
 h2,
 h3,
@@ -150,6 +153,7 @@ a:hover {
     border: none;
     cursor: pointer;
     transition: 0.25s ease;
+    text-align: center;
 }
 
 .button:hover {
@@ -195,23 +199,68 @@ section {
 
 
 /* ========================================================================
-   7. HEADER BASE
+   7. SCROLL PROGRESS
    ======================================================================== */
 
-.site-header {
+.scroll-progress {
     position: fixed;
     top: 0;
-    width: 100%;
-    background: var(--bb-panel);
-    backdrop-filter: blur(12px);
-    border-bottom: 2px solid var(--bb-blue);
-    padding: 12px 0;
-    z-index: 1000;
-    transition: 0.25s ease;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: var(--bb-blue);
+    z-index: 2000;
+    transition: width 0.2s ease;
 }
 
-.site-header.shrink {
+
+/* ========================================================================
+   8. HEADER BASE
+   ======================================================================== */
+
+.site-header,
+.enhanced-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(12, 12, 12, 0.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--bb-blue);
+    z-index: 1500;
+}
+
+.enhanced-header {
+    padding: 14px 0;
+    transition:
+        transform 0.35s ease,
+        padding 0.25s ease,
+        background 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.enhanced-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--bb-blue), transparent);
+    opacity: 0.55;
+}
+
+.enhanced-header.glow {
+    box-shadow: 0 0 20px rgba(102, 170, 255, 0.45);
+}
+
+.enhanced-header.hide {
+    transform: translateY(-100%);
+}
+
+.enhanced-header.shrink {
     padding: 6px 0;
+    background: rgba(5, 5, 5, 0.95);
 }
 
 .header-content {
@@ -220,35 +269,47 @@ section {
     align-items: center;
 }
 
-/* Strong guarantee that all header children remain vertically centered */
-.enhanced-header .header-content,
-.site-header .header-content {
-    align-items: center !important;
-}
-
-.header-logo img {
-    height: 100px;
-    transition: 0.25s ease;
-}
-
-.site-header.shrink .header-logo img {
-    height: 80px;
-}
-
-/* Header actions container */
-.header-actions {
-    position: relative;
-    display: flex;
+.enhanced-header .header-content {
     align-items: center;
-    gap: 12px; /* space between theme + language + burger */
+}
+
+.header-logo-img {
+    height: 80px;
+    transition: 0.3s ease;
+    filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.3));
+}
+
+.enhanced-header.shrink .header-logo-img {
+    height: 60px;
+    filter: drop-shadow(0 0 4px rgba(102, 170, 255, 0.2));
+}
+
+@media (max-width: 768px) {
+    .header-logo-img {
+        height: 64px !important;
+    }
+    .enhanced-header.shrink .header-logo-img {
+        height: 56px !important;
+    }
 }
 
 
 /* ========================================================================
-   8. THEME TOGGLE
+   9. HEADER ACTIONS
    ======================================================================== */
 
-.theme-toggle {
+.header-actions {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* Round icon-style header buttons (theme / cart / account desktop / language) */
+.theme-toggle,
+.bb-account-toggle,
+.bb-cart-toggle {
     background: transparent;
     border: 2px solid var(--bb-blue);
     width: 42px;
@@ -262,31 +323,92 @@ section {
     transition: 0.25s ease;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.bb-account-toggle:hover,
+.bb-cart-toggle:hover {
     background: var(--bb-blue);
-    color: #fff;
+    color: #000;
+}
+
+.bb-cart-toggle {
+    position: relative;
+}
+
+/* Cart badge */
+.bb-cart-count-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: var(--bb-blue);
+    color: #000;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Pop animation class hooked from JS */
+.bb-cart-count-badge.pop {
+    animation: bb-badge-pop 0.35s ease-out;
+}
+
+@keyframes bb-badge-pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.25); }
+    100% { transform: scale(1); }
 }
 
 
 /* ========================================================================
-   8.1 LANGUAGE DROPDOWN (shared desktop + mobile)
+   10. THEME TOGGLE
    ======================================================================== */
 
-/* Wrapper in the header (next to theme toggle) */
+.theme-toggle .theme-icon {
+    font-size: 1.1rem;
+}
+
+
+/* ========================================================================
+   11. LANGUAGE DROPDOWN
+   ======================================================================== */
+
 .bb-lang-dropdown {
     position: relative;
-    margin-left: 16px;
+    margin-left: 12px;
     display: flex;
     align-items: center;
 }
 
-/* Floating bar that appears just under the header */
+.bb-lang-toggle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--bb-blue);
+    background: transparent;
+    color: var(--bb-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.bb-lang-toggle:hover {
+    background: rgba(102,170,255,0.15);
+    box-shadow: 0 0 12px rgba(102,170,255,0.65);
+}
+
+/* Floating language bar */
 .bb-lang-menu {
     position: fixed;
     left: 50%;
-    top: 72px; /* JS will override with the exact header bottom when opened */
+    top: 72px;
     transform: translateX(-50%);
-    display: none;      /* shown when .bb-lang-dropdown.open is set */
+    display: none;
     padding: 8px 10px;
     border-radius: 999px;
     background: rgba(10, 10, 10, 0.98);
@@ -298,14 +420,14 @@ section {
     align-items: center;
     max-width: min(420px, 100vw - 24px);
     box-sizing: border-box;
-    z-index: 1200;
+    z-index: 1800;
 }
 
 .bb-lang-dropdown.open .bb-lang-menu {
     display: flex;
 }
 
-/* Base button style – circular, matches theme toggle */
+/* Individual language buttons */
 .lang-btn {
     width: 42px;
     height: 42px;
@@ -313,14 +435,11 @@ section {
     border: 2px solid var(--bb-blue);
     background: transparent;
     color: var(--bb-blue);
-    font-weight: bold;
     font-size: 0.7rem;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     cursor: pointer;
     transition: 0.25s ease;
     overflow: hidden;
@@ -345,11 +464,6 @@ section {
     transform: scale(1.08);
 }
 
-.lang-btn:hover img {
-    filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.7));
-}
-
-/* Active language highlight */
 .bb-lang-option.active {
     border-color: var(--bb-blue);
     background: rgba(102, 170, 255, 0.15);
@@ -358,30 +472,23 @@ section {
         inset 0 0 6px rgba(102, 170, 255, 0.4);
 }
 
-/* Active button (visible one) */
-.bb-lang-toggle {
-    position: relative;
-}
-
-/* Mobile tweaks */
 @media (max-width: 900px) {
     .bb-lang-dropdown {
-        margin-left: 10px;
+        margin-left: 8px;
     }
-
     .lang-btn {
         width: 40px;
         height: 40px;
     }
-
     .bb-lang-menu {
         max-width: calc(100vw - 24px);
         padding: 8px;
     }
 }
 
+
 /* ========================================================================
-   9. MOBILE MENU TOGGLE
+   12. MOBILE MENU TOGGLE
    ======================================================================== */
 
 .mobile-menu-toggle {
@@ -413,143 +520,17 @@ section {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
-
-/* NOTE: changed from 900px → 1100px so burger appears earlier */
+/* show burger earlier on medium screens too */
 @media (max-width: 1100px) {
     .mobile-menu-toggle {
         display: flex;
     }
-
-    html.bb-menu-open .theme-toggle,
-    html.bb-menu-open .bb-lang-dropdown {
-        display: none !important;
-    }
 }
 
-
-/* ========================================================================
-   10. SCROLL PROGRESS
-   ======================================================================== */
-
-.scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    width: 0%;
-    background: var(--bb-blue);
-    z-index: 2000; /* higher than header */
-    transition: width 0.2s ease;
-}
-
-
-
-/* ========================================================================
-   11. ICON SYSTEM (Header + Footer)
-   ======================================================================== */
-
-svg {
-    shape-rendering: geometricPrecision;
-    text-rendering: geometricPrecision;
-    image-rendering: optimizeQuality;
-    display: inline-block;
-}
-
-/* Normalized icon classes */
-.nav-icon,
-.footer-icon,
-.footer-header-icon {
-    stroke: currentColor;
-    fill: none;
-    flex-shrink: 0;
-    vertical-align: middle;
-}
-
-/* Desktop sizes (match your inline sizes) */
-.nav-icon {
-    width: 22px;
-    height: 22px;
-}
-
-.footer-icon,
-.footer-header-icon {
-    width: 20px;
-    height: 20px;
-}
-
-/* Mobile sizes */
-@media (max-width: 900px) {
-    .nav-icon,
-    .footer-icon,
-    .footer-header-icon {
-        width: 18px;
-        height: 18px;
-    }
-}
-
-/* Hover glow */
-.nav-link:hover .nav-icon,
-.footer-links a:hover .footer-icon {
-    opacity: 1;
-    transform: scale(1.15);
-    filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.6));
-}
-
-
-/* ========================================================================
-   12. ENHANCED HEADER BEHAVIOUR
-   ======================================================================== */
-
-.enhanced-header {
-    position: fixed;
-    width: 100%;
-    background: rgba(12, 12, 12, 0.85);
-    backdrop-filter: blur(14px);
-    border-bottom: 2px solid var(--bb-blue);
-    z-index: 1000;
-    padding: 14px 0;
-    transition:
-        padding 0.25s ease,
-        background 0.35s ease,
-        transform 0.35s ease,
-        border-color 0.35s ease;
-    min-height: 64px;
-}
-
-.enhanced-header::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--bb-blue), transparent);
-    opacity: 0.55;
-}
-
-.enhanced-header.glow {
-    box-shadow: 0 0 20px rgba(102, 170, 255, 0.45);
-}
-
-.enhanced-header.hide {
-    transform: translateY(-100%);
-}
-
-.enhanced-header.shrink {
-    padding: 6px 0;
-    background: rgba(5, 5, 5, 0.92);
-    min-height: 64px;
-}
-
-.header-logo-img {
-    height: 80px;
-    transition: 0.3s ease;
-    filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.3));
-}
-
-.enhanced-header.shrink .header-logo-img {
-    height: 60px;
-    filter: drop-shadow(0 0 4px rgba(102, 170, 255, 0.2));
+/* Keep the toggle always visible, even when menu open */
+#mobile-menu-toggle {
+    position: relative;
+    z-index: 4000;
 }
 
 
@@ -563,6 +544,7 @@ svg {
     gap: 32px;
 }
 
+/* desktop nav links */
 .nav-link {
     color: var(--bb-text);
     font-weight: 500;
@@ -607,11 +589,8 @@ svg {
     opacity: 0.7;
 }
 
-
-/* MOBILE NAV DRAWER */
-/* NOTE: changed from 900px → 1100px so drawer starts earlier */
+/* mobile nav drawer */
 @media (max-width: 1100px) {
-
     .header-nav {
         position: fixed;
         right: -100%;
@@ -623,13 +602,13 @@ svg {
         align-items: flex-start;
         background: linear-gradient(
             180deg,
-            rgba(10, 10, 10, 0.95),
-            rgba(10, 10, 10, 0.90),
-            rgba(20, 20, 40, 0.85)
+            rgba(10,10,10,0.95),
+            rgba(10,10,10,0.90),
+            rgba(20,20,40,0.85)
         );
         border-left: 2px solid var(--bb-blue);
         transition: right 0.4s ease;
-        z-index: 2000 !important;
+        z-index: 3000;
     }
 
     .header-nav.active {
@@ -649,13 +628,9 @@ svg {
     .nav-link::before {
         display: none;
     }
-}
 
-/* Light-theme frosted glass mobile drawer */
-/* NOTE: also widened to 1100px to match drawer */
-@media (max-width: 1100px) {
     html[data-theme="light"] .header-nav {
-        background: rgba(255, 255, 255, 0.88);
+        background: rgba(255,255,255,0.88);
         backdrop-filter: blur(14px);
         border-left-color: var(--bb-blue);
     }
@@ -669,18 +644,19 @@ svg {
     }
 }
 
-/* Mobile-only account bar under header */
+
+/* ========================================================================
+   14. MOBILE ACCOUNT BAR
+   ======================================================================== */
+
 .mobile-account-bar {
     display: none;
     width: 100%;
     background: var(--bb-panel);
     border-bottom: 1px solid var(--bb-border);
     padding: 10px 14px;
-    display: flex;
-    justify-content: flex-start;
     align-items: center;
     gap: 12px;
-    z-index: 900; /* Above content, below mobile menu drawer */
 }
 
 .mobile-account-button {
@@ -696,21 +672,107 @@ svg {
 }
 
 .mobile-account-button svg {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     stroke: currentColor;
     fill: none;
 }
 
-/* Show bar only on mobile */
 @media (max-width: 768px) {
     .mobile-account-bar {
         display: flex;
     }
 }
 
+/* desktop-only helper class */
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+}
+
+
 /* ========================================================================
-   14. FOOTER — ACCORDION + ICONS
+   15. HEADER ACTION HIDING WHEN MOBILE MENU OPEN
+   ======================================================================== */
+
+/* Hide everything EXCEPT the mobile menu toggle when menu is open */
+html.bb-menu-open .header-actions > *:not(#mobile-menu-toggle) {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Also hide the mobile account bar when menu open */
+html.bb-menu-open .mobile-account-bar {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Make the toggle visible and on top in all cases */
+html.bb-menu-open #mobile-menu-toggle {
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* keep X bars bright when menu open for contrast */
+html.bb-menu-open #mobile-menu-toggle span {
+    background: var(--bb-blue);
+}
+
+
+/* ========================================================================
+   16. ICON SYSTEM (Header + Footer)
+   ======================================================================== */
+
+svg {
+    shape-rendering: geometricPrecision;
+    text-rendering: geometricPrecision;
+    image-rendering: optimizeQuality;
+    display: inline-block;
+}
+
+.nav-icon,
+.footer-icon,
+.footer-header-icon {
+    stroke: currentColor;
+    fill: none;
+    flex-shrink: 0;
+    vertical-align: middle;
+}
+
+.nav-icon {
+    width: 22px;
+    height: 22px;
+}
+
+.footer-icon,
+.footer-header-icon {
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 900px) {
+    .nav-icon,
+    .footer-icon,
+    .footer-header-icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.nav-link:hover .nav-icon,
+.footer-links a:hover .footer-icon {
+    opacity: 1;
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.6));
+}
+
+
+/* ========================================================================
+   17. FOOTER
    ======================================================================== */
 
 footer.site-footer {
@@ -731,7 +793,6 @@ footer.site-footer::before {
     opacity: 0.5;
 }
 
-/* 4 → 2 → 1 layout */
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -802,7 +863,6 @@ footer.site-footer::before {
     .footer-col-content {
         max-height: none !important;
     }
-
     .footer-accordion-arrow {
         display: none;
     }
@@ -831,12 +891,10 @@ footer.site-footer::before {
     text-shadow: 0 0 6px rgba(102, 170, 255, 0.6);
 }
 
-/* Social vertical */
 .footer-social-vertical li {
     margin-bottom: 10px;
 }
 
-/* Footer bottom */
 .footer-bottom {
     text-align: center;
     margin-top: 30px;
@@ -861,13 +919,14 @@ footer.site-footer::before {
 }
 
 @media (max-width: 900px) {
-   .footer-brand img {
-      width: 90%
-   }
+    .footer-brand img {
+        width: 90%;
+    }
 }
 
+
 /* ========================================================================
-   PRODUCT GRID & CARD STYLES (Restored)
+   18. PRODUCT GRID & CARDS
    ======================================================================== */
 
 .product-grid {
@@ -894,10 +953,10 @@ footer.site-footer::before {
     box-shadow: 0 0 18px rgba(102,170,255,0.35);
 }
 
-/* Media placeholder */
 .product-media {
     width: 100%;
 }
+
 .product-image-placeholder {
     width: 100%;
     height: 180px;
@@ -911,7 +970,6 @@ footer.site-footer::before {
     font-size: 0.9rem;
 }
 
-/* Card body */
 .product-body h2 {
     margin-bottom: 6px;
     font-size: 1.4rem;
@@ -922,7 +980,6 @@ footer.site-footer::before {
     margin-bottom: 12px;
 }
 
-/* Feature list */
 .product-features {
     margin: 12px 0;
     padding-left: 18px;
@@ -933,7 +990,6 @@ footer.site-footer::before {
     padding: 4px 0;
 }
 
-/* Badges */
 .product-badges {
     display: flex;
     flex-wrap: wrap;
@@ -949,26 +1005,18 @@ footer.site-footer::before {
     color: var(--bb-blue);
 }
 
-/* Placeholder cards */
 .product-card--placeholder {
     opacity: 0.75;
 }
+
 .product-card--placeholder:hover {
     opacity: 1;
 }
 
 .product-image {
-  width: 100%;
-  height: 200px; /* or 180–240 depending on your design */
-  object-fit: contain;
-  object-position: center;
-  display: block;
-}
-
-.product-image {
     width: 100%;
     height: auto;
-    max-height: 240px; /* you can adjust */
+    max-height: 240px;
     object-fit: contain;
     display: block;
 }
@@ -989,11 +1037,11 @@ footer.site-footer::before {
     margin: 10px 0 20px;
 }
 
+
 /* ========================================================================
-   14.1. SUPPORT PAGE
+   19. SUPPORT PANEL
    ======================================================================== */
 
-/* Support page panel style (Restored) */
 .support-panel {
     background: var(--bb-surface);
     border: 1px solid var(--bb-border);
@@ -1002,14 +1050,21 @@ footer.site-footer::before {
     margin-bottom: 24px;
     box-shadow: var(--bb-shadow);
 }
+
 .support-panel h2 {
     color: var(--bb-blue);
     margin-bottom: 12px;
 }
 
+
 /* ========================================================================
-   15. LIGHT THEME OVERRIDES
+   20. LIGHT THEME OVERRIDES
    ======================================================================== */
+
+html[data-theme="light"] body {
+    background: #f5f5f5;
+    color: #111;
+}
 
 html[data-theme="light"] footer.site-footer {
     background: #f7f7f7;
@@ -1017,7 +1072,7 @@ html[data-theme="light"] footer.site-footer {
 
 
 /* ========================================================================
-   16. ACCESSIBILITY
+   21. ACCESSIBILITY
    ======================================================================== */
 
 .skip-link {
@@ -1036,83 +1091,62 @@ html[data-theme="light"] footer.site-footer {
     top: 10px;
 }
 
+
 /* ========================================================================
-   GTRANSLATE TOP BANNER OVERRIDES
+   22. GTRANSLATE OVERRIDES
    ======================================================================== */
 
-/* Hide the Google Translate banner injected by the widget */
 .goog-te-banner-frame.skiptranslate,
 .goog-te-banner-frame {
     display: none !important;
 }
 
-/* Prevent layout shift caused by the banner */
 body {
     top: 0 !important;
 }
 
-/* Sometimes Google wraps content in a helper span */
 body .goog-te-banner-frame + .skiptranslate {
     display: none !important;
 }
-
-/* ========================================================================
-   17. REDUCED MOTION
-   ======================================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-    }
-}
-
-
-/* ========================================================================
-   17. GTRANSLATE FIX
-   ======================================================================== */
-
-
-/* FIX: GTranslate blocking mobile interactions */
-body .skiptranslate > span {
-    display: none !important;
-}
-
-body .goog-te-gadget {
-    font-size: 0 !important; /* Hide injected text */
-}
-
-.goog-te-menu-frame.skiptranslate {
-    z-index: 999999 !important;
-}
-
-/* Allow GTranslate select to render internally, but still hide visually */
-.goog-te-gadget img {
-    display: none !important;
-}
-
-/* Keep spans visible ONLY long enough for widget to build the select */
-@media (max-width: 900px) {
-    .goog-te-gadget span {
-        opacity: 0;  /* invisible but not removed */
-        font-size: 0; 
-    }
-}
-
 
 .notranslate {
     unicode-bidi: plaintext !important;
 }
 
 .goog-te-gadget {
-    visibility: hidden !important; /* hides visually */
+    visibility: hidden !important;
 }
 
 .goog-te-combo {
-    visibility: visible !important; /* ensures Safari sees a visible select to bind to */
+    visibility: visible !important;
 }
+
+body .skiptranslate > span {
+    display: none !important;
+}
+
+body .goog-te-gadget {
+    font-size: 0 !important;
+}
+
+.goog-te-menu-frame.skiptranslate {
+    z-index: 999999 !important;
+}
+
+.goog-te-gadget img {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .goog-te-gadget span {
+        opacity: 0;
+        font-size: 0;
+    }
+}
+
+
 /* ========================================================================
-   17. SOCIAL ICONS
+   23. SOCIAL ICON STRIP
    ======================================================================== */
 
 .social-links {
@@ -1142,171 +1176,14 @@ body .goog-te-gadget {
     transform: translateY(-2px);
 }
 
-/* Mobile: header always shrunk */
-@media (max-width: 768px) {
-    header.site-header {
-        height: 64px !important;        /* your shrunk height */
-        padding: 0 16px !important;
-    }
 
-    header.site-header:not(.header--scrolled) {
-        height: 64px !important;
-        padding: 0 16px !important;
-    }
+/* ========================================================================
+   24. REDUCED MOTION
+   ======================================================================== */
 
-    /* Prevent animation flicker on mobile */
-    header.site-header {
-        transition: none !important;
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
     }
 }
-
-@media (max-width: 768px) {
-    .site-header {
-        height: 64px !important; /* shrunk height */
-        transition: none !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .header-actions {
-        padding-right: 10px;  /* brings buttons slightly inward */
-    }
-}
-
-@media (max-width: 768px) {
-    .header-actions {
-        align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .header-logo-img {
-        height: 48px !important;
-    }
-}
-
-
-/* Fix second-shrink issue by reducing logo height on narrow widths */
-@media (max-width: 768px) {
-    .header-logo-img {
-        height: 64px !important;  /* previously 54 */
-    }
-
-    .enhanced-header.shrink .header-logo-img {
-        height: 56px !important;  /* previously 48 */
-    }
-}
-
-
-/* Improve mobile header spacing & thumb reach */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 12px !important; /* instead of 20px */
-    }
-
-    .header-actions {
-        gap: 8px; /* slightly tighten spacing so cluster isn't too wide */
-        padding-right: 6px; /* pushes cluster away from screen edge */}
-}
-
-.header-actions {
-    flex-wrap: nowrap;
-    overflow: visible;
-}
-
-.enhanced-header,
-.site-header {
-    min-height: 72px;   /* instead of 64px */
-}
-
-/* Restore smooth slide animation for header hide/show */
-.enhanced-header {
-    transition:
-        transform 0.35s ease,
-        opacity 0.25s ease,
-        padding 0.25s ease,
-        background 0.35s ease,
-        border-color 0.35s ease !important;
-}
-
-.enhanced-header.hide {
-    opacity: 0;
-    transform: translateY(-100%);
-}
-
-/* Hide header actions when mobile menu is open... */
-html.bb-menu-open .header-actions > * {
-    visibility: hidden;
-    opacity: 0;
-}
-
-/* ...but NOT the menu toggle button */
-html.bb-menu-open .header-actions #mobile-menu-toggle {
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-
-html.bb-menu-open .mobile-account-bar {
-    visibility: hidden;
-    opacity: 0;
-}
-
-@media (max-width: 768px) {
-    .desktop-only {
-        display: none !important;
-    }
-}
-
-
-.mobile-account-bar {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .mobile-account-bar {
-        display: flex;
-        width: 100%;
-        background: var(--bb-panel);
-        border-bottom: 1px solid var(--bb-border);
-        padding: 10px 14px;
-        align-items: center;
-        gap: 12px;
-        z-index: 900;
-    }
-}
-
-.mobile-account-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--bb-blue);
-    background: transparent;
-    border: none;
-    font-family: Inter, sans-serif;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-/* Mobile menu open: hide all header actions EXCEPT the menu toggle */
-html.bb-menu-open .header-actions > *:not(#mobile-menu-toggle) {
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-}
-
-/* Keep the hamburger/X visible on top of the drawer */
-#mobile-menu-toggle {
-    position: relative;
-    z-index: 5000 !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-}
-
-.header-nav.active {
-    z-index: 4000 !important;
-}
-
-
-
