@@ -302,6 +302,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const activeCode = document.getElementById("bb-active-code");
     const menu       = document.getElementById("bb-lang-menu");
     const headerEl   = document.getElementById("bb-header");
+    const moreBtn  = document.querySelector(".bb-lang-more");
+    const backBtn  = document.querySelector(".bb-lang-back");
+    const extended = document.querySelector(".bb-lang-extended");
+
+    if (moreBtn && extended) {
+      moreBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    
+        dropdown.classList.remove("open");
+        activeBtn.setAttribute("aria-expanded", "false");
+    
+        extended.classList.add("open");
+        extended.setAttribute("aria-hidden", "false");
+        positionExtendedMenu();
+      });
+    }
+    
+    if (backBtn && extended) {
+      backBtn.addEventListener("click", () => {
+        extended.classList.remove("open");
+        extended.setAttribute("aria-hidden", "true");
+      });
+    }
+
+
 
     if (!dropdown || !activeBtn || !activeFlag || !activeCode || !menu) return;
 
@@ -621,6 +647,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 });
+
 
 
 
