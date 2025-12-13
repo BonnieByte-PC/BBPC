@@ -1767,3 +1767,11 @@ html[data-theme="light"] .bb-cart-toggle:hover svg {
   width: 32px;
   height: 32px;
 }
+
+.bb-lang-extended button {
+   width: 62px;
+}
+
+.bb-lang-extended img {
+   width: 34px;
+}
