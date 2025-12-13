@@ -597,6 +597,61 @@ html[data-theme="light"] .lang-btn {
     color: #222 !important;
 }
 
+.bb-lang-extended {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 3000;
+  display: none;
+}
+
+.bb-lang-extended[aria-hidden="false"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-lang-extended-inner {
+  background: var(--bb-panel);
+  border: 2px solid var(--bb-blue);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 420px;
+  width: 90%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bb-lang-extended-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  overflow-y: auto;
+  margin-top: 12px;
+}
+
+.bb-lang-extended-grid button {
+  background: transparent;
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text);
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.bb-lang-extended-grid button:hover {
+  background: var(--bb-blue);
+  color: #000;
+}
+
+.bb-lang-back {
+  background: none;
+  border: none;
+  color: var(--bb-blue);
+  cursor: pointer;
+  align-self: flex-start;
+}
 
 /* ========================================================================
    11. MOBILE MENU TOGGLE
