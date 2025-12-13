@@ -476,7 +476,7 @@ html.bb-cart-preview-open .enhanced-header.hide {
     transition:
         background-color 0.2s ease,
         transform 0.2s ease;
-    font-family: 'Orbitron'
+    font-family: 'Orbitron', sans-serif;
     font-weight: 700;
 }
 
@@ -572,7 +572,7 @@ html[data-theme="light"] .bb-lang-toggle:hover {
     box-shadow 0.2s ease,
     transform 0.2s ease;
 
-   font-family: 'Orbitron';
+   font-family: 'Orbitron', sans-serif;
    font-weight: 700;
 }
 
