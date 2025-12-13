@@ -328,23 +328,25 @@ function initializeLanguageSelector() {
   }
 
   function setActiveLangUI(lang) {
+    if (!lang) return;
+  
     const code = normaliseLang(lang);
   
     const btn =
       menu.querySelector(`[data-lang="${lang}"]`) ||
       menu.querySelector(`[data-lang="${code}"]`) ||
-      (extended ? extended.querySelector(`[data-lang="${lang}"]`) : null) ||
-      (extended ? extended.querySelector(`[data-lang="${code}"]`) : null);
+      (extended && extended.querySelector(`[data-lang="${lang}"]`)) ||
+      (extended && extended.querySelector(`[data-lang="${code}"]`));
   
     if (!btn) return;
   
     const img = btn.querySelector("img");
     if (img && activeFlag) {
       activeFlag.src = img.src;
-      activeFlag.alt = img.alt || lang;
+      activeFlag.alt = img.alt || lang.toUpperCase();
     }
   
-    // 👇 SHOW FULL CODE FOR CHINESE VARIANTS
+    // Preserve Chinese variants
     if (lang.startsWith("zh")) {
       activeCode.textContent = lang.toUpperCase();
     } else {
@@ -353,35 +355,31 @@ function initializeLanguageSelector() {
   }
 
 
-    if (activeCode) activeCode.textContent = code.toUpperCase();
-  }
-
   function applyLanguage(lang) {
-    const uiCode = normaliseLang(lang); // for UI only
-    const translateCode = lang;         // FULL code for Google
+    if (!lang) return;
   
-    setActiveLangUI(uiCode);
+    setActiveLangUI(lang);
   
     try {
       if (typeof BBCookies !== "undefined") {
-        BBCookies.set("bb_lang", translateCode, 365);
+        BBCookies.set("bb_lang", lang, 365);
       }
     } catch (err) {
       console.warn("BB lang cookie error:", err);
     }
   
-    // Trigger Google Translate (FULL CODE)
     if (typeof doGTranslate === "function") {
-      doGTranslate(translateCode);
+      doGTranslate(lang);
     } else if (
       window.gtranslateSettings &&
       typeof window.gtranslateSettings.switchLanguage === "function"
     ) {
-      window.gtranslateSettings.switchLanguage(translateCode);
+      window.gtranslateSettings.switchLanguage(lang);
     } else {
       console.warn("GTranslate not ready");
     }
   }
+
 
 
 
@@ -664,6 +662,7 @@ if (typeof module !== "undefined" && module.exports) {
     initializeProductGallery
   };
 }
+
 
 
 
