@@ -1723,16 +1723,21 @@ html[data-theme="light"] .bb-cart-toggle:hover svg {
 }
 
 .bb-account-icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
 }
 
 .theme-icon {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
 }
 
 .nav-icon {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
+}
+
+.cart-icon {
+  width: 32px;
+  height: 32px;
 }
