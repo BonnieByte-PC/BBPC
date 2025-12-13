@@ -645,11 +645,10 @@ html[data-theme="light"] .lang-btn {
 
 .bb-lang-extended {
   position: fixed;
+  top: 72px; /* JS overrides */
   left: 50%;
   transform: translateX(-50%);
-  top: 72px; /* JS will override */
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
+  z-index: 2600;
 
   background: rgba(10,10,10,0.98);
   border: 2px solid var(--bb-blue);
@@ -657,24 +656,29 @@ html[data-theme="light"] .lang-btn {
   box-shadow: 0 0 22px rgba(102,170,255,0.55);
 
   padding: 16px;
-  z-index: 2600;
   display: none;
+
+  width: auto;
+  max-width: min(360px, 100vw - 24px);
 }
 
 .bb-lang-extended.open {
   display: block;
 }
 
-html[data-theme="light"] .bb-lang-extended {
-  background: rgba(255,255,255,0.95);
+.bb-lang-extended-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .bb-lang-extended-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
   justify-content: center;
+  gap: 10px;
 }
+
 
 
 /* ========================================================================
@@ -1065,6 +1069,11 @@ html.bb-menu-open #mobile-menu-toggle span {
     background: var(--bb-blue);
 }
 
+html.bb-menu-open .header-actions > *:not(#mobile-menu-toggle) {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* ========================================================================
    15. ICON SYSTEM (HEADER + FOOTER)
