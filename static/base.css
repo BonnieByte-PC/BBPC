@@ -819,6 +819,90 @@ html[data-theme="light"] .lang-btn {
 
 
 /* ========================================================================
+/* ========================================================================
+   13A. HEADER LAYOUT POLISH (STRUCTURE ALREADY IN HTML)
+   Notes: Visual/layout only — no behaviour changes.
+   ======================================================================== */
+
+/* Header actions grouping (supports header-actions-primary + header-actions-cart) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-actions-primary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-actions-cart {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    position: relative;
+}
+
+/* Divider before cart (desktop) */
+@media (min-width: 1251px) {
+    .header-actions-cart::before {
+        content: "";
+        position: absolute;
+        left: -12px;
+        top: 6px;
+        bottom: 6px;
+        width: 1px;
+        background: rgba(102,170,255,0.35);
+    }
+}
+
+/* Tablet/mobile: hide primary actions in top header row (cart + hamburger stay) */
+@media (max-width: 1250px) {
+    .header-actions-primary {
+        display: none;
+    }
+
+    /* Use available space: cart sits left of hamburger, with breathing room */
+    .header-actions {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .header-actions-cart {
+        margin-left: auto;
+        margin-right: 6px;
+    }
+
+    .mobile-menu-toggle {
+        margin-left: 6px;
+    }
+}
+
+/* Mobile account bar quick actions (theme/lang moved here by JS) */
+.mobile-account-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Slightly smaller quick action buttons in the account bar */
+@media (max-width: 1250px) {
+    .mobile-account-actions .theme-toggle,
+    .mobile-account-actions .bb-lang-toggle {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* Hard guard: mobile account bar must never appear on desktop */
+@media (min-width: 1251px) {
+    .mobile-account-bar {
+        display: none !important;
+    }
+}
+
    14. HEADER ACTIONS WHEN MOBILE MENU OPEN
    ======================================================================== */
 
@@ -1198,6 +1282,31 @@ html[data-theme="light"] footer.site-footer {
 
 
 /* ========================================================================
+
+/* --- Light theme: mobile account bar + quick actions --- */
+html[data-theme="light"] .mobile-account-bar {
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.95),
+        rgba(245,245,245,0.95)
+    );
+    border-bottom: 1px solid rgba(102,170,255,0.4);
+}
+
+html[data-theme="light"] .mobile-account-bar .theme-toggle,
+html[data-theme="light"] .mobile-account-bar .bb-lang-toggle {
+    border-color: var(--bb-blue);
+    color: var(--bb-blue);
+}
+
+html[data-theme="light"] .mobile-account-button {
+    color: #222;
+}
+
+html[data-theme="light"] .mobile-account-button svg {
+    stroke: #222;
+}
+
    20. ACCESSIBILITY
    ======================================================================== */
 
@@ -1370,263 +1479,3 @@ body .goog-te-gadget {
 }
 
 /* ============================================================
-   MOBILE HEADER SIMPLIFICATION (VISUAL ONLY)
-   ============================================================ */
-
-@media (max-width: 1250px) {
-
-    /* Keep hamburger + logo visually dominant */
-    #mobile-menu-toggle {
-        transform: scale(1.05);
-    }
-
-    /* De-emphasise secondary actions in top header row */
-    .header-actions {
-        gap: 10px;
-    }
-
-   .enhanced-header {
-        padding: 16px 0;
-    }
-
-   .header-logo {
-        margin-right: auto;
-    }
-
-   
-}
-
-
-html[data-theme="light"] .mobile-account-bar {
-    background: linear-gradient(
-        180deg,
-        rgba(255,255,255,0.95),
-        rgba(245,245,245,0.95)
-    );
-    border-bottom: 1px solid rgba(102,170,255,0.4);
-}
-
-html[data-theme="light"] .mobile-account-bar .theme-toggle,
-html[data-theme="light"] .mobile-account-bar .bb-lang-toggle,
-html[data-theme="light"] .mobile-account-bar .bb-cart-toggle {
-    border-color: var(--bb-blue);
-    color: var(--bb-blue);
-}
-
-
-html[data-theme="light"] .mobile-account-button {
-    color: #222;
-}
-
-html[data-theme="light"] .mobile-account-button svg {
-    stroke: #222;
-}
-
-
-/* ============================================================
-   SHOPIFY-STYLE MOBILE HEADER (VISUAL ONLY)
-   ============================================================ */
-@media (max-width: 1250px) {
-
-    /* Give header breathing room */
-    .enhanced-header {
-        padding: 16px 0;
-    }
-
-    /* Make logo the visual anchor */
-    .header-logo-img {
-        height: 54px !important;
-    }
-
-    /* Group actions tightly (reads as a cluster, not noise) */
-    .header-actions {
-        gap: 10px;
-    }
-
-    /* Subtle divider under header for structure */
-    .enhanced-header {
-        border-bottom: 1px solid rgba(102,170,255,0.35);
-    }
-}
-
-@media (min-width: 1251px) {
-    .theme-toggle,
-    .bb-lang-toggle,
-    .bb-account-toggle {
-        opacity: 0.85;
-    }
-
-    .theme-toggle:hover,
-    .bb-lang-toggle:hover,
-    .bb-account-toggle:hover {
-        opacity: 1;
-    }
-}
-
-
-/* Mobile header layout: Shopify-style */
-@media (max-width: 1250px) {
-    /* Cart stays visible */
-    .bb-cart-toggle {
-        margin-left: auto;
-    }
-}
-
-
-
-@media (max-width: 1250px) {
-    .mobile-account-bar .theme-toggle,
-    .mobile-account-bar .bb-lang-toggle,
-    .mobile-account-bar .bb-account-toggle {
-        margin-right: 6px;
-    }
-}
-
-/* Desktop header-actions grouping */
-@media (min-width: 1251px) {
-    .header-actions {
-        gap: 14px;
-        align-items: center;
-    }
-
-    .bb-header-cart-area {
-        margin-left: 12px;
-        position: relative;
-    }
-
-    .bb-header-cart-area::before {
-        content: "";
-        position: absolute;
-        left: -12px;
-        top: 6px;
-        bottom: 6px;
-        width: 1px;
-        background: rgba(102,170,255,0.35);
-    }
-}
-
-/* Mobile header: only nav + cart in top row */
-@media (max-width: 1250px) {
-
-    .bb-header-cart-area {
-        margin-left: auto;
-    }
-}
-
-/* Mobile header: only nav + cart in top row */
-@media (max-width: 1250px) {
-
-    .bb-header-cart-area {
-        margin-left: auto;
-    }
-}
-
-
-/* Header actions: clean grouping */
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.header-actions-primary {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.header-actions-cart {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    position: relative;
-}
-
-/* divider before cart (desktop) */
-@media (min-width: 1251px) {
-    .header-actions-cart::before {
-        content: "";
-        position: absolute;
-        left: -12px;
-        top: 6px;
-        bottom: 6px;
-        width: 1px;
-        background: rgba(102,170,255,0.35);
-    }
-}
-
-/* Mobile/tablet: hide primary actions in top row (cart + hamburger stay) */
-@media (max-width: 1250px) {
-    .header-actions-primary {
-        display: none;
-    }
-
-    .header-actions {
-        gap: 10px;
-    }
-
-    .header-actions-cart {
-        margin-left: auto;
-    }
-}
-
-
-/* Mobile account bar: actions on the right */
-.mobile-account-actions {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Slightly smaller buttons in the account bar so it doesn’t feel cramped */
-@media (max-width: 1250px) {
-    .mobile-account-actions .theme-toggle,
-    .mobile-account-actions .bb-lang-toggle {
-        width: 38px;
-        height: 38px;
-    }
-}
-
-@media (max-width: 1250px) {
-    .header-actions {
-        width: 100%;
-    }
-    .header-actions-cart {
-        margin-left: auto;
-    }
-}
-
-@media (max-width: 1250px) {
-    .header-actions-cart {
-        margin-right: 6px;
-    }
-
-    .mobile-menu-toggle {
-        margin-left: 6px;
-    }
-}
-
-
-.mobile-account-bar {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-.mobile-account-actions {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* ============================================================
-   HARD GUARD: MOBILE ACCOUNT BAR MUST NEVER APPEAR ON DESKTOP
-   ============================================================ */
-@media (min-width: 1251px) {
-    .mobile-account-bar {
-        display: none !important;
-    }
-}
-
