@@ -396,6 +396,21 @@ section {
     pointer-events: none;
 }
 
+/* Language toggle — force visual parity with other header buttons */
+.bb-lang-toggle:hover {
+    background-color: var(--bb-blue);
+    color: #000;
+}
+
+/* Visually adapt flag + text on hover */
+.bb-lang-toggle:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.bb-lang-toggle:hover span {
+    color: #000;
+}
+
 /* ========================================================================
    10. LANGUAGE DROPDOWN
    ======================================================================== */
@@ -1381,6 +1396,7 @@ html[data-theme="light"] .mobile-account-button svg {
         border-bottom: 1px solid rgba(102,170,255,0.35);
     }
 }
+
 
 
 
