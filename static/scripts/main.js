@@ -507,8 +507,25 @@ function initializeProductGallery() {
       thumbs.forEach(t => t.classList.remove("active"));
       btn.classList.add("active");
     });
+    // Hover zoom follow cursor (desktop only)
+    const galleryMain = document.querySelector(".product-gallery-main");
+    
+    if (galleryMain && mainImage && window.matchMedia("(hover: hover)").matches) {
+      galleryMain.addEventListener("mousemove", (e) => {
+        const rect = galleryMain.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        mainImage.style.transformOrigin = `${x}% ${y}%`;
+      });
+    
+      galleryMain.addEventListener("mouseleave", () => {
+        mainImage.style.transformOrigin = "center center";
+      });
+    }
+
   });
 }
+
 
 
 
