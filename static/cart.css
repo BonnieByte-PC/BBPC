@@ -277,11 +277,6 @@
     animation: cartPreviewFade 0.18s ease-out;
 }
 
-/* Auto-hide */
-.bb-cart-toggle-wrapper:not(:hover) .bb-cart-preview {
-    display: none !important;
-}
-
 /* Disable preview on touch devices */
 @media (hover: none), (pointer: coarse) {
     .bb-cart-preview {
