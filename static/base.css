@@ -61,10 +61,16 @@ body {
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
 }
+
+/* iOS overflow safety — content only */
+main .container {
+  overflow-x: hidden;
+}
+
 
 .brand-name {
     font-family: 'Orbitron', sans-serif;
@@ -228,6 +234,7 @@ section {
     backdrop-filter: blur(14px);
     border-bottom: 2px solid var(--bb-blue);
     z-index: 2500;
+    overflow: visible;
 }
 
 .enhanced-header {
@@ -268,8 +275,8 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 32px;
     gap: 32px;
+    overflow: visible;
 }
 
 .header-logo-img {
@@ -281,6 +288,22 @@ section {
 .enhanced-header.shrink .header-logo-img {
     height: 70px;
     filter: drop-shadow(0 0 4px rgba(102, 170, 255, 0.2));
+}
+
+/* Prevent header hide while cart preview is open */
+html.bb-cart-preview-open .enhanced-header.hide {
+    transform: translateY(0) !important;
+}
+
+/* =========================================
+   CART PREVIEW — ESCAPE HEADER CLIPPING
+   ========================================= */
+
+/* Header must allow overflow for floating elements */
+.site-header,
+.header-content,
+.header-actions {
+  overflow: visible;
 }
 
 @media (max-width: 1250px) {
@@ -758,6 +781,20 @@ html[data-theme="light"] .lang-btn {
     }
 }
 
+/* =========================================
+   TRANSLATION SAFETY — DESKTOP ONLY
+   ========================================= */
+@media (min-width: 1251px) {
+  .header-nav {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .nav-link {
+    white-space: normal;
+    line-height: 1.2;
+  }
+}
 
 /* ========================================================================
    13. MOBILE ACCOUNT BAR (TABLET + MOBILE)
@@ -902,7 +939,7 @@ html[data-theme="light"] .lang-btn {
         display: none !important;
     }
 }
-
+/*
    14. HEADER ACTIONS WHEN MOBILE MENU OPEN
    ======================================================================== */
 
@@ -1576,12 +1613,5 @@ html[data-theme="light"] .bb-lang-toggle:hover svg,
 html[data-theme="light"] .bb-cart-toggle:hover svg {
   stroke: currentColor;
   fill: currentColor;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-md);
-  overflow-x: hidden; /* iOS safety */
 }
 

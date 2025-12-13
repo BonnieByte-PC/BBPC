@@ -246,24 +246,24 @@
 ------------------------------------------------------------- */
 
 .bb-cart-toggle-wrapper {
-    position: relative;
+  position: relative;
 }
 
+/* JS will place this using fixed coordinates */
 .bb-cart-preview {
-    position: absolute;
-    top: 46px;
-    right: 0;
-    width: 280px;
-    background: var(--bb-panel);
-    border: 1px solid var(--bb-blue);
-    border-radius: 10px;
-    padding: 14px;
-    box-shadow: 0 0 14px rgba(102,170,255,0.3);
-    z-index: 99999;
-    display: none;
-    opacity: 0;
-    transform: translateY(6px);
+  position: fixed;
+  width: 280px;
+  background: var(--bb-panel);
+  border: 1px solid var(--bb-blue);
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 0 14px rgba(102,170,255,0.3);
+  z-index: 99999;
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
 }
+
 
 /* Animation */
 @keyframes cartPreviewFade {
@@ -432,4 +432,121 @@
 .bb-cart-preview-item-image,
 .bb-cart-page-thumb a {
   display: block;
+}
+
+/* Desktop table alignment fix */
+.bb-cart-page-table th,
+.bb-cart-page-table td {
+  text-align: center;
+}
+
+.bb-cart-page-table th:first-child,
+.bb-cart-page-table td:first-child {
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+
+  /* Kill table layout entirely */
+  .bb-cart-page-table,
+  .bb-cart-page-table thead,
+  .bb-cart-page-table tbody,
+  .bb-cart-page-table tr,
+  .bb-cart-page-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .bb-cart-page-table thead {
+    display: none;
+  }
+
+  .bb-cart-page-table tr {
+    background: var(--bb-panel);
+    border: 1px solid var(--bb-border);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 14px;
+  }
+
+  .bb-cart-page-product-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .bb-cart-page-thumb img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .bb-cart-page-info {
+    text-align: center;
+  }
+
+  /* Price / quantity / total rows */
+  .bb-cart-page-table td:nth-child(2),
+  .bb-cart-page-table td:nth-child(3),
+  .bb-cart-page-table td:nth-child(4) {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  .bb-cart-page-table td:nth-child(2)::before {
+    content: "Price";
+  }
+
+  .bb-cart-page-table td:nth-child(3)::before {
+    content: "Quantity";
+  }
+
+  .bb-cart-page-table td:nth-child(4)::before {
+    content: "Total";
+  }
+
+  .bb-cart-page-table td::before {
+    font-weight: 600;
+    color: var(--bb-text-muted);
+  }
+
+  .bb-cart-remove {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+/* Desktop: center quantity controls perfectly */
+.bb-cart-page-qty {
+  justify-content: center;
+}
+
+.bb-cart-page-name {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.bb-cart-page-table td:nth-child(2),
+.bb-cart-page-table td:nth-child(4),
+.bb-cart-item-price,
+.bb-cart-preview-qty-price {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.2px;
+}
+
+.bb-cart-item-name,
+.bb-cart-page-name,
+.bb-cart-preview-name {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.bb-cart-item-price,
+.bb-cart-preview-qty-price,
+.bb-cart-page-table td:nth-child(2),
+.bb-cart-page-table td:nth-child(4) {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--bb-blue);
 }

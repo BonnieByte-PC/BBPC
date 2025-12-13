@@ -262,6 +262,10 @@
   // -----------------------------
 
   function addToCart({ id, sku, name, price, image, variant }) {
+     if (!id) {
+      console.error("Cart item missing product id:", name);
+      return;
+    }
     const key = buildItemKey(sku, variant);
     const index = findItemIndex(currentCart, key);
 
@@ -444,15 +448,45 @@
   
     const showPreview = () => {
       if (window.matchMedia("(hover: none)").matches) return;
-      clearTimeout(hoverTimeout);
+    
       renderPreview();
+    
+      // Position preview relative to the cart button (viewport coords)
+      const btn = cartToggleWrapper.querySelector("[data-cart-toggle]");
+      if (btn) {
+        const rect = btn.getBoundingClientRect();
+    
+        // Temporarily show to measure width accurately
+        cartPreview.style.display = "block";
+        cartPreview.style.opacity = "0";
+    
+        const previewWidth = cartPreview.offsetWidth || 280;
+        const gap = 10;
+    
+        let top = rect.bottom + gap;
+        let left = rect.right - previewWidth;
+    
+        // Clamp within viewport
+        left = Math.max(12, Math.min(left, window.innerWidth - previewWidth - 12));
+        top = Math.max(12, Math.min(top, window.innerHeight - 12));
+    
+        cartPreview.style.left = `${left}px`;
+        cartPreview.style.top = `${top}px`;
+    
+        // Clear the temp inline visibility; aria-hidden drives it
+        cartPreview.style.display = "";
+        cartPreview.style.opacity = "";
+      }
+      document.documentElement.classList.add("bb-cart-preview-open");
       cartPreview.setAttribute("aria-hidden", "false");
     };
+
   
     const hidePreview = () => {
       hoverTimeout = setTimeout(() => {
         cartPreview.setAttribute("aria-hidden", "true");
       }, 250);
+      document.documentElement.classList.remove("bb-cart-preview-open");
     };
   
     cartToggleWrapper.addEventListener("mouseenter", showPreview);
@@ -475,3 +509,5 @@
   renderPreview();
   renderCartPage();
 })();
+
+const STORAGE_KEY = 'bbCart_v2';
