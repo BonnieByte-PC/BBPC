@@ -122,17 +122,17 @@ layout: default
     </div>
   </div>
 </section>
-<section class="section product-secondary">
+<section class="product-secondary">
   <div class="container">
       {% if p.compatibility or p.faq %}
       <section class="product-support">
         {% if p.compatibility %}
           <h3>Compatibility</h3>
-          <ul class="product-compatibility">
+          <div class="product-compatibility">
             {% for c in p.compatibility %}
-              <li>{{ c }}</li>
+              <span class="compat-badge">{{ c }}</span>
             {% endfor %}
-          </ul>
+          </div>
         {% endif %}
         {% if p.faq %}
           <h3>FAQs</h3>
