@@ -352,25 +352,32 @@ function initializeLanguageSelector() {
   }
 
   function applyLanguage(lang) {
-    const code = normaliseLang(lang);
-
-    setActiveLangUI(code);
-
+    const target = normaliseLang(lang);
+    const gCode = `${SOURCE_LANG}|${target}`;
+  
+    setActiveLangUI(target);
+  
     try {
-      if (typeof BBCookies !== "undefined") BBCookies.set("bb_lang", code, 365);
+      if (typeof BBCookies !== "undefined") {
+        BBCookies.set("bb_lang", target, 365);
+      }
     } catch (err) {
       console.warn("BB lang cookie error:", err);
     }
-
+  
+    // Google Translate trigger
     if (typeof doGTranslate === "function") {
-      doGTranslate(code);
+      doGTranslate(gCode);
     } else if (
       window.gtranslateSettings &&
       typeof window.gtranslateSettings.switchLanguage === "function"
     ) {
-      window.gtranslateSettings.switchLanguage(code);
+      window.gtranslateSettings.switchLanguage(target);
+    } else {
+      console.warn("GTranslate not ready");
     }
   }
+
 
   // Toggle dropdown
   activeBtn.addEventListener("click", (e) => {
@@ -649,3 +656,4 @@ if (typeof module !== "undefined" && module.exports) {
     initializeProductGallery
   };
 }
+
