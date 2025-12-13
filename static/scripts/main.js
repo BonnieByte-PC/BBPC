@@ -559,6 +559,27 @@ function initializeProductGallery() {
 }
 
 
+document.addEventListener("click", (e) => {
+  // Open extended list
+  if (e.target.closest(".bb-lang-more")) {
+    document.querySelector(".bb-lang-menu").style.display = "none";
+    document.querySelector(".bb-lang-extended").setAttribute("aria-hidden", "false");
+  }
+
+  // Back button
+  if (e.target.closest(".bb-lang-back")) {
+    document.querySelector(".bb-lang-extended").setAttribute("aria-hidden", "true");
+    document.querySelector(".bb-lang-menu").style.display = "";
+  }
+
+  // Language select
+  const langBtn = e.target.closest("[data-lang]");
+  if (langBtn && langBtn.dataset.lang !== "more") {
+    doGTranslate(langBtn.dataset.lang);
+    document.querySelector(".bb-lang-extended")?.setAttribute("aria-hidden", "true");
+  }
+});
+
 
 
 
