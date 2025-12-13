@@ -69,8 +69,24 @@ northern_wind_120:
     Ideal for airflow-focused builds, compact mid-towers,
     and quiet performance systems where cooling efficiency matters.
 
+pwm_splitter:
+  short_name: PWM Splitter
+  full_name: 4-Way PWM Fan Splitter
+  price_gbp: 4.99
+  thumbnial: /images/products/pwm_splitter/thumb.webp
+  badges:
+    - PWM
+    - Accessory
 
-
+argb_hub:
+  short_name: ARGB HUB
+  full_name: 10 Port ARGB Magnetic Fan Hub
+  price_gbp: 9.99
+  thumbnial: /images/products/argb_hub/thumb.webp
+  badges:
+    - ARGB
+    - Accessory
+    - Hub
   
 template_product:
   sku: ""
