@@ -39,6 +39,14 @@ northern_wind_120:
     - /images/products/nw120/angle.webp
     - /images/products/nw120/rear.webp
     - /images/products/nw120/lighting.webp
+  box_contents:
+    - 5x Northern Wind 120mm ARGB Fans
+    - Mounting Screw Set
+    - Magnetic Backed Fan Hub
+    - Accessories Bundle
+    - Product Manual
+    - 3x Decal Stickers
+    - Thank You Card
   
 template_product:
   sku: ""
