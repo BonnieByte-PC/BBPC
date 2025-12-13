@@ -37,40 +37,45 @@ layout: default
       </div>
       <div class="product-detail-body">
         <h1><span class="orbitron notranslate">{{ p.short_name | upcase }}</span> {{ p.full_name | replace: p.short_name,'' }}</h1>
-        <p class="product-price-large">£{{ p.price_gbp }}</p>
-        <p>{{ p.description }}</p>
-        <h3>Key Features</h3>
-        <ul class="product-features">
-          {% for f in p.features %}
-            <li>{{ f }}</li>
-          {% endfor %}
-        </ul>
-        <h3>Specifications</h3>
-        <table class="product-specs">
-          {% for spec in p.specs %}
-            <tr>
-              <td>{{ spec[0] | replace: "_"," " | capitalize }}</td>
-              <td>{{ spec[1] }}</td>
-            </tr>
-          {% endfor %}
-        </table>
-        <div class="product-buttons">
-          {% assign p = site.data.products[page.product_id] %}
-             <a class="button"
-                 data-add-to-cart
-                 data-product-id="{{ page.product_id }}"
-                 data-product-sku="{{ p.sku }}"
-                 data-product-name="{{ p.full_name }}"
-                 data-product-price="{{ p.price_gbp }}"
-                 data-product-image="{{ p.thumbnail }}"
-                 data-product-variant="default">
-                 Add to Cart
-              </a>
-          {% if p.amazon_url %}
-            <a href="{{ p.amazon_url }}" class="button button-primary" target="_blank" rel="noopener noreferrer">Buy on Amazon UK</a>
-          {% endif %}
-          <a href="/warranty/{{ page.product_id }}" class="button button-secondary">Warranty Info</a>
-          <a href="/docs/{{ page.product_id }}" class="button button-secondary">Manual</a>
+        <div class="product-buy-box">
+          <div class="product-price-large">
+            £{{ p.price_gbp }}
+            <span class="product-price-note">incl. VAT</span>
+          </div>
+          <p>{{ p.description }}</p>
+          <h3>Key Features</h3>
+          <ul class="product-features">
+            {% for f in p.features %}
+              <li>{{ f }}</li>
+            {% endfor %}
+          </ul>
+          <h3>Specifications</h3>
+          <table class="product-specs">
+            {% for spec in p.specs %}
+              <tr>
+                <td>{{ spec[0] | replace: "_"," " | capitalize }}</td>
+                <td>{{ spec[1] }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+          <div class="product-buttons">
+            {% assign p = site.data.products[page.product_id] %}
+               <a class="button"
+                   data-add-to-cart
+                   data-product-id="{{ page.product_id }}"
+                   data-product-sku="{{ p.sku }}"
+                   data-product-name="{{ p.full_name }}"
+                   data-product-price="{{ p.price_gbp }}"
+                   data-product-image="{{ p.thumbnail }}"
+                   data-product-variant="default">
+                   Add to Cart
+                </a>
+            {% if p.amazon_url %}
+              <a href="{{ p.amazon_url }}" class="button button-primary" target="_blank" rel="noopener noreferrer">Buy on Amazon UK</a>
+            {% endif %}
+            <a href="/warranty/{{ page.product_id }}" class="button button-secondary">Warranty Info</a>
+            <a href="/docs/{{ page.product_id }}" class="button button-secondary">Manual</a>
+          </div>
         </div>
       </div>
     </div>
