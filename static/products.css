@@ -424,6 +424,7 @@
 
 .product-buttons .button:first-child {
   font-size: 1.05rem;
+  padding: 14px 22px;
 }
 
 .product-gallery-main img {
@@ -613,4 +614,16 @@
 
 .product-trust-strip span {
   white-space: nowrap;
+}
+
+@media (min-width: 900px) {
+  .product-buy-box {
+    position: sticky;
+    top: 120px; /* clears header comfortably */
+  }
+}
+
+.product-price-large {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.04em;
 }
