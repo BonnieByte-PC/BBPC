@@ -83,12 +83,20 @@
       
           <!-- Theme toggle -->
           <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg viewBox="0 0 24 24" class="theme-icon">
-              <circle cx="12" cy="12" r="7"/>
-              <path d="M12 5v2M12 17v2M5 12h2M17 12h2"/>
+            <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle class="theme-core" cx="12" cy="12" r="6"/>
+              <g class="theme-rays">
+                <line x1="12" y1="1"  x2="12" y2="4"/>
+                <line x1="12" y1="20" x2="12" y2="23"/>
+                <line x1="1"  y1="12" x2="4"  y2="12"/>
+                <line x1="20" y1="12" x2="23" y2="12"/>
+                <line x1="4.5" y1="4.5" x2="6.8" y2="6.8"/>
+                <line x1="17.2" y1="17.2" x2="19.5" y2="19.5"/>
+                <line x1="17.2" y1="6.8" x2="19.5" y2="4.5"/>
+                <line x1="4.5" y1="19.5" x2="6.8" y2="17.2"/>
+              </g>
             </svg>
           </button>
-
       
           <!-- Language dropdown -->
           <div class="bb-lang-dropdown">
