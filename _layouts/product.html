@@ -138,8 +138,10 @@ layout: default
           <h3>FAQs</h3>
           <dl class="product-faq">
             {% for q in p.faq %}
-              <dt>{{ q.question }}</dt>
-              <dd>{{ q.answer }}</dd>
+              {% if q.question and q.answer %}
+                <dt>{{ q.question }}</dt>
+                <dd>{{ q.answer }}</dd>
+              {% endif %}
             {% endfor %}
           </dl>
         {% endif %}
