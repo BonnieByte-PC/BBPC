@@ -36,18 +36,7 @@ layout: default
         {% endif %}
       </div>
       <div class="product-detail-body">
-        {% assign sn = p.short_name | default: "" %}
-        {% assign remainder = p.full_name | default: "" | replace: sn, "" | strip %}
-        <h1>
-          {% if p.short_name %}
-            <span class="orbitron notranslate">{{ p.short_name | upcase }}</span>
-          {% endif %}
-          {% if p.full_name %}
-            <span class="product-full-name">
-              {{ p.full_name | remove: p.short_name | strip }}
-            </span>
-          {% endif %}
-        </h1>
+        <h1><span class="orbitron notranslate">{{ p.short_name | upcase }}</span> {{ p.full_name | replace: p.short_name,'' }}</h1>
         {% if p.badges %}
         <div class="product-badges">
           {% for b in p.badges %}
