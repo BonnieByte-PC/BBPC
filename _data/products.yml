@@ -54,8 +54,10 @@ northern_wind_120:
     - 5V 3-pin ARGB (ASUS / MSI / Gigabyte)
     - Windows & Linux compatible
   faq:
-    - question: Is this compatible with my motherboard?
-    - answer: Yes — any standard 4-pin PWM header is supported.
+    - q: "Will this work with my motherboard?"
+      a: "Yes — Northern Wind supports standard 4-pin PWM fan headers."
+    - q: "Does it include mounting screws?"
+      a: "Yes, all required mounting hardware is included in the box."
   related:
     - pwm_splitter
     - argb_hub
