@@ -513,34 +513,6 @@ function initializeLanguageSelector() {
   });
 }
 
-function setActiveLangUI(lang) {
-  if (!lang) return;
-
-  const code = normaliseLang(lang);
-
-  const btn =
-    menu.querySelector(`[data-lang="${lang}"]`) ||
-    menu.querySelector(`[data-lang="${code}"]`) ||
-    (extended && extended.querySelector(`[data-lang="${lang}"]`)) ||
-    (extended && extended.querySelector(`[data-lang="${code}"]`));
-
-  if (!btn) return;
-
-  const img = btn.querySelector("img");
-  const labelSpan = btn.querySelector("span");
-
-  if (img && activeFlag) {
-    activeFlag.src = img.src;
-    activeFlag.alt = img.alt || lang;
-  }
-
-  if (labelSpan && activeCode) {
-    const label = labelSpan.textContent.trim();
-    activeCode.textContent = label;
-    activeCode.dataset.label = label; // 🔒 STORE IT
-  }
-}
-
 // ===============================
 // MOBILE HEADER ACTIONS (MOVE THEME/LANG INTO ACCOUNT BAR)
 // ===============================
@@ -695,6 +667,7 @@ if (typeof module !== "undefined" && module.exports) {
     initializeProductGallery
   };
 }
+
 
 
 
