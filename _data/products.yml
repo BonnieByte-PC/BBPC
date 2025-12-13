@@ -34,6 +34,11 @@ northern_wind_120:
   # Future Shopify wiring (leave blank for now)
   shopify_product_id: 
   shopify_default_variant_id: 
+  images:
+    - /images/products/nw120/main.webp
+    - /images/products/nw120/angle.webp
+    - /images/products/nw120/rear.webp
+    - /images/products/nw120/lighting.webp
   
 template_product:
   sku: ""
