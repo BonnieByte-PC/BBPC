@@ -435,3 +435,57 @@
     padding: 14px 20px;
   }
 }
+
+/* ===============================
+   WHAT’S IN THE BOX
+   =============================== */
+
+.product-box-contents {
+  margin: 20px 0 24px;
+  padding: 16px 18px;
+  border: 1px solid var(--bb-border);
+  border-radius: 8px;
+  background: var(--bb-panel);
+}
+
+.product-box-contents h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: var(--bb-text);
+}
+
+.product-box-contents ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-box-contents li {
+  position: relative;
+  padding-left: 14px;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: var(--bb-text-soft);
+}
+
+.product-box-contents li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--bb-blue);
+}
+
+@media (max-width: 600px) {
+  .product-box-contents {
+    padding: 14px 14px;
+  }
+
+  .product-box-contents h3 {
+    font-size: 0.9rem;
+  }
+
+  .product-box-contents li {
+    font-size: 0.88rem;
+  }
+}
