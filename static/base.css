@@ -797,20 +797,21 @@ html[data-theme="light"] .lang-btn {
 }
 
 /* ===============================
-   DESKTOP NAV VISUAL CENTERING
+   DESKTOP NAV TRUE CENTERING
    =============================== */
 @media (min-width: 1251px) {
-  .header-nav {
-    position: absolute;
-    left: 40%;
-    transform: translateX(-40%);
+  .header-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
   }
 
-  /* Prevent overlap with logo/actions */
-  .header-content {
-    position: relative;
+  .header-nav {
+    justify-self: center;
   }
 }
+
+
 
 /* ========================================================================
    13. MOBILE ACCOUNT BAR (TABLET + MOBILE)
