@@ -1,15 +1,15 @@
 <div class="scroll-progress"></div>
 <header class="site-header enhanced-header" id="bb-header">
 <!-- test -->
-  <div class="container">
+  <div class="header-container">
     <div class="header-content fade-in">
 
       <!-- LOGO -->
       <div class="header-logo">
         <a href="/" aria-label="BonnieByte PC - Home">
           <picture>
-            <source srcset="/images/LogoDetailSide.webp" type="image/webp">
-            <img src="/images/LogoDetailSide.png" alt="BonnieByte PC" class="header-logo-img">
+            <source srcset="/images/LogoSide.webp" type="image/webp">
+            <img src="/images/LogoSide.png" alt="BonnieByte PC" class="header-logo-img">
           </picture>
         </a>
       </div>
@@ -100,9 +100,9 @@
       
           <!-- Language dropdown -->
           <div class="bb-lang-dropdown">
-            <button class="lang-btn bb-lang-toggle" id="bb-active-lang" aria-haspopup="true" aria-expanded="false">
-              <img src="/static/flags/en.svg" id="bb-active-flag" alt="EN">
-              <span id="bb-active-code" class="orbitron notranslate">EN</span>
+            <button class="lang-btn bb-lang-toggle notranslate" id="bb-active-lang" aria-haspopup="true" aria-expanded="false" translate="no">
+              <img id="bb-active-flag" class="notranslate" translate="no" src="/static/flags/en.svg" alt="EN">
+              <span id="bb-active-code" class="orbitron notranslate" translate="no" data-label="EN">EN</span>
             </button>
       
             <div class="bb-lang-menu" id="bb-lang-menu" aria-label="Language selection">
@@ -126,6 +126,58 @@
                 <img src="/static/flags/es.svg" alt="ES">
                 <span class="orbitron notranslate">ES</span>
               </button>
+              <button class="lang-btn bb-lang-more" type="button">
+                <span class="orbitron notranslate">More</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="bb-lang-extended" aria-hidden="true">
+            <div class="bb-lang-extended-inner">
+              <button class="bb-lang-back orbitron">← Back</button>
+          
+              <div class="bb-lang-extended-grid">
+                <button class="lang-btn bb-lang-option" data-lang="it">
+                  <img src="/static/flags/it.svg" alt="IT">
+                  <span class="orbitron notranslate">IT</span>
+                </button>
+                <button class="lang-btn bb-lang-option" data-lang="pt">
+                  <img src="/static/flags/pt.svg" alt="PT">
+                  <span class="orbitron notranslate">PT</span>
+                </button>
+                <button class="lang-btn bb-lang-option" data-lang="pl">
+                  <img src="/static/flags/pl.svg" alt="PL">
+                  <span class="orbitron notranslate">PL</span>
+                </button>
+                <button class="lang-btn bb-lang-option" data-lang="nl">
+                  <img src="/static/flags/nl.svg" alt="NL">
+                  <span class="orbitron notranslate">NL</span>
+                </button>
+                <button class="lang-btn bb-lang-option" data-lang="sv">
+                  <img src="/static/flags/sv.svg" alt="SV">
+                  <span class="orbitron notranslate">SV</span>
+                </button>
+                <button class="lang-btn bb-lang-option" data-lang="fi">
+                  <img src="/static/flags/fi.svg" alt="FI">
+                  <span class="orbitron notranslate">FI</span>
+                </button>
+                <button class="lang-btn bb-lang-option" data-lang="ja">
+                  <img src="/static/flags/ja.svg" alt="日本語">
+                  <span class="orbitron notranslate">日本語</span>
+                </button>
+                <button class="lang-btn bb-lang-option" data-lang="ko">
+                  <img src="/static/flags/ko.svg" alt="한국어">
+                  <span class="orbitron notranslate">한국어</span>
+                </button>
+                <button class="lang-btn bb-lang-option" data-lang="zh-CN">
+                  <img src="/static/flags/zh-CN.svg" alt="简体中文">
+                  <span class="orbitron notranslate">简体中文</span>
+                </button>
+                <button class="lang-btn bb-lang-option" data-lang="zh-TW">
+                  <img src="/static/flags/zh-TW.svg" alt="简体中文">
+                  <span class="orbitron notranslate">简体中文</span>
+                </button>
+              </div>
             </div>
           </div>
       
@@ -149,7 +201,7 @@
                 <circle cx="17" cy="20" r="1.5" fill="currentColor"/>
                 <path d="M6 6L4 3H1" stroke="currentColor" stroke-width="1.8"/>
               </svg>
-              <span class="bb-cart-count-badge" data-cart-count>0</span>
+              <strong><span class="bb-cart-count-badge" data-cart-count>0</span></strong>
             </button>
         
             <div class="bb-cart-preview" data-cart-preview aria-hidden="true">

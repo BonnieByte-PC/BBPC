@@ -255,7 +255,7 @@ title: Home | BonnieByte PC
 <!-- Social / Community Strip -->
 <section class="section section-community" aria-label="Community and social links">
     <div class="container community-inner">
-        <h2>Join the BonnieByte Community</h2>
+        <h2>Join the BonnieByte PC Community</h2>
         <p>Follow along for updates, build pics, and future product drops.</p>
         <div class="social-links">
             <a href="https://instagram.com/bonniebytepc" target="_blank" rel="noopener noreferrer">

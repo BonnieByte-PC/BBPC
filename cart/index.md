@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Your Cart"
+title: "Your Cart | BonnieByte PC"
 permalink: /cart/
 ---
 <section class="section cart-page">

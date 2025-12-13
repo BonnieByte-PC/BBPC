@@ -66,6 +66,12 @@ body {
   padding: 0 var(--space-md);
 }
 
+.header-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
 /* iOS overflow safety — content only */
 main .container {
   overflow-x: hidden;
@@ -75,12 +81,13 @@ main .container {
 .brand-name {
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
     text-rendering: optimizeLegibility;
 }
 
 .orbitron {
     font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.4px;
 }
 
 .page-header {
@@ -164,6 +171,7 @@ a:hover {
 
 .button:hover {
     background: #88bbff;
+    color: #000;
 }
 
 .button-secondary {
@@ -280,13 +288,13 @@ section {
 }
 
 .header-logo-img {
-    height: 88px;
+    height: 125px;
     transition: 0.3s ease;
     filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.3));
 }
 
 .enhanced-header.shrink .header-logo-img {
-    height: 70px;
+    height: 115px;
     filter: drop-shadow(0 0 4px rgba(102, 170, 255, 0.2));
 }
 
@@ -314,15 +322,24 @@ html.bb-cart-preview-open .enhanced-header.hide {
 
     /* Slightly smaller logo for calmer header */
     .header-logo-img {
-        height: 52px !important;
+        height: 68px !important;
     }
 
     .enhanced-header.shrink .header-logo-img {
-        height: 46px !important;
+        height: 62px !important;
     }
 }
 
+@media (min-width: 900px) {
+    /* Slightly smaller logo for calmer header */
+    .header-logo-img {
+        height: 96px !important;
+    }
 
+    .enhanced-header.shrink .header-logo-img {
+        height: 88px !important;
+    }
+}
 
 /* ========================================================================
    9. HEADER ACTIONS (RIGHT SIDE)
@@ -344,8 +361,8 @@ html.bb-cart-preview-open .enhanced-header.hide {
 .bb-lang-toggle {
     background: transparent;
     border: 2px solid var(--bb-blue);
-    width: 42px;
-    height: 42px;
+    width: 52px;
+    height: 52px;
     border-radius: 999px;
     color: var(--bb-blue);
     display: flex;
@@ -378,13 +395,13 @@ html.bb-cart-preview-open .enhanced-header.hide {
     position: absolute;
     top: -6px;
     right: -6px;
-    min-width: 18px;
-    height: 18px;
+    min-width: 24px;
+    height: 24px;
     padding: 0 4px;
     border-radius: 999px;
     background: var(--bb-blue);
     color: #000;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -526,39 +543,66 @@ html[data-theme="light"] .bb-lang-toggle:hover {
     display: flex;
 }
 
+/* ============================================================
+   LANGUAGE BUTTON — SINGLE SOURCE OF TRUTH
+   ============================================================ */
 .lang-btn {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: 2px solid var(--bb-blue);
-    background: transparent;
-    color: var(--bb-blue);
-    font-size: 0.7rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.25s ease;
-    overflow: hidden;
-    transform: translateY(-1px);
-    box-shadow: none;
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 2px solid var(--bb-blue);
+  background: var(--bb-panel);
+
+  color: var(--bb-blue);
+  cursor: pointer;
+
+  font-size: 0.65rem;
+  line-height: 1;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+   font-family: 'Orbitron';
+   font-weight: 700;
 }
 
 .lang-btn img {
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    pointer-events: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .lang-btn span {
-    font-size: 0.6rem;
-    margin-top: 2px;
-    pointer-events: none;
+  margin-top: 2px;
+  font-size: 0.6rem;
+  pointer-events: none;
 }
 
-.bb-lang-menu .lang-btn:hover {
+/* Hover */
+.lang-btn:hover {
+  background: var(--bb-blue);
+  color: #000;
+}
+
+/* Active */
+.bb-lang-option.active {
+  background: rgba(102,170,255,0.18);
+  box-shadow:
+    0 0 10px rgba(102,170,255,0.6),
+    inset 0 0 6px rgba(102,170,255,0.4);
+}
+
+
+.bb-lang-menu:hover {
     background: rgba(102, 170, 255, 0.15);
 }
 
@@ -597,6 +641,124 @@ html[data-theme="light"] .lang-btn {
     color: #222 !important;
 }
 
+.bb-lang-extended[aria-hidden="false"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-lang-extended-inner {
+  background: var(--bb-panel);
+  border: 2px solid var(--bb-blue);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 420px;
+  width: auto;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.bb-lang-extended-grid button {
+  background: transparent;
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text);
+  cursor: pointer;
+}
+
+.bb-lang-extended-grid button:hover {
+  background: var(--bb-blue);
+  color: #000;
+}
+
+.bb-lang-back {
+  background: none;
+  border: none;
+  color: var(--bb-blue);
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.bb-lang-extended {
+  position: fixed;
+  top: 72px; /* JS overrides */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2600;
+
+  background: rgba(10,10,10,0.98);
+  border: 2px solid var(--bb-blue);
+  border-radius: 16px;
+  box-shadow: 0 0 22px rgba(102,170,255,0.55);
+
+  padding: 16px;
+  display: none;
+
+  width: auto;
+  max-width: min(360px, 100vw - 24px);
+}
+
+.bb-lang-extended.open {
+  display: block;
+}
+
+.bb-lang-extended-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+
+@media (max-width: 1250px) {
+  .bb-lang-extended {
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100vw - 24px);
+  }
+}
+
+.lang-btn,
+.lang-btn span {
+  translate: no !important;
+  -webkit-translate: no !important;
+}
+
+.lang-btn span.notranslate {
+  font-family: system-ui, sans-serif;
+}
+
+/* ============================================================
+   EXTENDED LANGUAGE GRID — SINGLE SOURCE OF TRUTH
+   ============================================================ */
+.bb-lang-extended-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 52px);
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .bb-lang-extended-grid {
+    grid-template-columns: repeat(4, 52px);
+  }
+}
+
+/* Small phones (iPhone SE, etc.) */
+@media (max-width: 480px) {
+  .bb-lang-extended-grid {
+    grid-template-columns: repeat(3, 52px);
+  }
+}
+
+.bb-lang-extended-inner {
+  width: 100%;
+  max-width: 360px;
+}
 
 /* ========================================================================
    11. MOBILE MENU TOGGLE
@@ -986,6 +1148,11 @@ html.bb-menu-open #mobile-menu-toggle span {
     background: var(--bb-blue);
 }
 
+html.bb-menu-open .header-actions > *:not(#mobile-menu-toggle) {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* ========================================================================
    15. ICON SYSTEM (HEADER + FOOTER)
@@ -1182,12 +1349,15 @@ footer.site-footer::before {
     scroll-margin-top: 100px;
 }
 
-@media (max-width: 900px) {
-    .footer-brand img {
-        width: 90%;
-    }
-}
+ .footer-brand img {
+     width: 80%;
+ }
 
+@media (max-width: 1200px) {
+   .footer-brand img {
+     width: 70%;
+ }
+}
 
 /* ========================================================================
    17. PRODUCT GRID & CARDS
@@ -1400,6 +1570,7 @@ body .goog-te-banner-frame + .skiptranslate {
 
 .notranslate {
     unicode-bidi: plaintext !important;
+    translate: no;
 }
 
 .goog-te-gadget {
@@ -1630,4 +1801,32 @@ html[data-theme="light"] .bb-lang-toggle:hover svg,
 html[data-theme="light"] .bb-cart-toggle:hover svg {
   stroke: currentColor;
   fill: currentColor;
+}
+
+.bb-account-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.theme-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.nav-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.bb-cart-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.bb-lang-extended button {
+   width: 62px;
+}
+
+.bb-lang-extended img {
+   width: 34px;
 }

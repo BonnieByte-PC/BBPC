@@ -1,155 +1,171 @@
+// ============================================================
+// BONNIEBYTE PC — MAIN (STABLE FULL REBUILD)
+// Restores all original functionality + fixes language/extended bugs
+// ============================================================
+
+
 // ===============================
 // THEME TOGGLE
 // ===============================
 function initializeTheme() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = themeToggle?.querySelector('.theme-icon');
-    if (!themeToggle || !themeIcon) return;
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = themeToggle?.querySelector(".theme-icon");
+  if (!themeToggle || !themeIcon) return;
 
-    function persistTheme(theme) {
-        // Save to localStorage (used by inline <head> script)
-        try {
-            localStorage.setItem("bb-theme", theme);
-        } catch (e) {
-            console.warn("BB theme localStorage error:", e);
-        }
-
-        // Also mirror into bb_theme cookie (for your existing helpers)
-        try {
-            if (typeof BBCookies !== "undefined") {
-                BBCookies.set("bb_theme", theme, 365);
-            }
-        } catch (e) {
-            console.warn("BB theme cookie error:", e);
-        }
+  function persistTheme(theme) {
+    // Save to localStorage (used by inline <head> script)
+    try {
+      localStorage.setItem("bb-theme", theme);
+    } catch (e) {
+      console.warn("BB theme localStorage error:", e);
     }
 
-    function applyTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-    
-      document.documentElement.classList.toggle('theme-dark', theme === 'dark');
-      document.documentElement.classList.toggle('theme-light', theme === 'light');
-    
-      persistTheme(theme);
+    // Also mirror into bb_theme cookie (for your existing helpers)
+    try {
+      if (typeof BBCookies !== "undefined") {
+        BBCookies.set("bb_theme", theme, 365);
+      }
+    } catch (e) {
+      console.warn("BB theme cookie error:", e);
     }
+  }
 
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
 
-    // 1) Read what the inline <head> script already set (no flash)
-    let current = document.documentElement.getAttribute("data-theme");
+    document.documentElement.classList.toggle("theme-dark", theme === "dark");
+    document.documentElement.classList.toggle("theme-light", theme === "light");
 
-    // 2) If for some reason it's missing, derive a sensible default
+    persistTheme(theme);
+  }
+
+  // 1) Read what the inline <head> script already set (no flash)
+  let current = document.documentElement.getAttribute("data-theme");
+
+  // 2) If missing, derive a sensible default
+  if (!current) {
+    // Try localStorage first
+    try {
+      const stored = localStorage.getItem("bb-theme");
+      if (stored === "dark" || stored === "light") current = stored;
+    } catch (e) {}
+
+    // Try cookie as secondary source
     if (!current) {
-        // Try localStorage first
-        try {
-            const stored = localStorage.getItem("bb-theme");
-            if (stored === "dark" || stored === "light") {
-                current = stored;
-            }
-        } catch (e) {}
-
-        // Try cookie as secondary source
-        if (!current) {
-            try {
-                if (typeof BBCookies !== "undefined") {
-                    const cookieTheme = BBCookies.get("bb_theme");
-                    if (cookieTheme === "dark" || cookieTheme === "light") {
-                        current = cookieTheme;
-                    }
-                }
-            } catch (e) {}
-
-            // Finally, fall back to OS preference
-            if (!current) {
-                const prefersDark = window.matchMedia &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches;
-                current = prefersDark ? "dark" : "light";
-            }
+      try {
+        if (typeof BBCookies !== "undefined") {
+          const cookieTheme = BBCookies.get("bb_theme");
+          if (cookieTheme === "dark" || cookieTheme === "light") {
+            current = cookieTheme;
+          }
         }
+      } catch (e) {}
 
-        // Actually apply if it was missing
-        applyTheme(current);
-    } else {
-      document.documentElement.classList.toggle('theme-dark', current === 'dark');
-      document.documentElement.classList.toggle('theme-light', current === 'light');
-      persistTheme(current);
+      // Fall back to OS preference
+      if (!current) {
+        const prefersDark =
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches;
+        current = prefersDark ? "dark" : "light";
+      }
     }
 
+    applyTheme(current);
+  } else {
+    document.documentElement.classList.toggle("theme-dark", current === "dark");
+    document.documentElement.classList.toggle("theme-light", current === "light");
+    persistTheme(current);
+  }
 
-    // 3) Wire up click toggle
-    themeToggle.addEventListener('click', () => {
-        const active = document.documentElement.getAttribute('data-theme') || 'dark';
-        const next = active === 'dark' ? 'light' : 'dark';
-        applyTheme(next);
-    });
+  // Click toggle
+  themeToggle.addEventListener("click", () => {
+    const active = document.documentElement.getAttribute("data-theme") || "dark";
+    const next = active === "dark" ? "light" : "dark";
+    applyTheme(next);
+  });
 }
-
-
 
 
 // ===============================
 // MOBILE MENU
 // ===============================
 function initializeMobileMenu() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const headerNav = document.querySelector('.header-nav');
-    const root = document.documentElement;
+  const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+  const headerNav = document.querySelector(".header-nav");
+  const root = document.documentElement;
 
-    if (!mobileMenuToggle || !headerNav) return;
+  if (!mobileMenuToggle || !headerNav) return;
 
-    function closeMenu() {
-        mobileMenuToggle.classList.remove('active');
-        headerNav.classList.remove('active');
-        mobileMenuToggle.setAttribute('aria-expanded', 'false');
-        root.classList.remove('bb-menu-open');
+  function closeMenu() {
+    mobileMenuToggle.classList.remove("active");
+    headerNav.classList.remove("active");
+    mobileMenuToggle.setAttribute("aria-expanded", "false");
+    root.classList.remove("bb-menu-open");
 
-        // also force-close language dropdown if it was open
-        const dropdown = document.querySelector('.bb-lang-dropdown');
-        const activeBtn = document.getElementById('bb-active-lang');
-        if (dropdown) dropdown.classList.remove('open');
-        if (activeBtn) activeBtn.setAttribute('aria-expanded', 'false');
+    // Force close language dropdowns if open
+    const dropdown = document.querySelector(".bb-lang-dropdown");
+    const activeBtn = document.getElementById("bb-active-lang");
+    const extended = document.querySelector(".bb-lang-extended");
+
+    if (dropdown) dropdown.classList.remove("open");
+    if (activeBtn) activeBtn.setAttribute("aria-expanded", "false");
+
+    if (extended) {
+      extended.classList.remove("open");
+      extended.setAttribute("aria-hidden", "true");
     }
+  }
 
-    mobileMenuToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isActive = mobileMenuToggle.classList.toggle('active');
-        headerNav.classList.toggle('active');
+  mobileMenuToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isActive = mobileMenuToggle.classList.toggle("active");
+    headerNav.classList.toggle("active");
 
-        mobileMenuToggle.style.display = "flex";
-        mobileMenuToggle.setAttribute('aria-expanded', isActive);
+    mobileMenuToggle.style.display = "flex";
+    mobileMenuToggle.setAttribute("aria-expanded", isActive);
 
-        if (isActive) {
-            root.classList.add('bb-menu-open');
+    if (isActive) {
+      root.classList.add("bb-menu-open");
 
-            // close language dropdown if it happens to be open
-            const dropdown = document.querySelector('.bb-lang-dropdown');
-            const activeBtn = document.getElementById('bb-active-lang');
-            if (dropdown) dropdown.classList.remove('open');
-            if (activeBtn) activeBtn.setAttribute('aria-expanded', 'false');
-        } else {
-            root.classList.remove('bb-menu-open');
-        }
-    });
+      // Close language dropdown(s) if open
+      const dropdown = document.querySelector(".bb-lang-dropdown");
+      const activeBtn = document.getElementById("bb-active-lang");
+      const extended = document.querySelector(".bb-lang-extended");
 
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.header-nav a').forEach(link => {
-        link.addEventListener('click', () => {
-            closeMenu();
-        });
-    });
+      if (dropdown) dropdown.classList.remove("open");
+      if (activeBtn) activeBtn.setAttribute("aria-expanded", "false");
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.header-nav') && !e.target.closest('.mobile-menu-toggle') && headerNav.classList.contains('active')) {
-            closeMenu();
-        }
-    });
+      if (extended) {
+        extended.classList.remove("open");
+        extended.setAttribute("aria-hidden", "true");
+      }
+    } else {
+      root.classList.remove("bb-menu-open");
+    }
+  });
 
-    // Close mobile menu when pressing Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && headerNav.classList.contains('active')) {
-            closeMenu();
-        }
-    });
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll(".header-nav a").forEach((link) => {
+    link.addEventListener("click", () => closeMenu());
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      !e.target.closest(".header-nav") &&
+      !e.target.closest(".mobile-menu-toggle") &&
+      headerNav.classList.contains("active")
+    ) {
+      closeMenu();
+    }
+  });
+
+  // Close mobile menu when pressing Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && headerNav.classList.contains("active")) {
+      closeMenu();
+    }
+  });
 }
 
 
@@ -157,30 +173,34 @@ function initializeMobileMenu() {
 // SCROLL PROGRESS
 // ===============================
 function initializeScrollProgress() {
-    const scrollProgress = document.querySelector('.scroll-progress');
-    if (!scrollProgress) return;
+  const scrollProgress = document.querySelector(".scroll-progress");
+  if (!scrollProgress) return;
 
-    window.addEventListener('scroll', () => {
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-        scrollProgress.style.width = scrollPercent + '%';
-    });
+  window.addEventListener("scroll", () => {
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const scrollTop =
+      window.pageYOffset || document.documentElement.scrollTop;
+
+    const denom = (documentHeight - windowHeight) || 1;
+    const scrollPercent = (scrollTop / denom) * 100;
+
+    scrollProgress.style.width = Math.max(0, Math.min(100, scrollPercent)) + "%";
+  });
 }
 
 
 // ===============================
-// SIMPLE HEADER SHRINK
+// SIMPLE HEADER SHRINK (MOBILE DEFAULT)
 // ===============================
 function initializeHeaderScroll() {
-    const siteHeader = document.querySelector('.site-header');
-    if (!siteHeader) return;
-    
-    // Disable header shrinking on mobile — permanently shrunk
-    if (window.matchMedia("(max-width: 768px)").matches) {
-        siteHeader.classList.add("shrink");
-    }
+  const siteHeader = document.querySelector(".site-header");
+  if (!siteHeader) return;
+
+  // Disable header shrinking on mobile — permanently shrunk
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    siteHeader.classList.add("shrink");
+  }
 }
 
 
@@ -188,15 +208,12 @@ function initializeHeaderScroll() {
 // HEADER LOGO SCROLL TO TOP
 // ===============================
 function initializeHeaderLogo() {
-    const headerLogo = document.querySelector('.header-logo');
-    if (headerLogo) {
-        headerLogo.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
+  const headerLogo = document.querySelector(".header-logo");
+  if (!headerLogo) return;
+
+  headerLogo.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 }
 
 
@@ -204,289 +221,375 @@ function initializeHeaderLogo() {
 // SMOOTH ANCHOR SCROLL
 // ===============================
 function initializeSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (!href || href === '#') return;
-            const target = document.querySelector(href);
-            if (!target) return;
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+      if (!href || href === "#") return;
 
-            e.preventDefault();
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        });
+      const target = document.querySelector(href);
+      if (!target) return;
+
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+  });
 }
 
 
 // ===============================
-// DOM READY
+// EXTRA HEADER INTERACTIONS (shrink/glow/hide)
 // ===============================
-document.addEventListener('DOMContentLoaded', function() {
-    initializeTheme();
-    initializeMobileMenu();
-    initializeMobileHeaderActions();
-    initializeScrollProgress();
-    initializeHeaderScroll();
-    initializeHeaderLogo();
-    initializeSmoothScrolling();
-    initializeProductGallery();
+function initializeHeaderEffects() {
+  const bbHeader = document.getElementById("bb-header");
+  if (!bbHeader) return;
 
-    console.log('BonnieByte PC - General scripts loaded');
-});
+  let lastScroll = 0;
 
-// ===============================
-// CommonJS export (Node testing/etc.)
-// ===============================
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = {
-        initializeTheme,
-        initializeMobileMenu,
-        initializeScrollProgress,
-        initializeHeaderScroll,
-        initializeHeaderLogo,
-        initializeSmoothScrolling
-    };
-}
-
-
-// ===============================
-// EXTRA HEADER INTERACTIONS
-// ===============================
-const bbHeader = document.getElementById("bb-header");
-let lastScroll = 0;
-
-window.addEventListener("scroll", () => {
-    if (!bbHeader) return;
-
+  window.addEventListener("scroll", () => {
     const current = window.scrollY;
 
     // Shrink
-    if (current > 40) {
-        bbHeader.classList.add("shrink");
-    } else {
-        bbHeader.classList.remove("shrink");
-    }
+    if (current > 40) bbHeader.classList.add("shrink");
+    else bbHeader.classList.remove("shrink");
 
     // Glow
-    if (current > 120) {
-        bbHeader.classList.add("glow");
-    } else {
-        bbHeader.classList.remove("glow");
-    }
+    if (current > 120) bbHeader.classList.add("glow");
+    else bbHeader.classList.remove("glow");
 
-    // Auto-hide
+    // Auto-hide (only if mobile menu not open)
     if (!document.documentElement.classList.contains("bb-menu-open")) {
-        if (current > lastScroll && current > 60) {
-            bbHeader.classList.add("hide");
-        } else {
-            bbHeader.classList.remove("hide");
-        }
+      if (current > lastScroll && current > 60) bbHeader.classList.add("hide");
+      else bbHeader.classList.remove("hide");
     }
-
 
     lastScroll = current;
-});
+  });
+}
 
 
 /* ============================================================
-   LANGUAGE DROPDOWN LOGIC (shared desktop + mobile)
-   ============================================================ */
+   LANGUAGE DROPDOWN LOGIC (primary + extended) — FIXED
+   Requirements:
+   - primary menu: #bb-lang-menu inside .bb-lang-dropdown
+   - active button: #bb-active-lang, with #bb-active-flag + #bb-active-code
+   - extended menu: .bb-lang-extended (can be anywhere; moved to mobile bar ok)
+   - "More" button: .bb-lang-more
+   - "Back" button: .bb-lang-back
+   - language buttons have: data-lang="xx" (and ideally class bb-lang-option/lang-btn)
+============================================================ */
+function initializeLanguageSelector() {
+  const dropdown   = document.querySelector(".bb-lang-dropdown");
+  const activeBtn  = document.getElementById("bb-active-lang");
+  const activeFlag = document.getElementById("bb-active-flag");
+  const activeCode = document.getElementById("bb-active-code");
+  const menu       = document.getElementById("bb-lang-menu");
+  const headerEl   = document.getElementById("bb-header");
 
-document.addEventListener("DOMContentLoaded", function () {
-    const dropdown   = document.querySelector(".bb-lang-dropdown");
-    const activeBtn  = document.getElementById("bb-active-lang");
-    const activeFlag = document.getElementById("bb-active-flag");
-    const activeCode = document.getElementById("bb-active-code");
-    const menu       = document.getElementById("bb-lang-menu");
-    const headerEl   = document.getElementById("bb-header");
+  const extended   = document.querySelector(".bb-lang-extended");
+  const moreBtn    = document.querySelector(".bb-lang-more");
+  const backBtn    = document.querySelector(".bb-lang-back");
 
-    if (!dropdown || !activeBtn || !activeFlag || !activeCode || !menu) return;
+  if (!dropdown || !activeBtn || !menu || !headerEl) return;
 
-    function normaliseLang(code) {
-        if (!code) return "en";
-        return String(code).toLowerCase().split("-")[0]; // "en-GB" -> "en"
+  function normaliseLang(code) {
+    if (!code) return "en";
+    return String(code).toLowerCase().split("-")[0];
+  }
+
+  function positionUnderHeader(el) {
+    if (!el) return;
+    const rect = headerEl.getBoundingClientRect();
+    el.style.top = `${rect.bottom}px`;
+  }
+
+  function closePrimary() {
+    dropdown.classList.remove("open");
+    activeBtn.setAttribute("aria-expanded", "false");
+  }
+
+  function openPrimary() {
+    dropdown.classList.add("open");
+    activeBtn.setAttribute("aria-expanded", "true");
+    positionUnderHeader(menu);
+  }
+
+  function closeExtended() {
+    if (!extended) return;
+    extended.classList.remove("open");
+    extended.setAttribute("aria-hidden", "true");
+  }
+
+  function openExtended() {
+    if (!extended) return;
+    closePrimary();
+    extended.classList.add("open");
+    extended.setAttribute("aria-hidden", "false");
+    positionUnderHeader(extended);
+  }
+
+  function setActiveLangUI(lang) {
+    if (!lang) return;
+  
+    const code = normaliseLang(lang);
+  
+    const btn =
+      menu.querySelector(`[data-lang="${lang}"]`) ||
+      menu.querySelector(`[data-lang="${code}"]`) ||
+      (extended && extended.querySelector(`[data-lang="${lang}"]`)) ||
+      (extended && extended.querySelector(`[data-lang="${code}"]`));
+  
+    if (!btn) return;
+  
+    const img = btn.querySelector("img");
+    const labelSpan = btn.querySelector("span");
+  
+    if (img && activeFlag) {
+      activeFlag.src = img.src;
+      activeFlag.alt = img.alt || lang;
     }
-
-    function setActiveLangUI(lang) {
-        const code = normaliseLang(lang);
-        const btn = menu.querySelector(`.bb-lang-option[data-lang="${code}"]`);
-        if (!btn) return;
-
-        menu.querySelectorAll(".bb-lang-option").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-
-        const img = btn.querySelector("img");
-        if (img) {
-            activeFlag.src = img.src;
-            activeFlag.alt = img.alt || code.toUpperCase();
-        }
-        activeCode.textContent = code.toUpperCase();
+  
+    if (labelSpan && activeCode) {
+      const label = labelSpan.textContent.trim();
+      activeCode.textContent = label;
+      activeCode.dataset.label = label; // 🔒 STORE IT
     }
+  }
 
-    function positionLangMenu() {
-        if (!menu) return;
+  // Hard guard: prevent Google from touching active lang UI
+  activeBtn.classList.add("notranslate");
+  activeCode.classList.add("notranslate");
+  activeFlag.classList.add("notranslate");
 
-        let topPx = 72; // fallback
-        if (headerEl) {
-            const rect = headerEl.getBoundingClientRect();
-            topPx = rect.bottom;
-        }
 
-        menu.style.top = `${topPx}px`;
+  function applyLanguage(lang) {
+    if (!lang) return;
+  
+    setActiveLangUI(lang);
+  
+    try {
+      if (typeof BBCookies !== "undefined") {
+        BBCookies.set("bb_lang", lang, 365);
+      }
+    } catch (err) {
+      console.warn("BB lang cookie error:", err);
     }
-
-    // Toggle dropdown
-    activeBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = !dropdown.classList.contains("open");
-        dropdown.classList.toggle("open", isOpen);
-        activeBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-
-        if (isOpen) {
-            positionLangMenu();
-        }
-    });
-
-    // Re-position on resize while open
-    window.addEventListener("resize", () => {
-        if (dropdown.classList.contains("open")) {
-            positionLangMenu();
-        }
-    });
-
-    // Option click
-    menu.querySelectorAll(".bb-lang-option").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const lang = btn.dataset.lang;
-
-            setActiveLangUI(lang);
-            dropdown.classList.remove("open");
-            activeBtn.setAttribute("aria-expanded", "false");
-
-            // Persist preference as an essential functional cookie
-            try {
-                if (typeof BBCookies !== "undefined") {
-                    BBCookies.set("bb_lang", lang, 365);
-                }
-            } catch (err) {
-                console.warn("BB lang cookie error:", err);
-            }
-
-            // Trigger translation
-            if (typeof doGTranslate === "function") {
-                doGTranslate(lang);
-            } else if (window.gtranslateSettings &&
-                       typeof window.gtranslateSettings.switchLanguage === "function") {
-                window.gtranslateSettings.switchLanguage(lang);
-            }
-        });
-    });
-
-    // Close dropdown on outside click
-    document.addEventListener("click", (e) => {
-        if (!e.target.closest(".bb-lang-dropdown")) {
-            dropdown.classList.remove("open");
-            activeBtn.setAttribute("aria-expanded", "false");
-        }
-    });
-
-    // --- Initialise from cookies / settings ---
-
-    // 1) Try to read the actual GTranslate cookie (works for /auto/en, /en/en-GB, etc.)
-    const gtMatch = document.cookie.match(/googtrans=\/[a-zA-Z-]+\/([a-zA-Z-]+)/);
-    let initialLang = "en";
-
-    if (gtMatch && gtMatch[1]) {
-        initialLang = normaliseLang(gtMatch[1]);
+  
+    if (typeof doGTranslate === "function") {
+      doGTranslate(lang);
+    } else if (
+      window.gtranslateSettings &&
+      typeof window.gtranslateSettings.switchLanguage === "function"
+    ) {
+      window.gtranslateSettings.switchLanguage(lang);
     } else {
-        // 2) Fallback to our bb_lang cookie
-        try {
-            if (typeof BBCookies !== "undefined") {
-                const cookieLang = BBCookies.get("bb_lang");
-                if (cookieLang) {
-                    initialLang = normaliseLang(cookieLang);
-                }
-            }
-        } catch (err) {
-            console.warn("BB lang cookie read error:", err);
-        }
+      console.warn("GTranslate not ready");
+    }
+  }
 
-        // 3) Fallback to GTranslate config default
-        if (!initialLang && window.gtranslateSettings && window.gtranslateSettings.default_language) {
-            initialLang = normaliseLang(window.gtranslateSettings.default_language);
-        }
+
+
+
+
+
+  // Toggle dropdown
+  activeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = !dropdown.classList.contains("open");
+    if (isOpen) openPrimary();
+    else closePrimary();
+  });
+
+  // More → Extended
+  if (moreBtn && extended) {
+    moreBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openExtended();
+    });
+  }
+
+  // Back
+  if (backBtn && extended) {
+    backBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      closeExtended();
+    });
+  }
+
+  // Click a language in primary menu
+  menu.querySelectorAll("[data-lang]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const lang = btn.dataset.lang;
+      if (!lang) return;
+      applyLanguage(lang);
+      closePrimary();
+      closeExtended();
+    });
+  });
+
+  // Click a language in extended menu
+  if (extended) {
+    extended.querySelectorAll("[data-lang]").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const lang = btn.dataset.lang;
+        if (!lang) return;
+        applyLanguage(lang);
+        closePrimary();
+        closeExtended();
+      });
+    });
+  }
+
+  // Re-position menus on resize if open
+  window.addEventListener("resize", () => {
+    if (dropdown.classList.contains("open")) positionUnderHeader(menu);
+    if (extended && extended.classList.contains("open")) positionUnderHeader(extended);
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".bb-lang-dropdown") && !e.target.closest(".bb-lang-extended")) {
+      closePrimary();
+      closeExtended();
+    }
+  });
+
+  // Escape closes menus
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closePrimary();
+      closeExtended();
+    }
+  });
+
+  // Initialise from cookies / GTranslate cookie
+  const gtMatch = document.cookie.match(/googtrans=\/[a-zA-Z-]+\/([a-zA-Z-]+)/);
+  let initialLang = "en";
+
+  if (gtMatch && gtMatch[1]) {
+    initialLang = normaliseLang(gtMatch[1]);
+  } else {
+    try {
+      if (typeof BBCookies !== "undefined") {
+        const cookieLang = BBCookies.get("bb_lang");
+        if (cookieLang) initialLang = normaliseLang(cookieLang);
+      }
+    } catch (err) {
+      console.warn("BB lang cookie read error:", err);
     }
 
-    setActiveLangUI(initialLang);
+    if (!initialLang && window.gtranslateSettings?.default_language) {
+      initialLang = normaliseLang(window.gtranslateSettings.default_language);
+    }
+  }
 
-    // Mark language labels as "notranslate" so Google doesn't mangle them
-    document.querySelectorAll('.lang-btn span').forEach(el => {
-        el.classList.add('notranslate');
+  setActiveLangUI(initialLang);
+
+  // Ensure language labels are notranslate
+  document.querySelectorAll(".lang-btn span").forEach((el) => {
+    el.classList.add("notranslate");
+  });
+
+  // Remember origin before going to Support/Docs (if helper exists)
+  const originLinks = document.querySelectorAll(
+    'a.nav-link[href="/support/"], a.nav-link[href="/docs/"]'
+  );
+
+  originLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      try {
+        if (typeof bbSetSupportOrigin === "function") {
+          bbSetSupportOrigin(
+            window.location.pathname + window.location.search + window.location.hash
+          );
+        }
+      } catch (e) {
+        console.warn("BB support origin capture failed:", e);
+      }
     });
+  });
+}
 
-    // Remember where user was before going to Support/Docs (for future UX)
-    const originLinks = document.querySelectorAll(
-        'a.nav-link[href="/support/"], a.nav-link[href="/docs/"]'
-    );
+function setActiveLangUI(lang) {
+  if (!lang) return;
 
-    originLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            try {
-                if (typeof bbSetSupportOrigin === "function") {
-                    bbSetSupportOrigin(
-                        window.location.pathname + window.location.search + window.location.hash
-                    );
-                }
-            } catch (e) {
-                console.warn("BB support origin capture failed:", e);
-            }
-        });
-    });
-});
+  const code = normaliseLang(lang);
+
+  const btn =
+    menu.querySelector(`[data-lang="${lang}"]`) ||
+    menu.querySelector(`[data-lang="${code}"]`) ||
+    (extended && extended.querySelector(`[data-lang="${lang}"]`)) ||
+    (extended && extended.querySelector(`[data-lang="${code}"]`));
+
+  if (!btn) return;
+
+  const img = btn.querySelector("img");
+  const labelSpan = btn.querySelector("span");
+
+  if (img && activeFlag) {
+    activeFlag.src = img.src;
+    activeFlag.alt = img.alt || lang;
+  }
+
+  if (labelSpan && activeCode) {
+    const label = labelSpan.textContent.trim();
+    activeCode.textContent = label;
+    activeCode.dataset.label = label; // 🔒 STORE IT
+  }
+}
 
 // ===============================
 // MOBILE HEADER ACTIONS (MOVE THEME/LANG INTO ACCOUNT BAR)
 // ===============================
 function initializeMobileHeaderActions() {
-    const actionsSlot = document.getElementById("mobile-account-actions");
-    const themeBtn = document.getElementById("theme-toggle");
-    const langDropdown = document.querySelector(".bb-lang-dropdown");
-    const desktopHost = document.querySelector(".header-actions-primary");
+  const actionsSlot = document.getElementById("mobile-account-actions");
+  const themeBtn = document.getElementById("theme-toggle");
+  const langDropdown = document.querySelector(".bb-lang-dropdown");
+  const desktopHost = document.querySelector(".header-actions-primary");
 
-    if (!actionsSlot || !themeBtn || !langDropdown || !desktopHost) return;
+  if (!actionsSlot || !themeBtn || !langDropdown || !desktopHost) return;
 
-    // Remember original positions so we can restore on resize
-    const themeHome = { parent: themeBtn.parentNode, next: themeBtn.nextSibling };
-    const langHome  = { parent: langDropdown.parentNode, next: langDropdown.nextSibling };
+  // Remember original positions
+  const themeHome = { parent: themeBtn.parentNode, next: themeBtn.nextSibling };
+  const langHome = { parent: langDropdown.parentNode, next: langDropdown.nextSibling };
 
-    function moveIntoMobileBar() {
-        actionsSlot.appendChild(themeBtn);
-        actionsSlot.appendChild(langDropdown);
+  // Extended menu may exist elsewhere; if it exists, we want it available on mobile too
+  const extended = document.querySelector(".bb-lang-extended");
+  const extendedHome = extended ? { parent: extended.parentNode, next: extended.nextSibling } : null;
+
+  function moveIntoMobileBar() {
+    actionsSlot.appendChild(themeBtn);
+    actionsSlot.appendChild(langDropdown);
+    if (extended) actionsSlot.appendChild(extended);
+  }
+
+  function restoreToDesktop() {
+    if (themeHome.parent) themeHome.parent.insertBefore(themeBtn, themeHome.next);
+    if (langHome.parent) langHome.parent.insertBefore(langDropdown, langHome.next);
+
+    if (extended && extendedHome?.parent) {
+      extendedHome.parent.insertBefore(extended, extendedHome.next);
     }
+  }
 
-    function restoreToDesktop() {
-        if (themeHome.parent) themeHome.parent.insertBefore(themeBtn, themeHome.next);
-        if (langHome.parent)  langHome.parent.insertBefore(langDropdown, langHome.next);
-    }
+  const mq = window.matchMedia("(max-width: 1250px)");
 
-    const mq = window.matchMedia("(max-width: 1250px)");
+  function apply(e) {
+    if (e.matches) moveIntoMobileBar();
+    else restoreToDesktop();
+  }
 
-    function apply(e) {
-        if (e.matches) moveIntoMobileBar();
-        else restoreToDesktop();
-    }
+  // Initial
+  apply(mq);
 
-    // Initial
-    apply(mq);
-
-    // Listen for changes
-    if (typeof mq.addEventListener === "function") mq.addEventListener("change", apply);
-    else mq.addListener(apply);
+  // Listen for changes
+  if (typeof mq.addEventListener === "function") mq.addEventListener("change", apply);
+  else mq.addListener(apply);
 }
+
 
 // ===============================
 // PRODUCT GALLERY
@@ -497,78 +600,101 @@ function initializeProductGallery() {
 
   if (!mainImage || thumbs.length === 0) return;
 
-  thumbs.forEach(btn => {
+  const galleryMain = document.querySelector(".product-gallery-main");
+
+  thumbs.forEach((btn) => {
     btn.addEventListener("click", () => {
       const src = btn.getAttribute("data-image");
       if (!src) return;
 
       mainImage.src = src;
 
-      thumbs.forEach(t => t.classList.remove("active"));
+      thumbs.forEach((t) => t.classList.remove("active"));
       btn.classList.add("active");
     });
-    // Hover zoom follow cursor (desktop only)
-    const galleryMain = document.querySelector(".product-gallery-main");
-    
-    if (galleryMain && mainImage && window.matchMedia("(hover: hover)").matches) {
-      galleryMain.addEventListener("mousemove", (e) => {
-        const rect = galleryMain.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        mainImage.style.transformOrigin = `${x}% ${y}%`;
-      });
-    
-      galleryMain.addEventListener("mouseleave", () => {
-        mainImage.style.transformOrigin = "center center";
-      });
-    }
-
   });
-  // ===============================
-  // CLICK TO OPEN IMAGE MODAL
-  // ===============================
-  const modal = document.querySelector(".bb-image-modal");
-  const modalImg = document.getElementById("bb-image-modal-img");
-  const modalBackdrop = document.querySelector(".bb-image-modal-backdrop");
 
-  if (mainImage && modal && modalImg) {
-    mainImage.addEventListener("click", () => {
-      modalImg.src = mainImage.src;
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
+  // Hover zoom follow cursor (desktop only)
+  if (galleryMain && mainImage && window.matchMedia("(hover: hover)").matches) {
+    galleryMain.addEventListener("mousemove", (e) => {
+      const rect = galleryMain.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      mainImage.style.transformOrigin = `${x}% ${y}%`;
+    });
+
+    galleryMain.addEventListener("mouseleave", () => {
+      mainImage.style.transformOrigin = "center center";
     });
   }
 
+  // CLICK TO OPEN IMAGE MODAL
+  const modal = document.querySelector(".bb-image-modal");
+  const modalImg = document.getElementById("bb-image-modal-img");
+  if (!modal || !modalImg) return;
+
+  mainImage.addEventListener("click", () => {
+    modalImg.src = mainImage.src;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  });
+
   function closeModal() {
-      modal.setAttribute("aria-hidden", "true");
-      modalImg.src = "";
-      document.body.style.overflow = "";
+    modal.setAttribute("aria-hidden", "true");
+    modalImg.src = "";
+    document.body.style.overflow = "";
+  }
+
+  modal.addEventListener("click", (e) => {
+    if (e.target.hasAttribute("data-modal-close")) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
+      closeModal();
     }
-    
-    modal.addEventListener("click", (e) => {
-      if (e.target.hasAttribute("data-modal-close")) {
-        closeModal();
-      }
-    });
-    
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
-        closeModal();
-      }
-    });
+  });
 }
 
 
+// ===============================
+// DOM READY
+// ===============================
+document.addEventListener("DOMContentLoaded", function () {
+  initializeTheme();
+  initializeMobileMenu();
+  initializeMobileHeaderActions();
+
+  initializeScrollProgress();
+  initializeHeaderScroll();
+  initializeHeaderLogo();
+  initializeSmoothScrolling();
+  initializeHeaderEffects();
+
+  initializeLanguageSelector();
+  initializeProductGallery();
+
+  console.log("BonnieByte PC - General scripts loaded");
+});
 
 
-
-
-
-
-
-
-
-
+// ===============================
+// CommonJS export (Node testing/etc.)
+// ===============================
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = {
+    initializeTheme,
+    initializeMobileMenu,
+    initializeMobileHeaderActions,
+    initializeScrollProgress,
+    initializeHeaderScroll,
+    initializeHeaderLogo,
+    initializeSmoothScrolling,
+    initializeHeaderEffects,
+    initializeLanguageSelector,
+    initializeProductGallery
+  };
+}
 
 
 
