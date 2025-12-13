@@ -597,14 +597,6 @@ html[data-theme="light"] .lang-btn {
     color: #222 !important;
 }
 
-.bb-lang-extended {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  z-index: 3000;
-  display: none;
-}
-
 .bb-lang-extended[aria-hidden="false"] {
   display: flex;
   align-items: center;
