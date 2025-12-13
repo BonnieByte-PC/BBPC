@@ -1571,4 +1571,30 @@ html[data-theme="light"] .mobile-account-button svg {
 }
 
 
+/* Mobile account bar: actions on the right */
+.mobile-account-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Slightly smaller buttons in the account bar so it doesn’t feel cramped */
+@media (max-width: 1250px) {
+    .mobile-account-actions .theme-toggle,
+    .mobile-account-actions .bb-lang-toggle {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .header-actions {
+        width: 100%;
+    }
+    .header-actions-cart {
+        margin-left: auto;
+    }
+}
+
 
