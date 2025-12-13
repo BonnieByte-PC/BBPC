@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <clipPath id="c">
+      <circle cx="32" cy="32" r="32"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#c)">
+    <!-- Horizontal stripes -->
+    <rect y="0" width="64" height="21.33" fill="#000000"/>
+    <rect y="21.33" width="64" height="21.33" fill="#ffffff"/>
+    <rect y="42.66" width="64" height="21.34" fill="#007A3D"/>
+
+    <!-- Red triangle -->
+    <polygon points="0,0 26,32 0,64" fill="#CE1126"/>
+  </g>
+</svg>
