@@ -96,6 +96,7 @@ title: Home | BonnieByte PC
                     <div class="button-group">
                         <a class="button" 
                            data-add-to-cart
+                           data-product-id="{{ id }}"
                            data-product-sku="{{ p.sku }}"
                            data-product-name="{{ p.full_name }}"
                            data-product-price="{{ p.price_gbp }}"
