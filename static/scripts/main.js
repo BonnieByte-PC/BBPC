@@ -588,7 +588,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     extended.classList.add("open");
     extended.setAttribute("aria-hidden", "false");
-    positionExtendedMenu();
+    function positionExtendedMenu() {
+      const extended = document.querySelector(".bb-lang-extended");
+      const headerEl = document.getElementById("bb-header");
+      if (!extended || !headerEl) return;
+    
+      const rect = headerEl.getBoundingClientRect();
+      extended.style.top = `${rect.bottom}px`;
+      extended.style.left = "50%";
+      extended.style.transform = "translateX(-50%)";
+    }
+
   });
 
   document.querySelector(".bb-lang-back")?.addEventListener("click", () => {
@@ -598,10 +608,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   window.addEventListener("resize", () => {
     if (extended.classList.contains("open")) {
-      positionExtendedMenu();
+      function positionExtendedMenu() {
+          const extended = document.querySelector(".bb-lang-extended");
+          const headerEl = document.getElementById("bb-header");
+          if (!extended || !headerEl) return;
+        
+          const rect = headerEl.getBoundingClientRect();
+          extended.style.top = `${rect.bottom}px`;
+          extended.style.left = "50%";
+          extended.style.transform = "translateX(-50%)";
+        }
+
     }
   });
 });
+
 
 
 
