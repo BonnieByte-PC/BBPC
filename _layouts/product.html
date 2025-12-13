@@ -42,6 +42,9 @@ layout: default
             £{{ p.price_gbp }}
             <span class="product-price-note">incl. VAT</span>
           </div>
+          <p class="product-availability">
+            <strong>In stock</strong> — ships from UK
+          </p>
           <p>{{ p.description }}</p>
           {% if p.box_contents %}
             <section class="product-box-contents">
@@ -85,6 +88,13 @@ layout: default
             {% endif %}
             <a href="/warranty/{{ page.product_id }}" class="button button-secondary">Warranty Info</a>
             <a href="/docs/{{ page.product_id }}" class="button button-secondary">Manual</a>
+          </div>
+          <div class="product-trust-strip">
+            <span>2-year warranty</span>
+            <span>•</span>
+            <span>30-day returns</span>
+            <span>•</span>
+            <span>UK-based support</span>
           </div>
         </div>
       </div>
