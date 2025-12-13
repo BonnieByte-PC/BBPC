@@ -1,9 +1,10 @@
-{% unless product.short_name and product.price_gbp %}
+{% assign p = include.product %}
+
+{% unless p.short_name and p.price_gbp %}
   {% comment %} Skip invalid related products {% endcomment %}
   {% continue %}
 {% endunless %}
 
-{% assign p = include.product %}
 {% assign id = include.id | default: p.id %}
 
 <article class="product-card">
