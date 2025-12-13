@@ -232,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeHeaderScroll();
     initializeHeaderLogo();
     initializeSmoothScrolling();
+    initializeProductGallery();
 
     console.log('BonnieByte PC - General scripts loaded');
 });
@@ -485,6 +486,28 @@ function initializeMobileHeaderActions() {
     // Listen for changes
     if (typeof mq.addEventListener === "function") mq.addEventListener("change", apply);
     else mq.addListener(apply);
+}
+
+// ===============================
+// PRODUCT GALLERY
+// ===============================
+function initializeProductGallery() {
+  const mainImage = document.getElementById("product-main-image");
+  const thumbs = document.querySelectorAll(".product-thumb");
+
+  if (!mainImage || thumbs.length === 0) return;
+
+  thumbs.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const src = btn.getAttribute("data-image");
+      if (!src) return;
+
+      mainImage.src = src;
+
+      thumbs.forEach(t => t.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
 }
 
 
