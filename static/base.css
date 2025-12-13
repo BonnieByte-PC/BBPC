@@ -627,8 +627,6 @@ html[data-theme="light"] .lang-btn {
   background: transparent;
   border: 1px solid var(--bb-border);
   color: var(--bb-text);
-  padding: 10px;
-  border-radius: 6px;
   cursor: pointer;
 }
 
@@ -672,10 +670,12 @@ html[data-theme="light"] .bb-lang-extended {
 }
 
 .bb-lang-extended-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
+
 
 /* ========================================================================
    11. MOBILE MENU TOGGLE
