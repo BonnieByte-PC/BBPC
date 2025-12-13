@@ -329,7 +329,16 @@ html.bb-cart-preview-open .enhanced-header.hide {
     }
 }
 
+@media (min-width: 900px) {
+    /* Slightly smaller logo for calmer header */
+    .header-logo-img {
+        height: 96px !important;
+    }
 
+    .enhanced-header.shrink .header-logo-img {
+        height: 88px !important;
+    }
+}
 
 /* ========================================================================
    9. HEADER ACTIONS (RIGHT SIDE)
