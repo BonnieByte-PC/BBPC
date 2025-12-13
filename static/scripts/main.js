@@ -560,25 +560,25 @@ function initializeProductGallery() {
 
 
 document.addEventListener("click", (e) => {
-  // Open extended list
-  if (e.target.closest(".bb-lang-more")) {
-    document.querySelector(".bb-lang-menu").style.display = "none";
-    document.querySelector(".bb-lang-extended").setAttribute("aria-hidden", "false");
+  const moreBtn = e.target.closest(".bb-lang-more");
+  if (!moreBtn) return;
+
+  e.preventDefault();
+  e.stopPropagation();
+
+  const menu = document.getElementById("bb-lang-menu");
+  const extended = document.querySelector(".bb-lang-extended");
+
+  if (menu) {
+    menu.style.display = "none";
   }
 
-  // Back button
-  if (e.target.closest(".bb-lang-back")) {
-    document.querySelector(".bb-lang-extended").setAttribute("aria-hidden", "true");
-    document.querySelector(".bb-lang-menu").style.display = "";
-  }
-
-  // Language select
-  const langBtn = e.target.closest("[data-lang]");
-  if (langBtn && langBtn.dataset.lang !== "more") {
-    doGTranslate(langBtn.dataset.lang);
-    document.querySelector(".bb-lang-extended")?.setAttribute("aria-hidden", "true");
+  if (extended) {
+    extended.setAttribute("aria-hidden", "false");
   }
 });
+
+
 
 
 
