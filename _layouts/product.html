@@ -43,6 +43,16 @@ layout: default
             <span class="product-price-note">incl. VAT</span>
           </div>
           <p>{{ p.description }}</p>
+          {% if p.box_contents %}
+            <section class="product-box-contents">
+              <h3>What’s in the box</h3>
+              <ul>
+                {% for item in p.box_contents %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endif %}
           <h3>Key Features</h3>
           <ul class="product-features">
             {% for f in p.features %}
