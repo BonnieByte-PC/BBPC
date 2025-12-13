@@ -620,7 +620,8 @@ html[data-theme="light"] .lang-btn {
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   overflow-y: auto;
-  margin-top: 12px;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .bb-lang-extended-grid button {
@@ -658,7 +659,7 @@ html[data-theme="light"] .lang-btn {
   padding: 16px;
   display: none;
 
-  width: auto;
+  width: fit-content;
   max-width: min(360px, 100vw - 24px);
 }
 
