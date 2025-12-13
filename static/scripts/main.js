@@ -353,6 +353,10 @@ function initializeLanguageSelector() {
       activeCode.textContent = code.toUpperCase();
     }
   }
+  // Hard guard: prevent Google from touching active lang UI
+  activeBtn.classList.add("notranslate");
+  activeCode.classList.add("notranslate");
+  activeFlag.classList.add("notranslate");
 
 
   function applyLanguage(lang) {
@@ -662,6 +666,7 @@ if (typeof module !== "undefined" && module.exports) {
     initializeProductGallery
   };
 }
+
 
 
 
