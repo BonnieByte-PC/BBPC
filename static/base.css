@@ -384,6 +384,17 @@ section {
     fill: none;
 }
 
+/* FORCE language toggle to match other header buttons */
+.bb-lang-toggle:hover {
+    background-color: var(--bb-blue);
+    color: #000;
+}
+
+/* Ensure inner elements don't block hover visuals */
+.bb-lang-toggle img,
+.bb-lang-toggle span {
+    pointer-events: none;
+}
 
 /* ========================================================================
    10. LANGUAGE DROPDOWN
@@ -1370,5 +1381,6 @@ html[data-theme="light"] .mobile-account-button svg {
         border-bottom: 1px solid rgba(102,170,255,0.35);
     }
 }
+
 
 
