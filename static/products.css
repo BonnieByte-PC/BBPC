@@ -752,3 +752,55 @@
 .product-faq .faq-item:focus-within dt::after {
   content: "–";
 }
+
+/* ============================================================
+   PRODUCTS INDEX — CARD CTA ALIGNMENT
+   ============================================================ */
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card .product-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-card .button-group {
+  margin-top: auto;          /* pushes CTAs to bottom */
+  width: 100%;
+  display: flex;
+  flex-direction: column;    /* stack */
+  gap: 10px;
+  align-items: stretch;
+}
+
+.product-card .button-group .button {
+  width: 100%;               /* equal width */
+  justify-content: center;
+}
+
+/* ============================================================
+   PRODUCT PAGE — LIGHT THEME FIXES
+   ============================================================ */
+
+html[data-theme="light"] .product-gallery-main {
+  background: var(--bb-surface);
+  border-color: var(--bb-border);
+}
+
+html[data-theme="light"] .bb-image-modal-backdrop {
+  background: rgba(255,255,255,0.85);
+}
+
+html[data-theme="light"] .bb-image-modal-close {
+  background: rgba(255,255,255,0.75);
+  color: #111;
+  border-color: var(--bb-blue);
+}
+
+html[data-theme="light"] .product-gallery-main img {
+  background: transparent;
+}
