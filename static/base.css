@@ -542,39 +542,62 @@ html[data-theme="light"] .bb-lang-toggle:hover {
     display: flex;
 }
 
+/* ============================================================
+   LANGUAGE BUTTON — SINGLE SOURCE OF TRUTH
+   ============================================================ */
 .lang-btn {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    border: 2px solid var(--bb-blue);
-    background: transparent;
-    color: var(--bb-blue);
-    font-size: 0.7rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.25s ease;
-    overflow: hidden;
-    transform: translateY(-1px);
-    box-shadow: none;
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 2px solid var(--bb-blue);
+  background: var(--bb-panel);
+
+  color: var(--bb-text);
+  cursor: pointer;
+
+  font-size: 0.65rem;
+  line-height: 1;
+
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .lang-btn img {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    pointer-events: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .lang-btn span {
-    font-size: 0.6rem;
-    margin-top: 2px;
-    pointer-events: none;
+  margin-top: 2px;
+  font-size: 0.6rem;
+  pointer-events: none;
 }
 
-.bb-lang-menu .lang-btn:hover {
+/* Hover */
+.lang-btn:hover {
+  background: rgba(102,170,255,0.15);
+}
+
+/* Active */
+.bb-lang-option.active {
+  background: rgba(102,170,255,0.18);
+  box-shadow:
+    0 0 10px rgba(102,170,255,0.6),
+    inset 0 0 6px rgba(102,170,255,0.4);
+}
+
+
+.bb-lang-menu:hover {
     background: rgba(102, 170, 255, 0.15);
 }
 
@@ -715,6 +738,17 @@ html[data-theme="light"] .lang-btn {
   font-family: system-ui, sans-serif;
 }
 
+@media (max-width: 768px) {
+  .bb-lang-extended-grid {
+    grid-template-columns: repeat(4, 52px);
+  }
+}
+
+@media (max-width: 480px) {
+  .bb-lang-extended-grid {
+    grid-template-columns: repeat(3, 52px);
+  }
+}
 /* ========================================================================
    11. MOBILE MENU TOGGLE
    ======================================================================== */
