@@ -171,7 +171,6 @@ a:hover {
 
 .button:hover {
     background: #88bbff;
-    color: #000;
 }
 
 .button-secondary {
@@ -503,127 +502,181 @@ html[data-theme="light"] .bb-lang-toggle:hover {
 }
 
 /* ========================================================================
-   LANGUAGE SELECTOR (PRIMARY + EXTENDED)
-   Single source of truth
+   10. LANGUAGE DROPDOWN
    ======================================================================== */
 
-/* --- Container --- */
 .bb-lang-dropdown {
-  position: relative;
-  display: flex;
-  align-items: center;
+    position: relative;
+    margin-left: 6px;
+    display: flex;
+    align-items: center;
 }
 
-/* --- Toggle button (active language) --- */
 .bb-lang-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* =====================================================================
-   SHARED LANGUAGE BUTTON
-   ===================================================================== */
-.lang-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 52px;
-  height: 52px;
-
-  border-radius: 12px;
-  border: 2px solid var(--bb-blue);
-  background: var(--bb-panel);
-
-  color: var(--bb-blue);
-  cursor: pointer;
-
-  font-size: 0.7rem;
-  line-height: 1;
-  transition: background 0.2s ease, box-shadow 0.2s ease;
-}
-
-.lang-btn img {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.lang-btn span {
-  margin-top: 2px;
-  font-size: 0.6rem;
-  pointer-events: none;
-}
-
-/* Hover + active */
-.lang-btn:hover {
-  background: var(--bb-blue);
-}
-
-.bb-lang-option.active {
-  background: rgba(102,170,255,0.18);
-  box-shadow:
-    0 0 10px rgba(102,170,255,0.6),
-    inset 0 0 6px rgba(102,170,255,0.4);
-}
-
-/* =====================================================================
-   PRIMARY DROPDOWN
-   ===================================================================== */
 .bb-lang-menu {
-  position: fixed;
-  top: 72px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  display: none;
-  gap: 10px;
-
-  padding: 10px 12px;
-  border-radius: 999px;
-
-  background: rgba(10,10,10,0.98);
-  border: 2px solid var(--bb-blue);
-  box-shadow: 0 0 18px rgba(102,170,255,0.6);
-
-  z-index: 2600;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  max-width: min(420px, 100vw - 24px);
+    position: fixed;
+    left: 50%;
+    top: 72px;
+    transform: translateX(-50%);
+    display: none;
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: rgba(10, 10, 10, 0.98);
+    border: 2px solid var(--bb-blue);
+    box-shadow: 0 0 18px rgba(102, 170, 255, 0.6);
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: min(420px, 100vw - 24px);
+    box-sizing: border-box;
+    z-index: 2600;
 }
 
 .bb-lang-dropdown.open .bb-lang-menu {
+    display: flex;
+}
+
+.lang-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid var(--bb-blue);
+    background: transparent;
+    color: var(--bb-blue);
+    font-size: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.25s ease;
+    overflow: hidden;
+    transform: translateY(-1px);
+    box-shadow: none;
+}
+
+.lang-btn img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.lang-btn span {
+    font-size: 0.6rem;
+    margin-top: 2px;
+    pointer-events: none;
+}
+
+.bb-lang-menu .lang-btn:hover {
+    background: rgba(102, 170, 255, 0.15);
+}
+
+
+.bb-lang-option.active {
+    border-color: var(--bb-blue);
+    background: rgba(102, 170, 255, 0.15);
+    box-shadow:
+        0 0 10px rgba(102, 170, 255, 0.6),
+        inset 0 0 6px rgba(102, 170, 255, 0.4);
+}
+
+@media (max-width: 900px) {
+    .bb-lang-dropdown {
+        margin-left: 4px;
+    }
+    .lang-btn {
+        width: 40px;
+        height: 40px;
+    }
+    .bb-lang-menu {
+        max-width: calc(100vw - 24px);
+        padding: 8px;
+    }
+}
+
+/* Light-theme override for dropdown */
+html[data-theme="light"] .bb-lang-menu {
+    background: rgba(255,255,255,0.92) !important;
+    border-color: var(--bb-blue);
+    box-shadow: 0 0 18px rgba(102,170,255,0.35);
+}
+
+html[data-theme="light"] .lang-btn {
+    background: rgba(255,255,255,0.88) !important;
+    color: #222 !important;
+}
+
+.bb-lang-extended[aria-hidden="false"] {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* More button */
-.bb-lang-more {
-  border-style: dashed;
-  opacity: 0.85;
+.bb-lang-extended-inner {
+  background: var(--bb-panel);
+  border: 2px solid var(--bb-blue);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 420px;
+  width: auto;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* =====================================================================
-   EXTENDED MENU
-   ===================================================================== */
+.bb-lang-extended-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 52px);
+  gap: 12px;
+  overflow-y: auto;
+  max-width: 320px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.bb-lang-extended-grid button {
+  background: transparent;
+  border: 1px solid var(--bb-border);
+  color: var(--bb-text);
+  cursor: pointer;
+}
+
+.bb-lang-extended-grid button:hover {
+  background: var(--bb-blue);
+  color: #000;
+}
+
+.bb-lang-back {
+  background: none;
+  border: none;
+  color: var(--bb-blue);
+  cursor: pointer;
+  align-self: flex-start;
+}
+
 .bb-lang-extended {
   position: fixed;
-  top: 72px;
+  top: 72px; /* JS overrides */
   left: 50%;
   transform: translateX(-50%);
   z-index: 2600;
-
-  display: none;
-  padding: 16px;
 
   background: rgba(10,10,10,0.98);
   border: 2px solid var(--bb-blue);
   border-radius: 16px;
   box-shadow: 0 0 22px rgba(102,170,255,0.55);
 
+  padding: 16px;
+  display: none;
+
+  width: auto;
   max-width: min(360px, 100vw - 24px);
 }
 
@@ -631,76 +684,35 @@ html[data-theme="light"] .bb-lang-toggle:hover {
   display: block;
 }
 
-/* Inner wrapper */
 .bb-lang-extended-inner {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-}
-
-/* Back button */
-.bb-lang-back {
-  background: none;
-  border: none;
-  color: var(--bb-text-muted);
-  font-size: 0.85rem;
-  cursor: pointer;
-  align-self: flex-start;
-}
-
-.bb-lang-back:hover {
-  color: var(--bb-text);
-}
-
-/* =====================================================================
-   EXTENDED GRID (ALWAYS GRID — fixes iOS stacking)
-   ===================================================================== */
-.bb-lang-extended-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 52px);
   gap: 12px;
+}
+
+.bb-lang-extended-grid {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
 }
 
-/* Tablet */
-@media (max-width: 768px) {
-  .bb-lang-extended-grid {
-    grid-template-columns: repeat(3, 52px);
+@media (max-width: 1250px) {
+  .bb-lang-extended {
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: calc(100vw - 24px);
   }
 }
 
-/* Small phones */
-@media (max-width: 480px) {
-  .bb-lang-extended-grid {
-    grid-template-columns: repeat(2, 52px);
-  }
-}
-
-/* =====================================================================
-   LIGHT THEME OVERRIDES
-   ===================================================================== */
-html[data-theme="light"] .bb-lang-menu,
-html[data-theme="light"] .bb-lang-extended {
-  background: rgba(255,255,255,0.95);
-  box-shadow: 0 0 18px rgba(102,170,255,0.35);
-}
-
-html[data-theme="light"] .lang-btn {
-  background: #fff;
-  color: #222;
-  font-weight: 700;
-}
-
-/* =====================================================================
-   TRANSLATE SAFETY
-   ===================================================================== */
 .lang-btn,
-.lang-btn span,
-#bb-active-lang,
-#bb-active-code,
-#bb-active-flag {
+.lang-btn span {
   translate: no !important;
   -webkit-translate: no !important;
+}
+
+.lang-btn span.notranslate {
+  font-family: system-ui, sans-serif;
 }
 
 /* ========================================================================
