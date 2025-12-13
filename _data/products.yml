@@ -1,6 +1,6 @@
 northern_wind_120:
   sku: "BB-NW120-ARGB-001"
-  full_name: "Northern Wind 120mm ARGB Fan Bundle"
+  full_name: "Northern Wind 120mm ARGB 5 Fan Bundle"
   short_name: "Northern Wind 120"
   html_name: "<span class='orbitron notranslate'>NORTHERN WIND 120</span>"
   price_gbp: 39.99
@@ -23,11 +23,11 @@ northern_wind_120:
   ukca: true
   status: "Launch Pricing Soon"
   product_visible: true
-  description: "A complete cooling and lighting upgrade in one kit. Quiet 120mm PWM ARGB fans, an included hub, and honest performance."
+  description: "A complete cooling and lighting upgrade in one kit. Quiet 120mm PWM ARGB fans, an included hub, and honest performance that will keep your system cooled and running at peak efficiency."
   features:
-    - "5x 120mm NORTHERN WIND PWM ARGB fans"
+    - "5x 120mm <span class='orbitron notranslate'>NORTHERN WIND</span> PWM ARGB fans"
     - "Included ARGB hub"
-    - "Static-pressure airflow design"
+    - "Silent Operation"
   amazon_url: "https://amazon.co.uk"
   warranty_length: "2-Year Warranty"
   featured: true
@@ -40,7 +40,7 @@ northern_wind_120:
     - /images/products/nw120/rear.webp
     - /images/products/nw120/lighting.webp
   box_contents:
-    - 5x Northern Wind 120mm ARGB Fans
+    - 5x <span class='orbitron notranslate'>NORTHERN WIND 120</span>mm ARGB Fans
     - Mounting Screw Set
     - Magnetic Backed Fan Hub
     - Accessories Bundle
