@@ -1577,3 +1577,11 @@ html[data-theme="light"] .bb-cart-toggle:hover svg {
   stroke: currentColor;
   fill: currentColor;
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  overflow-x: hidden; /* iOS safety */
+}
+
