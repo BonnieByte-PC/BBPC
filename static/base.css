@@ -1620,3 +1620,13 @@ html[data-theme="light"] .mobile-account-button svg {
     align-items: center;
     gap: 12px;
 }
+
+/* ============================================================
+   HARD GUARD: MOBILE ACCOUNT BAR MUST NEVER APPEAR ON DESKTOP
+   ============================================================ */
+@media (min-width: 1251px) {
+    .mobile-account-bar {
+        display: none !important;
+    }
+}
+
