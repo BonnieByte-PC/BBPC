@@ -171,6 +171,7 @@ a:hover {
 
 .button:hover {
     background: #88bbff;
+    color: #000;
 }
 
 .button-secondary {
