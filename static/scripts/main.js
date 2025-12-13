@@ -329,55 +329,60 @@ function initializeLanguageSelector() {
 
   function setActiveLangUI(lang) {
     const code = normaliseLang(lang);
-
-    // Find the matching button in either menu
+  
     const btn =
+      menu.querySelector(`[data-lang="${lang}"]`) ||
       menu.querySelector(`[data-lang="${code}"]`) ||
+      (extended ? extended.querySelector(`[data-lang="${lang}"]`) : null) ||
       (extended ? extended.querySelector(`[data-lang="${code}"]`) : null);
-
-    if (btn) {
-      // Active highlight only applies to primary options (keep your current behaviour)
-      menu.querySelectorAll(".bb-lang-option").forEach(b => b.classList.remove("active"));
-      const primaryBtn = menu.querySelector(`.bb-lang-option[data-lang="${code}"]`);
-      if (primaryBtn) primaryBtn.classList.add("active");
-
-      const img = btn.querySelector("img");
-      if (img && activeFlag) {
-        activeFlag.src = img.src;
-        activeFlag.alt = img.alt || code.toUpperCase();
-      }
+  
+    if (!btn) return;
+  
+    const img = btn.querySelector("img");
+    if (img && activeFlag) {
+      activeFlag.src = img.src;
+      activeFlag.alt = img.alt || lang;
     }
+  
+    // 👇 SHOW FULL CODE FOR CHINESE VARIANTS
+    if (lang.startsWith("zh")) {
+      activeCode.textContent = lang.toUpperCase();
+    } else {
+      activeCode.textContent = code.toUpperCase();
+    }
+  }
+
 
     if (activeCode) activeCode.textContent = code.toUpperCase();
   }
 
   function applyLanguage(lang) {
-    const target = normaliseLang(lang);
+    const uiCode = normaliseLang(lang); // for UI only
+    const translateCode = lang;         // FULL code for Google
   
-    // Update UI
-    setActiveLangUI(target);
+    setActiveLangUI(uiCode);
   
-    // Persist choice
     try {
       if (typeof BBCookies !== "undefined") {
-        BBCookies.set("bb_lang", target, 365);
+        BBCookies.set("bb_lang", translateCode, 365);
       }
     } catch (err) {
       console.warn("BB lang cookie error:", err);
     }
   
-    // Trigger Google Translate
+    // Trigger Google Translate (FULL CODE)
     if (typeof doGTranslate === "function") {
-      doGTranslate(target);
+      doGTranslate(translateCode);
     } else if (
       window.gtranslateSettings &&
       typeof window.gtranslateSettings.switchLanguage === "function"
     ) {
-      window.gtranslateSettings.switchLanguage(target);
+      window.gtranslateSettings.switchLanguage(translateCode);
     } else {
       console.warn("GTranslate not ready");
     }
   }
+
 
 
 
@@ -659,6 +664,7 @@ if (typeof module !== "undefined" && module.exports) {
     initializeProductGallery
   };
 }
+
 
 
 
