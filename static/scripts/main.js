@@ -572,34 +572,56 @@ function initializeProductGallery() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-const moreBtn  = document.querySelector(".bb-lang-more");
-const backBtn  = document.querySelector(".bb-lang-back");
-const extended = document.querySelector(".bb-lang-extended");
-
-function openExtendedMenu() {
-  dropdown.classList.remove("open");
-  activeBtn.setAttribute("aria-expanded", "false");
-
-  extended.classList.add("open");
-  extended.setAttribute("aria-hidden", "false");
-  positionExtendedMenu();
-}
-
-function closeExtendedMenu() {
-  extended.classList.remove("open");
-  extended.setAttribute("aria-hidden", "true");
-}
-
-moreBtn?.addEventListener("click", (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  openExtendedMenu();
+    const moreBtn  = document.querySelector(".bb-lang-more");
+    const backBtn  = document.querySelector(".bb-lang-back");
+    const extended = document.querySelector(".bb-lang-extended");
+    
+    function openExtendedMenu() {
+      dropdown.classList.remove("open");
+      activeBtn.setAttribute("aria-expanded", "false");
+    
+      extended.classList.add("open");
+      extended.setAttribute("aria-hidden", "false");
+      positionExtendedMenu();
+    }
+    
+    function closeExtendedMenu() {
+      extended.classList.remove("open");
+      extended.setAttribute("aria-hidden", "true");
+    }
+    
+    moreBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openExtendedMenu();
+    });
+    
+    backBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeExtendedMenu();
+        
+    });
+    extended?.querySelectorAll("[data-lang]").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const lang = btn.dataset.lang;
+    
+        setActiveLangUI(lang);
+        closeExtendedMenu();
+    
+        try {
+          if (typeof BBCookies !== "undefined") {
+            BBCookies.set("bb_lang", lang, 365);
+          }
+        } catch {}
+    
+        if (typeof doGTranslate === "function") {
+          doGTranslate(lang);
+        }
+      });
+    });
 });
 
-backBtn?.addEventListener("click", (e) => {
-  e.preventDefault();
-  closeExtendedMenu();
-});
 
 
 
