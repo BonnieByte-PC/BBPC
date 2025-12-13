@@ -250,3 +250,36 @@
     max-width: 100%;
   }
 }
+
+/* =========================================
+   iOS SAFARI HARD OVERFLOW GUARD
+   ========================================= */
+
+@media (max-width: 600px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .product-detail,
+  .product-detail * {
+    max-width: 100%;
+  }
+
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .product-gallery-main,
+  .product-gallery-main img {
+    max-width: 100%;
+  }
+
+  .product-specs {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
