@@ -1,0 +1,51 @@
+{% assign p = include.product %}
+{% assign id = include.id | default: p.id %}
+
+<article class="product-card">
+  <div class="product-media">
+    {% if p.thumbnail %}
+      <a href="/products/{{ id }}/">
+        <img src="{{ p.thumbnail }}" alt="{{ p.full_name }}" class="product-image">
+      </a>
+    {% else %}
+      <div class="product-image-placeholder">
+        <span>Product render coming soon</span>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="product-body">
+    <h2>
+      <a href="/products/{{ id }}/">
+        <span class="orbitron notranslate">{{ p.short_name | upcase }}</span>
+        {{ p.full_name | replace: p.short_name,'' }}
+      </a>
+    </h2>
+
+    <p class="product-price">£{{ p.price_gbp }}</p>
+
+    {% if p.description %}
+      <p>{{ p.description }}</p>
+    {% endif %}
+
+    {% if p.features %}
+      <ul class="product-features">
+        {% for f in p.features %}
+          <li>{{ f }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <div class="product-badges">
+      {% if p.warranty_enabled %}
+        <span>{{ p.warranty_length | default: "2-Year Warranty" }}</span>
+      {% endif %}
+      {% if p.ukca %}
+        <span>UKCA Ready</span>
+      {% endif %}
+      {% if p.status %}
+        <span>{{ p.status }}</span>
+      {% endif %}
+    </div>
+  </div>
+</article>
