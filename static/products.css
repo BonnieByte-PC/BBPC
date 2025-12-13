@@ -185,3 +185,26 @@
   cursor: grab;
   transition: transform 0.2s ease;
 }
+
+/* =========================================
+   PRODUCT PAGE MOBILE SAFETY
+   ========================================= */
+
+.product-detail {
+  overflow-x: hidden;
+}
+
+.product-gallery-thumbs {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.product-specs {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.product-detail-body {
+  max-width: 100%;
+}
