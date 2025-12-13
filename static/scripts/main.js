@@ -567,46 +567,43 @@ function initializeProductGallery() {
 }
 
 
-document.addEventListener("click", (e) => {
-  const moreBtn = e.target.closest(".bb-lang-more");
-  if (!moreBtn) return;
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdown   = document.querySelector(".bb-lang-dropdown");
+  const activeBtn  = document.getElementById("bb-active-lang");
+  const menu       = document.getElementById("bb-lang-menu");
+  const extended   = document.querySelector(".bb-lang-extended");
+  const headerEl   = document.getElementById("bb-header");
 
-  e.preventDefault();
-  e.stopPropagation();
-
-  const menu = document.getElementById("bb-lang-menu");
-  const extended = document.querySelector(".bb-lang-extended");
-
-  if (menu) {
-    menu.style.display = "none";
+  function positionExtendedMenu() {
+    if (!extended || !headerEl) return;
+    extended.style.top = `${headerEl.getBoundingClientRect().bottom}px`;
   }
 
-  if (extended) {
+  document.querySelector(".bb-lang-more")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    dropdown.classList.remove("open");
+    activeBtn.setAttribute("aria-expanded", "false");
+
+    extended.classList.add("open");
     extended.setAttribute("aria-hidden", "false");
-  }
-});
-
-document.querySelector(".bb-lang-more")?.addEventListener("click", (e) => {
-  e.stopPropagation();
-  dropdown.classList.remove("open");
-  activeBtn.setAttribute("aria-expanded", "false");
-
-  extended.classList.add("open");
-  extended.setAttribute("aria-hidden", "false");
-  positionExtendedMenu();
-});
-
-document.querySelector(".bb-lang-back")?.addEventListener("click", () => {
-  extended.classList.remove("open");
-  extended.setAttribute("aria-hidden", "true");
-});
-
-
-window.addEventListener("resize", () => {
-  if (extended?.classList.contains("open")) {
     positionExtendedMenu();
-  }
+  });
+
+  document.querySelector(".bb-lang-back")?.addEventListener("click", () => {
+    extended.classList.remove("open");
+    extended.setAttribute("aria-hidden", "true");
+  });
+
+  window.addEventListener("resize", () => {
+    if (extended.classList.contains("open")) {
+      positionExtendedMenu();
+    }
+  });
 });
+
+
 
 
 
