@@ -84,7 +84,7 @@ argb_hub:
     - White
   specs:
     PWM: "12V 4-Pin PWM"
-    ARGB: "5V 3-Pin ARGB
+    ARGB: "5V 3-Pin ARGB"
     Dimensions: "95cm x 45cm x 15cm"
     Power: "SATA Power"
   thumbnail: "/images/products/argb_hub/thumb.webp"
