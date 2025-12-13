@@ -1488,5 +1488,30 @@ html[data-theme="light"] .mobile-account-button svg {
     }
 }
 
+/* Desktop header-actions grouping */
+@media (min-width: 1251px) {
+    .header-actions {
+        gap: 14px;
+        align-items: center;
+    }
+
+    .bb-header-cart-area {
+        margin-left: 12px;
+        position: relative;
+    }
+
+    .bb-header-cart-area::before {
+        content: "";
+        position: absolute;
+        left: -12px;
+        top: 6px;
+        bottom: 6px;
+        width: 1px;
+        background: rgba(102,170,255,0.35);
+    }
+}
+
+
+
 
 
