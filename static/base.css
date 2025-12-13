@@ -559,7 +559,7 @@ html[data-theme="light"] .bb-lang-toggle:hover {
   border: 2px solid var(--bb-blue);
   background: var(--bb-panel);
 
-  color: var(--bb-text);
+  color: var(--bb-blue);
   cursor: pointer;
 
   font-size: 0.65rem;
