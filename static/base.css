@@ -285,29 +285,20 @@ section {
 
 @media (max-width: 1250px) {
     .header-content {
-        padding: 0 18px;
-        gap: 18px;
+        padding: 10px 14px;
+        gap: 12px;
     }
+
+    /* Slightly smaller logo for calmer header */
     .header-logo-img {
-        height: 70px;
+        height: 52px !important;
     }
+
     .enhanced-header.shrink .header-logo-img {
-        height: 60px;
+        height: 46px !important;
     }
 }
 
-@media (max-width: 768px) {
-    .header-content {
-        padding: 0 14px;
-        gap: 14px;
-    }
-    .header-logo-img {
-        height: 60px !important;
-    }
-    .enhanced-header.shrink .header-logo-img {
-        height: 54px !important;
-    }
-}
 
 
 /* ========================================================================
@@ -332,22 +323,28 @@ section {
     border: 2px solid var(--bb-blue);
     width: 42px;
     height: 42px;
-    border-radius: 50%;
+    border-radius: 999px;
     color: var(--bb-blue);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: 0.25s ease;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
 }
 
 .theme-toggle:hover,
 .bb-account-toggle:hover,
 .bb-cart-toggle:hover,
 .bb-lang-toggle:hover {
-    background: var(--bb-blue);
+    background-color: var(--bb-blue);
     color: #000;
+    transform: translateY(-1px);
 }
+
+
 
 /* Cart toggle + badge */
 .bb-cart-toggle {
@@ -381,12 +378,89 @@ section {
     100% { transform: scale(1); }
 }
 
-/* Ensure account icon SVG is blue on desktop */
 .bb-account-toggle svg {
-    stroke: var(--bb-blue);
+    stroke: currentColor;
     fill: none;
 }
 
+
+
+
+/* Ensure inner elements don't block hover visuals */
+.bb-lang-toggle img,
+.bb-lang-toggle span {
+    pointer-events: none;
+}
+
+
+/* Visually adapt flag + text on hover */
+.bb-lang-toggle:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.bb-lang-toggle:hover span {
+    color: #000;
+}
+
+/* Desktop header actions grouping */
+@media (min-width: 1251px) {
+    .header-actions {
+        gap: 14px;
+    }
+
+    .bb-cart-toggle {
+        margin-left: 10px;
+        position: relative;
+    }
+
+    .bb-cart-toggle::before {
+        content: "";
+        position: absolute;
+        left: -12px;
+        top: 6px;
+        bottom: 6px;
+        width: 1px;
+        background: rgba(102,170,255,0.35);
+    }
+}
+
+/* ============================================================
+   LANGUAGE TOGGLE — FORCE CONSISTENT BUTTON BEHAVIOUR
+   ============================================================ */
+
+/* Make language toggle behave exactly like other header buttons */
+.bb-lang-toggle {
+    background: transparent;
+    border: 2px solid var(--bb-blue);
+    color: var(--bb-blue);
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Hover state — same as cart / theme / account */
+
+
+/* IMPORTANT: prevent flag from changing colour */
+.bb-lang-toggle img {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+/* Keep flag readable on blue background */
+.bb-lang-toggle:hover img {
+    filter: none !important;
+}
+
+/* Light theme consistency */
+html[data-theme="light"] .bb-lang-toggle {
+    color: var(--bb-blue);
+    border-color: var(--bb-blue);
+}
+
+html[data-theme="light"] .bb-lang-toggle:hover {
+    background-color: var(--bb-blue);
+}
 
 /* ========================================================================
    10. LANGUAGE DROPDOWN
@@ -444,6 +518,8 @@ section {
     cursor: pointer;
     transition: 0.25s ease;
     overflow: hidden;
+    transform: translateY(-1px);
+    box-shadow: none;
 }
 
 .lang-btn img {
@@ -459,11 +535,10 @@ section {
     pointer-events: none;
 }
 
-.lang-btn:hover {
+.bb-lang-menu .lang-btn:hover {
     background: rgba(102, 170, 255, 0.15);
-    box-shadow: 0 0 12px rgba(102, 170, 255, 0.65);
-    transform: scale(1.08);
 }
+
 
 .bb-lang-option.active {
     border-color: var(--bb-blue);
@@ -691,19 +766,30 @@ html[data-theme="light"] .lang-btn {
 .mobile-account-bar {
     display: none;
     width: 100%;
-    background: var(--bb-panel);
-    border-bottom: 1px solid var(--bb-border);
-    padding: 10px 14px;
+    background: linear-gradient(
+        180deg,
+        rgba(20,20,20,0.98),
+        rgba(15,15,15,0.98)
+    );
+    border-bottom: 1px solid rgba(102,170,255,0.35);
+    padding: 12px 16px;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 }
+
 
 /* Activate bar at <= 1250px (tablet + mobile) */
 @media (max-width: 1250px) {
     .mobile-account-bar {
         display: flex;
     }
+
+    /* Make tap targets slightly nicer */
+    .mobile-account-button {
+        padding: 6px 8px;
+    }
 }
+
 
 /* Desktop-only helper (hide things on small screens) */
 @media (max-width: 1250px) {
@@ -733,6 +819,90 @@ html[data-theme="light"] .lang-btn {
 
 
 /* ========================================================================
+/* ========================================================================
+   13A. HEADER LAYOUT POLISH (STRUCTURE ALREADY IN HTML)
+   Notes: Visual/layout only — no behaviour changes.
+   ======================================================================== */
+
+/* Header actions grouping (supports header-actions-primary + header-actions-cart) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-actions-primary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-actions-cart {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    position: relative;
+}
+
+/* Divider before cart (desktop) */
+@media (min-width: 1251px) {
+    .header-actions-cart::before {
+        content: "";
+        position: absolute;
+        left: -12px;
+        top: 6px;
+        bottom: 6px;
+        width: 1px;
+        background: rgba(102,170,255,0.35);
+    }
+}
+
+/* Tablet/mobile: hide primary actions in top header row (cart + hamburger stay) */
+@media (max-width: 1250px) {
+    .header-actions-primary {
+        display: none;
+    }
+
+    /* Use available space: cart sits left of hamburger, with breathing room */
+    .header-actions {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .header-actions-cart {
+        margin-left: auto;
+        margin-right: 6px;
+    }
+
+    .mobile-menu-toggle {
+        margin-left: 6px;
+    }
+}
+
+/* Mobile account bar quick actions (theme/lang moved here by JS) */
+.mobile-account-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Slightly smaller quick action buttons in the account bar */
+@media (max-width: 1250px) {
+    .mobile-account-actions .theme-toggle,
+    .mobile-account-actions .bb-lang-toggle {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* Hard guard: mobile account bar must never appear on desktop */
+@media (min-width: 1251px) {
+    .mobile-account-bar {
+        display: none !important;
+    }
+}
+
    14. HEADER ACTIONS WHEN MOBILE MENU OPEN
    ======================================================================== */
 
@@ -1112,6 +1282,31 @@ html[data-theme="light"] footer.site-footer {
 
 
 /* ========================================================================
+
+/* --- Light theme: mobile account bar + quick actions --- */
+html[data-theme="light"] .mobile-account-bar {
+    background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.95),
+        rgba(245,245,245,0.95)
+    );
+    border-bottom: 1px solid rgba(102,170,255,0.4);
+}
+
+html[data-theme="light"] .mobile-account-bar .theme-toggle,
+html[data-theme="light"] .mobile-account-bar .bb-lang-toggle {
+    border-color: var(--bb-blue);
+    color: var(--bb-blue);
+}
+
+html[data-theme="light"] .mobile-account-button {
+    color: #222;
+}
+
+html[data-theme="light"] .mobile-account-button svg {
+    stroke: #222;
+}
+
    20. ACCESSIBILITY
    ======================================================================== */
 
@@ -1281,5 +1476,112 @@ body .goog-te-gadget {
         display: block;
         width: 100%;
     }
+}
+
+/* ============================================================ */
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+}
+
+.theme-core {
+  fill: currentColor;
+}
+
+html.theme-dark .theme-rays {
+  display: none;
+}
+
+html.theme-light .theme-rays {
+  display: block;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(15deg);
+  transition: transform .25s ease;
+}
+
+/* =========================================
+   THEME TOGGLE ICON — CONTRAST FIX
+   ========================================= */
+
+/* Dark theme: brand-consistent blue icon */
+html[data-theme="dark"] .theme-toggle {
+  color: var(--bb-blue);
+  border-color: var(--bb-blue);
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+  background: var(--bb-blue);
+  color: #000;
+}
+
+
+/* Hide moon look, show rays */
+html[data-theme="dark"] .theme-rays {
+  display: block;
+}
+
+html[data-theme="dark"] .theme-core {
+  fill: currentColor;
+}
+
+/* Light theme: show MOON */
+html[data-theme="light"] .theme-toggle {
+  color: var(--bb-blue);
+  border-color: var(--bb-blue);
+}
+
+html[data-theme="light"] .theme-rays {
+  display: none;
+}
+
+html[data-theme="light"] .theme-core {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.theme-toggle:hover .theme-icon {
+  transform: rotate(20deg);
+}
+
+html[data-theme="dark"] .theme-toggle {
+  box-shadow: 0 0 0 rgba(102,170,255,0);
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+  box-shadow: 0 0 10px rgba(102,170,255,0.45);
+}
+
+/* =========================================
+   HEADER ICON HOVER — LIGHT MODE FIX
+   Ensures icons turn black on blue hover
+   ========================================= */
+
+html[data-theme="light"] .theme-toggle:hover,
+html[data-theme="light"] .bb-account-toggle:hover,
+html[data-theme="light"] .bb-lang-toggle:hover,
+html[data-theme="light"] .bb-cart-toggle:hover {
+  color: #000;
+}
+
+/* Ensure SVG strokes/fills follow the color */
+html[data-theme="light"] .theme-toggle:hover svg,
+html[data-theme="light"] .bb-account-toggle:hover svg,
+html[data-theme="light"] .bb-lang-toggle:hover svg,
+html[data-theme="light"] .bb-cart-toggle:hover svg {
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  overflow-x: hidden; /* iOS safety */
 }
 

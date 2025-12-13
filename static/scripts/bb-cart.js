@@ -95,7 +95,11 @@
         row.className = "bb-cart-item";
         row.innerHTML = `
           <div class="bb-cart-item-image">
-            ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
+            ${item.image ? `
+              <a href="/products/${item.id}/">
+                <img src="${item.image}" alt="${item.name}">
+              </a>
+            ` : ""}
           </div>
           <div class="bb-cart-item-info">
             <div class="bb-cart-item-name">${item.name}</div>
@@ -138,7 +142,11 @@
         row.className = "bb-cart-preview-item";
         row.innerHTML = `
           <div class="bb-cart-preview-thumb">
-            ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
+            ${item.image ? `
+              <a href="/products/${item.id}/">
+                <img src="${item.image}" alt="${item.name}">
+              </a>
+            ` : ""}
           </div>
           <div class="bb-cart-preview-info">
             <div class="bb-cart-preview-name">${item.name}</div>
@@ -199,7 +207,11 @@
           <td class="bb-cart-page-product">
             <div class="bb-cart-page-product-inner">
               <div class="bb-cart-page-thumb">
-                ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
+                ${item.image ? `
+                  <a href="/products/${item.id}/">
+                    <img src="${item.image}" alt="${item.name}">
+                  </a>
+                ` : ""}
               </div>
               <div class="bb-cart-page-info">
                 <div class="bb-cart-page-name">${item.name}</div>
@@ -249,7 +261,7 @@
   // CART OPERATIONS
   // -----------------------------
 
-  function addToCart({ sku, name, price, image, variant }) {
+  function addToCart({ id, sku, name, price, image, variant }) {
     const key = buildItemKey(sku, variant);
     const index = findItemIndex(currentCart, key);
 
@@ -259,6 +271,7 @@
     } else {
       currentCart.items.push({
         key,
+        id: id || "",
         sku,
         name,
         price,
@@ -326,13 +339,15 @@
     // ADD TO CART
     if (target.closest("[data-add-to-cart]")) {
       const btn = target.closest("[data-add-to-cart]");
+      const id = btn.getAttribute("data-product-id") || "";
       const sku = btn.getAttribute("data-product-sku");
       const name = btn.getAttribute("data-product-name") || sku;
       const price = parseFloat(btn.getAttribute("data-product-price") || "0");
       const image = btn.getAttribute("data-product-image") || "";
       const variant = btn.getAttribute("data-product-variant") || "default";
+      
+      addToCart({ id, sku, name, price, image, variant });
 
-      addToCart({ sku, name, price, image, variant });
 
       // ---------------------
       // FLY-TO-CART ANIMATION
@@ -426,27 +441,31 @@
 
   if (cartToggleWrapper && cartPreview) {
     let hoverTimeout = null;
-
+  
     const showPreview = () => {
       if (window.matchMedia("(hover: none)").matches) return;
+      clearTimeout(hoverTimeout);
       renderPreview();
       cartPreview.setAttribute("aria-hidden", "false");
     };
-
+  
     const hidePreview = () => {
-      cartPreview.setAttribute("aria-hidden", "true");
+      hoverTimeout = setTimeout(() => {
+        cartPreview.setAttribute("aria-hidden", "true");
+      }, 250);
     };
-
-    cartToggleWrapper.addEventListener("mouseenter", () => {
+  
+    cartToggleWrapper.addEventListener("mouseenter", showPreview);
+    cartToggleWrapper.addEventListener("mouseleave", hidePreview);
+  
+    // 👇 THIS IS THE KEY PART
+    cartPreview.addEventListener("mouseenter", () => {
       clearTimeout(hoverTimeout);
-      hoverTimeout = setTimeout(showPreview, 150);
     });
-
-    cartToggleWrapper.addEventListener("mouseleave", () => {
-      clearTimeout(hoverTimeout);
-      hoverTimeout = setTimeout(hidePreview, 150);
-    });
+  
+    cartPreview.addEventListener("mouseleave", hidePreview);
   }
+
 
   // -----------------------------
   // INITIAL RENDER

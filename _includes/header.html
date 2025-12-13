@@ -77,8 +77,70 @@
       
       <!-- HEADER ACTIONS -->
       <div class="header-actions">
-
-        <div class="bb-header-cart-area">
+      
+        <!-- Primary actions (desktop + mobile bar) -->
+        <div class="header-actions-primary">
+      
+          <!-- Theme toggle -->
+          <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="theme-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle class="theme-core" cx="12" cy="12" r="6"/>
+              <g class="theme-rays">
+                <line x1="12" y1="1"  x2="12" y2="4"/>
+                <line x1="12" y1="20" x2="12" y2="23"/>
+                <line x1="1"  y1="12" x2="4"  y2="12"/>
+                <line x1="20" y1="12" x2="23" y2="12"/>
+                <line x1="4.5" y1="4.5" x2="6.8" y2="6.8"/>
+                <line x1="17.2" y1="17.2" x2="19.5" y2="19.5"/>
+                <line x1="17.2" y1="6.8" x2="19.5" y2="4.5"/>
+                <line x1="4.5" y1="19.5" x2="6.8" y2="17.2"/>
+              </g>
+            </svg>
+          </button>
+      
+          <!-- Language dropdown -->
+          <div class="bb-lang-dropdown">
+            <button class="lang-btn bb-lang-toggle" id="bb-active-lang" aria-haspopup="true" aria-expanded="false">
+              <img src="/static/flags/en.svg" id="bb-active-flag" alt="EN">
+              <span id="bb-active-code" class="orbitron notranslate">EN</span>
+            </button>
+      
+            <div class="bb-lang-menu" id="bb-lang-menu" aria-label="Language selection">
+              <button class="lang-btn bb-lang-option" data-lang="en">
+                <img src="/static/flags/en.svg" alt="EN">
+                <span class="orbitron notranslate">EN</span>
+              </button>
+              <button class="lang-btn bb-lang-option" data-lang="gd">
+                <img src="/static/flags/gd.svg" alt="GD">
+                <span class="orbitron notranslate">GD</span>
+              </button>
+              <button class="lang-btn bb-lang-option" data-lang="fr">
+                <img src="/static/flags/fr.svg" alt="FR">
+                <span class="orbitron notranslate">FR</span>
+              </button>
+              <button class="lang-btn bb-lang-option" data-lang="de">
+                <img src="/static/flags/de.svg" alt="DE">
+                <span class="orbitron notranslate">DE</span>
+              </button>
+              <button class="lang-btn bb-lang-option" data-lang="es">
+                <img src="/static/flags/es.svg" alt="ES">
+                <span class="orbitron notranslate">ES</span>
+              </button>
+            </div>
+          </div>
+      
+          <!-- Desktop account button -->
+          <button class="bb-account-toggle desktop-only" id="bb-account-toggle" aria-label="Account">
+            <svg class="bb-account-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"></circle>
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+            </svg>
+          </button>
+      
+        </div>
+      
+        <!-- Cart (separated group) -->
+        <div class="header-actions-cart">
           <div class="bb-cart-toggle-wrapper">
             <button class="bb-cart-toggle" type="button" aria-label="Open cart" data-cart-toggle>
               <svg class="bb-cart-icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -89,9 +151,7 @@
               </svg>
               <span class="bb-cart-count-badge" data-cart-count>0</span>
             </button>
-
         
-            <!-- Hover preview (desktop only) -->
             <div class="bb-cart-preview" data-cart-preview aria-hidden="true">
               <div class="bb-cart-preview-inner">
                 <div class="bb-cart-preview-items" data-cart-preview-items></div>
@@ -105,76 +165,32 @@
             </div>
           </div>
         </div>
-
-        <!-- Theme toggle (shared desktop + mobile) -->
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
-          <span class="theme-icon">🌙</span>
-        </button>
-
-        <!-- Language dropdown (shared desktop + mobile) -->
-        <div class="bb-lang-dropdown">
-          <!-- Active button -->
-          <button class="lang-btn bb-lang-toggle" id="bb-active-lang" aria-haspopup="true" aria-expanded="false">
-            <img src="/static/flags/en.svg" id="bb-active-flag" alt="EN">
-            <span id="bb-active-code" class="orbitron notranslate">EN</span>
-          </button>
-
-          <!-- Dropdown menu -->
-          <div class="bb-lang-menu" id="bb-lang-menu" aria-label="Language selection">
-            <button class="lang-btn bb-lang-option" data-lang="en">
-              <img src="/static/flags/en.svg" alt="EN">
-              <span class="orbitron notranslate">EN</span>
-            </button>
-            <button class="lang-btn bb-lang-option" data-lang="gd">
-              <img src="/static/flags/gd.svg" alt="GD">
-              <span class="orbitron notranslate">GD</span>
-            </button>
-            <button class="lang-btn bb-lang-option" data-lang="fr">
-              <img src="/static/flags/fr.svg" alt="FR">
-              <span class="orbitron notranslate">FR</span>
-            </button>
-            <button class="lang-btn bb-lang-option" data-lang="de">
-              <img src="/static/flags/de.svg" alt="DE">
-              <span class="orbitron notranslate">DE</span>
-            </button>
-            <button class="lang-btn bb-lang-option" data-lang="es">
-              <img src="/static/flags/es.svg" alt="ES">
-              <span class="orbitron notranslate">ES</span>
-            </button>
-          </div>
-        </div>
         
         <!-- Mobile menu toggle -->
-        <button class="mobile-menu-toggle" id="mobile-menu-toggle"
-                aria-label="Toggle menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
         </button>
-
-
-        <button class="bb-account-toggle desktop-only" id="bb-account-toggle">
-            <svg class="bb-account-icon" viewBox="0 0 24 24">
-                <circle cx="12" cy="8" r="4"></circle>
-                <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-            </svg>
-        </button>
-
+      
       </div>
+
 
     </div>
   </div>
   
   <!-- MOBILE ACCOUNT BAR -->
   <div class="mobile-account-bar" id="mobile-account-bar">
-      <button class="mobile-account-button" id="mobile-account-open">
-          <svg class="bb-account-icon" viewBox="0 0 24 24">
-              <circle cx="12" cy="8" r="4"></circle>
-              <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
-          </svg>
-          <span>Account</span>
-      </button>
+    <button class="mobile-account-button" id="mobile-account-open">
+      <svg class="bb-account-icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4 20c0-4 4-6 8-6s8 2 8 6"></path>
+      </svg>
+      <span>Account</span>
+    </button>
+  
+    <!-- Mobile-only actions slot (theme/lang will be moved here by JS) -->
+    <div class="mobile-account-actions" id="mobile-account-actions" aria-label="Quick actions"></div>
   </div>
+
 
 
 </header>

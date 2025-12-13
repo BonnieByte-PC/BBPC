@@ -25,10 +25,14 @@ function initializeTheme() {
     }
 
     function applyTheme(theme) {
-        document.documentElement.setAttribute('data-theme', theme);
-        themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-        persistTheme(theme);
+      document.documentElement.setAttribute('data-theme', theme);
+    
+      document.documentElement.classList.toggle('theme-dark', theme === 'dark');
+      document.documentElement.classList.toggle('theme-light', theme === 'light');
+    
+      persistTheme(theme);
     }
+
 
     // 1) Read what the inline <head> script already set (no flash)
     let current = document.documentElement.getAttribute("data-theme");
@@ -65,10 +69,11 @@ function initializeTheme() {
         // Actually apply if it was missing
         applyTheme(current);
     } else {
-        // We already have a theme from <head>: just sync icon + storage
-        themeIcon.textContent = current === 'dark' ? '☀️' : '🌙';
-        persistTheme(current);
+      document.documentElement.classList.toggle('theme-dark', current === 'dark');
+      document.documentElement.classList.toggle('theme-light', current === 'light');
+      persistTheme(current);
     }
+
 
     // 3) Wire up click toggle
     themeToggle.addEventListener('click', () => {
@@ -222,10 +227,12 @@ function initializeSmoothScrolling() {
 document.addEventListener('DOMContentLoaded', function() {
     initializeTheme();
     initializeMobileMenu();
+    initializeMobileHeaderActions();
     initializeScrollProgress();
     initializeHeaderScroll();
     initializeHeaderLogo();
     initializeSmoothScrolling();
+    initializeProductGallery();
 
     console.log('BonnieByte PC - General scripts loaded');
 });
@@ -271,11 +278,14 @@ window.addEventListener("scroll", () => {
     }
 
     // Auto-hide
-    if (current > lastScroll && current > 60) {
-        bbHeader.classList.add("hide");
-    } else {
-        bbHeader.classList.remove("hide");
+    if (!document.documentElement.classList.contains("bb-menu-open")) {
+        if (current > lastScroll && current > 60) {
+            bbHeader.classList.add("hide");
+        } else {
+            bbHeader.classList.remove("hide");
+        }
     }
+
 
     lastScroll = current;
 });
@@ -437,6 +447,123 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// ===============================
+// MOBILE HEADER ACTIONS (MOVE THEME/LANG INTO ACCOUNT BAR)
+// ===============================
+function initializeMobileHeaderActions() {
+    const actionsSlot = document.getElementById("mobile-account-actions");
+    const themeBtn = document.getElementById("theme-toggle");
+    const langDropdown = document.querySelector(".bb-lang-dropdown");
+    const desktopHost = document.querySelector(".header-actions-primary");
+
+    if (!actionsSlot || !themeBtn || !langDropdown || !desktopHost) return;
+
+    // Remember original positions so we can restore on resize
+    const themeHome = { parent: themeBtn.parentNode, next: themeBtn.nextSibling };
+    const langHome  = { parent: langDropdown.parentNode, next: langDropdown.nextSibling };
+
+    function moveIntoMobileBar() {
+        actionsSlot.appendChild(themeBtn);
+        actionsSlot.appendChild(langDropdown);
+    }
+
+    function restoreToDesktop() {
+        if (themeHome.parent) themeHome.parent.insertBefore(themeBtn, themeHome.next);
+        if (langHome.parent)  langHome.parent.insertBefore(langDropdown, langHome.next);
+    }
+
+    const mq = window.matchMedia("(max-width: 1250px)");
+
+    function apply(e) {
+        if (e.matches) moveIntoMobileBar();
+        else restoreToDesktop();
+    }
+
+    // Initial
+    apply(mq);
+
+    // Listen for changes
+    if (typeof mq.addEventListener === "function") mq.addEventListener("change", apply);
+    else mq.addListener(apply);
+}
+
+// ===============================
+// PRODUCT GALLERY
+// ===============================
+function initializeProductGallery() {
+  const mainImage = document.getElementById("product-main-image");
+  const thumbs = document.querySelectorAll(".product-thumb");
+
+  if (!mainImage || thumbs.length === 0) return;
+
+  thumbs.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const src = btn.getAttribute("data-image");
+      if (!src) return;
+
+      mainImage.src = src;
+
+      thumbs.forEach(t => t.classList.remove("active"));
+      btn.classList.add("active");
+    });
+    // Hover zoom follow cursor (desktop only)
+    const galleryMain = document.querySelector(".product-gallery-main");
+    
+    if (galleryMain && mainImage && window.matchMedia("(hover: hover)").matches) {
+      galleryMain.addEventListener("mousemove", (e) => {
+        const rect = galleryMain.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        mainImage.style.transformOrigin = `${x}% ${y}%`;
+      });
+    
+      galleryMain.addEventListener("mouseleave", () => {
+        mainImage.style.transformOrigin = "center center";
+      });
+    }
+
+  });
+  // ===============================
+  // CLICK TO OPEN IMAGE MODAL
+  // ===============================
+  const modal = document.querySelector(".bb-image-modal");
+  const modalImg = document.getElementById("bb-image-modal-img");
+  const modalBackdrop = document.querySelector(".bb-image-modal-backdrop");
+
+  if (mainImage && modal && modalImg) {
+    mainImage.addEventListener("click", () => {
+      modalImg.src = mainImage.src;
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    });
+  }
+
+  function closeModal() {
+      modal.setAttribute("aria-hidden", "true");
+      modalImg.src = "";
+      document.body.style.overflow = "";
+    }
+    
+    modal.addEventListener("click", (e) => {
+      if (e.target.hasAttribute("data-modal-close")) {
+        closeModal();
+      }
+    });
+    
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
+        closeModal();
+      }
+    });
+}
+
+
+
+
+
+
+
 
 
 

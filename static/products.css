@@ -59,3 +59,227 @@
     width: 100%;
   }
 }
+
+/* =========================================
+   PRODUCT GALLERY
+   ========================================= */
+
+.product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-gallery-main {
+  background: var(--bb-surface);
+  border: 1px solid var(--bb-border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-gallery-main img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+/* Thumbnails */
+.product-gallery-thumbs {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.product-thumb {
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: 0.2s ease;
+}
+
+.product-thumb img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.product-thumb:hover {
+  border-color: rgba(102,170,255,0.5);
+}
+
+.product-thumb.active {
+  border-color: var(--bb-blue);
+  box-shadow: 0 0 8px rgba(102,170,255,0.4);
+}
+
+/* Desktop enhancement */
+@media (min-width: 900px) {
+  .product-gallery {
+    gap: 20px;
+  }
+
+  .product-thumb img {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* =========================================
+   PRODUCT IMAGE HOVER ZOOM
+   ========================================= */
+
+.product-gallery-main {
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.product-gallery-main img {
+  transition: transform 0.25s ease;
+  transform-origin: center center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-gallery-main:hover img {
+    transform: scale(1.6);
+  }
+}
+
+/* =========================================
+   PRODUCT IMAGE MODAL
+   ========================================= */
+
+.bb-image-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: none;
+}
+
+.bb-image-modal[aria-hidden="false"] {
+  display: block;
+}
+
+.bb-image-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+}
+
+.bb-image-modal-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bb-image-modal-content img {
+  max-width: 90vw;
+  max-height: 90vh;
+  cursor: grab;
+  transition: transform 0.2s ease;
+}
+
+.bb-image-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--bb-blue);
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.bb-image-modal-close:hover {
+  background: var(--bb-blue);
+  color: #000;
+}
+
+/* =========================================
+   PRODUCT PAGE MOBILE SAFETY
+   ========================================= */
+
+.product-detail {
+  overflow-x: hidden;
+}
+
+.product-gallery-thumbs {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.product-specs {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.product-detail-body {
+  max-width: 100%;
+}
+/* =========================================
+   PRODUCT PAGE — MOBILE OVERFLOW FIX
+   ========================================= */
+
+@media (max-width: 600px) {
+  .product-detail .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .product-detail-grid {
+    gap: 24px;
+  }
+
+  .product-gallery-thumbs {
+    padding-bottom: 10px;
+  }
+
+  .product-gallery-main img {
+    max-width: 100%;
+  }
+}
+
+/* =========================================
+   iOS SAFARI HARD OVERFLOW GUARD
+   ========================================= */
+
+@media (max-width: 600px) {
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .product-detail,
+  .product-detail * {
+    max-width: 100%;
+  }
+
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .product-gallery-main,
+  .product-gallery-main img {
+    max-width: 100%;
+  }
+
+  .product-specs {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
