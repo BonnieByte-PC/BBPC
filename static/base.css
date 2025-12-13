@@ -537,7 +537,7 @@ html[data-theme="light"] .bb-lang-toggle:hover {
   border: 2px solid var(--bb-blue);
   background: var(--bb-panel);
 
-  color: var(--bb-text);
+  color: var(--bb-blue);
   cursor: pointer;
 
   font-size: 0.7rem;
@@ -560,7 +560,7 @@ html[data-theme="light"] .bb-lang-toggle:hover {
 
 /* Hover + active */
 .lang-btn:hover {
-  background: rgba(102,170,255,0.15);
+  background: var(--bb-blue);
 }
 
 .bb-lang-option.active {
@@ -688,6 +688,7 @@ html[data-theme="light"] .bb-lang-extended {
 html[data-theme="light"] .lang-btn {
   background: #fff;
   color: #222;
+  font-weight: 700;
 }
 
 /* =====================================================================
