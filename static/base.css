@@ -737,7 +737,7 @@ html[data-theme="light"] .lang-btn {
    ============================================================ */
 .bb-lang-extended-grid {
   display: grid;
-  grid-template-columns: repeat(4, 52px);
+  grid-template-columns: repeat(5, 52px);
   gap: 12px;
   justify-content: center;
   align-items: center;
@@ -753,7 +753,7 @@ html[data-theme="light"] .lang-btn {
 /* Small phones (iPhone SE, etc.) */
 @media (max-width: 480px) {
   .bb-lang-extended-grid {
-    grid-template-columns: repeat(3, 52px);
+    grid-template-columns: repeat(4, 52px);
   }
 }
 
