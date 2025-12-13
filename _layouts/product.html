@@ -42,9 +42,23 @@ layout: default
             £{{ p.price_gbp }}
             <span class="product-price-note">incl. VAT</span>
           </div>
-          <p class="product-availability">
-            <strong>In stock</strong> — ships from UK
-          </p>
+          {% if p.stock_status %}
+            <p class="product-availability">
+              {% case p.stock_status %}
+                {% when "in_stock" %}
+                  <strong>In stock</strong>
+                {% when "low_stock" %}
+                  <strong>Low stock</strong>
+                {% when "preorder" %}
+                  <strong>Pre-order</strong>
+                {% when "out_of_stock" %}
+                  <strong>Out of stock</strong>
+              {% endcase %}
+              {% if p.ships_from %}
+                — ships from {{ p.ships_from }}
+              {% endif %}
+            </p>
+          {% endif %}
           <p>{{ p.description }}</p>
           {% if p.box_contents %}
             <section class="product-box-contents">
