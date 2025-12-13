@@ -295,138 +295,94 @@ window.addEventListener("scroll", () => {
    LANGUAGE DROPDOWN LOGIC (shared desktop + mobile)
    ============================================================ */
 
-document.addEventListener("DOMContentLoaded", function () {
-    const dropdown   = document.querySelector(".bb-lang-dropdown");
-    const activeBtn  = document.getElementById("bb-active-lang");
-    const activeFlag = document.getElementById("bb-active-flag");
-    const activeCode = document.getElementById("bb-active-code");
-    const menu       = document.getElementById("bb-lang-menu");
-    const headerEl   = document.getElementById("bb-header");
-    const moreBtn  = document.querySelector(".bb-lang-more");
-    const backBtn  = document.querySelector(".bb-lang-back");
-    const extended = document.querySelector(".bb-lang-extended");
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdown   = document.querySelector(".bb-lang-dropdown");
+  const activeBtn  = document.getElementById("bb-active-lang");
+  const activeFlag = document.getElementById("bb-active-flag");
+  const activeCode = document.getElementById("bb-active-code");
+  const menu       = document.getElementById("bb-lang-menu");
+  const extended   = document.querySelector(".bb-lang-extended");
+  const moreBtn    = document.querySelector(".bb-lang-more");
+  const backBtn    = document.querySelector(".bb-lang-back");
+  const headerEl   = document.getElementById("bb-header");
 
-    if (moreBtn && extended) {
-      moreBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-    
-        dropdown.classList.remove("open");
-        activeBtn.setAttribute("aria-expanded", "false");
-    
-        extended.classList.add("open");
-        extended.setAttribute("aria-hidden", "false");
-        positionExtendedMenu();
-      });
-    }
-    
-    if (backBtn && extended) {
-      backBtn.addEventListener("click", () => {
-        extended.classList.remove("open");
-        extended.setAttribute("aria-hidden", "true");
-      });
-    }
+  if (!dropdown || !activeBtn || !menu) return;
 
+  function normaliseLang(code) {
+    return String(code || "en").toLowerCase().split("-")[0];
+  }
 
+  function positionBelowHeader(el) {
+    if (!el || !headerEl) return;
+    el.style.top = `${headerEl.getBoundingClientRect().bottom}px`;
+  }
 
-    if (!dropdown || !activeBtn || !activeFlag || !activeCode || !menu) return;
+  function setActiveLangUI(lang) {
+    const code = normaliseLang(lang);
+    const btn =
+      menu.querySelector(`[data-lang="${code}"]`) ||
+      extended?.querySelector(`[data-lang="${code}"]`);
 
-    function normaliseLang(code) {
-        if (!code) return "en";
-        return String(code).toLowerCase().split("-")[0]; // "en-GB" -> "en"
+    if (!btn) return;
+
+    const img = btn.querySelector("img");
+    if (img) {
+      activeFlag.src = img.src;
+      activeFlag.alt = img.alt || code.toUpperCase();
     }
 
-    function setActiveLangUI(lang) {
-        const code = normaliseLang(lang);
-        const btn = menu.querySelector(`.bb-lang-option[data-lang="${code}"]`);
-        if (!btn) return;
+    activeCode.textContent = code.toUpperCase();
+  }
 
-        menu.querySelectorAll(".bb-lang-option").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
+  // Toggle primary menu
+  activeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle("open");
+    positionBelowHeader(menu);
+  });
 
-        const img = btn.querySelector("img");
-        if (img) {
-            activeFlag.src = img.src;
-            activeFlag.alt = img.alt || code.toUpperCase();
-        }
-        activeCode.textContent = code.toUpperCase();
-    }
+  // More → Extended
+  moreBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropdown.classList.remove("open");
+    extended.classList.add("open");
+    extended.setAttribute("aria-hidden", "false");
+    positionBelowHeader(extended);
+  });
 
-    function positionLangMenu() {
-        if (!menu) return;
+  // Back
+  backBtn?.addEventListener("click", () => {
+    extended.classList.remove("open");
+    extended.setAttribute("aria-hidden", "true");
+  });
 
-        let topPx = 72; // fallback
-        if (headerEl) {
-            const rect = headerEl.getBoundingClientRect();
-            topPx = rect.bottom;
-        }
+  // Language selection (both menus)
+  document.querySelectorAll("[data-lang]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const lang = btn.dataset.lang;
 
-        menu.style.top = `${topPx}px`;
-    }
+      setActiveLangUI(lang);
+      dropdown.classList.remove("open");
+      extended?.classList.remove("open");
 
-    // Toggle dropdown
-    activeBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const isOpen = !dropdown.classList.contains("open");
-        dropdown.classList.toggle("open", isOpen);
-        activeBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      try {
+        BBCookies?.set("bb_lang", lang, 365);
+      } catch {}
 
-        if (isOpen) {
-            positionLangMenu();
-        }
+      if (typeof doGTranslate === "function") {
+        doGTranslate(lang);
+      }
     });
+  });
 
-    // Re-position on resize while open
-    window.addEventListener("resize", () => {
-        if (dropdown.classList.contains("open")) {
-            positionLangMenu();
-        }
-    });
+  // Close on outside click
+  document.addEventListener("click", () => {
+    dropdown.classList.remove("open");
+    extended?.classList.remove("open");
+  });
+});
 
-    const extended = document.querySelector(".bb-lang-extended");
-
-    function positionExtendedMenu() {
-      if (!extended || !headerEl) return;
-      const rect = headerEl.getBoundingClientRect();
-      extended.style.top = `${rect.bottom}px`;
-    }
-
-    // Option click
-    menu.querySelectorAll(".bb-lang-option").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const lang = btn.dataset.lang;
-
-            setActiveLangUI(lang);
-            dropdown.classList.remove("open");
-            activeBtn.setAttribute("aria-expanded", "false");
-
-            // Persist preference as an essential functional cookie
-            try {
-                if (typeof BBCookies !== "undefined") {
-                    BBCookies.set("bb_lang", lang, 365);
-                }
-            } catch (err) {
-                console.warn("BB lang cookie error:", err);
-            }
-
-            // Trigger translation
-            if (typeof doGTranslate === "function") {
-                doGTranslate(lang);
-            } else if (window.gtranslateSettings &&
-                       typeof window.gtranslateSettings.switchLanguage === "function") {
-                window.gtranslateSettings.switchLanguage(lang);
-            }
-        });
-    });
-
-    // Close dropdown on outside click
-    document.addEventListener("click", (e) => {
-        if (!e.target.closest(".bb-lang-dropdown")) {
-            dropdown.classList.remove("open");
-            activeBtn.setAttribute("aria-expanded", "false");
-        }
-    });
 
     // --- Initialise from cookies / settings ---
 
@@ -597,56 +553,7 @@ function initializeProductGallery() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const moreBtn  = document.querySelector(".bb-lang-more");
-    const backBtn  = document.querySelector(".bb-lang-back");
-    const extended = document.querySelector(".bb-lang-extended");
-    
-    function openExtendedMenu() {
-      dropdown.classList.remove("open");
-      activeBtn.setAttribute("aria-expanded", "false");
-    
-      extended.classList.add("open");
-      extended.setAttribute("aria-hidden", "false");
-      positionExtendedMenu();
-    }
-    
-    function closeExtendedMenu() {
-      extended.classList.remove("open");
-      extended.setAttribute("aria-hidden", "true");
-    }
-    
-    moreBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      openExtendedMenu();
-    });
-    
-    backBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeExtendedMenu();
-        
-    });
-    extended?.querySelectorAll("[data-lang]").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        const lang = btn.dataset.lang;
-    
-        setActiveLangUI(lang);
-        closeExtendedMenu();
-    
-        try {
-          if (typeof BBCookies !== "undefined") {
-            BBCookies.set("bb_lang", lang, 365);
-          }
-        } catch {}
-    
-        if (typeof doGTranslate === "function") {
-          doGTranslate(lang);
-        }
-      });
-    });
-});
+
 
 
 
