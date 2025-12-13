@@ -1,16 +1,16 @@
 northern_wind_120:
   sku: "BB-NW120-ARGB-001"
-  full_name: "Northern Wind 120mm ARGB Fan Bundle"
+  full_name: "Northern Wind 120mm ARGB 5 Fan Bundle"
   short_name: "Northern Wind 120"
   html_name: "<span class='orbitron notranslate'>NORTHERN WIND 120</span>"
   price_gbp: 39.99
   warranty_enabled: true
   manual_enabled: true
   product_type: "fan_kit"
-  release_date: "2025-11-01"
+  release_date: "TBA"
   variants:
-    - black
-    - white
+    - Black
+    - White
   specs:
     airflow: "58 CFM"
     static_pressure: "1.3 mmH2O"
@@ -18,16 +18,16 @@ northern_wind_120:
     bearing: "Hydraulic"
     leds: "24"
     rpm: "800-1600 RPM"
-  thumbnail: "/images/products/northern_wind_120.png"
+  thumbnail: "/images/products/northern_wind_120/thumb.webp"
   warranty_length: "2 years"
   ukca: true
-  status: "Launch Pricing Soon"
+  status: "Prototype Phase"
   product_visible: true
-  description: "A complete cooling and lighting upgrade in one kit. Quiet 120mm PWM ARGB fans, an included hub, and honest performance."
+  description: "A complete cooling and lighting upgrade in one kit. Quiet 120mm PWM ARGB fans, an included hub, and honest performance that will keep your system cooled and running at peak efficiency."
   features:
-    - "5x 120mm NORTHERN WIND PWM ARGB fans"
-    - "Included ARGB hub"
-    - "Static-pressure airflow design"
+    - "Daisy Chain Cables"
+    - "Included Magnetic ARGB hub"
+    - "Silent Operation"
   amazon_url: "https://amazon.co.uk"
   warranty_length: "2-Year Warranty"
   featured: true
@@ -35,24 +35,182 @@ northern_wind_120:
   shopify_product_id: 
   shopify_default_variant_id: 
   images:
-    - /images/products/nw120/main.webp
-    - /images/products/nw120/angle.webp
-    - /images/products/nw120/rear.webp
-    - /images/products/nw120/lighting.webp
-  
+    - /images/products/northern_wind_120/main.webp
+    - /images/products/northern_wind_120/angle.webp
+    - /images/products/northern_wind_120/rear.webp
+    - /images/products/northern_wind_120/action.webp
+  box_contents:
+    - 5x <span class='orbitron notranslate'>NORTHERN WIND 120</span>mm ARGB Fans
+    - Mounting Screw Set
+    - Magnetic Backed Fan Hub
+    - Accessories Bundle
+    - Product Manual
+    - 3x Decal Stickers
+    - Thank You Card
+  stock_status: out_of_stock
+  ships_from: UK
+  compatibility:
+    - PWM 4-pin headers
+    - 5V 3-pin ARGB (ASUS / MSI / Gigabyte)
+    - Windows & Linux compatible
+  faq:
+    - question: Do these fans support PWM?
+      answer: Yes. All Northern Wind 120 fans use standard 4-pin PWM control.
+    - question: Is an ARGB hub included?
+      answer: Yes. The kit includes a magnetic ARGB hub for easy cable management.
+  related:
+    - pwm_splitter
+    - argb_hub
+  badges:
+    - PWM
+    - ARGB
+    - Silent
+  use_case: >
+    Ideal for airflow-focused builds, compact mid-towers,
+    and quiet performance systems where cooling efficiency matters.
+    
+argb_hub:
+  sku: "BB-ARGB-HUB-001"
+  full_name: "10-Port ARGB Magnetic Fan Hub"
+  short_name: "10-Port ARGB"
+  html_name: "<span class='orbitron notranslate'>10-PORT ARGB MAGNETIC FAN HUB</span>"
+  price_gbp: 9.99
+  warranty_enabled: true
+  manual_enabled: true
+  product_type: "Hub"
+  release_date: "TBA"
+  variants:
+    - Black
+    - White
+  specs:
+    PWM: "12V 4-Pin PWM"
+    ARGB: "5V 3-Pin ARGB"
+    Dimensions: "95cm x 45cm x 15cm"
+    Power: "SATA Power"
+  thumbnail: "/images/products/argb_hub/thumb.webp"
+  warranty_length: "2 years"
+  ukca: true
+  status: "Prototype Phase"
+  product_visible: true
+  description: "This hub allows you to connect up to 5 fans via the 5 ARGB Headers and 5 PWM Headers to control your fan speed and lighting display. Bring your system to the next level."
+  features:
+    - "10-Ports"
+    - "5 PWM Headers"
+    - "5 ARGB Headers"
+    - "SATA Powered"
+    - "Magnetic Base"
+    - "Compact Size"
+  amazon_url: "https://amazon.co.uk"
+  warranty_length: "2-Year Warranty"
+  featured: false
+  # Future Shopify wiring (leave blank for now)
+  shopify_product_id: 
+  shopify_default_variant_id: 
+  images:
+    - /images/products/argb_hub/main.webp
+    - /images/products/argb_hub/angle.webp
+    - /images/products/argb_hub/rear.webp
+    - /images/products/argb_hub/action.webp
+  box_contents:
+    - 1x 10-Pin ARGB Magnetic Fan Hub
+    - Product Manual
+    - Thank You Card
+    - Accessories Pack
+  stock_status: out_of_stock
+  ships_from: UK
+  compatibility:
+    - 12V 4-Pin PWM Connector
+    - 5V 3-Pin ARGB Connector
+    - SATA Power Delivery
+    - Motherboard Fan Speed Tuning Software (ASUS / MSI / Gigabyte)
+  faq:
+    - question: How many fans can I connect to this hub?
+      answer: You can connect a total of 5 fans via the 10 ports on the hub, 5 for PWM Connection and 5 for ARGB Connection.
+    - question: 
+      answer: 
+  related:
+    - northern_wind_120
+    - pwm_splitter
+  badges:
+    - ARGB
+    - PWM
+    - Accessory
+  use_case: >
+    Ideal for connecting additional fans to your system without using all your motherboards available headers. Sync your fan speed and lighting display.
+    
+pwm_splitter:
+  sku: "BON-PWM-SPLIT-001"
+  full_name: "4-Way PWM Fan Splitter"
+  short_name: "PWM Fan Splitter"
+  html_name: "<span class='orbitron notranslate'>4-WAY PWM FAN SPLITTER</span>"
+  price_gbp: 4.99
+  warranty_enabled: true
+  manual_enabled: true
+  product_type: "Cable"
+  release_date: "TBA"
+  variants:
+    - 1 Female to 2 Male
+    - 1 Female to 3 Male
+  specs:
+    Voltage: "12V 4 Pin PWM"
+    Length: "10cm"
+  thumbnail: "/images/products/pwm_splitter/thumb.webp"
+  warranty_length: "2 years"
+  ukca: true
+  status: "Prototype Phase"
+  product_visible: true
+  description: "This cable allows you to connect 2 PWM Fans to 1 PWM header on either your motherboard or Fan Hub. Keep your system running smooth and cool with this simple to use extension cable."
+  features:
+    - "1 Female to 2 Male Connectors"
+    - "Compact Size"
+  amazon_url: "https://amazon.co.uk"
+  warranty_length: "2-Year Warranty"
+  featured: false
+  # Future Shopify wiring (leave blank for now)
+  shopify_product_id: 
+  shopify_default_variant_id: 
+  images:
+    - /images/products/pwm_splitter/main.webp
+    - /images/products/pwm_splitter/angle.webp
+    - /images/products/pwm_splitter/rear.webp
+    - /images/products/pwm_splitter/action.webp
+  box_contents:
+    - 1x 4-Way PWM Fan Splitter Cable
+    - Product Manual
+    - Thank You Card
+    - Accessories Pack
+  stock_status: out_of_stock
+  ships_from: UK
+  compatibility:
+    - 12V 4-Pin PWM Connector
+    - Motherboard Fan Speed Tuning Software (ASUS / MSI / Gigabyte)
+  faq:
+    - question: How many fans can I connect to this spliiter?
+      answer: This will depend on how many Male headers your splitter has, for every Male header you can connect 1 additional fan.
+    - question: 
+      answer: 
+  related:
+    - northern_wind_120
+    - argb_hub
+  badges:
+    - PWM
+    - Accessory
+  use_case: >
+    Ideal for connecting additional fans to your system when your motherboard or fan hub headers are all currrently occupied.
+
 template_product:
   sku: ""
   full_name: ""
   short_name: ""
   html_name: "<span class='orbitron notranslate'></span>"
-  price_gbp: 39.99
+  price_gbp: 
   warranty_enabled: false
   manual_enabled: false
   product_type: ""
   release_date: "YYYY-MM-DD"
   variants:
-    - variant1
-    - variant2
+    - var1
+    - var2
   specs:
     airflow: " CFM"
     static_pressure: " mmH2O"
@@ -60,14 +218,13 @@ template_product:
     bearing: ""
     leds: ""
     rpm: " RPM"
-  thumbnail: "/images/products/template_product.png"
+  thumbnail: "/images/products/template_product/thumb.webp"
   warranty_length: "2 years"
-  ukca: true
-  status: "Launch Pricing Soon"
+  ukca: false
+  status: ""
   product_visible: false
   description: ""
   features:
-    - ""
     - ""
     - ""
   amazon_url: "https://amazon.co.uk"
@@ -76,3 +233,29 @@ template_product:
   # Future Shopify wiring (leave blank for now)
   shopify_product_id: 
   shopify_default_variant_id: 
+  images:
+    - /images/products/template_product/main.webp
+    - /images/products/template_product/angle.webp
+    - /images/products/template_product/rear.webp
+    - /images/products/template_product/action.webp
+  box_contents:
+    - cont1
+    - cont2
+  stock_status: out_of_stock
+  ships_from: UK
+  compatibility:
+    - comp1
+    - comp2
+  faq:
+    - question: 
+      answer: 
+    - question: 
+      answer: 
+  related:
+    - rel1
+    - rel2
+  badges:
+    - bad1
+    - bad2
+  use_case: >
+    text

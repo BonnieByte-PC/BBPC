@@ -796,6 +796,23 @@ html[data-theme="light"] .lang-btn {
   }
 }
 
+/* ===============================
+   DESKTOP NAV TRUE CENTERING
+   =============================== */
+@media (min-width: 1251px) {
+  .header-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  .header-nav {
+    justify-self: center;
+  }
+}
+
+
+
 /* ========================================================================
    13. MOBILE ACCOUNT BAR (TABLET + MOBILE)
    ======================================================================== */
@@ -1614,4 +1631,3 @@ html[data-theme="light"] .bb-cart-toggle:hover svg {
   stroke: currentColor;
   fill: currentColor;
 }
-

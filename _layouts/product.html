@@ -37,48 +37,138 @@ layout: default
       </div>
       <div class="product-detail-body">
         <h1><span class="orbitron notranslate">{{ p.short_name | upcase }}</span> {{ p.full_name | replace: p.short_name,'' }}</h1>
-        <p class="product-price-large">£{{ p.price_gbp }}</p>
-        <p>{{ p.description }}</p>
-        <h3>Key Features</h3>
-        <ul class="product-features">
-          {% for f in p.features %}
-            <li>{{ f }}</li>
+        {% if p.badges %}
+        <div class="product-badges">
+          {% for b in p.badges %}
+            <span>{{ b }}</span>
           {% endfor %}
-        </ul>
-        <h3>Specifications</h3>
-        <table class="product-specs">
-          {% for spec in p.specs %}
-            <tr>
-              <td>{{ spec[0] | replace: "_"," " | capitalize }}</td>
-              <td>{{ spec[1] }}</td>
-            </tr>
-          {% endfor %}
-        </table>
-        <div class="product-buttons">
-          {% assign p = site.data.products[page.product_id] %}
-             <a class="button"
-                 data-add-to-cart
-                 data-product-id="{{ page.product_id }}"
-                 data-product-sku="{{ p.sku }}"
-                 data-product-name="{{ p.full_name }}"
-                 data-product-price="{{ p.price_gbp }}"
-                 data-product-image="{{ p.thumbnail }}"
-                 data-product-variant="default">
-                 Add to Cart
-              </a>
-          {% if p.amazon_url %}
-            <a href="{{ p.amazon_url }}" class="button button-primary" target="_blank" rel="noopener noreferrer">Buy on Amazon UK</a>
+        </div>
+        {% endif %}
+        <div class="product-buy-box">
+          <div class="product-price-large">
+            £{{ p.price_gbp }}
+            <span class="product-price-note">incl. VAT</span>
+          </div>
+          {% if p.stock_status %}
+            <p class="product-availability">
+              {% case p.stock_status %}
+                {% when "in_stock" %}
+                  <strong>In stock</strong>
+                {% when "low_stock" %}
+                  <strong>Low stock</strong>
+                {% when "preorder" %}
+                  <strong>Pre-order</strong>
+                {% when "out_of_stock" %}
+                  <strong>Out of stock</strong>
+              {% endcase %}
+              {% if p.ships_from %}
+                — ships from {{ p.ships_from }}
+              {% endif %}
+            </p>
           {% endif %}
-          <a href="/warranty/{{ page.product_id }}" class="button button-secondary">Warranty Info</a>
-          <a href="/docs/{{ page.product_id }}" class="button button-secondary">Manual</a>
+          <p>{{ p.description }}</p>
+          {% if p.box_contents %}
+            <section class="product-box-contents">
+              <h3>What’s in the box</h3>
+              <ul>
+                {% for item in p.box_contents %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </section>
+          {% endif %}
+          <h3>Key Features</h3>
+          <ul class="product-features">
+            {% for f in p.features %}
+              <li>{{ f }}</li>
+            {% endfor %}
+          </ul>
+          <h3>Specifications</h3>
+          <table class="product-specs">
+            {% for spec in p.specs %}
+              <tr>
+                <td>{{ spec[0] | replace: "_"," " | capitalize }}</td>
+                <td>{{ spec[1] }}</td>
+              </tr>
+            {% endfor %}
+          </table>
+          <div class="product-buttons">
+            {% assign p = site.data.products[page.product_id] %}
+               <a class="button"
+                   data-add-to-cart
+                   data-product-id="{{ page.product_id }}"
+                   data-product-sku="{{ p.sku }}"
+                   data-product-name="{{ p.full_name }}"
+                   data-product-price="{{ p.price_gbp }}"
+                   data-product-image="{{ p.thumbnail }}"
+                   data-product-variant="default">
+                   Add to Cart
+                </a>
+            {% if p.amazon_url %}
+              <a href="{{ p.amazon_url }}" class="button button-primary" target="_blank" rel="noopener noreferrer">Buy on Amazon UK</a>
+            {% endif %}
+            <a href="/warranty/{{ page.product_id }}" class="button button-secondary">Warranty Info</a>
+            <a href="/docs/{{ page.product_id }}" class="button button-secondary">Manual</a>
+          </div>
+          <div class="product-trust-strip">
+            <span>2-year warranty</span>
+            <span>•</span>
+            <span>30-day returns</span>
+            <span>•</span>
+            <span>UK-based support</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+<section class="product-secondary">
+  <div class="container">
+      {% if p.compatibility or p.faq %}
+      <section class="product-support">
+        {% if p.compatibility %}
+          <h3>Compatibility</h3>
+          <div class="product-compatibility">
+            {% for c in p.compatibility %}
+              <span class="compat-badge">{{ c }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        {% if p.faq %}
+          <h3>FAQs</h3>
+          <dl class="product-faq">
+            {% for q in p.faq %}
+              {% if q.question and q.answer %}
+                <div class="faq-item">
+                  <dt tabindex="0">{{ q.question }}</dt>
+                  <dd>{{ q.answer }}</dd>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </dl>
+        {% endif %}
+        {% if p.use_case %}
+        <p class="product-use-case">
+          {{ p.use_case }}
+        </p>
+        {% endif %}
+      </section>
+      {% endif %}
+      {% if p.related %}
+      <section class="product-related">
+        <h3>Recommended Products</h3>
+        <div class="product-grid">
+          {% for id in p.related %}
+            {% assign r = site.data.products[id] %}
+            {% include product-card.html product=r id=id %}
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+    </div>
+</section>
 <div class="bb-image-modal" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="bb-image-modal-backdrop" data-modal-close></div>
-
   <div class="bb-image-modal-content">
     <button class="bb-image-modal-close" type="button" aria-label="Close image" data-modal-close>
       ✕
