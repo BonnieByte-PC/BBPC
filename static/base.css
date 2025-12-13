@@ -378,11 +378,11 @@ section {
     100% { transform: scale(1); }
 }
 
-/* Ensure account icon SVG is blue on desktop */
 .bb-account-toggle svg {
-    stroke: var(--bb-blue);
+    stroke: currentColor;
     fill: none;
 }
+
 
 
 
@@ -1426,6 +1426,7 @@ html[data-theme="light"] .mobile-account-button svg {
         border-bottom: 1px solid rgba(102,170,255,0.35);
     }
 }
+
 
 
 
