@@ -351,12 +351,13 @@ function initializeLanguageSelector() {
     if (activeCode) activeCode.textContent = code.toUpperCase();
   }
 
-  function applyLanguage(lang) {
+  function applyLanguage(btn.dataset.lang) {
     const target = normaliseLang(lang);
-    const gCode = `${SOURCE_LANG}|${target}`;
   
+    // Update UI
     setActiveLangUI(target);
   
+    // Persist choice
     try {
       if (typeof BBCookies !== "undefined") {
         BBCookies.set("bb_lang", target, 365);
@@ -365,9 +366,9 @@ function initializeLanguageSelector() {
       console.warn("BB lang cookie error:", err);
     }
   
-    // Google Translate trigger
+    // Trigger Google Translate (CORRECT)
     if (typeof doGTranslate === "function") {
-      doGTranslate(gCode);
+      doGTranslate(target);
     } else if (
       window.gtranslateSettings &&
       typeof window.gtranslateSettings.switchLanguage === "function"
@@ -377,6 +378,7 @@ function initializeLanguageSelector() {
       console.warn("GTranslate not ready");
     }
   }
+
 
 
   // Toggle dropdown
@@ -656,4 +658,5 @@ if (typeof module !== "undefined" && module.exports) {
     initializeProductGallery
   };
 }
+
 
