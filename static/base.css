@@ -319,8 +319,8 @@ section {
 .bb-account-toggle,
 .bb-cart-toggle,
 .bb-lang-toggle {
-    background: rgba(102,170,255,0.06);
-    border: 1.5px solid rgba(102,170,255,0.55);
+    background: transparent;
+    border: 2px solid var(--bb-blue);
     width: 42px;
     height: 42px;
     border-radius: 999px;
@@ -329,21 +329,21 @@ section {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: 
-        background 0.2s ease,
-        border-color 0.2s ease,
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
         transform 0.2s ease;
 }
-
 
 .theme-toggle:hover,
 .bb-account-toggle:hover,
 .bb-cart-toggle:hover,
 .bb-lang-toggle:hover {
-    background: rgba(102,170,255,0.18);
-    border-color: var(--bb-blue);
+    background-color: var(--bb-blue);
+    color: #000;
     transform: translateY(-1px);
 }
+
 
 
 /* Cart toggle + badge */
@@ -441,6 +441,8 @@ section {
     cursor: pointer;
     transition: 0.25s ease;
     overflow: hidden;
+    transform: translateY(-1px);
+    box-shadow: none;
 }
 
 .lang-btn img {
@@ -458,8 +460,6 @@ section {
 
 .lang-btn:hover {
     background: rgba(102, 170, 255, 0.15);
-    box-shadow: 0 0 12px rgba(102, 170, 255, 0.65);
-    transform: scale(1.08);
 }
 
 .bb-lang-option.active {
@@ -1328,6 +1328,14 @@ html[data-theme="light"] .mobile-account-bar {
     border-bottom: 1px solid rgba(102,170,255,0.4);
 }
 
+html[data-theme="light"] .mobile-account-bar .theme-toggle,
+html[data-theme="light"] .mobile-account-bar .bb-lang-toggle,
+html[data-theme="light"] .mobile-account-bar .bb-cart-toggle {
+    border-color: var(--bb-blue);
+    color: var(--bb-blue);
+}
+
+
 html[data-theme="light"] .mobile-account-button {
     color: #222;
 }
@@ -1362,4 +1370,5 @@ html[data-theme="light"] .mobile-account-button svg {
         border-bottom: 1px solid rgba(102,170,255,0.35);
     }
 }
+
 
