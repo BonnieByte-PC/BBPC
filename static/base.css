@@ -287,13 +287,13 @@ section {
 }
 
 .header-logo-img {
-    height: 75px;
+    height: 100px;
     transition: 0.3s ease;
     filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.3));
 }
 
 .enhanced-header.shrink .header-logo-img {
-    height: 70px;
+    height: 85px;
     filter: drop-shadow(0 0 4px rgba(102, 170, 255, 0.2));
 }
 
