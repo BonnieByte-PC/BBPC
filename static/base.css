@@ -744,14 +744,14 @@ html[data-theme="light"] .lang-btn {
 /* Tablets */
 @media (max-width: 768px) {
   .bb-lang-extended-grid {
-    grid-template-columns: repeat(3, 52px);
+    grid-template-columns: repeat(4, 52px);
   }
 }
 
 /* Small phones (iPhone SE, etc.) */
 @media (max-width: 480px) {
   .bb-lang-extended-grid {
-    grid-template-columns: repeat(2, 52px);
+    grid-template-columns: repeat(3, 52px);
   }
 }
 
