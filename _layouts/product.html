@@ -66,16 +66,7 @@ layout: default
               {% endif %}
             </p>
           {% endif %}
-          <p>
-            {{ p.description }}
-            {% if p.stats %}
-            <ul class="product-stats">
-              {% for s in p.stats %}
-                <li><strong>{{ s[0] }}:</strong> {{ s[1] }}</li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-          </p>
+          <p>{{ p.description }}</p>
           {% if p.box_contents %}
             <section class="product-box-contents">
               <h3>What’s in the box</h3>
