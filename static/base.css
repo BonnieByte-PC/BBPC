@@ -568,6 +568,9 @@ html[data-theme="light"] .bb-lang-toggle:hover {
     background-color 0.2s ease,
     box-shadow 0.2s ease,
     transform 0.2s ease;
+
+   font-family: Orbitron;
+   font-weight: 700;
 }
 
 .lang-btn img {
@@ -585,7 +588,7 @@ html[data-theme="light"] .bb-lang-toggle:hover {
 
 /* Hover */
 .lang-btn:hover {
-  background: rgba(102,170,255,0.15);
+  background: var(--bb-blue);
 }
 
 /* Active */
