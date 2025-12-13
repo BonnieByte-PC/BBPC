@@ -659,15 +659,7 @@ html[data-theme="light"] .lang-btn {
   flex-direction: column;
 }
 
-.bb-lang-extended-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 52px);
-  gap: 12px;
-  overflow-y: auto;
-  max-width: 320px;
-  margin: 0 auto;
-  justify-content: center;
-}
+
 
 .bb-lang-extended-grid button {
   background: transparent;
@@ -718,12 +710,7 @@ html[data-theme="light"] .lang-btn {
   gap: 12px;
 }
 
-.bb-lang-extended-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
+
 
 @media (max-width: 1250px) {
   .bb-lang-extended {
@@ -743,17 +730,36 @@ html[data-theme="light"] .lang-btn {
   font-family: system-ui, sans-serif;
 }
 
-@media (max-width: 768px) {
-  .bb-lang-extended-grid {
-    grid-template-columns: repeat(4, 52px);
-  }
+/* ============================================================
+   EXTENDED LANGUAGE GRID — SINGLE SOURCE OF TRUTH
+   ============================================================ */
+.bb-lang-extended-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 52px);
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (max-width: 480px) {
+/* Tablets */
+@media (max-width: 768px) {
   .bb-lang-extended-grid {
     grid-template-columns: repeat(3, 52px);
   }
 }
+
+/* Small phones (iPhone SE, etc.) */
+@media (max-width: 480px) {
+  .bb-lang-extended-grid {
+    grid-template-columns: repeat(2, 52px);
+  }
+}
+
+.bb-lang-extended-inner {
+  width: 100%;
+  max-width: 360px;
+}
+
 /* ========================================================================
    11. MOBILE MENU TOGGLE
    ======================================================================== */
