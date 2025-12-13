@@ -319,26 +319,32 @@ section {
 .bb-account-toggle,
 .bb-cart-toggle,
 .bb-lang-toggle {
-    background: transparent;
-    border: 2px solid var(--bb-blue);
+    background: rgba(102,170,255,0.06);
+    border: 1.5px solid rgba(102,170,255,0.55);
     width: 42px;
     height: 42px;
-    border-radius: 50%;
+    border-radius: 999px;
     color: var(--bb-blue);
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: 0.25s ease;
+    transition: 
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
 }
+
 
 .theme-toggle:hover,
 .bb-account-toggle:hover,
 .bb-cart-toggle:hover,
 .bb-lang-toggle:hover {
-    background: var(--bb-blue);
-    color: #000;
+    background: rgba(102,170,255,0.18);
+    border-color: var(--bb-blue);
+    transform: translateY(-1px);
 }
+
 
 /* Cart toggle + badge */
 .bb-cart-toggle {
@@ -1301,34 +1307,6 @@ body .goog-te-gadget {
         gap: 10px;
     }
 
-    .theme-toggle,
-    .bb-lang-toggle,
-    .bb-cart-toggle {
-        opacity: 1;
-        transform: none;
-        border-color: rgba(102,170,255,0.8);
-        background: transparent;
-    }
-
-    .theme-toggle:hover,
-    .bb-lang-toggle:hover,
-    .bb-cart-toggle:hover {
-        background: rgba(102,170,255,0.15);
-    }
-
-    /* Cart remains fully visible (important action) */
-    .bb-cart-toggle {
-        opacity: 1;
-        transform: none;
-    }
-
-    /* Slightly soften borders on small screens */
-    .theme-toggle,
-    .bb-lang-toggle,
-    .bb-cart-toggle {
-        border-width: 1.5px;
-    }
-
    .enhanced-header {
         padding: 16px 0;
     }
@@ -1384,3 +1362,4 @@ html[data-theme="light"] .mobile-account-button svg {
         border-bottom: 1px solid rgba(102,170,255,0.35);
     }
 }
+
