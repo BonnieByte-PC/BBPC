@@ -139,8 +139,10 @@ layout: default
           <dl class="product-faq">
             {% for q in p.faq %}
               {% if q.question and q.answer %}
-                <dt>{{ q.question }}</dt>
-                <dd>{{ q.answer }}</dd>
+                <div class="faq-item">
+                  <dt tabindex="0">{{ q.question }}</dt>
+                  <dd>{{ q.answer }}</dd>
+                </div>
               {% endif %}
             {% endfor %}
           </dl>
