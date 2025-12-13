@@ -280,7 +280,7 @@ section {
 }
 
 .header-logo-img {
-    height: 88px;
+    height: 70px;
     transition: 0.3s ease;
     filter: drop-shadow(0 0 6px rgba(102, 170, 255, 0.3));
 }
