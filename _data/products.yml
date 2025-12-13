@@ -66,11 +66,6 @@ northern_wind_120:
   use_case: >
     Ideal for airflow-focused builds, compact mid-towers,
     and quiet performance systems where cooling efficiency matters.
-  stats:
-    Airflow: "58 CFM"
-    Noise: "≤ 29 dBA"
-    Speed: "800–1600 RPM"
-  
 
 
 
