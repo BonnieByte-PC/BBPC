@@ -590,6 +590,7 @@ html[data-theme="light"] .bb-lang-toggle:hover {
 /* Hover */
 .lang-btn:hover {
   background: var(--bb-blue);
+  color: #000;
 }
 
 /* Active */
