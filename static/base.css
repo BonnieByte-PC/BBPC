@@ -1191,6 +1191,10 @@ svg {
     object-fit: contain;
 }
 
+.footer-header-icon.is-social { 
+   transform: scale(1.5); 
+}
+
 .footer-icon, {
     width: 26px;
     height: 26px;
