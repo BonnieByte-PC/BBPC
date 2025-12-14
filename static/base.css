@@ -1666,7 +1666,10 @@ body .goog-te-gadget {
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.social-links a:hover .social-icon {
+.social-links a:hover .social-icon1,
+.social-links a:hover .social-icon2,
+.social-links a:hover .social-icon3,
+.social-links a:hover .social-icon4 {
     opacity: 0.7;
     transform: translateY(-2px);
 }
