@@ -1626,8 +1626,8 @@ body .goog-te-gadget {
 }
 
 .social-icon {
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     stroke: currentColor;
     fill: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
