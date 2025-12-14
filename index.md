@@ -259,16 +259,16 @@ title: Home | BonnieByte PC
         <p>Follow along for updates, build pics, and future product drops.</p>
         <div class="social-links">
             <a href="https://instagram.com/bonniebytepc" target="_blank" rel="noopener noreferrer">
-                <img class="social-icon" src="/images/icons/instagram.svg">
+                <img class="social-icon1" src="/images/icons/instagram.svg">
             </a>
             <a href="https://tiktok.com/@bonniebytepc" target="_blank" rel="noopener noreferrer">
-                <img class="social-icon" src="/images/icons/tiktok.svg">
+                <img class="social-icon2" src="/images/icons/tiktok.svg">
             </a>
             <a href="https://x.com/bonniebytepc" target="_blank" rel="noopener noreferrer">
-                <img class="social-icon" src="/images/icons/x.svg">
+                <img class="social-icon3" src="/images/icons/x.svg">
             </a>
             <a href="https://facebook.com/bonniebytepc" target="_blank" rel="noopener noreferrer">
-                <img class="social-icon" src="/images/icons/facebook.svg">
+                <img class="social-icon4" src="/images/icons/facebook.svg">
             </a>
         </div>
     </div>
