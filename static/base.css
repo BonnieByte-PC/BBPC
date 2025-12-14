@@ -1643,7 +1643,7 @@ body .goog-te-gadget {
 }
 
 .social-icon2 {
-    width: 60px;
+    width: 65px;
     height: 60px;
     stroke: currentColor;
     fill: none;
@@ -1651,16 +1651,16 @@ body .goog-te-gadget {
 }
 
 .social-icon3 {
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 57px;
     stroke: currentColor;
     fill: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .social-icon4 {
-    width: 50px;
-    height: 50px;
+    width: 52px;
+    height: 52px;
     stroke: currentColor;
     fill: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
