@@ -232,11 +232,11 @@ pwm_splitter:
     - "Damage caused by force or improper installation"
     - "Use with incompatible voltage or headers"
     resolution:
-    component_replacement: true
-    full_bundle_on_multiple_failure: false
-    doa_days: 30
-    refund_possible: true
-    replacement_eta_days: 1
+      component_replacement: true
+      full_bundle_on_multiple_failure: false
+      doa_days: 30
+      refund_possible: true
+      replacement_eta_days: 1
 
 
 template_product:
