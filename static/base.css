@@ -1185,6 +1185,10 @@ svg {
 .footer-header-icon {
     width: 30px;
     height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
 }
 
 .footer-icon, {
