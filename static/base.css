@@ -1634,9 +1634,33 @@ body .goog-te-gadget {
     justify-content: center;
 }
 
-.social-icon {
+.social-icon1 {
+    width: 70px;
+    height: 70px;
+    stroke: currentColor;
+    fill: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-icon2 {
     width: 60px;
     height: 60px;
+    stroke: currentColor;
+    fill: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-icon3 {
+    width: 55px;
+    height: 55px;
+    stroke: currentColor;
+    fill: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-icon4 {
+    width: 55px;
+    height: 55px;
     stroke: currentColor;
     fill: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
