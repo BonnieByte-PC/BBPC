@@ -11,7 +11,7 @@ title: Documentation | BonnieByte PC
       This section is actively expanding as new products move closer to full release.
     </p>
     <p>
-      All documentation here is written specifically for BonnieByte PC products —
+      All documentation here is written specifically for <span class="orbitron">BonnieByte PC</span> products —
       no generic filler, no copy-paste guides.
     </p>
     <h2>Product Manuals</h2>
@@ -70,13 +70,13 @@ title: Documentation | BonnieByte PC
     <h2>FAQ</h2>
     <ul>
       <li>
-        Are BonnieByte PC fans compatible with my case?
+        Are <span class="orbitron">BonnieByte PC</span> fans compatible with my case?
       </li>
       <li>
         Which motherboards and RGB software are supported?
       </li>
       <li>
-        Can I mix BonnieByte fans with other brands?
+        Can I mix <span class="orbitron">BonnieByte PC</span> fans with other brands?
       </li>
       <li>
         What happens if a fan or cable fails?
