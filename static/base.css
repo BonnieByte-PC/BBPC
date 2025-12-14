@@ -1167,6 +1167,18 @@ svg {
     display: inline-block;
 }
 
+.bb-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: contain;
+
+  /* fallback size (used if no override is present) */
+  width: 24px;
+  height: 24px;
+}
+
+
 .nav-icon,
 .footer-icon,
 .footer-header-icon {
