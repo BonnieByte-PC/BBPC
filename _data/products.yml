@@ -4,9 +4,7 @@ northern_wind_120:
   short_name: "Northern Wind 120"
   html_name: "<span class='orbitron notranslate'>NORTHERN WIND 120</span>"
   price_gbp: 39.99
-  warranty_enabled: true
-  manual_enabled: true
-  product_type: "fan_kit"
+  product_type: fan_kit
   release_date: "TBA"
   variants:
     - Black
@@ -14,34 +12,35 @@ northern_wind_120:
   specs:
     airflow: "58 CFM"
     static_pressure: "1.3 mmH2O"
-    noise: "19-29 dBA"
+    noise: "19–29 dBA"
     bearing: "Hydraulic"
     leds: "24"
-    rpm: "800-1600 RPM"
+    rpm: "800–1600 RPM"
   thumbnail: "/images/products/northern_wind_120/thumb.webp"
-  warranty_length: "2 years"
+  warranty_length: "2-Year Warranty"
   ukca: true
   status: "Prototype Phase"
   product_visible: true
-  description: "A complete cooling and lighting upgrade in one kit. Quiet 120mm PWM ARGB fans, an included hub, and honest performance that will keep your system cooled and running at peak efficiency."
-  features:
-    - "Daisy Chain Cables"
-    - "Included Magnetic ARGB Hub"
-    - "Silent Operation"
-    - "Motherboard Software Sync"
-  amazon_url: "https://amazon.co.uk"
-  warranty_length: "2-Year Warranty"
+  warranty_enabled: true
+  manual_enabled: false
   featured: true
-  # Future Shopify wiring (leave blank for now)
-  shopify_product_id: 
-  shopify_default_variant_id: 
+  description: >
+    A complete cooling and lighting upgrade in one kit.
+    Quiet 120mm PWM ARGB fans, an included hub, and honest performance
+    that keeps your system cool and efficient.
+  features:
+    - Daisy Chain Cables
+    - Included Magnetic ARGB Hub
+    - Silent Operation
+    - Motherboard Software Sync
+  amazon_url: "https://amazon.co.uk"
   images:
     - /images/products/northern_wind_120/main.webp
     - /images/products/northern_wind_120/angle.webp
     - /images/products/northern_wind_120/rear.webp
     - /images/products/northern_wind_120/action.webp
   box_contents:
-    - 5x <span class='orbitron notranslate'>NORTHERN WIND 120</span>mm ARGB Fans
+    - "5x <span class='orbitron notranslate'>NORTHERN WIND 120</span>mm ARGB Fans"
     - Mounting Screw Set
     - Magnetic Backed Fan Hub
     - Accessories Bundle
@@ -55,10 +54,18 @@ northern_wind_120:
     - 5V 3-pin ARGB (ASUS / MSI / Gigabyte)
     - Windows & Linux compatible
   faq:
-    - question: Do these fans support PWM?
-      answer: Yes. All Northern Wind 120 fans use standard 4-pin PWM control.
-    - question: Is an ARGB hub included?
-      answer: Yes. The kit includes a magnetic ARGB hub for easy cable management.
+    - question: Do these fans support PWM fan control?
+      answer: Yes. All Northern Wind 120 fans use standard 4-pin PWM control and can be adjusted via BIOS or motherboard software.
+    - question: Are the fans noisy at full speed?
+      answer: No. The fans are tuned for quiet operation, even at higher RPMs, with a balanced airflow-to-noise profile.
+    - question: Is an ARGB hub included in the box?
+      answer: Yes. Each kit includes a magnetic ARGB hub for simplified cable management and lighting control.
+    - question: Can I sync the lighting with my motherboard software?
+      answer: Yes. The fans support 5V 3-pin ARGB and are compatible with ASUS Aura Sync, MSI Mystic Light, and Gigabyte RGB Fusion.
+    - question: Will these fans work on Linux?
+      answer: Yes. Fan speed control works at the BIOS level, so operating system does not affect basic functionality.
+    - question: Can I mix these fans with other ARGB fans?
+      answer: You can mix them electrically, but visual colour matching may vary between brands.
   related:
     - pwm_splitter
     - argb_hub
@@ -68,65 +75,99 @@ northern_wind_120:
     - Silent
   use_case: >
     Ideal for airflow-focused builds, compact mid-towers,
-    and quiet performance systems where cooling efficiency matters.
-    
+    and quiet performance systems.
+  warranty:
+    who:
+      original_purchaser_only: true
+      authorised_retailers:
+        - "our official Amazon UK store"
+    covered:
+      - Fan motor failure or non-spinning behaviour
+      - Complete ARGB lighting failure (full ring non-functional)
+      - Controller hub failure (no PWM output, no power, no ARGB passthrough)
+      - Faulty PWM or ARGB cables
+    not_covered:
+      - Accidental damage (drops, impacts, liquid, crushed cables)
+      - Incorrect installation or forcing connector pins
+      - Connecting ARGB to a 12V RGB header
+      - Normal wear, dust build-up, or cosmetic changes
+    resolution:
+      component_replacement: true
+      full_bundle_on_multiple_failure: true
+      doa_days: 30
+      refund_possible: true
+      replacement_eta_days: 1
+  support_notes: >
+    Common issues include incorrect header voltage selection
+    or BIOS set to DC instead of PWM.
+  returns_window_days: 30
+  seo:
+  keywords:
+    - pwm fan splitter
+    - pc cooling accessories
+    - argb fan kit
+  last_reviewed: "2025-12-07"
+
 argb_hub:
   sku: "BB-ARGB-HUB-001"
   full_name: "10-Port ARGB Magnetic Fan Hub"
   short_name: "10-Port ARGB"
   html_name: "<span class='orbitron notranslate'>10-PORT ARGB</span>"
   price_gbp: 9.99
-  warranty_enabled: true
-  manual_enabled: true
-  product_type: "Hub"
+  product_type: hub
   release_date: "TBA"
   variants:
     - Black
     - White
   specs:
-    PWM: "12V 4-Pin PWM"
-    ARGB: "5V 3-Pin ARGB"
-    Dimensions: "95cm x 45cm x 15cm"
-    Power: "SATA Power"
+    pwm: "12V 4-Pin PWM"
+    argb: "5V 3-Pin ARGB"
+    dimensions: "95mm × 45mm × 15mm"
+    power: "SATA Power"
   thumbnail: "/images/products/argb_hub/thumb.webp"
-  warranty_length: "2 years"
+  warranty_length: "2-Year Warranty"
   ukca: true
   status: "Prototype Phase"
   product_visible: true
-  description: "This hub allows you to connect up to 5 fans via the 5 ARGB Headers and 5 PWM Headers to control your fan speed and lighting display. Bring your system to the next level."
-  features:
-    - "5 PWM + 5 ARGB Headers"
-    - "SATA Powered"
-    - "Magnetic Base"
-    - "Motherboard <strong>OR</strong> Remote Controlled"
-  amazon_url: "https://amazon.co.uk"
-  warranty_length: "2-Year Warranty"
+  warranty_enabled: false
+  manual_enabled: false
   featured: false
-  # Future Shopify wiring (leave blank for now)
-  shopify_product_id: 
-  shopify_default_variant_id: 
+  description: >
+    A compact magnetic hub allowing up to 5 PWM fans and 5 ARGB devices
+    to be controlled from a single motherboard header.
+  features:
+    - 5 PWM + 5 ARGB Headers
+    - SATA Powered
+    - Magnetic Base
+    - Motherboard OR Remote Controlled
+  amazon_url: "https://amazon.co.uk"
   images:
     - /images/products/argb_hub/main.webp
     - /images/products/argb_hub/angle.webp
     - /images/products/argb_hub/rear.webp
     - /images/products/argb_hub/action.webp
   box_contents:
-    - 1x 10-Pin ARGB Magnetic Fan Hub
+    - 1x 10-Port ARGB Magnetic Fan Hub
     - Product Manual
     - Thank You Card
     - Accessories Pack
   stock_status: out_of_stock
   ships_from: UK
   compatibility:
-    - 12V 4-Pin PWM Connector
-    - 5V 3-Pin ARGB Connector
-    - SATA Power Delivery
-    - Motherboard Fan Speed Tuning Software (ASUS / MSI / Gigabyte)
+    - 12V 4-pin PWM
+    - 5V 3-pin ARGB
+    - SATA Power
   faq:
     - question: How many fans can I connect to this hub?
-      answer: You can connect a total of 5 fans via the 10 ports on the hub, 5 for PWM Connection and 5 for ARGB Connection.
-    - question: 
-      answer: 
+      answer: You can connect up to 5 PWM fans and 5 ARGB devices simultaneously.
+    - question: Does the hub require external power?
+      answer: Yes. The hub uses SATA power to ensure stable power delivery to connected fans and lighting.
+    - question: Can I control fan speed from my motherboard?
+      answer: Yes. PWM fan speed is passed through from the motherboard to all connected fans.
+    - question: Is this hub compatible with all motherboards?
+      answer: The hub is compatible with most modern motherboards that support 12V PWM and 5V ARGB headers.
+    - question: Does the hub remember lighting settings?
+      answer: Lighting behaviour depends on your motherboard or controller software rather than the hub itself.
   related:
     - northern_wind_120
     - pwm_splitter
@@ -134,60 +175,62 @@ argb_hub:
     - ARGB
     - PWM
     - Accessory
-  use_case: >
-    Ideal for connecting additional fans to your system without using all your motherboards available headers. Sync your fan speed and lighting display.
-    
+
 pwm_splitter:
   sku: "BON-PWM-SPLIT-001"
   full_name: "2-Way PWM Fan Splitter"
   short_name: "PWM Fan Splitter"
   html_name: "<span class='orbitron notranslate'>PWM FAN SPLITTER</span>"
   price_gbp: 4.99
-  warranty_enabled: true
-  manual_enabled: true
-  product_type: "Cable"
+  product_type: cable
   release_date: "TBA"
   variants:
     - 1 Female to 2 Male
     - 1 Female to 3 Male
   specs:
-    Voltage: "12V 4 Pin PWM"
-    Length: "10cm"
+    voltage: "12V 4-pin PWM"
+    length: "10cm"
   thumbnail: "/images/products/pwm_splitter/thumb.webp"
-  warranty_length: "2 years"
+  warranty_length: "2-Year Warranty"
   ukca: true
   status: "Prototype Phase"
   product_visible: true
-  description: "This cable allows you to connect 2 PWM Fans to 1 PWM header on either your motherboard or Fan Hub. Keep your system running smooth and cool with this simple to use extension cable."
-  features:
-    - "1 Female to 2 Male Connectors"
-    - "Compact Size"
-  amazon_url: "https://amazon.co.uk"
-  warranty_length: "2-Year Warranty"
+  warranty_enabled: false
+  manual_enabled: false
   featured: false
-  # Future Shopify wiring (leave blank for now)
-  shopify_product_id: 
-  shopify_default_variant_id: 
+  description: >
+    Allows multiple PWM fans to be connected to a single PWM header
+    for cleaner cable management and expanded fan support.
+  features:
+    - Female to multiple Male connectors
+    - Compact size
+  amazon_url: "https://amazon.co.uk"
   images:
     - /images/products/pwm_splitter/main.webp
     - /images/products/pwm_splitter/angle.webp
     - /images/products/pwm_splitter/rear.webp
     - /images/products/pwm_splitter/action.webp
   box_contents:
-    - 1x 2-Way PWM Fan Splitter Cable
+    - 1x PWM Fan Splitter Cable
     - Product Manual
     - Thank You Card
     - Accessories Pack
   stock_status: out_of_stock
   ships_from: UK
   compatibility:
-    - 12V 4-Pin PWM Connector
-    - Motherboard Fan Speed Tuning Software (ASUS / MSI / Gigabyte)
+    - 12V 4-pin PWM
+    - Motherboard fan control software
   faq:
-    - question: How many fans can I connect to this spliiter?
-      answer: This will depend on how many Male headers your splitter has, for every Male header you can connect 1 additional fan.
-    - question: 
-      answer: 
+    - question: How many fans can I connect using this splitter?
+      answer: You can connect one fan per male connector on the splitter.
+    - question: Will all connected fans spin at the same speed?
+      answer: Yes. All connected fans receive the same PWM control signal from the motherboard.
+    - question: Is this splitter safe to use with high-power fans?
+      answer: It is designed for standard PC case fans. Avoid exceeding your motherboard header’s power limits.
+    - question: Does this splitter support RGB lighting?
+      answer: No. This splitter only carries PWM fan control signals and power.
+    - question: Can I use this with a fan hub instead of a motherboard header?
+      answer: Yes. It works with both motherboard PWM headers and compatible fan hubs.
   related:
     - northern_wind_120
     - argb_hub
@@ -195,66 +238,23 @@ pwm_splitter:
     - PWM
     - Accessory
   use_case: >
-    Ideal for connecting additional fans to your system when your motherboard or fan hub headers are all currrently occupied.
-
-template_product:
-  sku: ""
-  full_name: ""
-  short_name: ""
-  html_name: "<span class='orbitron notranslate'></span>"
-  price_gbp: 
-  warranty_enabled: false
-  manual_enabled: false
-  product_type: ""
-  release_date: "YYYY-MM-DD"
-  variants:
-    - var1
-    - var2
-  specs:
-    airflow: " CFM"
-    static_pressure: " mmH2O"
-    noise: " dBA"
-    bearing: ""
-    leds: ""
-    rpm: " RPM"
-  thumbnail: "/images/products/template_product/thumb.webp"
-  warranty_length: "2 years"
-  ukca: false
-  status: ""
-  product_visible: false
-  description: ""
-  features:
-    - ""
-    - ""
-  amazon_url: "https://amazon.co.uk"
-  warranty_length: "2-Year Warranty"
-  featured: false
-  # Future Shopify wiring (leave blank for now)
-  shopify_product_id: 
-  shopify_default_variant_id: 
-  images:
-    - /images/products/template_product/main.webp
-    - /images/products/template_product/angle.webp
-    - /images/products/template_product/rear.webp
-    - /images/products/template_product/action.webp
-  box_contents:
-    - cont1
-    - cont2
-  stock_status: out_of_stock
-  ships_from: UK
-  compatibility:
-    - comp1
-    - comp2
-  faq:
-    - question: 
-      answer: 
-    - question: 
-      answer: 
-  related:
-    - rel1
-    - rel2
-  badges:
-    - bad1
-    - bad2
-  use_case: >
-    text
+    Ideal when motherboard or hub fan headers are fully occupied.
+  warranty:
+    who:
+      original_purchaser_only: true
+      authorised_retailers:
+        - "our official Amazon UK store"
+    covered:
+      - Manufacturing defects in the cable or connectors
+      - Loose or non-functional PWM signal passthrough
+      - Broken internal wiring under normal use
+    not_covered:
+      - Physical damage to connectors or cable sheath
+      - Damage caused by force or improper installation
+      - Use with incompatible voltage or headers
+    resolution:
+      component_replacement: true
+      full_bundle_on_multiple_failure: false
+      doa_days: 30
+      refund_possible: true
+      replacement_eta_days: 1

@@ -1,3 +1,13 @@
 <h2>2. Who Is Covered</h2>
+
+{% if product.warranty.who.original_purchaser_only %}
 <p>This warranty applies to the <strong>original purchaser only</strong>.</p>
-<p>Your product must have been purchased from an <strong>authorised retailer</strong>, such as our official Amazon UK store.</p>
+{% endif %}
+
+{% if product.warranty.who.authorised_retailers %}
+<p>
+  Your product must have been purchased from an
+  <strong>authorised retailer</strong>, such as
+  {{ product.warranty.who.authorised_retailers | join: ", " }}.
+</p>
+{% endif %}

@@ -1,13 +1,31 @@
 <h2>7. What We Will Do</h2>
 <p>If your issue is covered under this warranty, we will take one of the following actions:</p>
+
+{% if product.warranty.resolution.component_replacement %}
 <h3>Component Replacement (Most Common)</h3>
-<p>If only one fan, cable, or the controller hub is faulty, we will replace that individual component.</p>
+<p>If only one component is faulty, we will replace that individual part.</p>
 <p>This approach is faster, reduces unnecessary waste, and avoids returning a fully working bundle.</p>
+{% endif %}
+
+{% if product.warranty.resolution.full_bundle_on_multiple_failure %}
 <h3>Multiple Component Failure</h3>
-<p>If two or more components from the same kit fail, we may replace the entire Northern Wind 120 bundle.</p>
-<h3>Dead on Arrival (DOA) — First 30 Days</h3>
-<p>If your bundle arrives with major faults that prevent normal use, we will replace the entire bundle at no cost.</p>
+<p>If two or more components from the same kit fail, we may replace the entire {{ product.short_name }} bundle.</p>
+{% endif %}
+
+{% if product.warranty.resolution.doa_days %}
+<h3>Dead on Arrival (DOA) — First {{ product.warranty.resolution.doa_days }} Days</h3>
+<p>If your product arrives with major faults affecting normal use, we will replace it at no cost.</p>
+{% endif %}
+
+{% if product.warranty.resolution.refund_possible %}
 <h3>Refunds</h3>
 <p>If a repair or replacement is not possible, we may issue a refund for the original purchase price.</p>
+{% endif %}
+
+{% if product.warranty.resolution.replacement_eta_days %}
 <h3>Replacement ETA</h3>
-<p>Approved replacements are normally dispatched within <strong>1 working day</strong>.</p>
+<p>
+  Approved replacements are normally dispatched within
+  <strong>{{ product.warranty.resolution.replacement_eta_days }} working day{% if product.warranty.resolution.replacement_eta_days > 1 %}s{% endif %}</strong>.
+</p>
+{% endif %}
