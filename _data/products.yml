@@ -69,6 +69,28 @@ northern_wind_120:
   use_case: >
     Ideal for airflow-focused builds, compact mid-towers,
     and quiet performance systems where cooling efficiency matters.
+  warranty:
+    who:
+      original_purchaser_only: true
+      authorised_retailers:
+        - "our official Amazon UK store"
+    covered:
+      - "Fan motor failure or non-spinning behaviour"
+      - "Complete ARGB lighting failure (full ring non-functional)"
+      - "Controller hub failure (no PWM output, no power, no ARGB passthrough)"
+      - "Faulty PWM or ARGB cables"
+    not_covered:
+      - "Accidental damage (drops, impacts, liquid, crushed cables)"
+      - "Incorrect installation or forcing connector pins"
+      - "Connecting ARGB to a 12V RGB header"
+      - "Normal wear, dust build-up, or cosmetic changes"
+    resolution:
+      component_replacement: true
+      full_bundle_on_multiple_failure: true
+      doa_days: 30
+      refund_possible: true
+      replacement_eta_days: 1
+
     
 argb_hub:
   sku: "BB-ARGB-HUB-001"
