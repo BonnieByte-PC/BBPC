@@ -22,7 +22,7 @@ northern_wind_120:
   status: "Prototype Phase"
   product_visible: true
   warranty_enabled: true
-  manual_enabled: true
+  manual_enabled: false
   featured: true
   description: >
     A complete cooling and lighting upgrade in one kit.
@@ -129,8 +129,8 @@ argb_hub:
   ukca: true
   status: "Prototype Phase"
   product_visible: true
-  warranty_enabled: true
-  manual_enabled: true
+  warranty_enabled: false
+  manual_enabled: false
   featured: false
   description: >
     A compact magnetic hub allowing up to 5 PWM fans and 5 ARGB devices
@@ -195,8 +195,8 @@ pwm_splitter:
   ukca: true
   status: "Prototype Phase"
   product_visible: true
-  warranty_enabled: true
-  manual_enabled: true
+  warranty_enabled: false
+  manual_enabled: false
   featured: false
   description: >
     Allows multiple PWM fans to be connected to a single PWM header
