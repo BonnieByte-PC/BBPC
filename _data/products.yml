@@ -218,6 +218,26 @@ pwm_splitter:
     - Accessory
   use_case: >
     Ideal for connecting additional fans to your system when your motherboard or fan hub headers are all currrently occupied.
+  warranty:
+    who:
+      original_purchaser_only: true
+      authorised_retailers:
+        - "our official Amazon UK store"
+      covered:
+      - "Manufacturing defects in the cable or connectors"
+      - "Loose or non-functional PWM signal passthrough"
+      - "Broken internal wiring under normal use"
+      not_covered:
+      - "Physical damage to connectors or cable sheath"
+      - "Damage caused by force or improper installation"
+      - "Use with incompatible voltage or headers"
+      resolution:
+      component_replacement: true
+      full_bundle_on_multiple_failure: false
+      doa_days: 30
+      refund_possible: true
+      replacement_eta_days: 1
+
 
 template_product:
   sku: ""
