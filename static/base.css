@@ -699,7 +699,7 @@ html[data-theme="light"] .lang-btn {
   display: none;
 
   width: auto;
-  max-width: min(420px, 100vw - 24px);
+  max-width: min(440px, 100vw - 24px);
 }
 
 .bb-lang-extended.open {
