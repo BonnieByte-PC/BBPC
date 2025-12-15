@@ -762,6 +762,10 @@ html[data-theme="light"] .lang-btn {
   max-width: 360px;
 }
 
+html[data-theme="light"] .bb-lang-extended {
+    background: rgba(255,255,255,0.88) !important;
+}
+
 /* ========================================================================
    11. MOBILE MENU TOGGLE
    ======================================================================== */
