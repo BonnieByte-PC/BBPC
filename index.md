@@ -15,8 +15,8 @@ title: Home | BonnieByte PC
                 UKCA-ready, value-focused, and built for real-world rigs.
             </p>
             <div class="hero-cta-group">
-                <a href="#notify" class="button button-secondary">Notify Me at Launch</a>
-                <a href="/products" class="button button-secondary">View First Product</a>
+                <a href="#notify" class="button">Notify Me at Launch</a>
+                <a href="/products" class="button">View First Product</a>
             </div>
             <div class="hero-meta">
                 <span>UK-Based • 2-Year Warranty • Local Support</span>
@@ -27,7 +27,7 @@ title: Home | BonnieByte PC
                 <h2>Launching Soon</h2>
                 <p>Our debut <span class="orbitron notranslate">NORTHERN WIND 120</span> ARGB fan bundle is almost ready. Be first in line for launch-day pricing and early stock.</p>
                 <ul class="hero-list">
-                    <li> 5× <span class="orbitron notranslate">NORTHERN WIND</span> 120mm<br>ARGB fans</li>
+                    <li> 5× <span class="orbitron notranslate">NORTHERN WIND 120</span>mm<br>ARGB fans</li>
                     <li>Included control hub</li>
                     <li>Addressable lighting support</li>
                     <li>Quiet performance-focused design</li>
@@ -53,8 +53,8 @@ title: Home | BonnieByte PC
             <p>Clean aesthetics, addressable RGB, and thoughtful packaging — without the “RGB tax”.</p>
         </div>
         <div class="pillar">
-            <h3>2-Year </h3>
-            <p>We stand behind our products with a straightforward 2-year  and responsive support.</p>
+            <h3>2-Year Warranty</h3>
+            <p>We stand behind our products with a straightforward 2-year Warranty and responsive support.</p>
         </div>
     </div>
 </section>
