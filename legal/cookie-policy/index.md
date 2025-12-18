@@ -26,7 +26,6 @@ changelog:
     <li><strong>bb_lang</strong> – Saves language/region preferences for future localisation. <em>Duration:</em> 6–12 months.</li>
     <li><strong>bb_banner_*</strong> – Remembers when you dismiss operational notices (e.g., maintenance or shipping alerts) so that they are not repeatedly shown. <em>Duration:</em> 1–30 days.</li>
     <li><strong>bb_support_origin</strong> – Remembers the page you were on before opening the Support page, helping us provide smoother navigation. <em>Duration:</em> 1 day.</li>
-
 </ul>
 <p>
     These cookies do <strong>not</strong> identify you, track you, or share data with any third parties.
@@ -54,9 +53,7 @@ changelog:
 <p>You can manage cookies on our website in several ways:</p>
 <ul>
     <li><strong>Browser settings:</strong> Most browsers allow you to block or delete cookies. This will not impact essential cookies on our site but may limit functionality on other websites.</li>
-
     <li><strong>Cookie banner:</strong> On your first visit, you may choose to accept or reject optional cookies. Since we currently use only essential cookies, rejecting optional cookies has no negative effect.</li>
-
     <li><strong>Reset cookie preferences:</strong> You can reset your decision using the button below.  
         <br>
         <button id="bbpc-scroll-to-reset" class="button button-secondary">↓</button>
